@@ -1,0 +1,57 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="36" fill="#08111D"/>
+  <g opacity="0.18">
+    <path d="M0 92H1200" stroke="#7D9AC8"/>
+    <path d="M0 184H1200" stroke="#7D9AC8"/>
+    <path d="M0 276H1200" stroke="#7D9AC8"/>
+    <path d="M0 368H1200" stroke="#7D9AC8"/>
+    <path d="M0 460H1200" stroke="#7D9AC8"/>
+    <path d="M0 552H1200" stroke="#7D9AC8"/>
+    <path d="M0 644H1200" stroke="#7D9AC8"/>
+    <path d="M150 0V760" stroke="#7D9AC8"/>
+    <path d="M300 0V760" stroke="#7D9AC8"/>
+    <path d="M450 0V760" stroke="#7D9AC8"/>
+    <path d="M600 0V760" stroke="#7D9AC8"/>
+    <path d="M750 0V760" stroke="#7D9AC8"/>
+    <path d="M900 0V760" stroke="#7D9AC8"/>
+    <path d="M1050 0V760" stroke="#7D9AC8"/>
+  </g>
+  <path d="M182 258C248 240 278 236 353 243C434 250 507 268 597 341C664 395 727 478 770 554" stroke="url(#paint0_linear_36_3)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M770 554C801 554 846 554 892 548C936 542 995 525 1042 499" stroke="url(#paint1_linear_36_3)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1042 499C1009 474 986 451 985 423C984 386 1018 358 1068 338" stroke="url(#paint2_linear_36_3)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M184 258C211 230 253 209 301 203C355 196 414 208 463 236C510 262 547 299 587 334C624 366 659 391 703 420C731 438 744 449 761 469" fill="#13233E" fill-opacity="0.75"/>
+  <path d="M761 469C790 458 818 450 846 448C899 444 952 462 991 488C1017 505 1032 521 1042 538" fill="#13233E" fill-opacity="0.75"/>
+  <circle cx="182" cy="258" r="18" fill="#59C3FF"/>
+  <circle cx="353" cy="243" r="14" fill="#59C3FF"/>
+  <circle cx="597" cy="341" r="14" fill="#59C3FF"/>
+  <circle cx="770" cy="554" r="18" fill="#8A7CFF"/>
+  <circle cx="1042" cy="499" r="18" fill="#8A7CFF"/>
+  <circle cx="1068" cy="338" r="18" fill="#59D58D"/>
+  <g fill="white" font-family="Inter, Arial, sans-serif">
+    <text x="128" y="232" font-size="22" font-weight="700">리스본</text>
+    <text x="323" y="216" font-size="18" font-weight="600">신트라</text>
+    <text x="561" y="315" font-size="18" font-weight="600">호카곶</text>
+    <text x="720" y="603" font-size="22" font-weight="700">마요르카</text>
+    <text x="991" y="472" font-size="20" font-weight="700">팔마</text>
+    <text x="1094" y="344" font-size="20" font-weight="700">마드리드</text>
+    <text x="72" y="72" font-size="40" font-weight="800">Trip Route Overview</text>
+    <text x="72" y="112" font-size="20" fill="#A9B6CB">리스본 일정 + 마요르카 드라이브 + 마드리드 레이오버 핵심 이동선</text>
+  </g>
+  <rect x="72" y="624" width="320" height="72" rx="22" fill="#0E1930" stroke="#27446A"/>
+  <circle cx="112" cy="661" r="8" fill="#59C3FF"/>
+  <text x="132" y="668" fill="white" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">도시 간 이동 / 당일치기 동선</text>
+  <defs>
+    <linearGradient id="paint0_linear_36_3" x1="182" y1="258" x2="770" y2="554" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59C3FF"/>
+      <stop offset="1" stop-color="#8A7CFF"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_36_3" x1="770" y1="554" x2="1042" y2="499" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8A7CFF"/>
+      <stop offset="1" stop-color="#59C3FF"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear_36_3" x1="1042" y1="499" x2="1068" y2="338" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59C3FF"/>
+      <stop offset="1" stop-color="#59D58D"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>신혼여행 플랜</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --panel: #ffffff;
+        --panel-soft: #f8f8fb;
+        --surface-2: #f4f4f6;
+        --text: #1d1b20;
+        --muted: #625b71;
+        --line: #e3e3e8;
+        --shadow: none;
+        --blue: #6750a4;
+        --green: #386a20;
+        --yellow: #7a5d00;
+        --red: #b3261e;
+        --orange: #9a4d00;
+        --danger-bg: #f9dedc;
+        --tip-bg: #dcedc8;
+        --tab-bg: #f3f1f7;
+        --accent-soft: #ede7f6;
+        --nav-bg: rgba(255, 255, 255, 0.94);
+        --indicator: #ede7f6;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #141218;
+          --panel: #1d1b20;
+          --panel-soft: #211f26;
+          --surface-2: #2b2930;
+          --text: #e6e0e9;
+          --muted: #cac4d0;
+          --line: #49454f;
+          --shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+          --blue: #d0bcff;
+          --green: #b5cc9b;
+          --yellow: #e5c86b;
+          --red: #f2b8b5;
+          --orange: #ffb783;
+          --danger-bg: rgba(242, 184, 181, 0.16);
+          --tip-bg: rgba(181, 204, 155, 0.16);
+          --tab-bg: #211f26;
+          --accent-soft: #4f378b;
+          --nav-bg: rgba(29, 27, 32, 0.92);
+          --indicator: #4f378b;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+      }
+
+      body { display: flex; justify-content: center; }
+
+      body[data-active-panel="schedule"] .hero {
+        display: none;
+      }
+
+      .app {
+        width: min(100%, 480px);
+        padding: 16px 14px 32px;
+      }
+
+      .hero, .section, .bottom-tabs {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 8px 0 24px;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow, .section-label {
+        margin: 0 0 8px;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3, p { margin: 0; }
+      h1 {
+        font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .hero-copy {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .chips, .button-row, .priority-row, .meta-row, .map-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chips { margin-top: 16px; }
+
+      .chip, .action-link, .priority-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: var(--panel-soft);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid color-mix(in srgb, var(--line) 44%, transparent);
+      }
+
+      .priority-pill {
+        background: var(--danger-bg);
+        color: var(--red);
+      }
+
+      .action-link.alt {
+        background: color-mix(in srgb, var(--orange) 12%, var(--panel));
+        color: var(--orange);
+        border-color: color-mix(in srgb, var(--orange) 28%, transparent);
+      }
+
+      .action-link.map {
+        background: var(--panel-soft);
+        border-color: color-mix(in srgb, var(--line) 58%, transparent);
+      }
+
+      .bottom-tabs {
+        position: fixed;
+        left: 50%;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        width: min(calc(100% - 28px), 480px);
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 10px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(18px);
+        z-index: 30;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .bottom-tabs::-webkit-scrollbar { display: none; }
+
+      .main-tab, .date-tab {
+        min-height: 44px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--tab-bg);
+        color: var(--muted);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .main-tab {
+        flex: 1 0 auto;
+        padding: 0 18px;
+        background: transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .main-tab.active {
+        color: var(--text);
+      }
+
+      .main-tab.active::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: calc(100% - 4px);
+        height: 32px;
+        border-radius: 999px;
+        background: var(--indicator);
+        z-index: -1;
+      }
+
+      .date-tab.active {
+        background: var(--blue);
+        color: color-mix(in srgb, white 92%, transparent);
+      }
+
+      .panel { display: none; padding-bottom: 92px; }
+      .panel.active { display: block; }
+
+      .panel.schedule-panel {
+        padding-bottom: 92px;
+      }
+
+      .section {
+        padding: 20px 0;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .schedule-shell {
+        margin-bottom: 0;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .checklist-group {
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .checklist-group:first-of-type {
+        padding-top: 0;
+      }
+
+      .checklist-group:last-of-type {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .checklist-group h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .checklist-copy {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+        margin-bottom: 12px;
+      }
+
+      .checklist-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .checklist-table tr {
+        border-top: 1px solid var(--line);
+      }
+
+      .checklist-table th,
+      .checklist-table td {
+        padding: 12px 0;
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .checklist-table th {
+        width: 108px;
+        color: var(--muted);
+        font-weight: 700;
+        padding-right: 14px;
+      }
+
+      .checklist-table td {
+        color: var(--text);
+      }
+
+      .hm-progress-wrap {
+        padding: 2px 0 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hm-progress-top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .hm-progress-count {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .hm-progress-percent {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .hm-progress-bar {
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        overflow: hidden;
+      }
+
+      .hm-progress-fill {
+        height: 100%;
+        width: 0;
+        border-radius: 999px;
+        background: #1d9e75;
+        transition: width 0.2s ease;
+      }
+
+      .hm-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .hm-category {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hm-category:last-child {
+        border-bottom: 0;
+      }
+
+      .hm-category-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .hm-category-title {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .hm-category-count {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        flex: none;
+      }
+
+      .hm-items {
+        display: grid;
+        gap: 10px;
+      }
+
+      .hm-item {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        padding: 14px;
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+        text-align: left;
+        font: inherit;
+        color: inherit;
+      }
+
+      .hm-check {
+        width: 22px;
+        height: 22px;
+        border-radius: 7px;
+        border: 2px solid color-mix(in srgb, var(--muted) 30%, var(--line));
+        background: transparent;
+        position: relative;
+        margin-top: 2px;
+      }
+
+      .hm-item.checked .hm-check {
+        background: #1d9e75;
+        border-color: #1d9e75;
+      }
+
+      .hm-item.checked .hm-check::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .hm-item-main {
+        min-width: 0;
+      }
+
+      .hm-item-title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .hm-item-note {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .hm-item.checked .hm-item-title,
+      .hm-item.checked .hm-item-note {
+        opacity: 0.45;
+      }
+
+      .hm-item.checked .hm-item-title {
+        text-decoration: line-through;
+      }
+
+      .hm-badge {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .hm-badge.now {
+        background: #f9dedc;
+        color: #8c1d18;
+      }
+
+      .hm-badge.before {
+        background: #fff1c1;
+        color: #7a4f00;
+      }
+
+      .hm-badge.local {
+        background: #dcedc8;
+        color: #285c12;
+      }
+
+      .hm-reset {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .stat, .card, .schedule-day, .todo-item, .note-box, .phrase-card {
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .stat {
+        padding: 0 0 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .stat-label { color: var(--muted); font-size: 12px; }
+      .stat-value { margin-top: 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+
+      .stack { display: grid; gap: 14px; }
+      .card {
+        padding: 0 0 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .card h3 { font-size: 16px; margin-bottom: 6px; font-weight: 700; }
+      .subtle {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .detail-list, .notes {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .todo-item {
+        padding: 0 0 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .todo-item strong { display: block; font-size: 15px; font-weight: 700; }
+      .todo-item span { color: var(--muted); font-size: 12px; }
+
+      .schedule-date-tabs {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 8px 4px 10px;
+        margin: -18px -2px 14px;
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(16px);
+      }
+
+      .schedule-date-tabs::-webkit-scrollbar { display: none; }
+      .date-tab {
+        flex: none;
+        padding: 0 16px;
+      }
+
+      .schedule-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .schedule-day {
+        padding: 0 0 24px;
+        scroll-margin-top: 72px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .schedule-day-head {
+        margin-bottom: 16px;
+      }
+
+      .schedule-day-head h3 {
+        font-size: 28px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 0;
+      }
+
+      .item {
+        padding: 18px 0;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+      }
+
+      .item:first-child {
+        padding-top: 4px;
+      }
+
+      .item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .item.critical {
+        border-left: 4px solid var(--red);
+        padding-left: 14px;
+      }
+
+      .item-head {
+        display: grid;
+        grid-template-columns: 18px 58px minmax(0, 1fr);
+        gap: 14px;
+        align-items: start;
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        margin-top: 4px;
+        border-radius: 50%;
+      }
+
+      .item.critical .dot {
+        background: var(--red);
+        box-shadow: 0 0 0 6px rgba(226, 85, 99, 0.14);
+      }
+      .item.flight .dot, .item.transit .dot { background: var(--blue); }
+      .item.sight .dot, .item.food .dot { background: var(--green); }
+      .item.tip .dot { background: var(--yellow); }
+
+      .time { font-size: 14px; font-weight: 800; }
+      .summary-title { font-size: 20px; line-height: 1.35; font-weight: 700; letter-spacing: -0.01em; color: #000; }
+      .summary-sub {
+        margin-top: 6px;
+        color: #000;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .summary-title,
+        .summary-sub {
+          color: var(--text);
+        }
+      }
+
+      .details {
+        padding: 14px 0 0 34px;
+      }
+
+      .narrative {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.75;
+        margin-bottom: 14px;
+      }
+
+      .detail-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .detail-table tr {
+        border-top: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+      }
+
+      .detail-table tr:first-child {
+        border-top: 1px solid var(--line);
+      }
+
+      .detail-table th,
+      .detail-table td {
+        padding: 10px 0;
+        vertical-align: top;
+        font-size: 13px;
+        line-height: 1.7;
+        text-align: left;
+      }
+
+      .detail-table th {
+        width: 104px;
+        color: var(--muted);
+        font-weight: 700;
+        padding-right: 14px;
+      }
+
+      .detail-table td {
+        color: var(--text);
+      }
+
+      .location-cell {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .copy-button {
+        flex: none;
+        min-height: 28px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel-soft);
+        color: var(--muted);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .copy-button.copied {
+        color: var(--blue);
+        border-color: color-mix(in srgb, var(--blue) 32%, var(--line));
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: calc(86px + env(safe-area-inset-bottom));
+        transform: translateX(-50%) translateY(12px);
+        padding: 12px 16px;
+        border-radius: 14px;
+        background: rgba(18, 18, 18, 0.96);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        z-index: 50;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .badge-row { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .badge.warning { background: var(--danger-bg); color: var(--red); }
+      .badge.tip { background: var(--tip-bg); color: var(--green); }
+
+      .map-frame {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        background: var(--panel-soft);
+        margin-bottom: 14px;
+      }
+
+      .map-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .phrase-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .phrase-card {
+        padding: 0 0 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .phrase-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .phrase-head h3 { font-size: 17px; font-weight: 700; }
+
+      .phrase-meaning {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .lang-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .lang-box {
+        border-radius: 16px;
+        background: var(--panel-soft);
+        padding: 14px;
+        border: 1px solid color-mix(in srgb, var(--line) 42%, transparent);
+      }
+
+      .lang-label {
+        display: inline-flex;
+        min-height: 24px;
+        padding: 0 8px;
+        align-items: center;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .lang-label.es {
+        background: rgba(235, 139, 45, 0.14);
+        color: var(--orange);
+      }
+
+      .lang-label.pt {
+        background: rgba(31, 157, 104, 0.14);
+        color: var(--green);
+      }
+
+      .lang-phrase {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .lang-read {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <p class="eyebrow">Honeymoon Planner</p>
+        <h1>리스본 · 마요르카 · 마드리드</h1>
+        <p class="hero-copy">개요, 일정표, 예약 체크, 메모를 한 화면 구조 안에서 보고 일정표 탭에서는 날짜별 섹션으로 바로 점프할 수 있게 구성했어요.</p>
+        <div class="chips">
+          <span class="chip">10박 11일</span>
+          <span class="chip">항공 4구간</span>
+          <span class="chip">일정표 중심</span>
+        </div>
+      </section>
+
+      <nav class="bottom-tabs" id="mainTabs">
+        <button class="main-tab active" data-panel="overview" type="button">개요</button>
+        <button class="main-tab" data-panel="schedule" type="button">일정표</button>
+        <button class="main-tab" data-panel="checklist" type="button">예약 체크</button>
+        <button class="main-tab" data-panel="language" type="button">여행 회화</button>
+      </nav>
+
+      <section class="panel active" data-panel="overview">
+        <section class="section">
+          <p class="section-label">Trip Snapshot</p>
+          <div class="stats">
+            <article class="stat"><div class="stat-label">총 기간</div><div class="stat-value">10박 11일</div></article>
+            <article class="stat"><div class="stat-label">주요 도시</div><div class="stat-value">3곳</div></article>
+            <article class="stat"><div class="stat-label">항공 구간</div><div class="stat-value">4회</div></article>
+            <article class="stat"><div class="stat-label">렌터카</div><div class="stat-value">4일</div></article>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section-label">Route View</p>
+          <div class="map-frame">
+            <img src="./assets/route-overview.svg" alt="신혼여행 이동 경로 지도" />
+          </div>
+          <div class="map-links">
+            <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/" target="_blank" rel="noreferrer">신트라 + 호카곶</a>
+            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/" target="_blank" rel="noreferrer">마요르카 남동부</a>
+            <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section-label">확정 정보</p>
+          <div class="stack">
+            <article class="card">
+              <h3>항공</h3>
+              <ul class="detail-list">
+                <li>5/3 KE921 인천 T2 → 리스본 T1 / 12:45 → 20:20</li>
+                <li>5/8 VY3437 리스본 → 마요르카 / 08:50 → 11:45</li>
+                <li>5/12 I21652 마요르카 → 마드리드 / 09:10 → 10:35</li>
+                <li>5/12 KE914 마드리드 T1 → 인천 T2 / 20:00 → 5/13 16:00</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>숙소</h3>
+              <ul class="detail-list">
+                <li>Convent Square Lisbon / 5/3 - 5/8 / 전액 결제 완료</li>
+                <li>Fontsanta Hotel Thermal Spa / 5/8 - 5/12 / 잔여금 35.20 EUR 현장 결제</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+      </section>
+
+      <section class="panel schedule-panel" data-panel="schedule">
+        <div class="schedule-shell">
+          <div class="schedule-date-tabs" id="dateTabs"></div>
+          <div class="schedule-list" id="scheduleList"></div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="checklist">
+        <section class="section">
+          <p class="section-label">Checklist</p>
+          <div class="hm-progress-wrap">
+            <div class="hm-progress-top">
+              <div class="hm-progress-count" id="hmProgressCount">완료 0 / 전체 0</div>
+              <div class="hm-progress-percent" id="hmProgressPercent">0%</div>
+            </div>
+          <div class="hm-progress-bar">
+              <div class="hm-progress-fill" id="hmProgressFill"></div>
+            </div>
+          </div>
+          <div class="hm-list" id="hmChecklist"></div>
+          <div style="padding-top: 20px;">
+            <button class="hm-reset" id="hmResetButton" type="button">전체 초기화</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" data-panel="language">
+        <section class="section">
+          <p class="section-label">Travel Phrases</p>
+          <div class="phrase-stack">
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>안녕하세요</h3></div>
+              <p class="phrase-meaning">첫 인사할 때 가장 기본으로 쓰는 표현.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Hola</div>
+                  <div class="lang-read">올라</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Olá</div>
+                  <div class="lang-read">올라</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>감사합니다</h3></div>
+              <p class="phrase-meaning">식당, 호텔, 상점에서 가장 자주 쓰는 표현.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Gracias</div>
+                  <div class="lang-read">그라시아스</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Obrigado / Obrigada</div>
+                  <div class="lang-read">오브리가두 / 오브리가다</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>실례합니다 / 저기요</h3></div>
+              <p class="phrase-meaning">직원을 부르거나 길을 물을 때 자연스럽게 쓰기 좋음.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Perdón</div>
+                  <div class="lang-read">뻬르돈</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Com licença</div>
+                  <div class="lang-read">콩 리쎈사</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>영어 하세요?</h3></div>
+              <p class="phrase-meaning">대화 시작 전에 가장 유용한 확인 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">¿Habla inglés?</div>
+                  <div class="lang-read">아블라 잉글레스?</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Fala inglês?</div>
+                  <div class="lang-read">팔라 잉글레스?</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>예약했어요</h3></div>
+              <p class="phrase-meaning">호텔 체크인, 식당 입장 시 바로 보여주기 좋은 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Tengo una reserva</div>
+                  <div class="lang-read">뗑고 우나 레세르바</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Tenho uma reserva</div>
+                  <div class="lang-read">뗑요 우마 헤제르바</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>체크인하고 싶어요</h3></div>
+              <p class="phrase-meaning">호텔 도착 직후 프런트에서 쓰는 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Quiero hacer el check-in</div>
+                  <div class="lang-read">끼에로 아세르 엘 체킨</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Quero fazer o check-in</div>
+                  <div class="lang-read">께루 파제르 우 체킨</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>이거 주세요</h3></div>
+              <p class="phrase-meaning">카페, 베이커리, 시장에서 가장 편한 주문 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Quiero esto, por favor</div>
+                  <div class="lang-read">끼에로 에스또, 뽀르 파보르</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Quero isto, por favor</div>
+                  <div class="lang-read">께루 이스뚜, 뽀르 파보르</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>물 한 병 주세요</h3></div>
+              <p class="phrase-meaning">식당이나 편의점에서 자주 쓰는 기본 주문.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Una botella de agua, por favor</div>
+                  <div class="lang-read">우나 보떼야 데 아구아, 뽀르 파보르</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Uma garrafa de água, por favor</div>
+                  <div class="lang-read">우마 가하파 지 아구아, 뽀르 파보르</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>계산서 주세요</h3></div>
+              <p class="phrase-meaning">식사 후 계산할 때 바로 쓰는 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">La cuenta, por favor</div>
+                  <div class="lang-read">라 꾸엔따, 뽀르 파보르</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">A conta, por favor</div>
+                  <div class="lang-read">아 꽁따, 뽀르 파보르</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>화장실이 어디예요?</h3></div>
+              <p class="phrase-meaning">식당, 역, 관광지에서 바로 필요한 질문.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">¿Dónde está el baño?</div>
+                  <div class="lang-read">돈데 에스따 엘 바뇨?</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Onde fica o banheiro?</div>
+                  <div class="lang-read">온지 피카 우 바녜이루?</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="phrase-card">
+              <div class="phrase-head"><h3>도와주세요</h3></div>
+              <p class="phrase-meaning">길을 잃었거나 급한 상황에서 가장 먼저 꺼낼 문장.</p>
+              <div class="lang-grid">
+                <div class="lang-box">
+                  <div class="lang-label es">스페인어</div>
+                  <div class="lang-phrase">Ayúdeme, por favor</div>
+                  <div class="lang-read">아유데메, 뽀르 파보르</div>
+                </div>
+                <div class="lang-box">
+                  <div class="lang-label pt">포르투갈어</div>
+                  <div class="lang-phrase">Ajude-me, por favor</div>
+                  <div class="lang-read">아주지 미, 뽀르 파보르</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast">복사가 완료되었어요</div>
+
+    <script>
+      const days = [
+        {
+          id: "0503",
+          label: "5/3 (일)",
+          title: "인천 출국 → 리스본 도착",
+          items: [
+            { time: "10:00", type: "critical", title: "인천 T2 도착 — KE921 체크인", summary: "출발편을 놓치지 않도록 오전 10시까지 인천국제공항 제2터미널에 도착해야 해요. 체크인과 수하물 위탁 시간을 여유 있게 확보하세요.", move: "공항까지 자차 또는 공항버스로 이동한 뒤 터미널 내부 도보 이동", location: "인천국제공항 제2터미널", details: [["항공", "KE921 (대한항공)"], ["예약번호", "EH6OZW"], ["좌석", "철완 36H / 나라 36J"]], warning: "출발편 놓치지 않게 오전 공항 도착 시간을 먼저 확인하세요.", map: "https://maps.google.com/?q=인천국제공항+제2터미널" },
+            { time: "12:45", type: "flight", title: "KE921 출발", summary: "인천 T2에서 리스본 T1으로 이동하는 장거리 비행이에요. 현지 시간에 맞춰 수면 시간을 조절해 두는 게 좋아요.", move: "항공 이동", location: "인천국제공항 제2터미널", details: [["구간", "인천 T2 → 리스본 T1"], ["소요", "15시간 35분"], ["기종", "B787-9"]] },
+            { time: "20:20", type: "flight", title: "리스본 T1 도착", summary: "공항 도착 후에는 택시나 우버로 시내까지 이동하면 돼요. 호텔 진입 방식이 일반 숙소와 달라서 하차 위치를 꼭 확인하세요.", move: "공항에서 택시 또는 우버로 시내 이동 후 마지막 구간은 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: [["예산", "20€ 내외"]], warning: "호텔은 보행자 전용 구역이라 도로변 하차 후 캐리어를 끌고 도보 진입해야 해요.", map: "https://maps.google.com/?q=Lisbon+Airport" },
+            { time: "22:00", type: "sight", title: "Convent Square Lisbon 체크인", summary: "호텔에 도착하면 짐만 정리하고 바로 쉬는 흐름으로 가는 게 좋아요. 첫날은 체력 회복을 우선하세요.", move: "도보로 호텔 진입", location: "Rua Dom Antão de Almada 4 Lisbon", details: [["전화", "+351 218 295 200"]], map: "https://maps.google.com/?cid=7850292069258072457" }
+          ]
+        },
+        {
+          id: "0504",
+          label: "5/4 (월)",
+          title: "리스본 알파마 & 시내 산책",
+          items: [
+            { time: "10:00", type: "sight", title: "상 조르즈 성", summary: "리스본 전경을 한눈에 보고 싶다면 오전에 먼저 올라가야 해요. 성 안에서는 공작새가 돌아다니는 풍경도 함께 볼 수 있어요.", move: "호텔에서 우버 또는 택시로 언덕 위까지 이동 후 입구까지 짧은 도보", location: "Castelo de São Jorge Lisbon", details: [["입장", "약 15€"], ["운영", "09:00~21:00"]], map: "https://maps.google.com/?cid=13024533549412529111" },
+            { time: "13:00", type: "sight", title: "28번 트램 탑승 — 알파마 골목 산책", summary: "28번 트램은 마르팅 모니스 종점에서 타야 앉아서 이동할 가능성이 높아요. 알파마에서는 이동 중 소지품을 계속 확인하세요.", move: "상 조르즈 성에서 도보 이동 후 28번 트램 탑승, 이후 알파마는 도보 산책", location: "Martim Moniz Lisbon", details: [["탑승 포인트", "마르팅 모니스 종점"], ["요금", "약 3€"]], warning: "소매치기 다발 구역이라 가방은 반드시 앞으로 메고 휴대폰 위치도 확인하세요." },
+            { time: "15:30", type: "sight", title: "코메르시우 광장 → 타구스 강변 산책", summary: "오후에는 코메르시우 광장에서 타구스 강변까지 천천히 걸으면서 도심 분위기를 즐기면 돼요.", move: "알파마에서 도보로 내려오며 이동", location: "Praça do Comércio Lisbon", details: [], map: "https://maps.google.com/?q=Praça+do+Comércio+Lisbon" },
+            { time: "18:30", type: "food", title: "Time Out Market Lisboa — 저녁", summary: "저녁은 여러 음식을 한 번에 보기 좋은 타임아웃 마켓으로 가면 돼요. 예약 없이 편하게 들어가도 괜찮아요.", move: "강변 산책 후 도보 또는 짧은 우버 이동", location: "Time Out Market Lisboa", details: [["운영", "10:00~24:00"], ["예산", "1인 20~30€"]], map: "https://maps.google.com/?cid=1409592934746217618" }
+          ]
+        },
+        {
+          id: "0505",
+          label: "5/5 (화)",
+          title: "리스본 벨렘 지구 + 루프탑 디너",
+          items: [
+            { time: "10:00", type: "sight", title: "제로니무스 수도원", summary: "벨렘 일정 핵심 방문지.", move: "호텔에서 택시 또는 트램으로 벨렘 이동", location: "Jerónimos Monastery Lisbon", details: ["화~일 09:30~17:30 / 약 10€"], tip: "mosteirojeronimos.pt 사전 예약 필수.", map: "https://maps.google.com/?cid=9760810247707356141" },
+            { time: "12:00", type: "food", title: "Pastéis de Belém", summary: "에그타르트 원조집.", move: "수도원에서 도보 이동", location: "Pastéis de Belém", details: ["매일 08:00~21:00 / 약 1.5€/개"], tip: "시나몬 뿌려서 먹기.", map: "https://maps.google.com/?cid=18442230332396508773" },
+            { time: "14:00", type: "sight", title: "발견 기념비 + 타구스 강변 산책", summary: "벨렘 산책 동선.", move: "벨렘 거리와 강변을 따라 도보 이동", location: "Padrão dos Descobrimentos Lisbon", details: [], map: "https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisbon" },
+            { time: "20:00", type: "food", title: "SUD Lisboa Terrazza — 일몰 루프탑 디너", summary: "5월 일몰 20:40 기준 가장 좋은 예약 시간.", move: "강변 산책 후 우버 또는 택시로 저녁 식당 이동", location: "SUD Lisboa Terrazza", details: ["예약: sudlisboa.com 또는 +351 211 592 700", "예산: 1인 60~90€"], warning: "20:00 예약이 가장 좋고 지금 바로 예약 필수.", map: "https://maps.google.com/?cid=11345109858595221778", alternative: { label: "대안 장소", href: "https://maps.google.com/?q=Ribeira+das+Naus+Lisbon" } }
+          ]
+        },
+        {
+          id: "0506",
+          label: "5/6 (수)",
+          title: "신트라 + 호카곶 당일치기",
+          items: [
+            { time: "07:30", type: "critical", title: "⚠ 호시우역 출발 — 신트라행 기차", summary: "성수기엔 이른 출발 필수.", move: "호텔에서 도보로 호시우역 이동 후 기차 탑승", location: "Rossio Station Lisbon", details: ["약 40분 / 약 2.5€"], warning: "늦으면 페나 궁전 대기 1시간+.", map: "https://maps.google.com/?q=Rossio+Station+Lisbon" },
+            { time: "09:00", type: "sight", title: "페나 궁전", summary: "입장 슬롯 시간을 맞춰야 함.", move: "신트라역 도착 후 434 버스 또는 택시로 궁전 이동", location: "National Palace of Pena Sintra", details: ["09:30~18:30 / 약 20€"], tip: "visitsintra.travel 사전 예약 필수.", map: "https://maps.google.com/?cid=8585860342190914392" },
+            { time: "12:00", type: "food", title: "신트라 마을 점심", summary: "마을 중심 점심.", move: "페나 궁전에서 버스 또는 택시로 시내 복귀 후 도보 이동", location: "Sintra village center", details: [], map: "https://maps.google.com/?q=Sintra+village+center" },
+            { time: "13:30", type: "transit", title: "403번 버스 → 호카곶", summary: "Scotturb 403번 이용.", move: "신트라 시내 버스 정류장에서 403번 버스 탑승", location: "Cabo da Roca bus 403 from Sintra", details: ["약 40분 / 약 2.5€"] },
+            { time: "14:30", type: "sight", title: "Cabo da Roca", summary: "유럽 최서단 포인트.", move: "버스 하차 후 전망 포인트까지 도보 이동", location: "Cabo da Roca Portugal", details: ["24시간 / 무료 주차"], warning: "바람 강함. 절벽 가장자리 조심.", map: "https://maps.google.com/?cid=10753145278933283759" },
+            { time: "16:30", type: "transit", title: "호카곶 → 리스본 버스 귀환", summary: "저녁 식당 전 복귀.", move: "호카곶에서 버스로 신트라 복귀 후 기차로 리스본 이동", location: "Lisbon city center", details: [] },
+            { time: "19:00", type: "food", title: "A Cevicheria — 저녁", summary: "문어 요리 + 세비체.", move: "리스본 도착 후 우버 또는 택시로 저녁 식당 이동", location: "A Cevicheria", details: ["매일 12:00~23:00 / 1인 35~50€"], map: "https://maps.google.com/?cid=249361683231044429", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=12645455021013823583" } }
+          ]
+        },
+        {
+          id: "0507",
+          label: "5/7 (목)",
+          title: "리스본 미식 & 여유의 날",
+          items: [
+            { time: "10:00", type: "sight", title: "시아두 지구 쇼핑 + 카페 투어", summary: "마지막 리스본 도심 여유 일정.", move: "호텔에서 도보 이동", location: "Chiado Lisbon", details: [], map: "https://maps.google.com/?q=Chiado+Lisbon" },
+            { time: "12:00", type: "food", title: "Taberna da Rua das Flores — 점심 (선택)", summary: "웨이팅 기반 인기 점심.", move: "시아두에서 도보 이동", location: "Taberna da Rua das Flores", details: ["현금만 / 월~토 12:00~23:30 / 1인 20~30€"], map: "https://maps.google.com/?cid=14052001774497423361" },
+            { time: "18:00", type: "sight", title: "A Tasca do Chico — 파두 바 (선택)", summary: "저녁 전 선택 일정.", move: "도심 내 도보 이동", location: "A Tasca do Chico Lisbon", details: ["매일 19:00~02:00 / 현금만"], map: "https://maps.google.com/?cid=13275437289001447196" },
+            { time: "19:30", type: "food", title: "Solar dos Presuntos — 리스본 마지막 만찬", summary: "리마지막 저녁 메인 예약 식당.", move: "도보 또는 짧은 우버 이동", location: "Solar dos Presuntos", details: ["월~토 12:00~15:30, 18:30~23:00 / 1인 50~70€"], warning: "5/7은 목요일이라 OK. 18:30 이후 예약.", map: "https://maps.google.com/?cid=6887572243664963168" },
+            { time: "밤", type: "tip", title: "캐리어 짐 전부 싸두기", summary: "다음 날 새벽 출발 대비.", move: "호텔 객실에서 준비", location: "Convent Square Lisbon", details: [], warning: "여권/국제운전면허증/렌터카 서류 꺼내두기." }
+          ]
+        },
+        {
+          id: "0508",
+          label: "5/8 (금)",
+          title: "리스본 → 마요르카 이동일",
+          items: [
+            { time: "04:30", type: "tip", title: "기상 — 알람 2개 설정", summary: "새벽 이동일 시작.", move: "호텔 객실에서 준비", location: "Convent Square Lisbon", details: [] },
+            { time: "05:00", type: "critical", title: "⚠ 호텔 출발 — 우버/택시 호출", summary: "공항까지 약 25~35분.", move: "도보로 하차 지점까지 나간 뒤 우버 또는 택시 탑승", location: "Convent Square Lisbon", details: ["우버 약 20~25€"], warning: "전날 밤 짐을 프런트에 맡겼다가 출발 전 픽업.", map: "https://maps.google.com/?cid=7850292069258072457" },
+            { time: "05:40", type: "critical", title: "⚠ 리스본 공항 도착", summary: "체크인/보안검색 시작.", move: "차량 하차 후 터미널 내부 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["T1 / 체크인 마감 08:10"], tip: "Priority Boarding, Fast Track 활용." },
+            { time: "06:00", type: "flight", title: "체크인 + 수하물 위탁 + 보안 검색", summary: "Vueling 공항 수속.", move: "공항 내부 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["VY3437 / 예약번호 KFZL6V", "25kg x2 / 철완 1B / 나라 1A"] },
+            { time: "08:50", type: "flight", title: "VY3437 출발", summary: "리스본 → 마요르카", move: "항공 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["1시간 55분 / 11:45 도착"] },
+            { time: "11:45", type: "flight", title: "마요르카 공항 도착", summary: "도착 후 렌터카 픽업 이동.", move: "도착 후 공항 내부 도보로 렌터카 구역 이동", location: "Palma de Mallorca Airport", details: [], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
+            { time: "13:00", type: "critical", title: "⚠ Record Go 렌터카 픽업", summary: "서류 4가지 필수 확인.", move: "공항 렌터카 카운터 도보 이동 후 차량 픽업", location: "Record Go Palma de Mallorca Airport", details: ["예약번호 75/2026-25992 / Toyota C-HR", "Just Go 풀커버 + 프리미엄"], warning: "국제운전면허증 + 한국면허증 + 여권 + 본인명의 실물카드 필수.", tip: "차량 외관 사진 전방위 촬영." },
+            { time: "14:30", type: "sight", title: "Fontsanta Hotel 체크인", summary: "체크인 후 온천 동선.", move: "렌터카로 호텔까지 이동", location: "Ctra. Campos a Colònia de Sant Jordi, km 8, Campos", details: ["잔여금 35.20 EUR 현장 결제"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "16:00", type: "sight", title: "천연 온천 서킷", summary: "비행 피로 힐링.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["39도 천연 온천수. 발레아레스 유일."] }
+          ]
+        },
+        {
+          id: "0509",
+          label: "5/9 (토)",
+          title: "마요르카 에메랄드 해변",
+          items: [
+            { time: "07:50", type: "critical", title: "⚠ 호텔 출발 (렌터카)", summary: "08:30 전 주차장 도착 필수.", move: "렌터카로 해변 주차장 이동", location: "Fontsanta Hotel Thermal Spa", details: ["Caló des Moro Parking"], warning: "늦으면 진입로 막히고 주차 불가." },
+            { time: "08:30", type: "sight", title: "Caló des Moro", summary: "절벽 계단 아래 숨은 해변.", move: "주차 후 계단과 산책로를 따라 도보 이동", location: "Caló des Moro Mallorca", details: ["에메랄드 색감으로 유명."], map: "https://maps.google.com/?cid=13650283880968476839", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=4971618100527693408" } },
+            { time: "12:00", type: "food", title: "Cala Figuera — 해산물 점심", summary: "Caló des Moro에서 차로 약 15분.", move: "렌터카로 항구 마을 이동", location: "Cala Figuera", details: [], map: "https://maps.google.com/?cid=721331792335290592" },
+            { time: "14:30", type: "sight", title: "호텔 복귀 — 수영장 + 스파 트리트먼트", summary: "오후는 휴식 중심.", move: "렌터카로 호텔 복귀 후 호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [], map: "https://maps.google.com/?cid=2233528644058998346" }
+          ]
+        },
+        {
+          id: "0510",
+          label: "5/10 (일)",
+          title: "마요르카 북서부 드라이브 + 팔마 시내",
+          items: [
+            { time: "09:30", type: "sight", title: "Valldemossa → Deià 산악 드라이브", summary: "북서부 드라이브 메인 구간.", move: "렌터카로 북서부 산악 도로 이동", location: "Valldemossa Mallorca", details: [], warning: "도로 좁고 구불구불. 천천히.", map: "https://maps.google.com/?cid=10540766082293436990" },
+            { time: "11:00", type: "sight", title: "Deià 마을 산책", summary: "산악 마을 분위기 산책.", move: "마을 주차 후 도보 이동", location: "Deià Mallorca", details: [], map: "https://maps.google.com/?cid=10540766082293436990" },
+            { time: "14:00", type: "sight", title: "팔마 — 라 세우 대성당", summary: "팔마 핵심 관광지.", move: "렌터카로 팔마 이동 후 주차장에서 도보 이동", location: "Catedral de Mallorca La Seu Palma", details: ["월~금 10:00~17:15 / 토 10:00~14:15 / 일 휴무", "약 10€"], map: "https://maps.google.com/?cid=6056387022241497514" },
+            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "대성당 이후 산책.", move: "구시가지 도보 산책", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
+            { time: "19:30", type: "food", title: "El Camino — 타파스 저녁", summary: "이 날은 대안 식당 사용.", move: "구시가지에서 도보 또는 짧은 택시 이동", location: "El Camino Palma", details: ["화~토 운영 / 월·일 휴무"], warning: "5/10은 일요일이라 El Camino 휴무.", map: "https://maps.google.com/?cid=7882059133149027723", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=9604793671551599278" } }
+          ]
+        },
+        {
+          id: "0511",
+          label: "5/11 (월)",
+          title: "마요르카 완전한 호캉스",
+          items: [
+            { time: "09:00", type: "sight", title: "느긋한 조식", summary: "호캉스 데이 시작.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [] },
+            { time: "10:30", type: "sight", title: "Es Trenc Beach", summary: "호텔 근처 대표 해변.", move: "렌터카로 해변 이동 후 주차장에서 도보 이동", location: "Es Trenc Beach Mallorca", details: ["유료 주차 약 8€ / 차로 약 10분"], tip: "비치 타월 호텔에서 빌리기.", map: "https://maps.google.com/?cid=6718804724195379185" },
+            { time: "14:00", type: "sight", title: "마지막 온천 + 커플 스파 트리트먼트", summary: "커플 마사지 중심.", move: "해변에서 렌터카로 호텔 복귀 후 스파까지 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["60~90분 커플 마사지"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "19:30", type: "food", title: "Fontsanta 호텔 레스토랑 — 파인 다이닝", summary: "마요르카 마지막 저녁.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["프런트 예약 / 1인 80~120€"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "밤", type: "tip", title: "귀국 짐 전부 싸두기", summary: "새벽 체크아웃 대비.", move: "호텔 객실에서 준비", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "마요르카→마드리드 수하물 23kg 제한 확인." }
+          ]
+        },
+        {
+          id: "0512",
+          label: "5/12 (화)",
+          title: "마요르카 → 마드리드 → 귀국",
+          items: [
+            { time: "04:30", type: "tip", title: "기상", summary: "귀국일 시작.", move: "호텔 객실에서 준비", location: "Fontsanta Hotel Thermal Spa", details: [] },
+            { time: "05:40", type: "critical", title: "⚠ Fontsanta 체크아웃", summary: "현장 결제 확인.", move: "프런트까지 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "잔여금 35.20 EUR 준비." },
+            { time: "06:00", type: "critical", title: "⚠ 렌터카 반납 전 주유", summary: "공항 근처 주유 후 영수증 확보.", move: "렌터카로 공항 근처 주유소 이동", location: "Repsol Palma de Mallorca Airport", details: ["Repsol 또는 Cepsa"], warning: "공항 10km 이내 풀주유 + 영수증 필수." },
+            { time: "06:30", type: "critical", title: "⚠ Record Go 렌터카 반납", summary: "반납 직원과 외관 확인.", move: "렌터카로 반납 구역 진입 후 공항으로 도보 이동", location: "Record Go Palma de Mallorca Airport", details: ["마요르카 공항 렌터카 구역"], tip: "풀커버 보험이어도 함께 확인." },
+            { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express 수속.", move: "공항 내부 도보 이동", location: "Palma de Mallorca Airport", details: ["I21652 / 예약번호 LSLWY", "08:10 체크인 마감 / 철완 10E / 나라 10F"] },
+            { time: "09:10", type: "flight", title: "I21652 출발", summary: "마요르카 → 마드리드", move: "항공 이동", location: "Palma de Mallorca Airport", details: ["1시간 25분 / 23kg x2"] },
+            { time: "10:35", type: "flight", title: "마드리드 T1 도착", summary: "수하물 수취 후 시내 이동.", move: "공항 내부 도보 이동 후 수하물 찾기", location: "Madrid Barajas Airport Terminal 1", details: ["코인라커 맡기고 시내 이동"], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+T1" },
+            { time: "11:00", type: "transit", title: "Cercanías C-1 → 아토차역", summary: "공항에서 시내 이동.", move: "공항 셔틀 또는 연결 통로 이동 후 Cercanías C-1 탑승", location: "Atocha Station Madrid", details: ["약 25분 / 약 3€"], map: "https://maps.google.com/?q=Atocha+Station+Madrid" },
+            { time: "11:30", type: "sight", title: "El Retiro Park", summary: "짧게 걷기 좋은 공원 코스.", move: "아토차역에서 도보 이동", location: "El Retiro Park Madrid", details: ["06:00~22:00 / 무료"], map: "https://maps.google.com/?cid=11415542133959205806" },
+            { time: "13:00", type: "sight", title: "Puerta del Sol + Gran Vía 쇼핑", summary: "레이오버 동안 가장 무난한 도심 코스.", move: "레티로 공원에서 도보 또는 지하철 이동", location: "Puerta del Sol Madrid", details: [], map: "https://maps.google.com/?cid=7587138583347971705" },
+            { time: "16:00", type: "critical", title: "⚠ 아토차역 → 공항 복귀", summary: "국제선 탑승 전 공항 복귀.", move: "Cercanías C-1로 공항 복귀, 촉박하면 택시 이용", location: "Madrid Barajas Airport Terminal 1", details: [], warning: "16:30 전 공항 복귀 필수. 늦으면 택시 고려." },
+            { time: "17:00", type: "flight", title: "마드리드 T1 — KE914 체크인", summary: "귀국편 체크인 완료.", move: "공항 내부 도보 이동", location: "Madrid Barajas Airport Terminal 1", details: ["KE914", "EM8HFD(철완) / EM7D8F(나라)", "철완 52H / 나라 52J"] },
+            { time: "20:00", type: "flight", title: "KE914 출발", summary: "마드리드 → 인천", move: "항공 이동", location: "Madrid Barajas Airport Terminal 1", details: ["13시간 / 5/13 16:00 도착"] }
+          ]
+        }
+      ];
+
+      const checklistStorageKey = "hm_checklist_v1";
+
+      const checklistCategories = [
+        {
+          id: "docs",
+          title: "서류 & 증명",
+          items: [
+            { id: "docs_1", title: "여권 (두 명 모두)", note: "유효기간 6개월 이상 남았는지 확인", urgency: "지금 바로" },
+            { id: "docs_2", title: "국제운전면허증", note: "경찰서 또는 운전면허시험장 발급. 렌터카 픽업 필수", urgency: "지금 바로" },
+            { id: "docs_3", title: "한국 운전면허증 (실물)", note: "국제면허증과 함께 항상 지참", urgency: "지금 바로" },
+            { id: "docs_4", title: "항공권 e-티켓 프린트 또는 저장", note: "KE921, VY3437, I21652, KE914 전체", urgency: "지금 바로" },
+            { id: "docs_5", title: "호텔 예약 확인서", note: "Convent Square (41605443), Fontsanta (P7128119)", urgency: "지금 바로" },
+            { id: "docs_6", title: "렌터카 예약 확인서", note: "Record Go 예약번호 75/2026-25992", urgency: "지금 바로" },
+            { id: "docs_7", title: "여행자 보험 증서", note: "유럽 전 구간 커버 확인. 의료비, 수하물, 항공 지연 포함 여부 체크", urgency: "지금 바로" },
+            { id: "docs_8", title: "IHG One Rewards 앱 설치", note: "Convent Square 체크인 및 포인트 관리", urgency: "출발 전" },
+            { id: "docs_9", title: "Vueling 앱 설치", note: "온라인 체크인 출발 2시간 전까지", urgency: "출발 전" },
+            { id: "docs_10", title: "Iberia Express 온라인 체크인", note: "checkin.iberiaexpress.com / 출발 전까지", urgency: "출발 전" }
+          ]
+        },
+        {
+          id: "booking",
+          title: "예약 필수",
+          items: [
+            { id: "booking_1", title: "SUD Lisboa 루프탑 디너 예약", note: "sudlisboa.com / 5/5 20:00 슬롯. 지금 바로", urgency: "지금 바로" },
+            { id: "booking_2", title: "Solar dos Presuntos 예약", note: "solardospresuntos.com 또는 +351 213 424 253 / 5/7 저녁", urgency: "지금 바로" },
+            { id: "booking_3", title: "페나 궁전 입장권 사전 구매", note: "visitsintra.travel / 5/6 09:00 슬롯", urgency: "지금 바로" },
+            { id: "booking_4", title: "제로니무스 수도원 입장권", note: "mosteirojeronimos.pt / 5/5 10:00 슬롯", urgency: "지금 바로" },
+            { id: "booking_5", title: "A Cevicheria 예약", note: "acevicheria.pt / 5/6 저녁", urgency: "출발 전" },
+            { id: "booking_6", title: "Fontsanta 커플 스파 트리트먼트 예약", note: "info@fontsantahotel.com / 신혼여행 커플 패키지 문의", urgency: "출발 전" },
+            { id: "booking_7", title: "El Camino 또는 Fera Palma 예약", note: "5/10 일요일 El Camino 휴무. Fera Palma로 대체 예약", urgency: "출발 전" },
+            { id: "booking_8", title: "Fontsanta 레스토랑 예약 (5/11)", note: "체크인 후 프런트에 직접 요청", urgency: "현지에서" }
+          ]
+        },
+        {
+          id: "money",
+          title: "환전 & 카드",
+          items: [
+            { id: "money_1", title: "유로 (EUR) 환전", note: "은행 앱 환전 후 공항 수령 추천. 현금 필요 장소: Taberna da Rua das Flores, A Tasca do Chico (현금만)", urgency: "출발 전" },
+            { id: "money_2", title: "현지 결제 시 EUR 선택 숙지", note: "원화(KRW) 결제 DCC 뜨면 무조건 거절. 손해", urgency: "지금 바로" },
+            { id: "money_3", title: "렌터카용 본인명의 실물 신용카드 준비", note: "가상카드 X. 철완 본인 명의 카드만 유효", urgency: "지금 바로" },
+            { id: "money_4", title: "Fontsanta 잔여금 35.20 EUR 준비", note: "체크인 시 현장 결제", urgency: "출발 전" },
+            { id: "money_5", title: "마드리드 Cercanías 교통비 준비", note: "공항 ↔ 아토차 약 3€ x2", urgency: "현지에서" }
+          ]
+        },
+        {
+          id: "baggage",
+          title: "짐 & 수하물",
+          items: [
+            { id: "baggage_1", title: "수하물 무게 사전 확인", note: "리스본→마요르카 25kg / 마요르카→마드리드 23kg. 마요르카 쇼핑 후 초과 주의", urgency: "출발 전" },
+            { id: "baggage_2", title: "기내 반입 오버헤드 가방", note: "Vueling 55x40x20cm 10kg 이하", urgency: "출발 전" },
+            { id: "baggage_3", title: "발밑 언더시트 가방", note: "Vueling 40x30x20cm 이하", urgency: "출발 전" },
+            { id: "baggage_4", title: "귀중품 기내 분산 보관", note: "여권, 카드, 현금은 기내 가방에. 위탁 수하물에 넣지 말 것", urgency: "지금 바로" },
+            { id: "baggage_5", title: "수하물 잠금장치 TSA", note: "유럽도 TSA 자물쇠 권장", urgency: "출발 전" },
+            { id: "baggage_6", title: "수하물 택 및 네임태그 부착", note: "이름, 연락처, 이메일 기재", urgency: "출발 전" }
+          ]
+        },
+        {
+          id: "clothes",
+          title: "옷 & 신발",
+          items: [
+            { id: "clothes_1", title: "편한 워킹화", note: "리스본은 돌바닥 많음. 굽 있는 신발 비추", urgency: "지금 바로" },
+            { id: "clothes_2", title: "비치 샌들", note: "마요르카 해변용", urgency: "출발 전" },
+            { id: "clothes_3", title: "수영복 (두 명 모두)", note: "Fontsanta 온천, Es Trenc, Caló des Moro", urgency: "지금 바로" },
+            { id: "clothes_4", title: "가벼운 겉옷 또는 가디건", note: "5월 유럽 저녁은 쌀 수 있음. 특히 리스본", urgency: "출발 전" },
+            { id: "clothes_5", title: "파인 다이닝용 외출복", note: "Fontsanta 레스토랑 5/11, SUD Lisboa", urgency: "출발 전" },
+            { id: "clothes_6", title: "자외선 차단 의류", note: "마요르카 해변 장시간 노출", urgency: "출발 전" }
+          ]
+        },
+        {
+          id: "beauty",
+          title: "뷰티 & 위생",
+          items: [
+            { id: "beauty_1", title: "선크림 SPF50+", note: "마요르카 5월 자외선 강함. 현지 Isdin 또는 Heliocare 현지 구매도 저렴", urgency: "지금 바로" },
+            { id: "beauty_2", title: "기초 스킨케어 소분", note: "100ml 이하 지퍼백에 담아 기내 반입", urgency: "출발 전" },
+            { id: "beauty_3", title: "립밤", note: "장거리 비행 + 유럽 건조한 날씨", urgency: "출발 전" },
+            { id: "beauty_4", title: "수분 미스트", note: "15시간 장거리 비행용", urgency: "출발 전" },
+            { id: "beauty_5", title: "비치 타월", note: "Fontsanta 호텔에서 빌려줌. 별도 챙길 필요 없음", urgency: "현지에서" },
+            { id: "beauty_6", title: "멀미약", note: "마요르카 북서부 산악 드라이브 구불구불함", urgency: "출발 전" }
+          ]
+        },
+        {
+          id: "medicine",
+          title: "상비약",
+          items: [
+            { id: "medicine_1", title: "두통약 타이레놀 등", note: "시차 적응, 피로", urgency: "출발 전" },
+            { id: "medicine_2", title: "소화제", note: "낯선 음식 적응", urgency: "출발 전" },
+            { id: "medicine_3", title: "지사제", note: "해산물 많이 먹는 여행", urgency: "출발 전" },
+            { id: "medicine_4", title: "밴드 및 습윤밴드", note: "돌바닥 장거리 워킹 대비", urgency: "출발 전" },
+            { id: "medicine_5", title: "모기 기피제", note: "5월 남유럽 모기 있음", urgency: "출발 전" },
+            { id: "medicine_6", title: "처방약 챙기기", note: "복용 중인 약 있으면 처방전 사본도 함께", urgency: "지금 바로" }
+          ]
+        },
+        {
+          id: "device",
+          title: "전자기기",
+          items: [
+            { id: "device_1", title: "스페인 포르투갈 어댑터", note: "유럽 Type C 220V. 한국 플러그와 다름", urgency: "지금 바로" },
+            { id: "device_2", title: "보조배터리", note: "기내 반입만 가능. 위탁 X. 100Wh 이하", urgency: "출발 전" },
+            { id: "device_3", title: "카메라 및 여분 배터리", note: "마요르카 해변, 신트라, 리스본 골목", urgency: "출발 전" },
+            { id: "device_4", title: "유심 또는 포켓 와이파이", note: "유럽 유심 미리 구매 추천. 스페인 + 포르투갈 커버 확인", urgency: "지금 바로" },
+            { id: "device_5", title: "이어폰", note: "15시간 + 13시간 장거리 비행용", urgency: "출발 전" },
+            { id: "device_6", title: "충전 케이블 여분", note: "분실 대비", urgency: "출발 전" },
+            { id: "device_7", title: "방수 케이스", note: "마요르카 해변 스마트폰 보호", urgency: "출발 전" }
+          ]
+        },
+        {
+          id: "car",
+          title: "렌터카 준비",
+          items: [
+            { id: "car_1", title: "국제운전면허증 발급 완료", note: "경찰서 또는 운전면허시험장. 여권 + 면허증 + 사진 지참", urgency: "지금 바로" },
+            { id: "car_2", title: "Record Go 예약서 저장", note: "예약번호 75/2026-25992", urgency: "출발 전" },
+            { id: "car_3", title: "마요르카 공항 렌터카 구역 위치 확인", note: "Record Go 카운터 위치 미리 파악", urgency: "출발 전" },
+            { id: "car_4", title: "구글맵 오프라인 지도 다운로드", note: "마요르카 전체 + 팔마 시내. 현지 데이터 끊길 때 대비", urgency: "지금 바로" },
+            { id: "car_5", title: "주요 경로 미리 저장", note: "Caló des Moro, Valldemossa, 팔마, Fontsanta, 공항", urgency: "출발 전" },
+            { id: "car_6", title: "반납 전 주유 확인", note: "공항 10km 이내 주유소. Repsol 또는 Cepsa. 영수증 보관", urgency: "현지에서" }
+          ]
+        },
+        {
+          id: "daycheck",
+          title: "당일 체크",
+          items: [
+            { id: "daycheck_1", title: "5/3 출국 인천 T2 10:00 도착", note: "KE921 12:45 출발. 2시간 45분 여유", urgency: "지금 바로" },
+            { id: "daycheck_2", title: "5/8 리스본 새벽 05:00 호텔 출발", note: "VY3437 08:50 출발. 공항 05:40 도착 목표", urgency: "지금 바로" },
+            { id: "daycheck_3", title: "5/8 렌터카 픽업 서류 4종 준비", note: "국제면허 + 한국면허 + 여권 + 본인명의 실물카드", urgency: "지금 바로" },
+            { id: "daycheck_4", title: "5/9 Caló des Moro 07:50 출발", note: "08:30 전 주차 필수", urgency: "지금 바로" },
+            { id: "daycheck_5", title: "5/11 밤 귀국 짐 완전히 싸두기", note: "23kg 제한 확인", urgency: "지금 바로" },
+            { id: "daycheck_6", title: "5/12 새벽 05:40 체크아웃", note: "잔여금 35.20 EUR 현장 결제", urgency: "지금 바로" },
+            { id: "daycheck_7", title: "5/12 렌터카 반납 주유 영수증 지참", note: "06:30 반납", urgency: "지금 바로" },
+            { id: "daycheck_8", title: "5/12 마드리드 16:00 전 공항 복귀", note: "KE914 20:00 출발. Cercanías C-1 이용", urgency: "지금 바로" }
+          ]
+        }
+      ];
+
+      document.body.dataset.activePanel = "overview";
+
+      const mainTabs = document.querySelectorAll(".main-tab");
+      const panels = document.querySelectorAll(".panel");
+      const dateTabsEl = document.getElementById("dateTabs");
+      const scheduleListEl = document.getElementById("scheduleList");
+      const hmChecklistEl = document.getElementById("hmChecklist");
+      const hmProgressCountEl = document.getElementById("hmProgressCount");
+      const hmProgressPercentEl = document.getElementById("hmProgressPercent");
+      const hmProgressFillEl = document.getElementById("hmProgressFill");
+      const hmResetButtonEl = document.getElementById("hmResetButton");
+      const toastEl = document.getElementById("toast");
+      let toastTimer = null;
+      let checklistState = {};
+
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove("show");
+        }, 1600);
+      }
+
+      function renderDateTabs() {
+        dateTabsEl.innerHTML = days.map((day, index) => `<button class="date-tab${index === 0 ? " active" : ""}" data-target="${day.id}" type="button">${day.label}</button>`).join("");
+      }
+
+      function renderSchedule() {
+      const toTableRows = (details = []) => {
+        if (!details.length) return "";
+        return details.map((detail, idx) => {
+          if (Array.isArray(detail)) {
+            return `<tr><th>${detail[0]}</th><td>${detail[1]}</td></tr>`;
+          }
+          return `<tr><th>정보 ${idx + 1}</th><td>${detail}</td></tr>`;
+        }).join("");
+      };
+
+      const renderMoveRow = (move) => {
+        if (!move) return "";
+        return `<tr><th>이동</th><td>${move}</td></tr>`;
+      };
+
+      const renderLocationRow = (location) => {
+        if (!location) return "";
+        return `
+          <tr>
+            <th>위치</th>
+            <td>
+              <div class="location-cell">
+                <span>${location}</span>
+                <button class="copy-button" type="button" data-copy="${location.replace(/"/g, "&quot;")}">복사</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      };
+
+      scheduleListEl.innerHTML = days.map((day) => `
+          <section class="schedule-day" id="${day.id}">
+            <div class="schedule-day-head">
+              <p class="section-label">${day.label}</p>
+              <h3>${day.title}</h3>
+            </div>
+            <div class="timeline">
+              ${day.items.map((item, idx) => `
+                <article class="item ${item.type}">
+                  <div class="item-head">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span class="time">${item.time}</span>
+                    <span>
+                      <div class="summary-title">${item.title}</div>
+                      <div class="summary-sub">${item.summary}</div>
+                    </span>
+                  </div>
+                  <div class="details">
+                    <div class="narrative">
+                      ${item.type === "critical"
+                        ? `${item.time} 일정은 반드시 지켜야 해요. 이동 시간과 준비물을 미리 확인하세요.`
+                        : item.type === "flight" || item.type === "transit"
+                        ? `${item.time} 이동 전후에는 탑승 시간과 도착 위치를 다시 확인하세요.`
+                        : item.type === "tip"
+                        ? `${item.time}에는 준비 사항을 차분히 점검해야 해요. 빠뜨린 물건이 없는지 확인하세요.`
+                        : `${item.time}에는 이 일정으로 이동하면 돼요. 현장 운영 시간과 흐름을 함께 확인하세요.`}
+                    </div>
+                    ${item.details.length ? `
+                      <table class="detail-table">
+                        <tbody>
+                          ${renderMoveRow(item.move)}
+                          ${renderLocationRow(item.location)}
+                          ${toTableRows(item.details)}
+                          ${item.warning ? `<tr><th>주의</th><td>${item.warning}</td></tr>` : ""}
+                          ${item.tip ? `<tr><th>팁</th><td>${item.tip}</td></tr>` : ""}
+                        </tbody>
+                      </table>
+                    ` : `
+                      <table class="detail-table">
+                        <tbody>
+                          ${renderMoveRow(item.move)}
+                          ${renderLocationRow(item.location)}
+                          ${item.warning ? `<tr><th>주의</th><td>${item.warning}</td></tr>` : ""}
+                          ${item.tip ? `<tr><th>팁</th><td>${item.tip}</td></tr>` : ""}
+                        </tbody>
+                      </table>
+                    `}
+                    ${(item.warning || item.tip) ? `
+                      <div class="badge-row">
+                        ${item.warning ? `<span class="badge warning">주의</span>` : ""}
+                        ${item.tip ? `<span class="badge tip">팁</span>` : ""}
+                      </div>
+                    ` : ""}
+                    ${(item.map || item.alternative) ? `
+                      <div class="button-row" style="margin-top:12px">
+                        ${item.map ? `<a class="action-link map" href="${item.map}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
+                        ${item.alternative ? `<a class="action-link alt" href="${item.alternative.href}" target="_blank" rel="noreferrer">${item.alternative.label}</a>` : ""}
+                      </div>
+                    ` : ""}
+                  </div>
+                </article>
+              `).join("")}
+            </div>
+          </section>
+        `).join("");
+      }
+
+      function loadChecklistState() {
+        try {
+          const saved = localStorage.getItem(checklistStorageKey);
+          checklistState = saved ? JSON.parse(saved) : {};
+        } catch (error) {
+          checklistState = {};
+        }
+      }
+
+      function saveChecklistState() {
+        localStorage.setItem(checklistStorageKey, JSON.stringify(checklistState));
+      }
+
+      function urgencyMeta(urgency) {
+        if (urgency === "지금 바로") return { className: "now", label: urgency };
+        if (urgency === "현지에서") return { className: "local", label: urgency };
+        return { className: "before", label: urgency };
+      }
+
+      function renderChecklist() {
+        const flatItems = checklistCategories.flatMap((category) => category.items);
+        const completed = flatItems.filter((item) => checklistState[item.id]).length;
+        const total = flatItems.length;
+        const percent = total ? Math.round((completed / total) * 100) : 0;
+
+        hmProgressCountEl.textContent = `완료 ${completed} / 전체 ${total}`;
+        hmProgressPercentEl.textContent = `${percent}%`;
+        hmProgressFillEl.style.width = `${percent}%`;
+
+        hmChecklistEl.innerHTML = checklistCategories.map((category) => {
+          const categoryDone = category.items.filter((item) => checklistState[item.id]).length;
+          return `
+            <section class="hm-category">
+              <div class="hm-category-head">
+                <h3 class="hm-category-title">${category.title}</h3>
+                <div class="hm-category-count">${categoryDone}/${category.items.length}</div>
+              </div>
+              <div class="hm-items">
+                ${category.items.map((item) => {
+                  const checked = Boolean(checklistState[item.id]);
+                  const badge = urgencyMeta(item.urgency);
+                  return `
+                    <button class="hm-item${checked ? " checked" : ""}" type="button" data-check-id="${item.id}" aria-pressed="${checked}">
+                      <span class="hm-check" aria-hidden="true"></span>
+                      <span class="hm-item-main">
+                        <span class="hm-item-title">${item.title}</span>
+                        <span class="hm-item-note">${item.note}</span>
+                      </span>
+                      <span class="hm-badge ${badge.className}">${badge.label}</span>
+                    </button>
+                  `;
+                }).join("")}
+              </div>
+            </section>
+          `;
+        }).join("");
+      }
+
+      function setMainPanel(name) {
+        document.body.dataset.activePanel = name;
+        mainTabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.panel === name));
+        panels.forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === name));
+      }
+
+      function setActiveDateTab(id) {
+        document.querySelectorAll(".date-tab").forEach((tab) => {
+          const active = tab.dataset.target === id;
+          tab.classList.toggle("active", active);
+          if (active) {
+            tab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+          }
+        });
+      }
+
+      mainTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setMainPanel(tab.dataset.panel);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest(".copy-button");
+        if (!button) return;
+        const text = button.dataset.copy || "";
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const helper = document.createElement("textarea");
+            helper.value = text;
+            helper.setAttribute("readonly", "");
+            helper.style.position = "absolute";
+            helper.style.left = "-9999px";
+            document.body.appendChild(helper);
+            helper.select();
+            const copied = document.execCommand("copy");
+            document.body.removeChild(helper);
+            if (!copied) throw new Error("copy failed");
+          }
+          const original = button.textContent;
+          button.textContent = "복사됨";
+          button.classList.add("copied");
+          showToast("복사가 완료되었어요");
+          setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove("copied");
+          }, 1400);
+        } catch (error) {
+          button.textContent = "실패";
+          showToast("복사에 실패했어요");
+          setTimeout(() => {
+            button.textContent = "복사";
+          }, 1400);
+        }
+      });
+
+      hmChecklistEl.addEventListener("click", (event) => {
+        const item = event.target.closest("[data-check-id]");
+        if (!item) return;
+        const id = item.dataset.checkId;
+        checklistState[id] = !checklistState[id];
+        saveChecklistState();
+        renderChecklist();
+      });
+
+      hmResetButtonEl.addEventListener("click", () => {
+        const confirmed = window.confirm("체크리스트를 모두 초기화할까요?");
+        if (!confirmed) return;
+        checklistState = {};
+        saveChecklistState();
+        renderChecklist();
+        showToast("체크리스트를 초기화했어요");
+      });
+
+      dateTabsEl.addEventListener("click", (event) => {
+        const button = event.target.closest(".date-tab");
+        if (!button) return;
+        const target = document.getElementById(button.dataset.target);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setActiveDateTab(button.dataset.target);
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveDateTab(visible.target.id);
+      }, { rootMargin: "-120px 0px -60% 0px", threshold: [0.1, 0.3, 0.6] });
+
+      renderDateTabs();
+      renderSchedule();
+      loadChecklistState();
+      renderChecklist();
+      document.querySelectorAll(".schedule-day").forEach((section) => observer.observe(section));
+    </script>
+  </body>
+</html>
