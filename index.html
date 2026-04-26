@@ -742,6 +742,72 @@
         height: auto;
       }
 
+      .map-preview-help {
+        margin-top: 12px;
+      }
+
+      .map-preview-note {
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel-soft);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .map-preview-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .map-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--panel-soft);
+      }
+
+      .map-card-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        background: var(--surface-2);
+      }
+
+      .map-card-body {
+        padding: 12px;
+      }
+
+      .map-card-title {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .map-card-copy {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .map-card-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        margin-top: 10px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+        background: var(--panel);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
       .phrase-stack {
         display: grid;
         gap: 14px;
@@ -857,6 +923,8 @@
             <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/" target="_blank" rel="noreferrer">마요르카 남동부</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
           </div>
+          <div class="map-preview-help" id="mapPreviewHelp"></div>
+          <div class="map-preview-grid" id="mapPreviewGrid"></div>
         </section>
 
         <section class="section">
@@ -1107,6 +1175,58 @@
     <div class="toast" id="toast">복사가 완료되었어요</div>
 
     <script>
+      function loadOptionalScript(src) {
+        return new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => resolve(true);
+          script.onerror = () => resolve(false);
+          document.head.appendChild(script);
+        });
+      }
+
+      async function loadTripConfig() {
+        await loadOptionalScript("./config.public.js");
+        await loadOptionalScript("./config.js");
+      }
+
+      const staticMapCards = [
+        {
+          title: "신트라 + 호카곶",
+          copy: "Rossio 출발 이후 페나 궁전과 호카곶을 잇는 당일치기 핵심 동선",
+          href: "https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/",
+          path: "color:0x2d7ff9cc|weight:5|Rossio Station Lisbon|Pena Palace|Cabo da Roca",
+          markers: [
+            "color:0x2d7ff9|label:R|Rossio Station Lisbon",
+            "color:0x6f5cff|label:P|Pena Palace",
+            "color:0xe25468|label:C|Cabo da Roca"
+          ]
+        },
+        {
+          title: "마요르카 남동부",
+          copy: "Fontsanta 호텔에서 Calo des Moro, Cala Figuera까지 이어지는 드라이브",
+          href: "https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/",
+          path: "color:0x23a26dcc|weight:5|Fontsanta Hotel Thermal Spa|Caló des Moro|Cala Figuera",
+          markers: [
+            "color:0x23a26d|label:F|Fontsanta Hotel Thermal Spa",
+            "color:0x2d7ff9|label:C|Caló des Moro",
+            "color:0xe25468|label:G|Cala Figuera"
+          ]
+        },
+        {
+          title: "마드리드 레이오버",
+          copy: "아토차역, 레티로, 솔 광장, 그란 비아를 잇는 짧은 시내 코스",
+          href: "https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/",
+          path: "color:0x6f5cffcc|weight:5|Madrid Airport Atocha Station|Retiro Park|Puerta del Sol|Gran Vía",
+          markers: [
+            "color:0x2d7ff9|label:A|Madrid Airport Atocha Station",
+            "color:0x23a26d|label:R|Retiro Park",
+            "color:0xe25468|label:S|Puerta del Sol",
+            "color:0x6f5cff|label:G|Gran Vía"
+          ]
+        }
+      ];
+
       const days = [
         {
           id: "0503",
@@ -1379,6 +1499,8 @@
       const panels = document.querySelectorAll(".panel");
       const dateTabsEl = document.getElementById("dateTabs");
       const scheduleListEl = document.getElementById("scheduleList");
+      const mapPreviewHelpEl = document.getElementById("mapPreviewHelp");
+      const mapPreviewGridEl = document.getElementById("mapPreviewGrid");
       const hmChecklistEl = document.getElementById("hmChecklist");
       const hmProgressCountEl = document.getElementById("hmProgressCount");
       const hmProgressPercentEl = document.getElementById("hmProgressPercent");
@@ -1399,6 +1521,50 @@
 
       function renderDateTabs() {
         dateTabsEl.innerHTML = days.map((day, index) => `<button class="date-tab${index === 0 ? " active" : ""}" data-target="${day.id}" type="button">${day.label}</button>`).join("");
+      }
+
+      function buildStaticMapUrl(card, apiKey) {
+        const params = new URLSearchParams({
+          size: "1200x760",
+          scale: "2",
+          maptype: "roadmap",
+          style: "feature:poi|visibility:simplified",
+          key: apiKey
+        });
+        params.append("path", card.path);
+        card.markers.forEach((marker) => params.append("markers", marker));
+        return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
+      }
+
+      function renderMapPreviews() {
+        const apiKey = (window.TRIP_MAPS_API_KEY || "").trim();
+        if (!apiKey) {
+          mapPreviewHelpEl.innerHTML = `
+            <div class="map-preview-note">
+              지도 미리보기는 Google Static Maps API 키를 연결하면 표시됩니다.
+              <code>config.public.js</code> 또는 <code>config.js</code>에 <code>window.TRIP_MAPS_API_KEY = "YOUR_KEY"</code>를 넣어주세요.
+            </div>
+          `;
+          mapPreviewGridEl.innerHTML = "";
+          return;
+        }
+
+        mapPreviewHelpEl.innerHTML = `
+          <div class="map-preview-note">
+            Google Static Maps API가 연결되어 주요 이동 경로 미리보기를 표시하고 있습니다.
+          </div>
+        `;
+
+        mapPreviewGridEl.innerHTML = staticMapCards.map((card) => `
+          <article class="map-card">
+            <img class="map-card-image" src="${buildStaticMapUrl(card, apiKey)}" alt="${card.title} 지도 미리보기" />
+            <div class="map-card-body">
+              <h3 class="map-card-title">${card.title}</h3>
+              <p class="map-card-copy">${card.copy}</p>
+              <a class="map-card-link" href="${card.href}" target="_blank" rel="noreferrer">Google Maps 열기</a>
+            </div>
+          </article>
+        `).join("");
       }
 
       function renderSchedule() {
@@ -1650,11 +1816,14 @@
         if (visible) setActiveDateTab(visible.target.id);
       }, { rootMargin: "-120px 0px -60% 0px", threshold: [0.1, 0.3, 0.6] });
 
-      renderDateTabs();
-      renderSchedule();
-      loadChecklistState();
-      renderChecklist();
-      document.querySelectorAll(".schedule-day").forEach((section) => observer.observe(section));
+      loadTripConfig().finally(() => {
+        renderDateTabs();
+        renderMapPreviews();
+        renderSchedule();
+        loadChecklistState();
+        renderChecklist();
+        document.querySelectorAll(".schedule-day").forEach((section) => observer.observe(section));
+      });
     </script>
   </body>
 </html>
