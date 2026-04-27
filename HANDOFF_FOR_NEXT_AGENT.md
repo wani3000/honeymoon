@@ -8,7 +8,7 @@
 
 기준 커밋:
 
-- `f101c18` `Document current verified bookings and handoff status`
+- `e9f6c83` `Add detailed Record Go rental info to schedule`
 
 ## 2. 프로젝트 목적
 
@@ -38,6 +38,7 @@
 - 개요 탭 경로 지도 및 요약 지도 카드
 - 숙소별 복사 버튼 / 지도 버튼
 - 5/10 카타마란 예약 상세 반영
+- Record Go 픽업/반납 상세 반영
 - BAHR 예약 관련 문구 반영
 - Cassai Beach House 점심 플랜 추가
 - 현재 검증된 예약 상태를 README에 문서화
@@ -52,14 +53,27 @@
 - `Fontsanta Hotel Thermal Spa` 예약번호 검증 완료
 - `Vueling VY3437` 검증 완료
 - `Iberia Express I21652` 검증 완료
+- `Record Go 75/2026-25992` 일정표 반영 완료
 - `Luxury Catamaran 2026-05-10 09:30 - 13:30` 검증 완료
 
 아직 원문 대조가 끝나지 않은 항목:
 
 - `KE921`
 - `KE914`
-- `Record Go` 렌터카 상세 메일 원문
 - 호텔 세부 정책 전체
+
+`Record Go` 관련 현재 코드 반영 범위:
+
+- 픽업 시각 `2026-05-08 13:00`
+- 반납 시각 `2026-05-12 06:30`
+- 차종 `TOYOTA C-HR 또는 동급`
+- 등급 `CDAH / 5인승 / 5도어 / 수하물 2개 / 자동`
+- 요금제 `Just go`
+- 보험 `Total Comfort Coverage`
+- 결제 `143.79€`
+- 연료정책 `Full-Full`
+- 공항 10km 이내 주유 영수증 규칙
+- 미충족 시 `30€` 주유 서비스 수수료
 
 ## 6. Gmail 관련 주의사항
 
@@ -101,6 +115,7 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 - 위치 / 이동 / 주의 / 팁이 표처럼 정리된 걸 선호함
 - 카드 안에 카드가 많은 구조를 싫어함
 - 텍스트 가독성을 가장 중요하게 봄
+- 다른 데스크탑 에이전트가 이어받기 쉽게 문서화가 잘 되어 있어야 함
 
 그래서 새 작업을 할 때도:
 
@@ -142,12 +157,20 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 GitHub Pages는 `main` 브랜치 루트(`/`) 기반입니다.
 
+배포 최신화 절차:
+
+1. `git status --short`로 작업트리 확인
+2. `git add ... && git commit -m "..."`
+3. `git push origin main`
+4. 필요 시 GitHub Pages 반영 여부 확인
+
 ## 11. 지금 시점에서 다음 에이전트가 먼저 보면 좋은 것
 
 1. `README.md`
 2. `index.html`
 3. `config.public.js`
 4. `GOOGLE_MAPS_INTEGRATION_GUIDE.md`
+5. `HANDOFF_FOR_NEXT_AGENT.md`
 
 ## 12. 로컬 백업 메모
 

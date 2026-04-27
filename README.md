@@ -4,6 +4,8 @@
 
 배포: [https://wani3000.github.io/honeymoon/](https://wani3000.github.io/honeymoon/)
 
+기준 커밋: `e9f6c83` (`Add detailed Record Go rental info to schedule`)
+
 ## 기능
 
 - 날짜별 일정표와 시간대별 이동/주의사항
@@ -26,6 +28,9 @@
 - `Fontsanta Hotel Thermal Spa` 예약번호 `P7128119`
 - `Vueling VY3437` `2026-05-08` `LIS -> PMI` 예약번호 `KFZL6V`
 - `Iberia Express I21652` `2026-05-12` `PMI -> MAD`
+- `Record Go` 렌터카 예약번호 `75/2026-25992`
+  `Toyota C-HR or similar / CDAH / Just go / Total Comfort Coverage / Full-Full`
+  온라인 결제 `143.79 EUR`
 - `Luxury Catamaran` `2026-05-10 09:30 - 13:30`
   티켓번호 `SYS-T129013463`
   예약확인 `SYS-90344486`
@@ -44,7 +49,8 @@
 다른 에이전트가 이어서 작업할 때 기준으로 삼을 현재 상태입니다.
 
 - 주요 일정/체크리스트/예약 데이터는 모두 `index.html`에 있습니다.
-- 최근 작업은 `2026-05-10` 카타마란 예약 정보를 이메일/PDF 원문 기준으로 보강한 것입니다.
+- 최근 작업은 `Record Go` 픽업/반납 칸에 예약번호, 보험, 결제금액, 연료정책, 영수증 규칙까지 일정표에 상세 반영한 것입니다.
+- `2026-05-10` 카타마란 예약 정보도 이메일/PDF 기준으로 반영된 상태입니다.
 - 문서 체크리스트에는 카타마란 티켓 PDF 저장과 여권 정보 제출 항목이 추가되어 있습니다.
 - 예약 체크리스트에는 카타마란 투어가 `완료` 상태 예약으로 추가되어 있습니다.
 - GitHub Pages 배포는 `main` 브랜치 푸시로 이루어집니다.
@@ -53,14 +59,13 @@
 
 - `KE921`
 - `KE914`
-- `Record Go` 렌터카 상세 메일 원문
 - 호텔 세부 정책 전체
 
 주의사항:
 
 - Gmail 커넥터는 현재 프로필 조회는 되지만 메일 검색/읽기 권한이 부족합니다.
 - Gmail 검색 시 `403 insufficientPermissions`가 발생했으므로 메일 원문 대조 작업 전 재인증이 필요할 수 있습니다.
-- 렌터카 정보는 현재 코드상 `Record Go / 75/2026-25992 / Toyota C-HR`로 들어가 있지만 Gmail 원문과는 아직 직접 대조하지 못했습니다.
+- 렌터카 정보는 현재 사용자 제공 예약 데이터 기준으로 일정표에 반영되어 있습니다. 다만 Record Go 원본 메일/바우처와의 직접 대조 이력까지 확보된 것은 아닐 수 있으니, 필요하면 원문 재검증을 권장합니다.
 
 ## 파일
 
@@ -70,6 +75,19 @@
 - `config.js`: 로컬 전용 API 키 파일(버전 관리 제외)
 - `config.example.js`: 키 파일 예시
 - `styles.css`, `app.js`: 보조/이전 분리 파일
+
+## 다음 에이전트 시작 순서
+
+1. `README.md` 읽기
+2. `index.html`에서 실제 데이터와 UI 구조 확인
+3. `HANDOFF_FOR_NEXT_AGENT.md`로 최근 의사결정과 사용자 선호 확인
+4. 지도 작업이면 `GOOGLE_MAPS_INTEGRATION_GUIDE.md` 확인
+
+## 배포 메모
+
+- 저장소: [https://github.com/wani3000/honeymoon](https://github.com/wani3000/honeymoon)
+- 배포 방식: `main` 브랜치 푸시 후 GitHub Pages 자동 배포
+- 로컬 확인: `index.html` 직접 열기 또는 간단한 정적 서버 사용
 
 ## Google Static Maps 설정
 
