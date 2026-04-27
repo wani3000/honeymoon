@@ -381,6 +381,7 @@
         text-align: left;
         font: inherit;
         color: inherit;
+        cursor: pointer;
       }
 
       .hm-check {
@@ -461,6 +462,27 @@
       .hm-badge.local {
         background: #dcedc8;
         color: #285c12;
+      }
+
+      .hm-item-tail {
+        display: grid;
+        justify-items: end;
+        gap: 8px;
+      }
+
+      .hm-item-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        background: color-mix(in srgb, var(--panel-soft) 84%, var(--line));
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
       }
 
       .hm-reset {
@@ -1255,21 +1277,21 @@
           label: "5/3 (일)",
           title: "인천 출국 → 리스본 도착",
           items: [
-            { time: "10:00", type: "critical", title: "인천 T2 도착 — KE921 체크인", summary: "출발편을 놓치지 않도록 오전 10시까지 인천국제공항 제2터미널에 도착해야 해요. 체크인과 수하물 위탁 시간을 여유 있게 확보하세요.", move: "공항까지 자차 또는 공항버스로 이동한 뒤 터미널 내부 도보 이동", location: "인천국제공항 제2터미널", details: [["항공", "KE921 (대한항공)"], ["예약번호", "EH6OZW"], ["좌석", "철완 36H / 나라 36J"]], warning: "출발편 놓치지 않게 오전 공항 도착 시간을 먼저 확인하세요.", map: "https://maps.google.com/?q=인천국제공항+제2터미널" },
-            { time: "12:45", type: "flight", title: "KE921 출발", summary: "인천 T2에서 리스본 T1으로 이동하는 장거리 비행이에요. 현지 시간에 맞춰 수면 시간을 조절해 두는 게 좋아요.", move: "항공 이동", location: "인천국제공항 제2터미널", details: [["구간", "인천 T2 → 리스본 T1"], ["소요", "15시간 35분"], ["기종", "B787-9"]] },
-            { time: "20:20", type: "flight", title: "리스본 T1 도착", summary: "공항 도착 후에는 택시나 우버로 시내까지 이동하면 돼요. 호텔 진입 방식이 일반 숙소와 달라서 하차 위치를 꼭 확인하세요.", move: "공항에서 택시 또는 우버로 시내 이동 후 마지막 구간은 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: [["예산", "20€ 내외"]], warning: "호텔은 보행자 전용 구역이라 도로변 하차 후 캐리어를 끌고 도보 진입해야 해요.", map: "https://maps.google.com/?q=Lisbon+Airport" },
-            { time: "22:00", type: "sight", title: "Convent Square Lisbon 체크인", summary: "호텔에 도착하면 짐만 정리하고 바로 쉬는 흐름으로 가는 게 좋아요. 첫날은 체력 회복을 우선하세요.", move: "도보로 호텔 진입", location: "Rua Dom Antão de Almada 4 Lisbon", details: [["전화", "+351 218 295 200"]], map: "https://maps.google.com/?cid=7850292069258072457" }
+            { time: "10:00", type: "critical", title: "인천 T2 도착 — KE921 체크인", summary: "출발 2시간 45분 전 도착 기준으로 여유 있게 수속을 시작해요.", move: "공항까지 자차 또는 공항버스로 이동", location: "인천국제공항 제2터미널", details: [["항공", "KE921 (대한항공)"], ["예약번호", "EH6OZW"], ["좌석", "철완 36H / 나라 36J"]], warning: "반드시 오전 10시까지 공항 도착.", map: "https://maps.google.com/?q=인천국제공항+제2터미널" },
+            { time: "12:45", type: "flight", title: "KE921 출발", summary: "인천 T2에서 리스본 T1으로 이동하는 장거리 구간이에요.", move: "항공 이동", location: "인천국제공항 제2터미널", details: [["구간", "인천 T2 → 리스본 T1"], ["소요", "15시간 35분"], ["기종", "B787-9"]] },
+            { time: "20:20", type: "flight", title: "리스본 T1 도착", summary: "도착 후 시내 호텔까지 택시/우버로 이동해요.", move: "공항에서 택시 또는 우버 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: [["예산", "20€ 내외"]], warning: "호텔은 보행자 구역이라 도로 하차 후 도보 진입.", map: "https://maps.google.com/?q=Lisbon+Airport" },
+            { time: "22:00", type: "sight", title: "Convent Square Lisbon 체크인 + 근처 가벼운 저녁", summary: "도착일은 체력 우선으로 호텔 근처 카페에서 가볍게 먹고 휴식해요.", move: "도보 이동", location: "Rua Dom Antão de Almada 4 Lisbon", details: [["전화", "+351 218 295 200"]], map: "https://maps.google.com/?cid=7850292069258072457" }
           ]
         },
         {
           id: "0504",
           label: "5/4 (월)",
-          title: "리스본 알파마 & 시내 산책",
+          title: "리스본 알파마 & 시내",
           items: [
-            { time: "10:00", type: "sight", title: "상 조르즈 성", summary: "리스본 전경을 한눈에 보고 싶다면 오전에 먼저 올라가야 해요. 성 안에서는 공작새가 돌아다니는 풍경도 함께 볼 수 있어요.", move: "호텔에서 우버 또는 택시로 언덕 위까지 이동 후 입구까지 짧은 도보", location: "Castelo de São Jorge Lisbon", details: [["입장", "약 15€"], ["운영", "09:00~21:00"]], map: "https://maps.google.com/?cid=13024533549412529111" },
-            { time: "13:00", type: "sight", title: "28번 트램 탑승 — 알파마 골목 산책", summary: "28번 트램은 마르팅 모니스 종점에서 타야 앉아서 이동할 가능성이 높아요. 알파마에서는 이동 중 소지품을 계속 확인하세요.", move: "상 조르즈 성에서 도보 이동 후 28번 트램 탑승, 이후 알파마는 도보 산책", location: "Martim Moniz Lisbon", details: [["탑승 포인트", "마르팅 모니스 종점"], ["요금", "약 3€"]], warning: "소매치기 다발 구역이라 가방은 반드시 앞으로 메고 휴대폰 위치도 확인하세요." },
-            { time: "15:30", type: "sight", title: "코메르시우 광장 → 타구스 강변 산책", summary: "오후에는 코메르시우 광장에서 타구스 강변까지 천천히 걸으면서 도심 분위기를 즐기면 돼요.", move: "알파마에서 도보로 내려오며 이동", location: "Praça do Comércio Lisbon", details: [], map: "https://maps.google.com/?q=Praça+do+Comércio+Lisbon" },
-            { time: "18:30", type: "food", title: "Time Out Market Lisboa — 저녁", summary: "저녁은 여러 음식을 한 번에 보기 좋은 타임아웃 마켓으로 가면 돼요. 예약 없이 편하게 들어가도 괜찮아요.", move: "강변 산책 후 도보 또는 짧은 우버 이동", location: "Time Out Market Lisboa", details: [["운영", "10:00~24:00"], ["예산", "1인 20~30€"]], map: "https://maps.google.com/?cid=1409592934746217618" }
+            { time: "10:00", type: "sight", title: "상 조르즈 성", summary: "리스본 전경 확인용 핵심 포인트.", move: "호텔에서 우버/택시 이동 후 도보", location: "Castelo de São Jorge Lisbon", details: [["입장", "약 15€"], ["운영", "09:00~21:00"]], map: "https://maps.google.com/?cid=13024533549412529111" },
+            { time: "13:00", type: "sight", title: "28번 트램 탑승 → 알파마 골목 산책", summary: "알파마는 소매치기 주의 구간이에요.", move: "마르팅 모니스 종점 탑승 후 알파마 도보", location: "Martim Moniz Lisbon", details: [["탑승", "마르팅 모니스 종점"], ["요금", "약 3€"]], warning: "가방은 앞으로 메고 휴대폰은 지퍼 안쪽 보관." },
+            { time: "15:30", type: "sight", title: "코메르시우 광장 → 타구스 강변 산책", summary: "오후 산책 동선.", move: "알파마에서 도보 이동", location: "Praça do Comércio Lisbon", details: [], map: "https://maps.google.com/?q=Praça+do+Comércio+Lisbon" },
+            { time: "18:30", type: "food", title: "Time Out Market Lisboa — 자유 저녁", summary: "예약 없이 바로 입장 가능한 경로 내 식사.", move: "강변 산책 후 도보 또는 짧은 이동", location: "Time Out Market Lisboa", details: [["운영", "10:00~24:00"], ["예산", "1인 20~30€"]], map: "https://maps.google.com/?cid=1409592934746217618" }
           ]
         },
         {
@@ -1277,10 +1299,10 @@
           label: "5/5 (화)",
           title: "리스본 벨렘 지구 + 루프탑 디너",
           items: [
-            { time: "10:00", type: "sight", title: "제로니무스 수도원", summary: "벨렘 일정 핵심 방문지.", move: "호텔에서 택시 또는 트램으로 벨렘 이동", location: "Jerónimos Monastery Lisbon", details: ["화~일 09:30~17:30 / 약 10€"], tip: "mosteirojeronimos.pt 사전 예약 필수.", map: "https://maps.google.com/?cid=9760810247707356141" },
-            { time: "12:00", type: "food", title: "Pastéis de Belém", summary: "에그타르트 원조집.", move: "수도원에서 도보 이동", location: "Pastéis de Belém", details: ["매일 08:00~21:00 / 약 1.5€/개"], tip: "시나몬 뿌려서 먹기.", map: "https://maps.google.com/?cid=18442230332396508773" },
-            { time: "14:00", type: "sight", title: "발견 기념비 + 타구스 강변 산책", summary: "벨렘 산책 동선.", move: "벨렘 거리와 강변을 따라 도보 이동", location: "Padrão dos Descobrimentos Lisbon", details: [], map: "https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisbon" },
-            { time: "20:00", type: "food", title: "SUD Lisboa Terrazza — 일몰 루프탑 디너", summary: "5월 일몰 20:40 기준 가장 좋은 예약 시간.", move: "강변 산책 후 우버 또는 택시로 저녁 식당 이동", location: "SUD Lisboa Terrazza", details: ["예약: sudlisboa.com 또는 +351 211 592 700", "예산: 1인 60~90€"], warning: "20:00 예약이 가장 좋고 지금 바로 예약 필수.", map: "https://maps.google.com/?cid=11345109858595221778", alternative: { label: "대안 장소", href: "https://maps.google.com/?q=Ribeira+das+Naus+Lisbon" } }
+            { time: "10:00", type: "sight", title: "제로니무스 수도원", summary: "성수기 대기 길어서 사전 예약이 안전해요.", move: "호텔에서 벨렘 이동", location: "Jerónimos Monastery Lisbon", details: ["화~일 09:30~17:30 / 약 10€"], tip: "사전 예약 필수", reservation: { label: "제로니무스 예약", href: "https://www.mosteirojeronimos.gov.pt/en/visit/plan-your-visit/" }, map: "https://maps.google.com/?cid=9760810247707356141" },
+            { time: "12:00", type: "food", title: "Pastéis de Belém + 강변 자유 점심", summary: "웨이팅 후 포장해서 강변에서 먹어도 좋아요.", move: "수도원 인근 도보 이동", location: "Pastéis de Belém", details: ["매일 08:00~21:00 / 약 1.5€/개"], map: "https://maps.google.com/?cid=18442230332396508773" },
+            { time: "14:00", type: "sight", title: "발견 기념비 + 타구스 강변 산책", summary: "벨렘 구간 마무리 산책.", move: "강변 도보 이동", location: "Padrão dos Descobrimentos Lisbon", details: [], map: "https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisbon" },
+            { time: "20:00", type: "food", title: "SUD Lisboa Terrazza — 일몰 루프탑 디너", summary: "이번 여행 식당 예약 핵심 1순위.", move: "저녁 시간대 택시/우버 이동", location: "SUD Lisboa Terrazza", details: ["예산: 1인 60~90€", "일몰: 20:40"], warning: "20:00 슬롯 경쟁 심함. 즉시 예약 권장.", reservation: { label: "SUD 예약", href: "https://sudlisboa.com/reservas/" }, map: "https://maps.google.com/?cid=11345109858595221778" }
           ]
         },
         {
@@ -1288,25 +1310,25 @@
           label: "5/6 (수)",
           title: "신트라 + 호카곶 당일치기",
           items: [
-            { time: "07:30", type: "critical", title: "⚠ 호시우역 출발 — 신트라행 기차", summary: "성수기엔 이른 출발 필수.", move: "호텔에서 도보로 호시우역 이동 후 기차 탑승", location: "Rossio Station Lisbon", details: ["약 40분 / 약 2.5€"], warning: "늦으면 페나 궁전 대기 1시간+.", map: "https://maps.google.com/?q=Rossio+Station+Lisbon" },
-            { time: "09:00", type: "sight", title: "페나 궁전", summary: "입장 슬롯 시간을 맞춰야 함.", move: "신트라역 도착 후 434 버스 또는 택시로 궁전 이동", location: "National Palace of Pena Sintra", details: ["09:30~18:30 / 약 20€"], tip: "visitsintra.travel 사전 예약 필수.", map: "https://maps.google.com/?cid=8585860342190914392" },
-            { time: "12:00", type: "food", title: "신트라 마을 점심", summary: "마을 중심 점심.", move: "페나 궁전에서 버스 또는 택시로 시내 복귀 후 도보 이동", location: "Sintra village center", details: [], map: "https://maps.google.com/?q=Sintra+village+center" },
-            { time: "13:30", type: "transit", title: "403번 버스 → 호카곶", summary: "Scotturb 403번 이용.", move: "신트라 시내 버스 정류장에서 403번 버스 탑승", location: "Cabo da Roca bus 403 from Sintra", details: ["약 40분 / 약 2.5€"] },
-            { time: "14:30", type: "sight", title: "Cabo da Roca", summary: "유럽 최서단 포인트.", move: "버스 하차 후 전망 포인트까지 도보 이동", location: "Cabo da Roca Portugal", details: ["24시간 / 무료 주차"], warning: "바람 강함. 절벽 가장자리 조심.", map: "https://maps.google.com/?cid=10753145278933283759" },
-            { time: "16:30", type: "transit", title: "호카곶 → 리스본 버스 귀환", summary: "저녁 식당 전 복귀.", move: "호카곶에서 버스로 신트라 복귀 후 기차로 리스본 이동", location: "Lisbon city center", details: [] },
-            { time: "19:00", type: "food", title: "A Cevicheria — 저녁", summary: "문어 요리 + 세비체.", move: "리스본 도착 후 우버 또는 택시로 저녁 식당 이동", location: "A Cevicheria", details: ["매일 12:00~23:00 / 1인 35~50€"], map: "https://maps.google.com/?cid=249361683231044429", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=12645455021013823583" } }
+            { time: "07:30", type: "critical", title: "⚠ 호시우역 출발 — 신트라행 기차", summary: "CP 리스본 도시근교열차(신트라선)는 좌석 지정/온라인 좌석예약이 아니라 역 매표소·발권기 구매 후 탑승 전 검표(Validate) 방식이에요.", move: "호텔에서 호시우역 도보 이동 후 탑승", location: "Rossio Station Lisbon", details: ["약 40분", "탑승 전 카드/티켓 Validate 필수 (미검표 과태료 대상)", "역에 판매수단이 없을 때만 차내 검사원 즉시 요청 구매 가능"], warning: "늦으면 페나 궁전 대기시간 급증.", map: "https://maps.google.com/?q=Rossio+Station+Lisbon" },
+            { time: "09:00", type: "sight", title: "페나 궁전", summary: "입장 슬롯 시간 고정이라 사전 구매가 필수예요.", move: "신트라역 도착 후 버스/택시 이동", location: "National Palace of Pena Sintra", details: ["09:30~18:30 / 약 20€"], reservation: { label: "페나 궁전 예약", href: "https://www.visitsintra.travel/en/buy-tickets" }, map: "https://maps.google.com/?cid=8585860342190914392" },
+            { time: "12:00", type: "food", title: "신트라 마을 자유 점심", summary: "동선 안에서 카페 아무 곳이나 들어가도 좋아요.", move: "마을 중심 도보 이동", location: "Sintra village center", details: [], map: "https://maps.google.com/?q=Sintra+village+center" },
+            { time: "13:30", type: "transit", title: "신트라 → 호카곶 버스 이동", summary: "Carris Metropolitana 1253 (Sintra Estação via Cabo da Roca) 노선 기준으로 이동해요. 좌석 예약제/온라인 지정예약은 없고 시간표 확인 후 탑승 방식입니다.", move: "Sintra (Estação) 정류장 탑승", location: "Sintra Station North Bus Stop", details: ["주요 경로: Sintra Estação ↔ Cabo da Roca (1253)", "결제: 차내 결제(navegante a bordo) 또는 사전충전 카드(navegante pre-pago)", "요금은 노선 카테고리/연도 정책에 따라 변동 가능"], tip: "당일 오전에 공식 노선 페이지로 첫차/막차 시각 재확인." },
+            { time: "14:30", type: "sight", title: "Cabo da Roca", summary: "유럽 최서단 포인트.", move: "버스 하차 후 전망 포인트 도보", location: "Cabo da Roca Portugal", details: ["무료"], warning: "바람 매우 강함. 절벽 가장자리 접근 주의.", map: "https://maps.google.com/?cid=10753145278933283759" },
+            { time: "16:30", type: "transit", title: "호카곶 → 리스본 귀환", summary: "1253으로 신트라역 복귀 후 CP 신트라선으로 리스본 복귀.", move: "버스 + 기차 연계", location: "Lisbon city center", details: ["버스/기차 모두 좌석예약 없이 탑승", "기차 재탑승 전 Validate 재확인"] },
+            { time: "19:00", type: "food", title: "시아두 또는 호텔 근처 자유 저녁", summary: "당일 체력에 맞춰 경로 안에서 가볍게 선택.", move: "도보 또는 짧은 우버 이동", location: "Chiado Lisbon", details: [] }
           ]
         },
         {
           id: "0507",
           label: "5/7 (목)",
-          title: "리스본 미식 & 여유의 날",
+          title: "리스본 여유의 날",
           items: [
-            { time: "10:00", type: "sight", title: "시아두 지구 쇼핑 + 카페 투어", summary: "마지막 리스본 도심 여유 일정.", move: "호텔에서 도보 이동", location: "Chiado Lisbon", details: [], map: "https://maps.google.com/?q=Chiado+Lisbon" },
-            { time: "12:00", type: "food", title: "Taberna da Rua das Flores — 점심 (선택)", summary: "웨이팅 기반 인기 점심.", move: "시아두에서 도보 이동", location: "Taberna da Rua das Flores", details: ["현금만 / 월~토 12:00~23:30 / 1인 20~30€"], map: "https://maps.google.com/?cid=14052001774497423361" },
-            { time: "18:00", type: "sight", title: "A Tasca do Chico — 파두 바 (선택)", summary: "저녁 전 선택 일정.", move: "도심 내 도보 이동", location: "A Tasca do Chico Lisbon", details: ["매일 19:00~02:00 / 현금만"], map: "https://maps.google.com/?cid=13275437289001447196" },
-            { time: "19:30", type: "food", title: "Solar dos Presuntos — 리스본 마지막 만찬", summary: "리마지막 저녁 메인 예약 식당.", move: "도보 또는 짧은 우버 이동", location: "Solar dos Presuntos", details: ["월~토 12:00~15:30, 18:30~23:00 / 1인 50~70€"], warning: "5/7은 목요일이라 OK. 18:30 이후 예약.", map: "https://maps.google.com/?cid=6887572243664963168" },
-            { time: "밤", type: "tip", title: "캐리어 짐 전부 싸두기", summary: "다음 날 새벽 출발 대비.", move: "호텔 객실에서 준비", location: "Convent Square Lisbon", details: [], warning: "여권/국제운전면허증/렌터카 서류 꺼내두기." }
+            { time: "10:00", type: "sight", title: "시아두 지구 산책 + 쇼핑", summary: "마지막 리스본 도심 여유 일정.", move: "호텔에서 도보 이동", location: "Chiado Lisbon", details: [], map: "https://maps.google.com/?q=Chiado+Lisbon" },
+            { time: "12:00", type: "food", title: "호시우 광장 근처 자유 점심", summary: "예약 없이 사람 많은 타베르나 위주로 선택.", move: "도보 이동", location: "Rossio Square Lisbon", details: [] },
+            { time: "18:00", type: "sight", title: "A Tasca do Chico — 파두 바 (선택)", summary: "저녁 전 선택 일정.", move: "도심 도보 이동", location: "A Tasca do Chico Lisbon", details: ["매일 19:00~02:00 / 현금만"], map: "https://maps.google.com/?cid=13275437289001447196" },
+            { time: "19:30", type: "food", title: "호시우 광장 근처 자유 저녁", summary: "예약 없이 경로 내 레스토랑 자유 선택.", move: "도보 이동", location: "Rossio Square Lisbon", details: [] },
+            { time: "밤", type: "tip", title: "캐리어 짐 전부 싸두기", summary: "내일 새벽 05:00 출발 대비.", move: "호텔 객실 준비", location: "Convent Square Lisbon", details: [], warning: "여권/국제운전면허증/렌터카 서류를 가방 최상단에." }
           ]
         },
         {
@@ -1314,50 +1336,50 @@
           label: "5/8 (금)",
           title: "리스본 → 마요르카 이동일",
           items: [
-            { time: "04:30", type: "tip", title: "기상 — 알람 2개 설정", summary: "새벽 이동일 시작.", move: "호텔 객실에서 준비", location: "Convent Square Lisbon", details: [] },
-            { time: "05:00", type: "critical", title: "⚠ 호텔 출발 — 우버/택시 호출", summary: "공항까지 약 25~35분.", move: "도보로 하차 지점까지 나간 뒤 우버 또는 택시 탑승", location: "Convent Square Lisbon", details: ["우버 약 20~25€"], warning: "전날 밤 짐을 프런트에 맡겼다가 출발 전 픽업.", map: "https://maps.google.com/?cid=7850292069258072457" },
-            { time: "05:40", type: "critical", title: "⚠ 리스본 공항 도착", summary: "체크인/보안검색 시작.", move: "차량 하차 후 터미널 내부 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["T1 / 체크인 마감 08:10"], tip: "Priority Boarding, Fast Track 활용." },
-            { time: "06:00", type: "flight", title: "체크인 + 수하물 위탁 + 보안 검색", summary: "Vueling 공항 수속.", move: "공항 내부 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["VY3437 / 예약번호 KFZL6V", "25kg x2 / 철완 1B / 나라 1A"] },
-            { time: "08:50", type: "flight", title: "VY3437 출발", summary: "리스본 → 마요르카", move: "항공 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["1시간 55분 / 11:45 도착"] },
-            { time: "11:45", type: "flight", title: "마요르카 공항 도착", summary: "도착 후 렌터카 픽업 이동.", move: "도착 후 공항 내부 도보로 렌터카 구역 이동", location: "Palma de Mallorca Airport", details: [], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
-            { time: "13:00", type: "critical", title: "⚠ Record Go 렌터카 픽업", summary: "서류 4가지 필수 확인.", move: "공항 렌터카 카운터 도보 이동 후 차량 픽업", location: "Record Go Palma de Mallorca Airport", details: ["예약번호 75/2026-25992 / Toyota C-HR", "Just Go 풀커버 + 프리미엄"], warning: "국제운전면허증 + 한국면허증 + 여권 + 본인명의 실물카드 필수.", tip: "차량 외관 사진 전방위 촬영." },
-            { time: "14:30", type: "sight", title: "Fontsanta Hotel 체크인", summary: "체크인 후 온천 동선.", move: "렌터카로 호텔까지 이동", location: "Ctra. Campos a Colònia de Sant Jordi, km 8, Campos", details: ["잔여금 35.20 EUR 현장 결제"], map: "https://maps.google.com/?cid=2233528644058998346" },
-            { time: "16:00", type: "sight", title: "천연 온천 서킷", summary: "비행 피로 힐링.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["39도 천연 온천수. 발레아레스 유일."] }
+            { time: "04:30", type: "tip", title: "기상", summary: "이동일 시작.", move: "객실 준비", location: "Convent Square Lisbon", details: [] },
+            { time: "05:00", type: "critical", title: "⚠ 호텔 출발 — 우버/택시", summary: "공항까지 약 25~35분.", move: "우버/택시 탑승", location: "Convent Square Lisbon", details: ["예산: 20~25€"], warning: "보행자 구역이라 하차 위치 확인 필수.", map: "https://maps.google.com/?cid=7850292069258072457" },
+            { time: "05:40", type: "critical", title: "⚠ 리스본 공항 도착", summary: "체크인/보안검색 시작.", move: "터미널 내부 도보 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["체크인 마감 08:10"] },
+            { time: "08:50", type: "flight", title: "VY3437 출발 (리스본 → 마요르카)", summary: "Vueling 탑승 구간.", move: "항공 이동", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: ["예약번호 KFZL6V", "수하물 25kg x2", "좌석 철완 1B / 나라 1A", "소요 1시간 55분"] },
+            { time: "11:45", type: "flight", title: "마요르카 공항 도착", summary: "도착 후 렌터카 픽업으로 이동.", move: "공항 내부 도보 이동", location: "Palma de Mallorca Airport", details: [], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
+            { time: "13:00", type: "critical", title: "⚠ Record Go 렌터카 픽업", summary: "서류 4종 확인 필수.", move: "렌터카 카운터 이동 후 수령", location: "Record Go Palma de Mallorca Airport", details: ["예약번호 75/2026-25992", "Toyota C-HR", "국제면허+한국면허+여권+실물카드"], warning: "서류 미지참 시 차량 인수 불가." },
+            { time: "14:30", type: "sight", title: "Fontsanta Hotel 체크인", summary: "체크인 후 스파/온천 동선 확인.", move: "렌터카 이동", location: "Ctra. Campos a Colònia de Sant Jordi, km 8, Campos", details: ["잔여금 35.20 EUR 현장 결제"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "16:00", type: "sight", title: "천연 온천 서킷", summary: "도착일 회복 일정.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["39도 천연 온천수"] },
+            { time: "저녁", type: "food", title: "호텔 근처 자유 저녁", summary: "도착일이라 무리하지 않고 가볍게.", move: "근거리 이동", location: "Colònia de Sant Jordi", details: [] }
           ]
         },
         {
           id: "0509",
           label: "5/9 (토)",
-          title: "마요르카 에메랄드 해변",
+          title: "에메랄드 해변",
           items: [
-            { time: "07:50", type: "critical", title: "⚠ 호텔 출발 (렌터카)", summary: "08:30 전 주차장 도착 필수.", move: "렌터카로 해변 주차장 이동", location: "Fontsanta Hotel Thermal Spa", details: ["Caló des Moro Parking"], warning: "늦으면 진입로 막히고 주차 불가." },
-            { time: "08:30", type: "sight", title: "Caló des Moro", summary: "절벽 계단 아래 숨은 해변.", move: "주차 후 계단과 산책로를 따라 도보 이동", location: "Caló des Moro Mallorca", details: ["에메랄드 색감으로 유명."], map: "https://maps.google.com/?cid=13650283880968476839", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=4971618100527693408" } },
-            { time: "12:00", type: "food", title: "Cala Figuera — 해산물 점심", summary: "Caló des Moro에서 차로 약 15분.", move: "렌터카로 항구 마을 이동", location: "Cala Figuera", details: [], map: "https://maps.google.com/?cid=721331792335290592" },
-            { time: "14:30", type: "sight", title: "호텔 복귀 — 수영장 + 스파 트리트먼트", summary: "오후는 휴식 중심.", move: "렌터카로 호텔 복귀 후 호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [], map: "https://maps.google.com/?cid=2233528644058998346" }
+            { time: "07:50", type: "critical", title: "⚠ 호텔 출발 (렌터카)", summary: "08:30 전 주차장 도착 필수.", move: "렌터카 이동", location: "Fontsanta Hotel Thermal Spa", details: ["Caló des Moro 주차"], warning: "늦으면 주차 불가 가능성 큼." },
+            { time: "08:30", type: "sight", title: "Caló des Moro", summary: "대표 해변 포인트.", move: "주차 후 도보 이동", location: "Caló des Moro Mallorca", details: ["대안: Cala Mondragó"], map: "https://maps.google.com/?cid=13650283880968476839", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=4971618100527693408" } },
+            { time: "12:00", type: "food", title: "Cala Figuera 항구 마을 자유 해산물 점심", summary: "경로 안 식당 자유 선택.", move: "렌터카 이동", location: "Cala Figuera", details: [], map: "https://maps.google.com/?cid=721331792335290592" },
+            { time: "14:30", type: "sight", title: "호텔 복귀 — 수영장 + 온천", summary: "오후 휴식 중심.", move: "렌터카 복귀", location: "Fontsanta Hotel Thermal Spa", details: [], map: "https://maps.google.com/?cid=2233528644058998346" }
           ]
         },
         {
           id: "0510",
           label: "5/10 (일)",
-          title: "마요르카 북서부 드라이브 + 팔마 시내",
+          title: "북서부 드라이브 + 팔마",
           items: [
-            { time: "09:30", type: "sight", title: "Valldemossa → Deià 산악 드라이브", summary: "북서부 드라이브 메인 구간.", move: "렌터카로 북서부 산악 도로 이동", location: "Valldemossa Mallorca", details: [], warning: "도로 좁고 구불구불. 천천히.", map: "https://maps.google.com/?cid=10540766082293436990" },
-            { time: "11:00", type: "sight", title: "Deià 마을 산책", summary: "산악 마을 분위기 산책.", move: "마을 주차 후 도보 이동", location: "Deià Mallorca", details: [], map: "https://maps.google.com/?cid=10540766082293436990" },
-            { time: "14:00", type: "sight", title: "팔마 — 라 세우 대성당", summary: "팔마 핵심 관광지.", move: "렌터카로 팔마 이동 후 주차장에서 도보 이동", location: "Catedral de Mallorca La Seu Palma", details: ["월~금 10:00~17:15 / 토 10:00~14:15 / 일 휴무", "약 10€"], map: "https://maps.google.com/?cid=6056387022241497514" },
-            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "대성당 이후 산책.", move: "구시가지 도보 산책", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
-            { time: "19:30", type: "food", title: "El Camino — 타파스 저녁", summary: "이 날은 대안 식당 사용.", move: "구시가지에서 도보 또는 짧은 택시 이동", location: "El Camino Palma", details: ["화~토 운영 / 월·일 휴무"], warning: "5/10은 일요일이라 El Camino 휴무.", map: "https://maps.google.com/?cid=7882059133149027723", alternative: { label: "대안 장소", href: "https://maps.google.com/?cid=9604793671551599278" } }
+            { time: "09:30", type: "sight", title: "Valldemossa → Deià 드라이브", summary: "북서부 산악 드라이브 메인 구간.", move: "렌터카 이동", location: "Valldemossa Mallorca", details: [], warning: "도로 폭 좁고 커브 많음.", map: "https://maps.google.com/?cid=10540766082293436990" },
+            { time: "12:00", type: "food", title: "발데모사 마을 자유 점심", summary: "드라이브 경로 안 카페 자유 선택.", move: "마을 도보 이동", location: "Valldemossa Mallorca", details: [] },
+            { time: "14:00", type: "sight", title: "팔마 라 세우 대성당", summary: "팔마 핵심 관광지.", move: "렌터카 이동 후 도보", location: "Catedral de Mallorca La Seu Palma", details: ["월~금 10:00~17:15 / 토 10:00~14:15", "약 10€"], map: "https://maps.google.com/?cid=6056387022241497514" },
+            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "대성당 이후 여유 산책.", move: "구시가지 도보", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
+            { time: "19:00", type: "food", title: "팔마 구시가지 자유 저녁", summary: "예약 없이 사람 많은 바/타파스집 자유 선택.", move: "도보 이동", location: "Palma Old Town Mallorca", details: [] }
           ]
         },
         {
           id: "0511",
           label: "5/11 (월)",
-          title: "마요르카 완전한 호캉스",
+          title: "완전한 호캉스",
           items: [
-            { time: "09:00", type: "sight", title: "느긋한 조식", summary: "호캉스 데이 시작.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [] },
-            { time: "10:30", type: "sight", title: "Es Trenc Beach", summary: "호텔 근처 대표 해변.", move: "렌터카로 해변 이동 후 주차장에서 도보 이동", location: "Es Trenc Beach Mallorca", details: ["유료 주차 약 8€ / 차로 약 10분"], tip: "비치 타월 호텔에서 빌리기.", map: "https://maps.google.com/?cid=6718804724195379185" },
-            { time: "14:00", type: "sight", title: "마지막 온천 + 커플 스파 트리트먼트", summary: "커플 마사지 중심.", move: "해변에서 렌터카로 호텔 복귀 후 스파까지 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["60~90분 커플 마사지"], map: "https://maps.google.com/?cid=2233528644058998346" },
-            { time: "19:30", type: "food", title: "Fontsanta 호텔 레스토랑 — 파인 다이닝", summary: "마요르카 마지막 저녁.", move: "호텔 내 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: ["프런트 예약 / 1인 80~120€"], map: "https://maps.google.com/?cid=2233528644058998346" },
-            { time: "밤", type: "tip", title: "귀국 짐 전부 싸두기", summary: "새벽 체크아웃 대비.", move: "호텔 객실에서 준비", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "마요르카→마드리드 수하물 23kg 제한 확인." }
+            { time: "09:00", type: "sight", title: "느긋한 조식", summary: "호캉스 데이 시작.", move: "호텔 내 이동", location: "Fontsanta Hotel Thermal Spa", details: [] },
+            { time: "10:30", type: "sight", title: "Es Trenc Beach", summary: "호텔 근처 대표 해변.", move: "렌터카 이동 후 도보", location: "Es Trenc Beach Mallorca", details: ["호텔에서 차로 약 10분"], tip: "비치 타월 호텔 대여.", map: "https://maps.google.com/?cid=6718804724195379185" },
+            { time: "14:00", type: "sight", title: "마지막 온천 + 커플 스파 트리트먼트", summary: "프런트 또는 이메일로 슬롯 확보 권장.", move: "호텔 복귀 후 스파 이동", location: "Fontsanta Hotel Thermal Spa", details: ["커플 패키지 문의"], reservation: { label: "스파 이메일 문의", href: "mailto:info@fontsantahotel.com" }, map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "19:30", type: "food", title: "Fontsanta 호텔 레스토랑 — 마지막 저녁", summary: "현지 프런트에서 예약 요청.", move: "호텔 내 이동", location: "Fontsanta Hotel Thermal Spa", details: ["예산 1인 80~120€"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "밤", type: "tip", title: "귀국 짐 전부 싸두기", summary: "새벽 체크아웃 대비.", move: "객실 준비", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "23kg 제한 재확인." }
           ]
         },
         {
@@ -1365,19 +1387,20 @@
           label: "5/12 (화)",
           title: "마요르카 → 마드리드 → 귀국",
           items: [
-            { time: "04:30", type: "tip", title: "기상", summary: "귀국일 시작.", move: "호텔 객실에서 준비", location: "Fontsanta Hotel Thermal Spa", details: [] },
-            { time: "05:40", type: "critical", title: "⚠ Fontsanta 체크아웃", summary: "현장 결제 확인.", move: "프런트까지 도보 이동", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "잔여금 35.20 EUR 준비." },
-            { time: "06:00", type: "critical", title: "⚠ 렌터카 반납 전 주유", summary: "공항 근처 주유 후 영수증 확보.", move: "렌터카로 공항 근처 주유소 이동", location: "Repsol Palma de Mallorca Airport", details: ["Repsol 또는 Cepsa"], warning: "공항 10km 이내 풀주유 + 영수증 필수." },
-            { time: "06:30", type: "critical", title: "⚠ Record Go 렌터카 반납", summary: "반납 직원과 외관 확인.", move: "렌터카로 반납 구역 진입 후 공항으로 도보 이동", location: "Record Go Palma de Mallorca Airport", details: ["마요르카 공항 렌터카 구역"], tip: "풀커버 보험이어도 함께 확인." },
-            { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express 수속.", move: "공항 내부 도보 이동", location: "Palma de Mallorca Airport", details: ["I21652 / 예약번호 LSLWY", "08:10 체크인 마감 / 철완 10E / 나라 10F"] },
-            { time: "09:10", type: "flight", title: "I21652 출발", summary: "마요르카 → 마드리드", move: "항공 이동", location: "Palma de Mallorca Airport", details: ["1시간 25분 / 23kg x2"] },
-            { time: "10:35", type: "flight", title: "마드리드 T1 도착", summary: "수하물 수취 후 시내 이동.", move: "공항 내부 도보 이동 후 수하물 찾기", location: "Madrid Barajas Airport Terminal 1", details: ["코인라커 맡기고 시내 이동"], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+T1" },
-            { time: "11:00", type: "transit", title: "Cercanías C-1 → 아토차역", summary: "공항에서 시내 이동.", move: "공항 셔틀 또는 연결 통로 이동 후 Cercanías C-1 탑승", location: "Atocha Station Madrid", details: ["약 25분 / 약 3€"], map: "https://maps.google.com/?q=Atocha+Station+Madrid" },
-            { time: "11:30", type: "sight", title: "El Retiro Park", summary: "짧게 걷기 좋은 공원 코스.", move: "아토차역에서 도보 이동", location: "El Retiro Park Madrid", details: ["06:00~22:00 / 무료"], map: "https://maps.google.com/?cid=11415542133959205806" },
-            { time: "13:00", type: "sight", title: "Puerta del Sol + Gran Vía 쇼핑", summary: "레이오버 동안 가장 무난한 도심 코스.", move: "레티로 공원에서 도보 또는 지하철 이동", location: "Puerta del Sol Madrid", details: [], map: "https://maps.google.com/?cid=7587138583347971705" },
-            { time: "16:00", type: "critical", title: "⚠ 아토차역 → 공항 복귀", summary: "국제선 탑승 전 공항 복귀.", move: "Cercanías C-1로 공항 복귀, 촉박하면 택시 이용", location: "Madrid Barajas Airport Terminal 1", details: [], warning: "16:30 전 공항 복귀 필수. 늦으면 택시 고려." },
-            { time: "17:00", type: "flight", title: "마드리드 T1 — KE914 체크인", summary: "귀국편 체크인 완료.", move: "공항 내부 도보 이동", location: "Madrid Barajas Airport Terminal 1", details: ["KE914", "EM8HFD(철완) / EM7D8F(나라)", "철완 52H / 나라 52J"] },
-            { time: "20:00", type: "flight", title: "KE914 출발", summary: "마드리드 → 인천", move: "항공 이동", location: "Madrid Barajas Airport Terminal 1", details: ["13시간 / 5/13 16:00 도착"] }
+            { time: "04:30", type: "tip", title: "기상", summary: "귀국일 시작.", move: "객실 준비", location: "Fontsanta Hotel Thermal Spa", details: [] },
+            { time: "05:40", type: "critical", title: "⚠ Fontsanta 체크아웃", summary: "잔여금 정산 확인.", move: "프런트 이동", location: "Fontsanta Hotel Thermal Spa", details: [], warning: "잔여금 35.20 EUR 현장 결제." },
+            { time: "06:00", type: "critical", title: "⚠ 렌터카 반납 전 주유", summary: "반납 전 영수증 확보.", move: "공항 근처 주유소 이동", location: "Repsol Palma de Mallorca Airport", details: ["Repsol 또는 Cepsa"], warning: "공항 10km 이내 풀주유 + 영수증 필수." },
+            { time: "06:30", type: "critical", title: "⚠ Record Go 렌터카 반납", summary: "반납 직원과 외관 동시 확인.", move: "반납 후 공항 이동", location: "Record Go Palma de Mallorca Airport", details: [] },
+            { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express 수속.", move: "공항 내부 이동", location: "Palma de Mallorca Airport", details: ["I21652 / 예약번호 LSLWY", "체크인 마감 08:10", "좌석 철완 10E / 나라 10F"] },
+            { time: "09:10", type: "flight", title: "I21652 출발 (마요르카 → 마드리드)", summary: "마드리드 환승 구간.", move: "항공 이동", location: "Palma de Mallorca Airport", details: ["소요 1시간 25분 / 수하물 23kg x2"] },
+            { time: "10:35", type: "flight", title: "마드리드 T1 도착", summary: "수하물 수취 후 코인라커 보관.", move: "공항 내부 이동", location: "Madrid Barajas Airport Terminal 1", details: [], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+T1" },
+            { time: "11:00", type: "transit", title: "Cercanías C-1 → 아토차역", summary: "공항에서 시내 진입.", move: "C-1 탑승", location: "Atocha Station Madrid", details: ["약 25분 / 약 3€"], map: "https://maps.google.com/?q=Atocha+Station+Madrid" },
+            { time: "11:30", type: "sight", title: "레티로 공원 산책", summary: "레이오버 가벼운 산책 구간.", move: "아토차역 도보 이동", location: "El Retiro Park Madrid", details: ["무료"], map: "https://maps.google.com/?cid=11415542133959205806" },
+            { time: "13:00", type: "food", title: "레티로 공원 근처 자유 식사", summary: "테라스 카페 위주로 자유 선택.", move: "도보 이동", location: "El Retiro Park Madrid", details: [] },
+            { time: "14:00", type: "sight", title: "솔 광장 → 그란 비아 산책", summary: "도심 레이오버 코스.", move: "도보 또는 지하철 이동", location: "Puerta del Sol Madrid", details: [], map: "https://maps.google.com/?cid=7587138583347971705" },
+            { time: "16:00", type: "critical", title: "⚠ 아토차역 → 공항 복귀", summary: "국제선 탑승 전 공항 복귀.", move: "C-1 또는 택시", location: "Madrid Barajas Airport Terminal 1", details: [], warning: "16:30 전 공항 복귀 필수." },
+            { time: "17:00", type: "flight", title: "마드리드 T1 KE914 체크인", summary: "귀국편 수속.", move: "공항 내부 이동", location: "Madrid Barajas Airport Terminal 1", details: ["예약번호 EM8HFD(철완) / EM7D8F(나라)", "좌석 철완 52H / 나라 52J"] },
+            { time: "20:00", type: "flight", title: "KE914 출발 (마드리드 → 인천)", summary: "귀국편 출발.", move: "항공 이동", location: "Madrid Barajas Airport Terminal 1", details: ["소요 13시간 / 5/13 16:00 인천 도착"] }
           ]
         }
       ];
@@ -1405,21 +1428,18 @@
           id: "booking",
           title: "예약 필수",
           items: [
-            { id: "booking_1", title: "SUD Lisboa 루프탑 디너 예약", note: "sudlisboa.com / 5/5 20:00 슬롯. 지금 바로", urgency: "지금 바로" },
-            { id: "booking_2", title: "Solar dos Presuntos 예약", note: "solardospresuntos.com 또는 +351 213 424 253 / 5/7 저녁", urgency: "지금 바로" },
-            { id: "booking_3", title: "페나 궁전 입장권 사전 구매", note: "visitsintra.travel / 5/6 09:00 슬롯", urgency: "지금 바로" },
-            { id: "booking_4", title: "제로니무스 수도원 입장권", note: "mosteirojeronimos.pt / 5/5 10:00 슬롯", urgency: "지금 바로" },
-            { id: "booking_5", title: "A Cevicheria 예약", note: "acevicheria.pt / 5/6 저녁", urgency: "출발 전" },
-            { id: "booking_6", title: "Fontsanta 커플 스파 트리트먼트 예약", note: "info@fontsantahotel.com / 신혼여행 커플 패키지 문의", urgency: "출발 전" },
-            { id: "booking_7", title: "El Camino 또는 Fera Palma 예약", note: "5/10 일요일 El Camino 휴무. Fera Palma로 대체 예약", urgency: "출발 전" },
-            { id: "booking_8", title: "Fontsanta 레스토랑 예약 (5/11)", note: "체크인 후 프런트에 직접 요청", urgency: "현지에서" }
+            { id: "booking_1", title: "SUD Lisboa 루프탑 디너 5/5 20:00", note: "일몰 슬롯 경쟁 심함", urgency: "지금 바로", href: "https://sudlisboa.com/reservas/" },
+            { id: "booking_2", title: "페나 궁전 입장권 5/6", note: "시간 슬롯 고정형이라 사전 예매 권장", urgency: "지금 바로", href: "https://www.visitsintra.travel/en/buy-tickets" },
+            { id: "booking_3", title: "제로니무스 수도원 입장권 5/5", note: "성수기 대기 회피용 사전 예매", urgency: "지금 바로", href: "https://www.mosteirojeronimos.gov.pt/en/visit/plan-your-visit/" },
+            { id: "booking_4", title: "Fontsanta 스파 트리트먼트", note: "커플 패키지 문의", urgency: "이번 주", href: "mailto:info@fontsantahotel.com" },
+            { id: "booking_5", title: "Fontsanta 레스토랑 5/11", note: "체크인 후 프런트 직접 요청", urgency: "현지에서" }
           ]
         },
         {
           id: "money",
           title: "환전 & 카드",
           items: [
-            { id: "money_1", title: "유로 (EUR) 환전", note: "은행 앱 환전 후 공항 수령 추천. 현금 필요 장소: Taberna da Rua das Flores, A Tasca do Chico (현금만)", urgency: "출발 전" },
+            { id: "money_1", title: "유로 (EUR) 환전", note: "은행 앱 환전 후 공항 수령 추천. 소액 현금은 교통/소규모 매장 결제 대비로 보유", urgency: "출발 전" },
             { id: "money_2", title: "현지 결제 시 EUR 선택 숙지", note: "원화(KRW) 결제 DCC 뜨면 무조건 거절. 손해", urgency: "지금 바로" },
             { id: "money_3", title: "렌터카용 본인명의 실물 신용카드 준비", note: "가상카드 X. 철완 본인 명의 카드만 유효", urgency: "지금 바로" },
             { id: "money_4", title: "Fontsanta 잔여금 35.20 EUR 준비", note: "체크인 시 현장 결제", urgency: "출발 전" },
@@ -1762,9 +1782,10 @@
                         ${item.tip ? `<span class="badge tip">팁</span>` : ""}
                       </div>
                     ` : ""}
-                    ${(mapHref || item.alternative) ? `
+                    ${(mapHref || item.alternative || item.reservation) ? `
                       <div class="button-row" style="margin-top:12px">
                         ${mapHref ? `<a class="action-link map" href="${mapHref}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
+                        ${item.reservation ? `<a class="action-link alt" href="${item.reservation.href}" target="_blank" rel="noreferrer">${item.reservation.label || "예약하기"}</a>` : ""}
                         ${item.alternative ? `<a class="action-link alt" href="${item.alternative.href}" target="_blank" rel="noreferrer">${item.alternative.label}</a>` : ""}
                       </div>
                     ` : ""}
@@ -1819,14 +1840,17 @@
                   const checked = Boolean(checklistState[item.id]);
                   const badge = urgencyMeta(item.urgency);
                   return `
-                    <button class="hm-item${checked ? " checked" : ""}" type="button" data-check-id="${item.id}" aria-pressed="${checked}">
+                    <article class="hm-item${checked ? " checked" : ""}" data-check-id="${item.id}" role="button" tabindex="0" aria-pressed="${checked}">
                       <span class="hm-check" aria-hidden="true"></span>
                       <span class="hm-item-main">
                         <span class="hm-item-title">${item.title}</span>
                         <span class="hm-item-note">${item.note}</span>
                       </span>
-                      <span class="hm-badge ${badge.className}">${badge.label}</span>
-                    </button>
+                      <span class="hm-item-tail">
+                        <span class="hm-badge ${badge.className}">${badge.label}</span>
+                        ${item.href ? `<a class="hm-item-link" href="${item.href}" target="_blank" rel="noreferrer">예약 링크</a>` : ""}
+                      </span>
+                    </article>
                   `;
                 }).join("")}
               </div>
@@ -1895,8 +1919,20 @@
       });
 
       hmChecklistEl.addEventListener("click", (event) => {
+        if (event.target.closest("a")) return;
         const item = event.target.closest("[data-check-id]");
         if (!item) return;
+        const id = item.dataset.checkId;
+        checklistState[id] = !checklistState[id];
+        saveChecklistState();
+        renderChecklist();
+      });
+
+      hmChecklistEl.addEventListener("keydown", (event) => {
+        const item = event.target.closest("[data-check-id]");
+        if (!item) return;
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
         const id = item.dataset.checkId;
         checklistState[id] = !checklistState[id];
         saveChecklistState();
