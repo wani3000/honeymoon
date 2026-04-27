@@ -750,7 +750,7 @@
       .badge.tip { background: var(--tip-bg); color: var(--green); }
 
       .must-visit-alert {
-        margin-top: 12px;
+        margin-top: 8px;
         padding: 12px 14px;
         border-radius: 12px;
         background: #fde7e9;
@@ -759,6 +759,7 @@
         font-size: 13px;
         font-weight: 800;
         line-height: 1.6;
+        text-align: center;
       }
 
       .map-frame {
@@ -1785,6 +1786,7 @@
                     <span>
                       <div class="summary-title">${item.title}</div>
                       <div class="summary-sub">${item.summary}</div>
+                      ${item.mustVisitNote ? `<div class="must-visit-alert">${item.mustVisitNote}</div>` : ""}
                     </span>
                   </div>
                   <div class="details">
@@ -1830,7 +1832,6 @@
                         ${item.tip ? `<span class="badge tip">팁</span>` : ""}
                       </div>
                     ` : ""}
-                    ${item.mustVisitNote ? `<div class="must-visit-alert">${item.mustVisitNote}</div>` : ""}
                     ${(mapHref || item.alternative || item.reservation) ? `
                       <div class="button-row" style="margin-top:12px">
                         ${mapHref ? `<a class="action-link map" href="${mapHref}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
