@@ -77,11 +77,12 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 - `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 
-여기에 `window.TRIP_MAPS_API_KEY`가 들어 있습니다.
+이 파일은 현재 빈 플레이스홀더 상태입니다.  
+이전 공개 키는 저장소에서 제거했습니다.
 
 다음 에이전트는 작업 전에:
 
-1. 키가 공개 저장소에 있어도 되는 상태인지
+1. 기존 키가 Google Cloud에서 회전 또는 폐기됐는지
 2. referrer 제한이 걸려 있는지
 3. API 제한이 `Static Maps API`로 잠겨 있는지
 
@@ -163,4 +164,3 @@ GitHub Pages는 `main` 브랜치 루트(`/`) 기반입니다.
 이 남아 있습니다.
 
 필요하면 비교 기준으로만 참고하세요. 현재 기준 주 브랜치는 `main`입니다.
-
