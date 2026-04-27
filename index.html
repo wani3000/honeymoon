@@ -749,6 +749,18 @@
       .badge.warning { background: var(--danger-bg); color: var(--red); }
       .badge.tip { background: var(--tip-bg); color: var(--green); }
 
+      .must-visit-alert {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: #fde7e9;
+        color: #b3261e;
+        border: 1px solid color-mix(in srgb, #b3261e 22%, transparent);
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.6;
+      }
+
       .map-frame {
         width: 100%;
         border-radius: 20px;
@@ -1362,8 +1374,7 @@
           items: [
             { time: "10:00", type: "sight", title: "시아두 지구 산책 + 쇼핑", summary: "마지막 리스본 도심 여유 일정.", move: "호텔에서 도보 이동", location: "Chiado Lisbon", details: [], map: "https://maps.google.com/?q=Chiado+Lisbon" },
             { time: "12:00", type: "food", title: "호시우 광장 근처 자유 점심", summary: "예약 없이 사람 많은 타베르나 위주로 선택.", move: "도보 이동", location: "Rossio Square Lisbon", details: [] },
-            { time: "18:00", type: "sight", title: "A Tasca do Chico — 파두 바 (선택)", summary: "저녁 전 선택 일정.", move: "도심 도보 이동", location: "A Tasca do Chico Lisbon", details: ["매일 19:00~02:00 / 현금만"], map: "https://maps.google.com/?cid=13275437289001447196" },
-            { time: "19:30", type: "food", title: "BAHR & Terrace 예약 저녁", summary: "SevenRooms 예약 확정 건.", move: "도심 도보 이동", location: "Praça Luís de Camões, Lisboa 1200-243", details: [["예약자", "철완 박"], ["인원", "2명"], ["예약번호", "5S9TP63HYP8R"], ["연락처", "+351 21 340 8253"]], warning: "노쇼/늦은 취소 시 1인 35€ 부과. 예약 6시간 전까지 취소 시 면제.", map: "https://maps.google.com/?q=Praça+Luís+de+Camões,+Lisboa+1200-243" },
+            { time: "19:30", type: "food", title: "BAHR & Terrace 예약 저녁", summary: "SevenRooms 예약 확정 건.", move: "도심 도보 이동", location: "Praça Luís de Camões, Lisboa 1200-243", details: [["예약자", "철완 박"], ["인원", "2명"], ["예약번호", "5S9TP63HYP8R"], ["연락처", "+351 21 340 8253"]], warning: "노쇼/늦은 취소 시 1인 35€ 부과. 예약 6시간 전까지 취소 시 면제.", mustVisitNote: "사전예약한 레스토랑이에요! 꼭 방문해야해요", map: "https://maps.google.com/?q=Praça+Luís+de+Camões,+Lisboa+1200-243" },
             { time: "밤", type: "tip", title: "캐리어 짐 전부 싸두기", summary: "내일 새벽 05:00 출발 대비.", move: "호텔 객실 준비", location: "Convent Square Lisbon", details: [], warning: "여권/국제운전면허증/렌터카 서류를 가방 최상단에." }
           ]
         },
@@ -1819,6 +1830,7 @@
                         ${item.tip ? `<span class="badge tip">팁</span>` : ""}
                       </div>
                     ` : ""}
+                    ${item.mustVisitNote ? `<div class="must-visit-alert">${item.mustVisitNote}</div>` : ""}
                     ${(mapHref || item.alternative || item.reservation) ? `
                       <div class="button-row" style="margin-top:12px">
                         ${mapHref ? `<a class="action-link map" href="${mapHref}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
