@@ -977,7 +977,7 @@
           <div class="map-frame" id="routeMapFrame"></div>
           <div class="map-links">
             <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/" target="_blank" rel="noreferrer">신트라 + 호카곶</a>
-            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/" target="_blank" rel="noreferrer">마요르카 남동부</a>
+            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Valldemossa/Dei%C3%A0/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 북서부</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
           </div>
           <div class="map-preview-help" id="mapPreviewHelp"></div>
@@ -1296,14 +1296,15 @@
           ]
         },
         {
-          title: "마요르카 남동부",
-          copy: "Fontsanta 호텔에서 Calo des Moro, Cala Figuera까지 이어지는 드라이브",
-          href: "https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/",
-          path: "color:0x23a26dcc|weight:5|Fontsanta Hotel Thermal Spa|Caló des Moro|Cala Figuera",
+          title: "마요르카 카타마란 + 북서부",
+          copy: "Fontsanta에서 팔마 마리나 카타마란 후 발데모사·데야를 거쳐 복귀하는 동선",
+          href: "https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Valldemossa/Dei%C3%A0/Fontsanta+Hotel+Thermal+Spa/",
+          path: "color:0x23a26dcc|weight:5|Fontsanta Hotel Thermal Spa|La Lonja Marina Palma|Valldemossa|Deià|Fontsanta Hotel Thermal Spa",
           markers: [
             "color:0x23a26d|label:F|Fontsanta Hotel Thermal Spa",
-            "color:0x2d7ff9|label:C|Caló des Moro",
-            "color:0xe25468|label:G|Cala Figuera"
+            "color:0x2d7ff9|label:L|La Lonja Marina Palma",
+            "color:0xe25468|label:V|Valldemossa",
+            "color:0x6f5cff|label:D|Deià"
           ]
         },
         {
@@ -1409,13 +1410,19 @@
         {
           id: "0510",
           label: "5/10 (일)",
-          title: "북서부 드라이브 + 팔마",
+          title: "카타마란 + 팔마 시내",
           items: [
-            { time: "09:30", type: "sight", title: "Valldemossa → Deià 드라이브", summary: "북서부 산악 드라이브 메인 구간.", move: "렌터카 이동", location: "Valldemossa Mallorca", details: [], warning: "도로 폭 좁고 커브 많음.", map: "https://maps.google.com/?cid=10540766082293436990" },
-            { time: "12:00", type: "food", title: "발데모사 마을 자유 점심", summary: "드라이브 경로 안 카페 자유 선택.", move: "마을 도보 이동", location: "Valldemossa Mallorca", details: [] },
-            { time: "14:00", type: "sight", title: "팔마 라 세우 대성당", summary: "팔마 핵심 관광지.", move: "렌터카 이동 후 도보", location: "Catedral de Mallorca La Seu Palma", details: ["월~금 10:00~17:15 / 토 10:00~14:15", "약 10€"], map: "https://maps.google.com/?cid=6056387022241497514" },
-            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "대성당 이후 여유 산책.", move: "구시가지 도보", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
-            { time: "19:00", type: "food", title: "팔마 구시가지 자유 저녁", summary: "예약 없이 사람 많은 바/타파스집 자유 선택.", move: "도보 이동", location: "Palma Old Town Mallorca", details: [] }
+            { time: "08:00", type: "critical", title: "⚠ Fontsanta 호텔 출발", summary: "수영복 착용 후 출발. 갈아입을 옷과 비치 타월 챙기기.", move: "렌터카로 팔마 이동", location: "Fontsanta Hotel Thermal Spa", details: ["팔마까지 약 40분"], map: "https://maps.google.com/?cid=2233528644058998346" },
+            { time: "08:45", type: "transit", title: "팔마 도착 — La Lonja 마리나 근처 주차", summary: "짐은 차에 두고 이동 준비.", move: "마리나 인근 주차 후 도보 이동", location: "La Lonja Marina Palma", details: [], map: "https://maps.google.com/?q=La+Lonja+Marina+Palma" },
+            { time: "09:15", type: "critical", title: "⚠ 카타마란 집결", summary: "예약 메일의 Meeting Point 상세 주소를 당일 재확인.", move: "주차장 → 미팅 포인트 도보 이동", location: "Palma meeting point (email confirmation required)", details: ["집결 지점 사전 확인 필수"], warning: "집결 지점 착오 방지를 위해 출발 전 메일 링크 다시 열기.", map: "https://maps.google.com/?q=La+Lonja+Marina+Palma" },
+            { time: "09:30", type: "sight", title: "Luxury Catamaran 출발", summary: "예약 확정 투어 (4시간).", move: "카타마란 승선", location: "Palma Bay Catamaran Route", details: [["예약번호", "SYS-90344486"], ["인원", "성인 2명"], ["금액", "€198.00 (1인 €99)"], ["포함", "타파스, 웰컴 드링크, 스노클링 장비, SUP, 플로트, 스키퍼, 보험"], ["고객", "chulwan park / oxaz1234@gmail.com / +82 1065586450"]], tip: "팔마 만 코브 스노클링 중심 일정.", map: "https://maps.google.com/?q=Palma+Bay" },
+            { time: "13:30", type: "transit", title: "마리나 귀환", summary: "차로 돌아가 갈아입기.", move: "마리나 하선 후 주차장 이동", location: "La Lonja Marina Palma", details: [], map: "https://maps.google.com/?q=La+Lonja+Marina+Palma" },
+            { time: "14:00", type: "food", title: "팔마 구시가지 자유 점심", summary: "경로 안 눈에 띄는 곳 자유 식사.", move: "마리나에서 도보 이동", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
+            { time: "15:00", type: "sight", title: "라 세우 대성당 외관 + 해안가 사진", summary: "일요일은 내부 관람 불가.", move: "구시가지 도보 이동", location: "Catedral de Mallorca La Seu Palma", details: ["일요일 내부 휴무", "외관 관람/사진만 가능 (무료)"], warning: "내부 입장 일정으로 착각하지 않도록 주의.", map: "https://maps.google.com/?cid=6056387022241497514" },
+            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "벨베르 성 방향 또는 아라비아 구역 자유 산책.", move: "구시가지 도보", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
+            { time: "17:30", type: "transit", title: "발데모사 드라이브", summary: "팔마에서 약 20분.", move: "렌터카 이동", location: "Valldemossa Mallorca", details: ["마을 산책 + 카페"], map: "https://maps.google.com/?q=Valldemossa+Mallorca" },
+            { time: "19:00", type: "sight", title: "데야 마을", summary: "해질 무렵 분위기 좋은 구간.", move: "발데모사에서 약 20분 이동", location: "Deià Mallorca", details: ["저녁 식사는 발데모사/데야 경로 안 로컬 식당 자유 선택"], map: "https://maps.google.com/?q=Deià+Mallorca" },
+            { time: "20:00", type: "transit", title: "Fontsanta 호텔 복귀", summary: "일정 마무리.", move: "렌터카 복귀", location: "Fontsanta Hotel Thermal Spa", details: ["카타마란 취소 정책: 5/9 09:30 전 전액 환불 가능"], map: "https://maps.google.com/?cid=2233528644058998346" }
           ]
         },
         {
@@ -1564,7 +1571,7 @@
             { id: "car_2", title: "Record Go 예약서 저장", note: "예약번호 75/2026-25992", urgency: "출발 전" },
             { id: "car_3", title: "마요르카 공항 렌터카 구역 위치 확인", note: "Record Go 카운터 위치 미리 파악", urgency: "출발 전" },
             { id: "car_4", title: "구글맵 오프라인 지도 다운로드", note: "마요르카 전체 + 팔마 시내. 현지 데이터 끊길 때 대비", urgency: "지금 바로" },
-            { id: "car_5", title: "주요 경로 미리 저장", note: "Caló des Moro, Valldemossa, 팔마, Fontsanta, 공항", urgency: "출발 전" },
+            { id: "car_5", title: "주요 경로 미리 저장", note: "La Lonja 마리나, 카타마란 미팅포인트, Valldemossa, Deià, Fontsanta, 공항", urgency: "출발 전" },
             { id: "car_6", title: "반납 전 주유 확인", note: "공항 10km 이내 주유소. Repsol 또는 Cepsa. 영수증 보관", urgency: "현지에서" }
           ]
         },
