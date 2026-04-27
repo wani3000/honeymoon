@@ -808,6 +808,26 @@
         text-decoration: none;
       }
 
+      .item-map-preview {
+        margin-top: 12px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        background: var(--panel-soft);
+      }
+
+      .item-map-preview-link {
+        display: block;
+      }
+
+      .item-map-preview-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: var(--surface-2);
+      }
+
       .phrase-stack {
         display: grid;
         gap: 14px;
@@ -1536,6 +1556,27 @@
         return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
       }
 
+      function buildScheduleItemMapHref(item) {
+        if (item.map) return item.map;
+        const query = (item.location || item.title || "").trim();
+        if (!query) return "";
+        return `https://maps.google.com/?q=${encodeURIComponent(query)}`;
+      }
+
+      function buildScheduleItemStaticMapUrl(item, apiKey) {
+        const markerSource = (item.location || item.title || "").trim();
+        if (!markerSource || !apiKey) return "";
+        const params = new URLSearchParams({
+          size: "1200x680",
+          scale: "2",
+          maptype: "roadmap",
+          style: "feature:poi|visibility:simplified",
+          key: apiKey
+        });
+        params.append("markers", `color:red|${markerSource}`);
+        return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
+      }
+
       function renderMapPreviews() {
         const apiKey = (window.TRIP_MAPS_API_KEY || "").trim();
         if (!apiKey) {
@@ -1568,6 +1609,7 @@
       }
 
       function renderSchedule() {
+      const scheduleMapApiKey = (window.TRIP_MAPS_API_KEY || "").trim();
       const toTableRows = (details = []) => {
         if (!details.length) return "";
         return details.map((detail, idx) => {
@@ -1606,6 +1648,11 @@
             </div>
             <div class="timeline">
               ${day.items.map((item, idx) => `
+                ${(() => {
+                  const mapHref = buildScheduleItemMapHref(item);
+                  const mapPreviewSrc = buildScheduleItemStaticMapUrl(item, scheduleMapApiKey);
+                  const hasMapPreview = Boolean(mapPreviewSrc && mapHref);
+                  return `
                 <article class="item ${item.type}">
                   <div class="item-head">
                     <span class="dot" aria-hidden="true"></span>
@@ -1625,6 +1672,13 @@
                         ? `${item.time}에는 준비 사항을 차분히 점검해야 해요. 빠뜨린 물건이 없는지 확인하세요.`
                         : `${item.time}에는 이 일정으로 이동하면 돼요. 현장 운영 시간과 흐름을 함께 확인하세요.`}
                     </div>
+                    ${hasMapPreview ? `
+                      <div class="item-map-preview">
+                        <a class="item-map-preview-link" href="${mapHref}" target="_blank" rel="noreferrer">
+                          <img class="item-map-preview-image" src="${mapPreviewSrc}" alt="${item.title} 지도 미리보기" loading="lazy" />
+                        </a>
+                      </div>
+                    ` : ""}
                     ${item.details.length ? `
                       <table class="detail-table">
                         <tbody>
@@ -1651,14 +1705,15 @@
                         ${item.tip ? `<span class="badge tip">팁</span>` : ""}
                       </div>
                     ` : ""}
-                    ${(item.map || item.alternative) ? `
+                    ${(mapHref || item.alternative) ? `
                       <div class="button-row" style="margin-top:12px">
-                        ${item.map ? `<a class="action-link map" href="${item.map}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
+                        ${mapHref ? `<a class="action-link map" href="${mapHref}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
                         ${item.alternative ? `<a class="action-link alt" href="${item.alternative.href}" target="_blank" rel="noreferrer">${item.alternative.label}</a>` : ""}
                       </div>
                     ` : ""}
                   </div>
                 </article>
+              `; })()}
               `).join("")}
             </div>
           </section>
