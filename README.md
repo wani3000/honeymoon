@@ -4,7 +4,7 @@
 
 배포: [https://wani3000.github.io/honeymoon/](https://wani3000.github.io/honeymoon/)
 
-기준 커밋: `e9f6c83` (`Add detailed Record Go rental info to schedule`)
+원격 동기화 기준 커밋: `3156523` (`Refresh handoff and deployment docs`)
 
 ## 기능
 

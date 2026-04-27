@@ -4,11 +4,11 @@
 
 ## 1. 현재 기준 상태
 
-로컬 `main` 브랜치는 현재 GitHub `origin/main` 최신 상태와 맞춰져 있습니다.
+이 문서 업데이트 직전 로컬 `main` 브랜치는 GitHub `origin/main` 최신 상태로 fast-forward 동기화했습니다.
 
 기준 커밋:
 
-- `e9f6c83` `Add detailed Record Go rental info to schedule`
+- `3156523` `Refresh handoff and deployment docs`
 
 ## 2. 프로젝트 목적
 
@@ -25,7 +25,7 @@
 
 현재 사용자 화면 기준 실제 동작 코드는 아래 파일에 거의 모두 들어 있습니다.
 
-- `/Users/chulwan/Documents/GitHub/europe/index.html`
+- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
 
 즉, 작업 시작 시 가장 먼저 봐야 할 파일은 `index.html`입니다.
 
@@ -89,7 +89,7 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 현재 원격에는 아래 파일이 있습니다.
 
-- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
+- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
 
 이 파일은 현재 빈 플레이스홀더 상태입니다.  
 이전 공개 키는 저장소에서 제거했습니다.
@@ -104,7 +104,7 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 자세한 지도 작업 문서는 아래를 참고하면 됩니다.
 
-- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_MAPS_INTEGRATION_GUIDE.md`
+- `/Users/hanwha/Documents/GitHub/honeymoon/GOOGLE_MAPS_INTEGRATION_GUIDE.md`
 
 ## 8. 현재 UI/내용 주의사항
 
@@ -129,19 +129,19 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 ### 가장 중요
 
-- `/Users/chulwan/Documents/GitHub/europe/index.html`
-- `/Users/chulwan/Documents/GitHub/europe/README.md`
+- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
+- `/Users/hanwha/Documents/GitHub/honeymoon/README.md`
 
 ### 설정/배포 관련
 
-- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
-- `/Users/chulwan/Documents/GitHub/europe/config.js`
-- `/Users/chulwan/Documents/GitHub/europe/config.example.js`
+- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
+- `/Users/hanwha/Documents/GitHub/honeymoon/config.js`
+- `/Users/hanwha/Documents/GitHub/honeymoon/config.example.js`
 
 ### 참고/레거시 가능성 있음
 
-- `/Users/chulwan/Documents/GitHub/europe/app.js`
-- `/Users/chulwan/Documents/GitHub/europe/styles.css`
+- `/Users/hanwha/Documents/GitHub/honeymoon/app.js`
+- `/Users/hanwha/Documents/GitHub/honeymoon/styles.css`
 
 현재 사용자 기준 실제 배포 화면은 `index.html` 단일 파일 중심으로 이해하는 게 가장 안전합니다.
 
