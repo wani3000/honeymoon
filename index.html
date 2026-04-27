@@ -736,6 +736,10 @@
         margin-bottom: 14px;
       }
 
+      .map-frame-link {
+        display: block;
+      }
+
       .map-frame img {
         display: block;
         width: 100%;
@@ -935,9 +939,7 @@
 
         <section class="section">
           <p class="section-label">Route View</p>
-          <div class="map-frame">
-            <img src="./assets/route-overview.svg" alt="신혼여행 이동 경로 지도" />
-          </div>
+          <div class="map-frame" id="routeMapFrame"></div>
           <div class="map-links">
             <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/" target="_blank" rel="noreferrer">신트라 + 호카곶</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/Cal%C3%B3+des+Moro/Cala+Figuera/" target="_blank" rel="noreferrer">마요르카 남동부</a>
@@ -1519,6 +1521,7 @@
       const panels = document.querySelectorAll(".panel");
       const dateTabsEl = document.getElementById("dateTabs");
       const scheduleListEl = document.getElementById("scheduleList");
+      const routeMapFrameEl = document.getElementById("routeMapFrame");
       const mapPreviewHelpEl = document.getElementById("mapPreviewHelp");
       const mapPreviewGridEl = document.getElementById("mapPreviewGrid");
       const hmChecklistEl = document.getElementById("hmChecklist");
@@ -1556,15 +1559,62 @@
         return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
       }
 
-      function buildScheduleItemMapHref(item) {
+      function buildRouteOverviewStaticMapUrl(apiKey) {
+        const params = new URLSearchParams({
+          size: "1200x760",
+          scale: "2",
+          maptype: "roadmap",
+          style: "feature:poi|visibility:simplified",
+          key: apiKey
+        });
+        params.append("markers", "color:blue|label:I|Incheon International Airport Terminal 2");
+        params.append("markers", "color:red|label:L|Lisbon Portugal");
+        params.append("markers", "color:orange|label:M|Mallorca Spain");
+        params.append("markers", "color:green|label:D|Madrid Spain");
+        params.append("path", "color:0x6750a4ff|weight:4|Incheon International Airport Terminal 2|Lisbon Portugal|Mallorca Spain|Madrid Spain|Incheon International Airport Terminal 2");
+        return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
+      }
+
+      function renderRouteOverviewMap() {
+        const apiKey = (window.TRIP_MAPS_API_KEY || "").trim();
+        if (!apiKey) {
+          routeMapFrameEl.innerHTML = `
+            <div class="map-preview-note" style="margin:10px">
+              Google Static Maps API 키를 연결하면 개요 경로 지도가 표시됩니다.
+            </div>
+          `;
+          return;
+        }
+
+        const href = "https://www.google.com/maps/dir/Incheon+International+Airport+Terminal+2/Lisbon+Portugal/Mallorca+Spain/Madrid+Spain/Incheon+International+Airport+Terminal+2/";
+        const src = buildRouteOverviewStaticMapUrl(apiKey);
+        routeMapFrameEl.innerHTML = `
+          <a class="map-frame-link" href="${href}" target="_blank" rel="noreferrer">
+            <img src="${src}" alt="신혼여행 이동 경로 지도" />
+          </a>
+        `;
+      }
+
+      function normalizeLocationText(value) {
+        return (value || "").trim();
+      }
+
+      function buildScheduleItemMapHref(item, prevItem) {
+        const currentLocation = normalizeLocationText(item.location);
+        const prevLocation = normalizeLocationText(prevItem?.location);
+        if (currentLocation && prevLocation) {
+          return `https://www.google.com/maps/dir/${encodeURIComponent(prevLocation)}/${encodeURIComponent(currentLocation)}/`;
+        }
         if (item.map) return item.map;
-        const query = (item.location || item.title || "").trim();
+        const query = (currentLocation || item.title || "").trim();
         if (!query) return "";
         return `https://maps.google.com/?q=${encodeURIComponent(query)}`;
       }
 
-      function buildScheduleItemStaticMapUrl(item, apiKey) {
-        const markerSource = (item.location || item.title || "").trim();
+      function buildScheduleItemStaticMapUrl(item, prevItem, apiKey) {
+        const currentLocation = normalizeLocationText(item.location);
+        const prevLocation = normalizeLocationText(prevItem?.location);
+        const markerSource = (currentLocation || item.title || "").trim();
         if (!markerSource || !apiKey) return "";
         const params = new URLSearchParams({
           size: "1200x680",
@@ -1573,7 +1623,13 @@
           style: "feature:poi|visibility:simplified",
           key: apiKey
         });
-        params.append("markers", `color:red|${markerSource}`);
+        if (currentLocation && prevLocation) {
+          params.append("path", `color:0x6750a4ff|weight:5|${prevLocation}|${currentLocation}`);
+          params.append("markers", `color:0x386a20|label:A|${prevLocation}`);
+          params.append("markers", `color:0xb3261e|label:B|${currentLocation}`);
+        } else {
+          params.append("markers", `color:red|${markerSource}`);
+        }
         return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
       }
 
@@ -1649,8 +1705,9 @@
             <div class="timeline">
               ${day.items.map((item, idx) => `
                 ${(() => {
-                  const mapHref = buildScheduleItemMapHref(item);
-                  const mapPreviewSrc = buildScheduleItemStaticMapUrl(item, scheduleMapApiKey);
+                  const prevItem = idx > 0 ? day.items[idx - 1] : null;
+                  const mapHref = buildScheduleItemMapHref(item, prevItem);
+                  const mapPreviewSrc = buildScheduleItemStaticMapUrl(item, prevItem, scheduleMapApiKey);
                   const hasMapPreview = Boolean(mapPreviewSrc && mapHref);
                   return `
                 <article class="item ${item.type}">
@@ -1872,6 +1929,7 @@
       }, { rootMargin: "-120px 0px -60% 0px", threshold: [0.1, 0.3, 0.6] });
 
       loadTripConfig().finally(() => {
+        renderRouteOverviewMap();
         renderDateTabs();
         renderMapPreviews();
         renderSchedule();
