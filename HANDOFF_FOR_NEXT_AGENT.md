@@ -91,12 +91,11 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 - `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
 
-이 파일은 현재 빈 플레이스홀더 상태입니다.  
-이전 공개 키는 저장소에서 제거했습니다.
+이 파일은 현재 배포용 Google Static Maps API 키를 로드하는 파일입니다.
 
 다음 에이전트는 작업 전에:
 
-1. 기존 키가 Google Cloud에서 회전 또는 폐기됐는지
+1. 현재 키가 Google Cloud에서 유효한지
 2. referrer 제한이 걸려 있는지
 3. API 제한이 `Static Maps API`로 잠겨 있는지
 

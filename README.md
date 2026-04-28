@@ -71,7 +71,7 @@
 
 - `index.html`: 실제 동작 코드(마크업/스타일/스크립트)
 - `assets/route-overview.svg`: 경로 개요 이미지
-- `config.public.js`: 현재는 빈 플레이스홀더 파일
+- `config.public.js`: 현재 배포용 Google Static Maps API 키 파일
 - `config.js`: 로컬 전용 API 키 파일(버전 관리 제외)
 - `config.example.js`: 키 파일 예시
 - `styles.css`, `app.js`: 보조/이전 분리 파일
@@ -91,8 +91,7 @@
 
 ## Google Static Maps 설정
 
-현재 저장소에는 실제 배포용 Google Maps API 키를 포함하지 않습니다.  
-이전 공개 키는 코드에서 제거했습니다. 기존 키를 사용 중이었다면 Google Cloud Console에서 **즉시 회전 또는 폐기**하는 것을 권장합니다.
+현재 저장소는 `config.public.js`를 통해 배포용 Google Maps API 키를 로드합니다.
 
 ### 1) Google Cloud에서 준비
 
@@ -103,8 +102,8 @@
 
 ### 2) 키 파일 전략
 
-1. 로컬 테스트 키는 `config.js`에 설정
-2. `config.public.js`는 기본적으로 빈 값 유지
+1. 배포용 키는 `config.public.js`에 설정
+2. 로컬 테스트 키는 `config.js`에 설정
 3. 로딩 우선순위는 `config.public.js` → `config.js`
 4. 같은 전역 변수 `window.TRIP_MAPS_API_KEY`를 사용
 
@@ -130,7 +129,7 @@ API Key의 `API restrictions`는 `Static Maps API`만 허용하세요.
 
 1. Billing 연결 완료
 2. Static Maps API 활성화 완료
-3. 키 값이 로컬 `config.js` 또는 별도 안전한 배포 방식으로만 설정됨
+3. 키 값이 `config.public.js` 또는 로컬 `config.js`에 설정됨
 4. Referrer 제한에 실제 접속 도메인이 포함됨
 5. API 제한이 `Static Maps API`로 고정됨
 6. 배포 페이지에서 지도 미리보기 카드 이미지가 표시됨

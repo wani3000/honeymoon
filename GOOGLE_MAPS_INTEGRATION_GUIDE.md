@@ -39,10 +39,9 @@ window.TRIP_MAPS_API_KEY
 
 주의:
 
-- `config.public.js`는 현재 빈 플레이스홀더로 유지합니다.
+- `config.public.js`는 현재 배포용 키를 로드합니다.
 - `config.js`는 로컬 전용 파일입니다.
-- 이전 공개 키는 저장소에서 제거했습니다.
-- 기존 키를 사용 중이었다면 Google Cloud Console에서 **회전 또는 폐기**가 필요합니다.
+- 필요하면 Google Cloud Console에서 referrer/API 제한을 먼저 점검하세요.
 
 ## 3. 현재 지도 렌더링 진입점
 
@@ -144,11 +143,11 @@ window.TRIP_MAPS_API_KEY
 
 ## 8. 확인해야 할 보안/운영 포인트
 
-현재 원격 저장소에는 `config.public.js`가 존재하지만, 실제 키는 넣지 않는 것을 기본 원칙으로 둡니다.
+현재 원격 저장소는 `config.public.js`를 통해 배포용 키를 로드합니다.
 
 다음 항목을 꼭 확인하세요.
 
-1. 과거 노출된 키가 회전/폐기되었는지
+1. 현재 배포 키가 유효한지
 2. `HTTP referrers` 제한이 걸려 있는지
 3. `Static Maps API`만 허용되어 있는지
 4. 필요하면 키를 회전해야 하는지
