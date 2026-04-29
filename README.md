@@ -26,13 +26,20 @@
 
 - `Convent Square Lisbon` 예약번호 `41605443`
 - `Fontsanta Hotel Thermal Spa` 예약번호 `P7128119`
+- `KE921` `2026-05-03` `ICN T2 -> LIS T1` 예약번호 `EH6OZW`
+  좌석 `36H / 36J`
+  티켓번호 `1802353367488 / 1802353263946`
 - `Vueling VY3437` `2026-05-08` `LIS -> PMI` 예약번호 `KFZL6V`
 - `Iberia Express I21652` `2026-05-12` `PMI -> MAD`
+- `KE914` `2026-05-12` `MAD T1 -> ICN T2`
+  예약번호 `EM8HFD / EM7D8F`
+  좌석 `52H / 52J`
+  티켓번호 `1802353365545 / 1802353263946`
 - `Record Go` 렌터카 예약번호 `75/2026-25992`
   `Toyota C-HR or similar / CDAH / Just go / Total Comfort Coverage / Full-Full`
   온라인 결제 `143.79 EUR`
 - `Noobai Café` `2026-05-04 19:30 - 21:30`
-  `Miradouro de Santa Catarina (Adamastor), 1200-401 Lisboa`
+  `Miradouro de Santa Catarina (Adamastor), Lisboa`
   예약자 `Chulwan Park / oxaz1234@gmail.com / 821065586450`
 - `Luxury Catamaran` `2026-05-10 09:30 - 13:30`
   티켓번호 `SYS-T129013463`
@@ -41,6 +48,7 @@
   총 결제금액 `EUR 198.00`
 - `BAHR & Terrace` `2026-05-07` 저녁 예약
   예약번호 `5S9TP63HYP8R`
+  주소 `Praça Luís de Camões, Lisboa, 1200-243, Portugal`
 
 카타마란 일정에는 아래 내용까지 반영되어 있습니다.
 
@@ -64,11 +72,10 @@
 - 예약 체크리스트에는 카타마란 투어가 `완료` 상태 예약으로 추가되어 있습니다.
 - GitHub Pages 배포는 `main` 브랜치 푸시로 이루어집니다.
 
-아직 원문 대조가 끝나지 않은 항목:
+아직 원문 대조가 더 남을 수 있는 항목:
 
-- `KE921`
-- `KE914`
-- 호텔 세부 정책 전체
+- 일부 자유식 식당/현장 방문지
+- 추가 관광지의 더 세밀한 운영시간 변경 여부
 
 주의사항:
 
