@@ -40,6 +40,7 @@
 - 5/10 카타마란 예약 상세 반영
 - Record Go 픽업/반납 상세 반영
 - BAHR 예약 관련 문구 반영
+- Noobai Café 5/4 석양 예약 반영
 - Cassai Beach House 점심 플랜 추가
 - 5/6 일정을 카스카이스 → 호카곶 흐름으로 조정
 - 개요 탭 확정 정보 간격 재조정
@@ -56,7 +57,9 @@
 - `Vueling VY3437` 검증 완료
 - `Iberia Express I21652` 검증 완료
 - `Record Go 75/2026-25992` 일정표 반영 완료
+- `Noobai Café 2026-05-04 19:30` 예약 반영 완료 (`Chulwan Park / oxaz1234@gmail.com / 821065586450`)
 - `Luxury Catamaran 2026-05-10 09:30 - 13:30` 검증 완료
+- 운영사 `SR Yachting GmbH`, 연락처, 준비물, 금연 규정, 여권 정보 제출 필요 사항까지 일정표 반영 완료
 - `BAHR & Terrace 2026-05-07` 예약 반영 완료
 
 아직 원문 대조가 끝나지 않은 항목:
