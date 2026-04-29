@@ -516,6 +516,74 @@
         border-bottom: 1px solid var(--line);
       }
       .card h3 { font-size: 16px; margin-bottom: 6px; font-weight: 700; }
+      .overview-card-title {
+        font-size: 22px;
+        margin-bottom: 14px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      .overview-item-list {
+        display: grid;
+        gap: 16px;
+      }
+      .overview-item {
+        padding: 0 0 16px;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+      .overview-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+      .overview-kicker {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .overview-title {
+        margin-top: 6px;
+        font-size: 22px;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .overview-subtitle {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .overview-meta-table {
+        width: 100%;
+        margin-top: 12px;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+      .overview-meta-table tr {
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+      .overview-meta-table th,
+      .overview-meta-table td {
+        padding: 11px 0;
+        text-align: left;
+        vertical-align: top;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .overview-meta-table th {
+        width: 96px;
+        padding-right: 14px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+      .overview-meta-table td {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .overview-hotel-map-slot {
+        margin-top: 16px;
+      }
       .subtle {
         color: var(--muted);
         font-size: 13px;
@@ -977,7 +1045,7 @@
           <div class="map-frame" id="routeMapFrame"></div>
           <div class="map-links">
             <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/" target="_blank" rel="noreferrer">신트라 + 호카곶</a>
-            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Valldemossa/Dei%C3%A0/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 북서부</a>
+            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Catedral+de+Mallorca/Portixol/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 팔마 해안</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
           </div>
           <div class="map-preview-help" id="mapPreviewHelp"></div>
@@ -988,13 +1056,55 @@
           <p class="section-label">확정 정보</p>
           <div class="stack">
             <article class="card">
-              <h3>항공</h3>
-              <ul class="detail-list">
-                <li><strong>5/3 KE921 (대한항공)</strong><br>인천 T2 → 리스본 T1 / 12:45 → 20:20<br>예약번호 EH6OZW / 좌석 철완 36H, 나라 36J</li>
-                <li><strong>5/8 VY3437 (Vueling)</strong><br>리스본 T1 → 마요르카 / 08:50 → 11:45<br>예약번호 KFZL6V / 좌석 철완 1B, 나라 1A / 수하물 25kg x2</li>
-                <li><strong>5/12 I21652 (Iberia Express)</strong><br>마요르카 → 마드리드 / 09:10 → 10:35<br>예약번호 LSLWY / 좌석 철완 10E, 나라 10F / 수하물 23kg x2</li>
-                <li><strong>5/12 KE914 (대한항공)</strong><br>마드리드 T1 → 인천 T2 / 20:00 → 5/13 16:00<br>예약번호 EM8HFD(철완), EM7D8F(나라) / 좌석 철완 52H, 나라 52J</li>
-              </ul>
+              <h3 class="overview-card-title">항공</h3>
+              <div class="overview-item-list">
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.03</div>
+                  <div class="overview-title">KE921 대한항공</div>
+                  <div class="overview-subtitle">인천 T2 → 리스본 T1 · 12:45 → 20:20</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>예약번호</th><td>EH6OZW</td></tr>
+                      <tr><th>좌석</th><td>철완 36H / 나라 36J</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.08</div>
+                  <div class="overview-title">VY3437 Vueling</div>
+                  <div class="overview-subtitle">리스본 T1 → 마요르카 · 08:50 → 11:45</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>예약번호</th><td>KFZL6V</td></tr>
+                      <tr><th>좌석</th><td>철완 1B / 나라 1A</td></tr>
+                      <tr><th>수하물</th><td>25kg x2</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.12</div>
+                  <div class="overview-title">I21652 Iberia Express</div>
+                  <div class="overview-subtitle">마요르카 → 마드리드 · 09:10 → 10:35</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>예약번호</th><td>LSLWY</td></tr>
+                      <tr><th>좌석</th><td>철완 10E / 나라 10F</td></tr>
+                      <tr><th>수하물</th><td>23kg x2</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.12</div>
+                  <div class="overview-title">KE914 대한항공</div>
+                  <div class="overview-subtitle">마드리드 T1 → 인천 T2 · 20:00 → 5/13 16:00</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>예약번호</th><td>철완 EM8HFD / 나라 EM7D8F</td></tr>
+                      <tr><th>좌석</th><td>철완 52H / 나라 52J</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
               <div class="map-links" style="margin-top:10px">
                 <a class="action-link map" href="https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" target="_blank" rel="noreferrer">인천 T2</a>
                 <a class="action-link map" href="https://maps.google.com/?q=Lisbon+Airport+Terminal+1" target="_blank" rel="noreferrer">리스본 T1</a>
@@ -1003,41 +1113,40 @@
               </div>
             </article>
             <article class="card">
-              <h3>숙소</h3>
-              <ul class="detail-list">
-                <li>
-                  <strong>Convent Square Lisbon</strong><br>
-                  투숙 5/3 - 5/8 / 전액 결제 완료<br>
-                  체크인 15:00 / 체크아웃 12:00
-                  <div class="location-cell" style="margin-top:8px">
-                    <span>주소: Rua Dom Antão de Almada 4, Lisbon</span>
-                    <button class="copy-button" type="button" data-copy="Rua Dom Antão de Almada 4, Lisbon">주소 복사</button>
-                  </div>
-                  <div class="location-cell" style="margin-top:6px">
-                    <span>전화: +351 218 295 200</span>
-                    <button class="copy-button" type="button" data-copy="+351 218 295 200">전화 복사</button>
-                  </div>
-                  <div class="map-links" style="margin-top:8px">
+              <h3 class="overview-card-title">숙소</h3>
+              <div class="overview-item-list">
+                <section class="overview-item">
+                  <div class="overview-kicker">Lisbon · 2026.05.03 - 05.08</div>
+                  <div class="overview-title">Convent Square Lisbon</div>
+                  <div class="overview-subtitle">전액 결제 완료 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>주소</th><td><div class="location-cell"><span>Rua Dom Antão de Almada 4, Lisbon</span><button class="copy-button" type="button" data-copy="Rua Dom Antão de Almada 4, Lisbon">복사</button></div></td></tr>
+                      <tr><th>전화</th><td><div class="location-cell"><span>+351 218 295 200</span><button class="copy-button" type="button" data-copy="+351 218 295 200">복사</button></div></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="map-links" style="margin-top:10px">
                     <a class="action-link map" href="https://maps.google.com/?cid=7850292069258072457" target="_blank" rel="noreferrer">Convent Square 구글맵</a>
                   </div>
-                </li>
-                <li>
-                  <strong>Fontsanta Hotel Thermal Spa</strong><br>
-                  투숙 5/8 - 5/12 / 잔여금 35.20 EUR 현장 결제<br>
-                  체크인 15:00 / 체크아웃 12:00 (5/12 05:40 얼리 체크아웃 예정)
-                  <div class="location-cell" style="margin-top:8px">
-                    <span>주소: Ctra. Campos a Colònia de Sant Jordi, km 8</span>
-                    <button class="copy-button" type="button" data-copy="Ctra. Campos a Colònia de Sant Jordi, km 8">주소 복사</button>
-                  </div>
-                  <div class="location-cell" style="margin-top:6px">
-                    <span>전화: +34 971 655 016</span>
-                    <button class="copy-button" type="button" data-copy="+34 971 655 016">전화 복사</button>
-                  </div>
-                  <div class="map-links" style="margin-top:8px">
+                  <div class="overview-hotel-map-slot" id="overviewHotelMapLisbon"></div>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">Mallorca · 2026.05.08 - 05.12</div>
+                  <div class="overview-title">Fontsanta Hotel Thermal Spa</div>
+                  <div class="overview-subtitle">잔여금 35.20 EUR 현장 결제 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>주소</th><td><div class="location-cell"><span>Ctra. Campos a Colònia de Sant Jordi, km 8</span><button class="copy-button" type="button" data-copy="Ctra. Campos a Colònia de Sant Jordi, km 8">복사</button></div></td></tr>
+                      <tr><th>전화</th><td><div class="location-cell"><span>+34 971 655 016</span><button class="copy-button" type="button" data-copy="+34 971 655 016">복사</button></div></td></tr>
+                      <tr><th>메모</th><td>5/12 05:40 얼리 체크아웃 예정</td></tr>
+                    </tbody>
+                  </table>
+                  <div class="map-links" style="margin-top:10px">
                     <a class="action-link map" href="https://maps.google.com/?cid=2233528644058998346" target="_blank" rel="noreferrer">Fontsanta 구글맵</a>
                   </div>
-                </li>
-              </ul>
+                  <div class="overview-hotel-map-slot" id="overviewHotelMapMallorca"></div>
+                </section>
+              </div>
             </article>
           </div>
         </section>
@@ -1296,15 +1405,15 @@
           ]
         },
         {
-          title: "마요르카 카타마란 + 북서부",
-          copy: "Fontsanta에서 팔마 마리나 카타마란 후 발데모사·데야를 거쳐 복귀하는 동선",
-          href: "https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Valldemossa/Dei%C3%A0/Fontsanta+Hotel+Thermal+Spa/",
-          path: "color:0x23a26dcc|weight:5|Fontsanta Hotel Thermal Spa|La Lonja Marina Palma|Valldemossa|Deià|Fontsanta Hotel Thermal Spa",
+          title: "마요르카 카타마란 + 팔마 해안",
+          copy: "Fontsanta에서 팔마 마리나 카타마란 후 라 세우와 Portixol 해안가를 거쳐 복귀하는 동선",
+          href: "https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Catedral+de+Mallorca/Portixol/Fontsanta+Hotel+Thermal+Spa/",
+          path: "color:0x23a26dcc|weight:5|Fontsanta Hotel Thermal Spa|La Lonja Marina Palma|Catedral de Mallorca|Portixol|Fontsanta Hotel Thermal Spa",
           markers: [
             "color:0x23a26d|label:F|Fontsanta Hotel Thermal Spa",
             "color:0x2d7ff9|label:L|La Lonja Marina Palma",
-            "color:0xe25468|label:V|Valldemossa",
-            "color:0x6f5cff|label:D|Deià"
+            "color:0xe25468|label:C|Catedral de Mallorca",
+            "color:0x6f5cff|label:P|Portixol"
           ]
         },
         {
@@ -1347,12 +1456,14 @@
         {
           id: "0505",
           label: "5/5 (화)",
-          title: "리스본 벨렘 지구 + 루프탑 디너",
+          title: "리스본 벨렘 + 야외 석양",
           items: [
             { time: "10:00", type: "sight", title: "제로니무스 수도원", summary: "성수기 대기 길어서 사전 예약이 안전해요.", move: "호텔에서 벨렘 이동", location: "Jerónimos Monastery Lisbon", details: ["화~일 09:30~17:30 / 약 10€"], tip: "사전 예약 필수", reservation: { label: "제로니무스 예약", href: "https://www.mosteirojeronimos.gov.pt/en/visit/plan-your-visit/" }, map: "https://maps.google.com/?cid=9760810247707356141" },
             { time: "12:00", type: "food", title: "Pastéis de Belém + 강변 자유 점심", summary: "웨이팅 후 포장해서 강변에서 먹어도 좋아요.", move: "수도원 인근 도보 이동", location: "Pastéis de Belém", details: ["매일 08:00~21:00 / 약 1.5€/개"], map: "https://maps.google.com/?cid=18442230332396508773" },
             { time: "14:00", type: "sight", title: "발견 기념비 + 타구스 강변 산책", summary: "벨렘 구간 마무리 산책.", move: "강변 도보 이동", location: "Padrão dos Descobrimentos Lisbon", details: [], map: "https://maps.google.com/?q=Padrão+dos+Descobrimentos+Lisbon" },
-            { time: "20:00", type: "food", title: "SUD Lisboa Terrazza — 일몰 루프탑 디너", summary: "이번 여행 식당 예약 핵심 1순위.", move: "저녁 시간대 택시/우버 이동", location: "SUD Lisboa Terrazza", details: ["예산: 1인 60~90€", "일몰: 20:40"], warning: "20:00 슬롯 경쟁 심함. 즉시 예약 권장.", reservation: { label: "SUD 예약", href: "https://sudlisboa.com/reservas/" }, map: "https://maps.google.com/?cid=11345109858595221778" }
+            { time: "16:30", type: "tip", title: "호텔 복귀 후 잠깐 휴식", summary: "벨렘 일정 후 옷 갈아입고 해질 무렵 다시 나가요.", move: "호텔 복귀", location: "Convent Square Lisbon", details: [] },
+            { time: "19:00", type: "sight", title: "Miradouro da Senhora do Monte 석양", summary: "야외 전망 중심 허니문 코스. 이동 부담 크면 Santa Catarina로 대체해도 좋아요.", move: "택시/우버 이동 후 전망 포인트 도보", location: "Miradouro da Senhora do Monte Lisbon", details: [["대안", "Miradouro de Santa Catarina"], ["포인트", "도시 전경 + 석양"]], tip: "체력 여유가 적으면 Santa Catarina가 더 가볍습니다.", alternative: { label: "Santa Catarina 지도", href: "https://maps.google.com/?q=Miradouro+de+Santa+Catarina+Lisbon" }, map: "https://maps.google.com/?q=Miradouro+da+Senhora+do+Monte+Lisbon" },
+            { time: "20:30", type: "food", title: "전망대 근처 가벼운 저녁", summary: "파인 다이닝 대신 산책 흐름을 유지하는 가벼운 저녁.", move: "도보 또는 짧은 이동", location: "Graça Lisbon", details: ["당일 컨디션 따라 자유 선택"] }
           ]
         },
         {
@@ -1410,7 +1521,7 @@
         {
           id: "0510",
           label: "5/10 (일)",
-          title: "카타마란 + 팔마 시내",
+          title: "카타마란 + 팔마 해안 산책",
           items: [
             { time: "08:00", type: "critical", title: "⚠ Fontsanta 호텔 출발", summary: "수영복 착용 후 출발. 갈아입을 옷과 비치 타월 챙기기.", move: "렌터카로 팔마 이동", location: "Fontsanta Hotel Thermal Spa", details: ["팔마까지 약 40분"], map: "https://maps.google.com/?cid=2233528644058998346" },
             { time: "08:45", type: "transit", title: "팔마 도착 — La Lonja 마리나 근처 주차", summary: "짐은 차에 두고 이동 준비.", move: "마리나 인근 주차 후 도보 이동", location: "La Lonja Marina Palma", details: [], map: "https://maps.google.com/?q=La+Lonja+Marina+Palma" },
@@ -1419,10 +1530,10 @@
             { time: "13:30", type: "transit", title: "마리나 귀환", summary: "차로 돌아가 갈아입기.", move: "마리나 하선 후 주차장 이동", location: "La Lonja Marina Palma", details: [], map: "https://maps.google.com/?q=La+Lonja+Marina+Palma" },
             { time: "14:00", type: "food", title: "팔마 구시가지 자유 점심", summary: "경로 안 눈에 띄는 곳 자유 식사.", move: "마리나에서 도보 이동", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
             { time: "15:00", type: "sight", title: "라 세우 대성당 외관 + 해안가 사진", summary: "일요일은 내부 관람 불가.", move: "구시가지 도보 이동", location: "Catedral de Mallorca La Seu Palma", details: ["일요일 내부 휴무", "외관 관람/사진만 가능 (무료)"], warning: "내부 입장 일정으로 착각하지 않도록 주의.", map: "https://maps.google.com/?cid=6056387022241497514" },
-            { time: "15:30", type: "sight", title: "팔마 구시가지 골목 산책", summary: "벨베르 성 방향 또는 아라비아 구역 자유 산책.", move: "구시가지 도보", location: "Palma Old Town Mallorca", details: [], map: "https://maps.google.com/?q=Palma+old+town" },
-            { time: "17:30", type: "transit", title: "발데모사 드라이브", summary: "팔마에서 약 20분.", move: "렌터카 이동", location: "Valldemossa Mallorca", details: ["마을 산책 + 카페"], map: "https://maps.google.com/?q=Valldemossa+Mallorca" },
-            { time: "19:00", type: "sight", title: "데야 마을", summary: "해질 무렵 분위기 좋은 구간.", move: "발데모사에서 약 20분 이동", location: "Deià Mallorca", details: ["저녁 식사는 발데모사/데야 경로 안 로컬 식당 자유 선택"], map: "https://maps.google.com/?q=Deià+Mallorca" },
-            { time: "20:00", type: "transit", title: "Fontsanta 호텔 복귀", summary: "일정 마무리.", move: "렌터카 복귀", location: "Fontsanta Hotel Thermal Spa", details: ["카타마란 취소 정책: 5/9 09:30 전 전액 환불 가능"], map: "https://maps.google.com/?cid=2233528644058998346" }
+            { time: "15:30", type: "sight", title: "팔마 해안 산책", summary: "카테드랄 주변 해안가와 구시가지 골목을 느슨하게 걷는 시간.", move: "구시가지 도보", location: "Palma Waterfront Mallorca", details: ["라 세우 주변 해안 산책 중심"], map: "https://maps.google.com/?q=Palma+waterfront+Mallorca" },
+            { time: "17:30", type: "sight", title: "Portixol 쪽 야외 시간", summary: "해 질 무렵 바다 쪽에서 쉬는 가벼운 마무리.", move: "렌터카 또는 짧은 택시 이동", location: "Portixol Mallorca", details: [["포인트", "해안 산책 + 바다 뷰"], ["짧은 버전", "피곤하면 라 세우 주변까지만 보고 복귀"]], tip: "카타마란 후 피곤하면 이 구간은 바로 생략해도 됩니다.", map: "https://maps.google.com/?q=Portixol+Mallorca" },
+            { time: "18:00", type: "tip", title: "선택 일정: 발데모사·데야", summary: "체력이 아주 좋을 때만 넣는 후보 코스. 기본 일정에서는 제외해요.", move: "선택 시 렌터카 이동", location: "Valldemossa or Deià Mallorca", details: ["기본안은 Portixol 또는 팔마 해안 산책 후 복귀"], warning: "이 일정까지 넣으면 하루가 다시 빡빡해져요.", map: "https://maps.google.com/?q=Valldemossa+Mallorca" },
+            { time: "19:30", type: "transit", title: "Fontsanta 호텔 복귀", summary: "야외 위주 일정 마무리.", move: "렌터카 복귀", location: "Fontsanta Hotel Thermal Spa", details: ["카타마란 취소 정책: 5/9 09:30 전 전액 환불 가능"], map: "https://maps.google.com/?cid=2233528644058998346" }
           ]
         },
         {
@@ -1486,7 +1597,6 @@
           id: "booking",
           title: "예약 필수",
           items: [
-            { id: "booking_1", title: "SUD Lisboa 루프탑 디너 5/5 20:00", note: "일몰 슬롯 경쟁 심함", urgency: "지금 바로", href: "https://sudlisboa.com/reservas/" },
             { id: "booking_2", title: "페나 궁전 입장권 5/6", note: "시간 슬롯 고정형이라 사전 예매 권장", urgency: "지금 바로", href: "https://www.visitsintra.travel/en/buy-tickets" },
             { id: "booking_3", title: "제로니무스 수도원 입장권 5/5", note: "성수기 대기 회피용 사전 예매", urgency: "지금 바로", href: "https://www.mosteirojeronimos.gov.pt/en/visit/plan-your-visit/" },
             { id: "booking_4", title: "Fontsanta 스파 트리트먼트", note: "커플 패키지 문의", urgency: "이번 주", href: "mailto:info@fontsantahotel.com" },
@@ -1525,7 +1635,7 @@
             { id: "clothes_2", title: "비치 샌들", note: "마요르카 해변용", urgency: "출발 전" },
             { id: "clothes_3", title: "수영복 (두 명 모두)", note: "Fontsanta 온천, Es Trenc, Caló des Moro", urgency: "지금 바로" },
             { id: "clothes_4", title: "가벼운 겉옷 또는 가디건", note: "5월 유럽 저녁은 쌀 수 있음. 특히 리스본", urgency: "출발 전" },
-            { id: "clothes_5", title: "파인 다이닝용 외출복", note: "Fontsanta 레스토랑 5/11, SUD Lisboa", urgency: "출발 전" },
+            { id: "clothes_5", title: "저녁 외출복", note: "BAHR 5/7, Fontsanta 레스토랑 5/11", urgency: "출발 전" },
             { id: "clothes_6", title: "자외선 차단 의류", note: "마요르카 해변 장시간 노출", urgency: "출발 전" }
           ]
         },
@@ -1574,7 +1684,7 @@
             { id: "car_2", title: "Record Go 예약서 저장", note: "예약번호 75/2026-25992", urgency: "출발 전" },
             { id: "car_3", title: "마요르카 공항 렌터카 구역 위치 확인", note: "Record Go 카운터 위치 미리 파악", urgency: "출발 전" },
             { id: "car_4", title: "구글맵 오프라인 지도 다운로드", note: "마요르카 전체 + 팔마 시내. 현지 데이터 끊길 때 대비", urgency: "지금 바로" },
-            { id: "car_5", title: "주요 경로 미리 저장", note: "La Lonja 마리나, 카타마란 미팅포인트, Valldemossa, Deià, Fontsanta, 공항", urgency: "출발 전" },
+            { id: "car_5", title: "주요 경로 미리 저장", note: "La Lonja 마리나, 카타마란 미팅포인트, 라 세우, Portixol, Fontsanta, 공항", urgency: "출발 전" },
             { id: "car_6", title: "반납 전 주유 확인", note: "공항 10km 이내 주유소. Repsol 또는 Cepsa. 영수증 보관", urgency: "현지에서" }
           ]
         },
@@ -1603,6 +1713,8 @@
       const routeMapFrameEl = document.getElementById("routeMapFrame");
       const mapPreviewHelpEl = document.getElementById("mapPreviewHelp");
       const mapPreviewGridEl = document.getElementById("mapPreviewGrid");
+      const overviewHotelMapLisbonEl = document.getElementById("overviewHotelMapLisbon");
+      const overviewHotelMapMallorcaEl = document.getElementById("overviewHotelMapMallorca");
       const hmChecklistEl = document.getElementById("hmChecklist");
       const hmProgressCountEl = document.getElementById("hmProgressCount");
       const hmProgressPercentEl = document.getElementById("hmProgressPercent");
@@ -1651,6 +1763,18 @@
         params.append("markers", "color:orange|label:M|Mallorca Spain");
         params.append("markers", "color:green|label:D|Madrid Spain");
         params.append("path", "color:0x6750a4ff|weight:4|Incheon International Airport Terminal 2|Lisbon Portugal|Mallorca Spain|Madrid Spain|Incheon International Airport Terminal 2");
+        return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
+      }
+
+      function buildOverviewSingleLocationStaticMapUrl(location, apiKey) {
+        const params = new URLSearchParams({
+          size: "1200x680",
+          scale: "2",
+          maptype: "roadmap",
+          style: "feature:poi|visibility:simplified",
+          key: apiKey
+        });
+        params.append("markers", `color:red|${location}`);
         return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
       }
 
@@ -1741,6 +1865,50 @@
             </div>
           </article>
         `).join("");
+      }
+
+      function renderOverviewHotelMaps() {
+        const apiKey = (window.TRIP_MAPS_API_KEY || "").trim();
+        if (!overviewHotelMapLisbonEl || !overviewHotelMapMallorcaEl) return;
+        if (!apiKey) {
+          const fallback = `
+            <div class="map-preview-note">
+              숙소 지도 미리보기는 Google Static Maps API 키를 연결하면 표시됩니다.
+            </div>
+          `;
+          overviewHotelMapLisbonEl.innerHTML = fallback;
+          overviewHotelMapMallorcaEl.innerHTML = fallback;
+          return;
+        }
+
+        const hotelCards = [
+          {
+            title: "Convent Square Lisbon",
+            copy: "리스본 도심 거점 숙소. 공항과 도심 산책 동선 체크용 지도.",
+            href: "https://maps.google.com/?cid=7850292069258072457",
+            location: "Convent Square Lisbon, Rua Dom Antão de Almada 4, Lisbon"
+          },
+          {
+            title: "Fontsanta Hotel Thermal Spa",
+            copy: "마요르카 남동부 베이스 숙소. 공항, 카타마란, 해변 이동의 중심점.",
+            href: "https://maps.google.com/?cid=2233528644058998346",
+            location: "Fontsanta Hotel Thermal Spa, Ctra. Campos a Colònia de Sant Jordi km 8, Mallorca"
+          }
+        ];
+
+        const renderCard = (card) => `
+          <article class="map-card">
+            <img class="map-card-image" src="${buildOverviewSingleLocationStaticMapUrl(card.location, apiKey)}" alt="${card.title} 지도 미리보기" />
+            <div class="map-card-body">
+              <h3 class="map-card-title">${card.title}</h3>
+              <p class="map-card-copy">${card.copy}</p>
+              <a class="map-card-link" href="${card.href}" target="_blank" rel="noreferrer">Google Maps 열기</a>
+            </div>
+          </article>
+        `;
+
+        overviewHotelMapLisbonEl.innerHTML = renderCard(hotelCards[0]);
+        overviewHotelMapMallorcaEl.innerHTML = renderCard(hotelCards[1]);
       }
 
       function renderSchedule() {
@@ -2028,6 +2196,7 @@
         renderRouteOverviewMap();
         renderDateTabs();
         renderMapPreviews();
+        renderOverviewHotelMaps();
         renderSchedule();
         loadChecklistState();
         renderChecklist();
