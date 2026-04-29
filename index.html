@@ -1044,7 +1044,7 @@
           <p class="section-label">Route View</p>
           <div class="map-frame" id="routeMapFrame"></div>
           <div class="map-links">
-            <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/" target="_blank" rel="noreferrer">신트라 + 호카곶</a>
+            <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Cabo+da+Roca/Cascais/Lisbon/" target="_blank" rel="noreferrer">호카곶 + 카스카이스</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Catedral+de+Mallorca/Portixol/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 팔마 해안</a>
             <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
           </div>
@@ -1394,14 +1394,14 @@
 
       const staticMapCards = [
         {
-          title: "신트라 + 호카곶",
-          copy: "Rossio 출발 이후 페나 궁전과 호카곶을 잇는 당일치기 핵심 동선",
-          href: "https://www.google.com/maps/dir/Rossio+Station+Lisbon/Pena+Palace/Cabo+da+Roca/",
-          path: "color:0x2d7ff9cc|weight:5|Rossio Station Lisbon|Pena Palace|Cabo da Roca",
+          title: "호카곶 + 카스카이스",
+          copy: "리스본에서 출발해 호카곶과 카스카이스 해안 산책으로 이어지는 야외 중심 당일치기",
+          href: "https://www.google.com/maps/dir/Rossio+Station+Lisbon/Cabo+da+Roca/Cascais/Lisbon/",
+          path: "color:0x2d7ff9cc|weight:5|Rossio Station Lisbon|Cabo da Roca|Cascais|Lisbon",
           markers: [
             "color:0x2d7ff9|label:R|Rossio Station Lisbon",
-            "color:0x6f5cff|label:P|Pena Palace",
-            "color:0xe25468|label:C|Cabo da Roca"
+            "color:0xe25468|label:C|Cabo da Roca",
+            "color:0x6f5cff|label:S|Cascais"
           ]
         },
         {
@@ -1469,15 +1469,16 @@
         {
           id: "0506",
           label: "5/6 (수)",
-          title: "신트라 + 호카곶 당일치기",
+          title: "호카곶 + 카스카이스 당일치기",
           items: [
-            { time: "07:30", type: "critical", title: "⚠ 호시우역 출발 — 신트라행 기차", summary: "CP 리스본 도시근교열차(신트라선)는 좌석 지정/온라인 좌석예약이 아니라 역 매표소·발권기 구매 후 탑승 전 검표(Validate) 방식이에요.", move: "호텔에서 호시우역 도보 이동 후 탑승", location: "Rossio Station Lisbon", details: ["약 40분", "탑승 전 카드/티켓 Validate 필수 (미검표 과태료 대상)", "역에 판매수단이 없을 때만 차내 검사원 즉시 요청 구매 가능"], warning: "늦으면 페나 궁전 대기시간 급증.", map: "https://maps.google.com/?q=Rossio+Station+Lisbon" },
-            { time: "09:00", type: "sight", title: "페나 궁전", summary: "입장 슬롯 시간 고정이라 사전 구매가 필수예요.", move: "신트라역 도착 후 버스/택시 이동", location: "National Palace of Pena Sintra", details: ["09:30~18:30 / 약 20€"], reservation: { label: "페나 궁전 예약", href: "https://www.visitsintra.travel/en/buy-tickets" }, map: "https://maps.google.com/?cid=8585860342190914392" },
-            { time: "12:00", type: "food", title: "신트라 마을 자유 점심", summary: "동선 안에서 카페 아무 곳이나 들어가도 좋아요.", move: "마을 중심 도보 이동", location: "Sintra village center", details: [], map: "https://maps.google.com/?q=Sintra+village+center" },
-            { time: "13:30", type: "transit", title: "신트라 → 호카곶 버스 이동", summary: "Carris Metropolitana 1253 (Sintra Estação via Cabo da Roca) 노선 기준으로 이동해요. 좌석 예약제/온라인 지정예약은 없고 시간표 확인 후 탑승 방식입니다.", move: "Sintra (Estação) 정류장 탑승", location: "Sintra Station North Bus Stop", details: ["주요 경로: Sintra Estação ↔ Cabo da Roca (1253)", "결제: 차내 결제(navegante a bordo) 또는 사전충전 카드(navegante pre-pago)", "요금은 노선 카테고리/연도 정책에 따라 변동 가능"], tip: "당일 오전에 공식 노선 페이지로 첫차/막차 시각 재확인." },
-            { time: "14:30", type: "sight", title: "Cabo da Roca", summary: "유럽 최서단 포인트.", move: "버스 하차 후 전망 포인트 도보", location: "Cabo da Roca Portugal", details: ["무료"], warning: "바람 매우 강함. 절벽 가장자리 접근 주의.", map: "https://maps.google.com/?cid=10753145278933283759" },
-            { time: "16:30", type: "transit", title: "호카곶 → 리스본 귀환", summary: "1253으로 신트라역 복귀 후 CP 신트라선으로 리스본 복귀.", move: "버스 + 기차 연계", location: "Lisbon city center", details: ["버스/기차 모두 좌석예약 없이 탑승", "기차 재탑승 전 Validate 재확인"] },
-            { time: "19:00", type: "food", title: "시아두 또는 호텔 근처 자유 저녁", summary: "당일 체력에 맞춰 경로 안에서 가볍게 선택.", move: "도보 또는 짧은 우버 이동", location: "Chiado Lisbon", details: [] }
+            { time: "08:00", type: "critical", title: "⚠ 리스본 출발", summary: "카스카이스 방면으로 먼저 이동해 해안선 기준 하루를 시작해요.", move: "Cais do Sodré행 지하철/도보 후 카스카이스행 열차", location: "Cais do Sodré Station Lisbon", details: ["카스카이스행 열차 약 40분", "승차 전 티켓/카드 Validate 확인"], warning: "열차 시간 여유 있게 잡기." },
+            { time: "09:15", type: "sight", title: "카스카이스 도착 + 해변 산책", summary: "마리나와 해안 산책로를 먼저 천천히 걷는 구성.", move: "카스카이스 역 도보 이동", location: "Cascais Portugal", details: ["마리나, 해변, 구시가지 가볍게 보기"], map: "https://maps.google.com/?q=Cascais+Portugal" },
+            { time: "11:30", type: "food", title: "카스카이스 점심", summary: "바다 보이는 테라스나 구시가지에서 느긋하게 식사.", move: "구시가지 도보", location: "Cascais Old Town", details: ["해산물 또는 가벼운 브런치 자유 선택"], map: "https://maps.google.com/?q=Cascais+Old+Town" },
+            { time: "13:30", type: "transit", title: "카스카이스 → 호카곶 이동", summary: "해안 도로를 따라 호카곶으로 이동하는 구간.", move: "1624 버스 또는 택시/우버", location: "Cabo da Roca Portugal", details: ["1624 노선 기준", "버스 간격은 당일 재확인 권장"], tip: "시간 아끼려면 택시/우버도 현실적이에요." },
+            { time: "14:30", type: "sight", title: "Cabo da Roca", summary: "유럽 최서단 포인트에서 바람과 절벽 풍경을 보는 핵심 시간.", move: "정류장 하차 후 전망 포인트 도보", location: "Cabo da Roca Portugal", details: ["무료"], warning: "바람 매우 강함. 절벽 가장자리 접근 주의.", map: "https://maps.google.com/?cid=10753145278933283759" },
+            { time: "16:00", type: "tip", title: "선택 일정: 카스카이스 추가 산책", summary: "체력이 남으면 카스카이스로 다시 돌아가 해안 쪽을 더 걸어도 좋아요.", move: "1624 버스 또는 택시 이동", location: "Cascais Portugal", details: ["짧은 버전은 호카곶 후 바로 리스본 복귀"] },
+            { time: "17:00", type: "transit", title: "호카곶 또는 카스카이스 → 리스본 복귀", summary: "컨디션에 따라 카스카이스 경유 또는 바로 복귀해요.", move: "버스 + 열차 연계", location: "Lisbon city center", details: ["카스카이스역에서 리스본행 열차", "대중교통 시간표는 당일 오전 재확인"] },
+            { time: "19:30", type: "food", title: "호텔 근처 자유 저녁", summary: "야외 일정 마무리 후 가볍게 식사.", move: "도보 또는 짧은 이동", location: "Chiado Lisbon", details: [] }
           ]
         },
         {
@@ -1597,7 +1598,6 @@
           id: "booking",
           title: "예약 필수",
           items: [
-            { id: "booking_2", title: "페나 궁전 입장권 5/6", note: "시간 슬롯 고정형이라 사전 예매 권장", urgency: "지금 바로", href: "https://www.visitsintra.travel/en/buy-tickets" },
             { id: "booking_3", title: "제로니무스 수도원 입장권 5/5", note: "성수기 대기 회피용 사전 예매", urgency: "지금 바로", href: "https://www.mosteirojeronimos.gov.pt/en/visit/plan-your-visit/" },
             { id: "booking_4", title: "Fontsanta 스파 트리트먼트", note: "커플 패키지 문의", urgency: "이번 주", href: "mailto:info@fontsantahotel.com" },
             { id: "booking_5", title: "Fontsanta 레스토랑 5/11", note: "체크인 후 프런트 직접 요청", urgency: "현지에서" },
