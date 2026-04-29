@@ -755,9 +755,21 @@
 
       .location-cell {
         display: flex;
+        flex-direction: column;
         align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
+        gap: 8px;
+      }
+
+      .location-cell > span {
+        display: block;
+        width: 100%;
+        word-break: break-word;
+      }
+
+      .location-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
       .copy-button {
@@ -1960,11 +1972,17 @@
       const renderValueCell = (value, copyValue = "", href = "") => {
         const safeValue = escapeHtml(value);
         const safeCopy = escapeHtml(copyValue || value);
+        const actions = [];
+        if (safeCopy) {
+          actions.push(`<button class="copy-button" type="button" data-copy="${safeCopy}">복사</button>`);
+        }
+        if (href) {
+          actions.push(`<a class="action-link map inline" href="${href}" target="_blank" rel="noreferrer">구글맵 열기</a>`);
+        }
         return `
           <div class="location-cell">
             <span>${safeValue}</span>
-            ${safeCopy ? `<button class="copy-button" type="button" data-copy="${safeCopy}">복사</button>` : ""}
-            ${href ? `<a class="action-link map inline" href="${href}" target="_blank" rel="noreferrer">구글맵 열기</a>` : ""}
+            ${actions.length ? `<div class="location-actions">${actions.join("")}</div>` : ""}
           </div>
         `;
       };
