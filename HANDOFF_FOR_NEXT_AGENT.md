@@ -8,7 +8,7 @@
 
 기준 커밋:
 
-- `3156523` `Refresh handoff and deployment docs`
+- `2a4c0f2` `Increase spacing in confirmed info overview`
 
 ## 2. 프로젝트 목적
 
@@ -25,7 +25,7 @@
 
 현재 사용자 화면 기준 실제 동작 코드는 아래 파일에 거의 모두 들어 있습니다.
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/index.html`
 
 즉, 작업 시작 시 가장 먼저 봐야 할 파일은 `index.html`입니다.
 
@@ -41,6 +41,8 @@
 - Record Go 픽업/반납 상세 반영
 - BAHR 예약 관련 문구 반영
 - Cassai Beach House 점심 플랜 추가
+- 5/6 일정을 카스카이스 → 호카곶 흐름으로 조정
+- 개요 탭 확정 정보 간격 재조정
 - 현재 검증된 예약 상태를 README에 문서화
 
 즉, 지금 프로젝트는 단순 일정표를 넘어서 **예약 검증과 지도 미리보기까지 포함한 상태**입니다.
@@ -55,6 +57,7 @@
 - `Iberia Express I21652` 검증 완료
 - `Record Go 75/2026-25992` 일정표 반영 완료
 - `Luxury Catamaran 2026-05-10 09:30 - 13:30` 검증 완료
+- `BAHR & Terrace 2026-05-07` 예약 반영 완료
 
 아직 원문 대조가 끝나지 않은 항목:
 
@@ -89,7 +92,7 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 현재 원격에는 아래 파일이 있습니다.
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 
 이 파일은 현재 배포용 Google Static Maps API 키를 로드하는 파일입니다.
 
@@ -103,7 +106,7 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 자세한 지도 작업 문서는 아래를 참고하면 됩니다.
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/GOOGLE_MAPS_INTEGRATION_GUIDE.md`
+- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_MAPS_INTEGRATION_GUIDE.md`
 
 ## 8. 현재 UI/내용 주의사항
 
@@ -128,19 +131,19 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 
 ### 가장 중요
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
-- `/Users/hanwha/Documents/GitHub/honeymoon/README.md`
+- `/Users/chulwan/Documents/GitHub/europe/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/README.md`
 
 ### 설정/배포 관련
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.example.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.example.js`
 
 ### 참고/레거시 가능성 있음
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/app.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/styles.css`
+- `/Users/chulwan/Documents/GitHub/europe/app.js`
+- `/Users/chulwan/Documents/GitHub/europe/styles.css`
 
 현재 사용자 기준 실제 배포 화면은 `index.html` 단일 파일 중심으로 이해하는 게 가장 안전합니다.
 

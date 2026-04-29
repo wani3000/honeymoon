@@ -6,7 +6,7 @@
 
 현재 배포 기준 실제 동작 코드는 아래 파일이 중심입니다.
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/index.html`
 
 현재 구조에서는 다음이 이미 반영되어 있습니다.
 
@@ -33,9 +33,9 @@ window.TRIP_MAPS_API_KEY
 
 현재 저장소 상태:
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.example.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.example.js`
 
 주의:
 
@@ -108,6 +108,7 @@ window.TRIP_MAPS_API_KEY
 최신 원격 기준으로 아래 내용이 이미 반영되어 있습니다.
 
 - 리스본 / 마요르카 / 마드리드 전체 경로 개요
+- 5/6 리스본 출발 카스카이스 + 호카곶 동선
 - 마요르카 북서부 + 카타마란 동선
 - Record Go 픽업/반납 위치와 마요르카 공항 동선
 - 일정 카드별 이전 위치 → 현재 위치 기준 Static Maps 경로 생성
@@ -162,8 +163,8 @@ window.TRIP_MAPS_API_KEY
 
 ## 10. 관련 파일
 
-- `/Users/hanwha/Documents/GitHub/honeymoon/index.html`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.public.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/config.example.js`
-- `/Users/hanwha/Documents/GitHub/honeymoon/README.md`
+- `/Users/chulwan/Documents/GitHub/europe/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/config.public.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.js`
+- `/Users/chulwan/Documents/GitHub/europe/config.example.js`
+- `/Users/chulwan/Documents/GitHub/europe/README.md`

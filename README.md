@@ -4,7 +4,7 @@
 
 배포: [https://wani3000.github.io/honeymoon/](https://wani3000.github.io/honeymoon/)
 
-원격 동기화 기준 커밋: `3156523` (`Refresh handoff and deployment docs`)
+원격 동기화 기준 커밋: `2a4c0f2` (`Increase spacing in confirmed info overview`)
 
 ## 기능
 
@@ -35,6 +35,8 @@
   티켓번호 `SYS-T129013463`
   예약확인 `SYS-90344486`
   총 결제금액 `EUR 198.00`
+- `BAHR & Terrace` `2026-05-07` 저녁 예약
+  예약번호 `5S9TP63HYP8R`
 
 카타마란 일정에는 아래 내용까지 반영되어 있습니다.
 
@@ -51,6 +53,8 @@
 - 주요 일정/체크리스트/예약 데이터는 모두 `index.html`에 있습니다.
 - 최근 작업은 `Record Go` 픽업/반납 칸에 예약번호, 보험, 결제금액, 연료정책, 영수증 규칙까지 일정표에 상세 반영한 것입니다.
 - `2026-05-10` 카타마란 예약 정보도 이메일/PDF 기준으로 반영된 상태입니다.
+- `2026-05-06` 일정은 현재 `신트라 중심`이 아니라 `카스카이스 → 호카곶` 흐름으로 조정되어 있습니다.
+- `2026-05-07` 저녁은 `BAHR & Terrace` 예약 확정 정보가 일정표에 반영되어 있습니다.
 - 문서 체크리스트에는 카타마란 티켓 PDF 저장과 여권 정보 제출 항목이 추가되어 있습니다.
 - 예약 체크리스트에는 카타마란 투어가 `완료` 상태 예약으로 추가되어 있습니다.
 - GitHub Pages 배포는 `main` 브랜치 푸시로 이루어집니다.
@@ -133,3 +137,8 @@ API Key의 `API restrictions`는 `Static Maps API`만 허용하세요.
 4. Referrer 제한에 실제 접속 도메인이 포함됨
 5. API 제한이 `Static Maps API`로 고정됨
 6. 배포 페이지에서 지도 미리보기 카드 이미지가 표시됨
+
+### 6) 현재 지도/일정 기준 메모
+
+- `5/6` 개요 지도와 일정표는 `Rossio Station Lisbon → Cabo da Roca → Cascais → Lisbon` 경로를 사용합니다.
+- `5/10` 마요르카 지도는 카타마란 집결지와 팔마 해안 동선을 포함합니다.
