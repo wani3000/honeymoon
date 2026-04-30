@@ -192,31 +192,31 @@ const data = {
     },
     {
       date: "5/6 (수)",
-      title: "신트라 + 호카곶 당일치기",
-      focus: "이른 열차로 신트라에 들어가고, 페나 궁전 후 호카곶으로 이동해 오후에 리스본으로 복귀하는 흐름.",
-      chips: ["기차", "사전 예약 필수"],
+      title: "카스카이스 + 호카곶 당일치기",
+      focus: "Cais do Sodre에서 카스카이스행 열차를 타고 해안 산책을 먼저 한 뒤, 호카곶으로 넘어가 오후에 리스본으로 복귀하는 흐름.",
+      chips: ["기차", "현장 구매 가능"],
       points: [
-        "호시우역에서 신트라까지 기차 약 40분",
-        "페나 궁전 입장권은 미리 확보해야 원하는 시간대가 남음",
-        "저녁은 체력에 따라 A Cevicheria 또는 근처 캐주얼 식사"
+        "Cais do Sodre역에서 카스카이스행 열차를 타면 되고, 예시로 08:20 출발이면 09:03 도착",
+        "역 자동발매기에서 Navegante 카드 0.50€ 구매 후 Zapping 2.05€ 충전이 가장 간단함",
+        "야간 공사 대체버스는 평일 21:50 이후만 해당해서 낮 일정은 보통 열차로 충분함"
       ],
       places: [
-        { name: "National Palace of Pena", href: "https://maps.google.com/?cid=8585860342190914392" },
+        { name: "Cais do Sodré Station", href: "https://maps.google.com/?q=Cais+do+Sodre+Station+Lisbon" },
         { name: "Cape Roca", href: "https://maps.google.com/?cid=10753145278933283759" },
-        { name: "A Cevicheria", href: "https://maps.google.com/?cid=249361683231044429" }
+        { name: "Cascais", href: "https://maps.google.com/?q=Cascais+Portugal" }
       ]
     },
     {
       date: "5/7 (목)",
       title: "미식 + 쇼핑 데이",
-      focus: "오전은 시내 쇼핑, 저녁은 Solar dos Presuntos 예약 디너에 집중하는 구성.",
+      focus: "Rossio에서 시작해 Rua Augusta와 Chiado를 도보로 잇고, 저녁은 BAHR 예약에 맞춰 같은 권역 안에서 마무리하는 구성.",
       chips: ["쇼핑", "예약 식당"],
       points: [
-        "시아두 지구 또는 LCM 아울렛 중심으로 여유 있게 이동",
-        "저녁 메인은 Arroz de Marisco",
-        "예약만 잡히면 하루 전체 난도가 확 내려감"
+        "Rossio → Rua Augusta → Chiado → BAHR 순서라 백트래킹이 거의 없음",
+        "호텔로 다시 돌아가지 말고 Chiado 근처에서 쉬다가 저녁으로 이어가는 편이 가장 편함",
+        "BAHR 예약 시간만 맞추면 도보만으로 충분히 소화 가능"
       ],
-      places: [{ name: "Solar dos Presuntos", href: "https://maps.google.com/?cid=6887572243664963168" }]
+      places: [{ name: "BAHR & Terrace", href: "https://maps.google.com/?q=Praça+Luís+de+Camões,+Lisboa,+1200-243,+Portugal" }]
     },
     {
       date: "5/8 (금)",
@@ -252,26 +252,26 @@ const data = {
     },
     {
       date: "5/10 (일)",
-      title: "북서부 드라이브 + 팔마 시내",
-      focus: "발데모사 드라이브 후 오후에는 팔마 대성당과 구시가지, 저녁은 El Camino 대신 일요일 가능한 대안 식당으로 정리.",
-      chips: ["드라이브", "팔마"],
+      title: "카타마란 + 팔마 해안",
+      focus: "아침 카타마란 집결이 메인이고, 오후에는 팔마 구시가지와 라 세우 주변을 가볍게 걷는 날.",
+      chips: ["카타마란", "팔마"],
       points: [
-        "산악 도로는 좁고 구불구불해 천천히 운전 필요",
-        "팔마는 14시 전후 도착 기준으로 움직이면 여유가 남음",
-        "El Camino는 일요일 휴무라 저녁은 La Bodeguita del Medio 또는 Marc Fosh로 변경"
+        "집결 스트레스를 줄이려면 Fontsanta에서 조금 더 일찍 출발하는 편이 안전함",
+        "카타마란 후에는 팔마 구시가지와 라 세우 외관 정도만 봐도 하루가 충분함",
+        "Portixol은 옵션이고, 발데모사·데야 같은 추가 장거리 드라이브는 넣지 않는 편이 좋음"
       ],
       places: [
-        { name: "Valldemossa", href: "https://maps.google.com/?cid=10540766082293436990" },
+        { name: "La Lonja Marina Charter", href: "https://maps.google.com/?q=La+Lonja+Marina+Charter+Muelle+de+la+lonja+07012+Palma" },
         { name: "Catedral La Seu", href: "https://maps.google.com/?cid=6056387022241497514" }
       ]
     },
     {
       date: "5/11 (월)",
       title: "완전한 호캉스",
-      focus: "늦잠, 조식, Es Trenc 해변, 마지막 스파와 호텔 레스토랑 디너까지 여유만 남기는 하루.",
+      focus: "늦잠, 조식, 마지막 스파와 호텔 레스토랑 디너가 메인이고 Es Trenc은 컨디션 좋을 때만 넣는 여유 일정.",
       chips: ["호캉스", "마지막 밤"],
       points: [
-        "Es Trenc 해변은 호텔에서 차로 약 10분",
+        "Es Trenc 해변은 호텔에서 차로 약 10분이지만 완전한 호캉스를 원하면 생략 가능",
         "비치 타월은 호텔 대여 가능",
         "새벽 체크아웃 대비해 저녁 전 짐 정리 완료"
       ],
