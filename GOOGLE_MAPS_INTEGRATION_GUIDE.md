@@ -7,6 +7,8 @@
 현재 배포 기준 실제 동작 코드는 아래 파일이 중심입니다.
 
 - `/Users/chulwan/Documents/GitHub/europe/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-details.js`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-search.js`
 
 현재 구조에서는 다음이 이미 반영되어 있습니다.
 
@@ -15,8 +17,10 @@
 - 일정표 카드별 Static Maps 미리보기
 - 일정표 카드별 `구글맵 열기` 버튼
 - 위치 복사 버튼
+- 주변 맛집 탭의 Google Places API 실시간 데이터 연동 준비
 
 즉, Google Maps는 이미 **외부 링크 수준이 아니라 Static Maps까지 연결된 상태**입니다.
+주변 맛집 탭은 `placeId`와 서버 API base가 들어오면 Google Places API의 최신 평점/주소/영업상태를 선택적으로 표시할 수 있습니다.
 
 ## 2. 실제 키 로딩 방식
 
@@ -31,17 +35,31 @@
 window.TRIP_MAPS_API_KEY
 ```
 
+주변 맛집 실시간 Places API 연동에 쓰는 전역 변수는 아래입니다.
+
+```js
+window.TRIP_PLACES_API_BASE
+```
+
+예시:
+
+```js
+window.TRIP_PLACES_API_BASE = "https://YOUR-VERCEL-PROJECT.vercel.app";
+```
+
 현재 저장소 상태:
 
 - `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.example.js`
+- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_PLACES_API_PLAN.md`
 
 주의:
 
 - `config.public.js`는 현재 배포용 키를 로드합니다.
 - `config.js`는 로컬 전용 파일입니다.
 - 필요하면 Google Cloud Console에서 referrer/API 제한을 먼저 점검하세요.
+- Places API 서버 키는 브라우저에 노출하지 말고 서버 환경변수 `GOOGLE_PLACES_API_KEY`로만 관리하세요.
 
 ## 3. 현재 지도 렌더링 진입점
 
@@ -55,6 +73,9 @@ window.TRIP_MAPS_API_KEY
 - `buildScheduleItemStaticMapUrl(item, prevItem, apiKey)`
 - `renderMapPreviews()`
 - `renderSchedule()`
+- `renderFoodGuide()`
+- `hydrateLiveFoodPlaces(places, regionId, categoryId)`
+- `getCachedLivePlace(place)`
 
 이 함수들이 모두 `index.html` 안 스크립트에 있습니다.
 
@@ -102,6 +123,37 @@ window.TRIP_MAPS_API_KEY
 - `markers`
 
 즉, 일정 카드 미리보기와 개요 탭 지도 카드는 서로 다른 레벨의 데이터 구조를 사용합니다.
+
+### 4-3. 주변 맛집 데이터
+
+주변 맛집 탭은 `foodPlaces` 배열을 사용합니다.
+
+현재 정적 데이터 필드는 아래와 같습니다.
+
+```js
+{
+  region: "lisbon-home",
+  category: "cafe",
+  name: "Nicolau Lisboa",
+  address: "Rua de São Nicolau 17, 1100-547 Lisboa, Portugal",
+  googleRating: "4.3",
+  tripadvisorRating: "4.1",
+  distance: "Convent Square에서 도보 약 5분",
+  description: "...",
+  signature: "...",
+  review: "...",
+  href: "https://www.google.com/maps/search/?api=1&query=..."
+}
+```
+
+Google Places API 연동 후에는 아래 필드를 추가하면 됩니다.
+
+```js
+placeId: "ChIJ..."
+```
+
+`placeId`가 있는 항목만 `/api/google-place-details`를 통해 실시간 Google 데이터를 가져옵니다.
+API base가 없거나 호출에 실패하면 기존 정적 데이터로 표시됩니다.
 
 ## 5. 현재 포함된 주요 지도 연동 내용
 
@@ -153,6 +205,14 @@ window.TRIP_MAPS_API_KEY
 3. `Static Maps API`만 허용되어 있는지
 4. 필요하면 키를 회전해야 하는지
 
+Places API 추가 시:
+
+1. `GOOGLE_PLACES_API_KEY`는 서버 환경변수로만 관리
+2. `Places API (New)`만 API 제한
+3. GitHub Pages 단독으로는 서버리스 API가 실행되지 않으므로 Vercel 또는 Cloudflare Workers 같은 보조 API 필요
+4. Google Places 콘텐츠는 장기 저장하지 말고, 저장 가능한 `placeId` 중심으로 관리
+5. Tripadvisor 평점은 Google Places API에서 제공하지 않으므로 수동 데이터로 유지
+
 ## 9. 테스트 체크리스트
 
 - `index.html`을 로컬에서 열었을 때 지도 이미지가 보이는지
@@ -160,11 +220,16 @@ window.TRIP_MAPS_API_KEY
 - 키가 없을 때 안내 문구가 뜨는지
 - 일정표 카드의 지도 미리보기 클릭 시 Google Maps로 이동하는지
 - 개요 탭의 지도 카드들이 모바일에서 깨지지 않는지
+- `window.TRIP_PLACES_API_BASE`가 비어 있어도 주변 맛집 탭이 기존 정적 데이터로 표시되는지
+- `placeId`가 있는 테스트 장소에서 실시간 Google 평점/주소가 표시되는지
 
 ## 10. 관련 파일
 
 - `/Users/chulwan/Documents/GitHub/europe/index.html`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-details.js`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-search.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.example.js`
 - `/Users/chulwan/Documents/GitHub/europe/README.md`
+- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_PLACES_API_PLAN.md`

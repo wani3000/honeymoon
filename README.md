@@ -4,7 +4,7 @@
 
 배포: [https://wani3000.github.io/honeymoon/](https://wani3000.github.io/honeymoon/)
 
-원격 동기화 기준 커밋: `2a4c0f2` (`Increase spacing in confirmed info overview`)
+최신 커밋 기준은 `git log -1 --oneline`으로 확인하세요. GitHub Pages 배포는 `main` 브랜치 푸시 후 자동 반영됩니다.
 
 ## 기능
 
@@ -13,6 +13,7 @@
 - 체크리스트 진행률 및 `localStorage` 저장
 - 스페인어/포르투갈어 여행 회화
 - Google Static Maps API 기반 지도 미리보기(옵션)
+- 주변 맛집 탭 50곳 후보 및 Google Places API 실시간 연동 준비
 
 ## 실행
 
@@ -90,6 +91,9 @@
 - `config.public.js`: 현재 배포용 Google Static Maps API 키 파일
 - `config.js`: 로컬 전용 API 키 파일(버전 관리 제외)
 - `config.example.js`: 키 파일 예시
+- `api/google-place-details.js`: Google Places API 상세정보 서버리스 프록시
+- `api/google-place-search.js`: Google Places `placeId` 검색용 서버리스 프록시
+- `GOOGLE_PLACES_API_PLAN.md`: Places API 적용 계획과 남은 작업
 - `styles.css`, `app.js`: 보조/이전 분리 파일
 
 ## 다음 에이전트 시작 순서
@@ -154,3 +158,23 @@ API Key의 `API restrictions`는 `Static Maps API`만 허용하세요.
 
 - `5/6` 개요 지도와 일정표는 `Rossio Station Lisbon → Cabo da Roca → Cascais → Lisbon` 경로를 사용합니다.
 - `5/10` 마요르카 지도는 카타마란 집결지와 팔마 해안 동선을 포함합니다.
+
+## Google Places API 준비 상태
+
+주변 맛집 탭은 현재 정적 데이터 50곳을 표시합니다.
+
+실시간 Google 평점/주소/영업상태를 붙이려면 GitHub Pages와 별도로 서버리스 API가 필요합니다. 이 저장소에는 Vercel 등에서 실행 가능한 `/api/google-place-details.js`, `/api/google-place-search.js`가 준비되어 있습니다.
+
+필요 환경변수:
+
+```bash
+GOOGLE_PLACES_API_KEY=...
+```
+
+프론트 설정:
+
+```js
+window.TRIP_PLACES_API_BASE = "https://YOUR-VERCEL-PROJECT.vercel.app";
+```
+
+상세 절차는 `GOOGLE_PLACES_API_PLAN.md`를 기준으로 진행하세요.

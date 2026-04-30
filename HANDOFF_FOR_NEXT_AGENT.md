@@ -4,11 +4,8 @@
 
 ## 1. 현재 기준 상태
 
-이 문서 업데이트 직전 로컬 `main` 브랜치는 GitHub `origin/main` 최신 상태로 fast-forward 동기화했습니다.
-
-기준 커밋:
-
-- `2a4c0f2` `Increase spacing in confirmed info overview`
+이 문서 업데이트 직전 로컬 `main` 브랜치는 GitHub `origin/main` 최신 상태를 기준으로 작업했습니다.
+최신 기준 커밋은 작업 시작 시 `git log -1 --oneline`으로 확인하세요.
 
 ## 2. 프로젝트 목적
 
@@ -19,6 +16,7 @@
 - 개요
 - 일정표
 - 예약 체크
+- 주변 맛집
 - 여행 회화
 
 ## 3. 실제 소스 오브 트루스
@@ -45,6 +43,8 @@
 - 5/6 일정을 카스카이스 → 호카곶 흐름으로 조정
 - 개요 탭 확정 정보 간격 재조정
 - 현재 검증된 예약 상태를 README에 문서화
+- 주변 맛집 탭 50곳 정적 데이터 추가
+- Google Places API 실시간 연동 준비 코드 추가
 
 즉, 지금 프로젝트는 단순 일정표를 넘어서 **예약 검증과 지도 미리보기까지 포함한 상태**입니다.
 
@@ -110,6 +110,18 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 자세한 지도 작업 문서는 아래를 참고하면 됩니다.
 
 - `/Users/chulwan/Documents/GitHub/europe/GOOGLE_MAPS_INTEGRATION_GUIDE.md`
+- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_PLACES_API_PLAN.md`
+
+Google Places API 관련 현재 상태:
+
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-details.js`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-search.js`
+- `window.TRIP_PLACES_API_BASE`
+- 서버 환경변수 `GOOGLE_PLACES_API_KEY`
+
+GitHub Pages만으로는 `/api/*` 서버리스 함수가 실행되지 않습니다. 실시간 Google 평점/주소/영업상태를 쓰려면 Vercel 또는 Cloudflare Workers 같은 보조 API 배포가 필요합니다.
+
+다음 작업자는 `GOOGLE_PLACES_API_PLAN.md`를 보고 Vercel API 배포 → 환경변수 설정 → `placeId` 검색/확정 → `foodPlaces`에 `placeId` 추가 순서로 진행하세요.
 
 ## 8. 현재 UI/내용 주의사항
 
@@ -142,6 +154,9 @@ README 기준 현재 Gmail 커넥터 상태는 아래와 같습니다.
 - `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.example.js`
+- `/Users/chulwan/Documents/GitHub/europe/GOOGLE_PLACES_API_PLAN.md`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-details.js`
+- `/Users/chulwan/Documents/GitHub/europe/api/google-place-search.js`
 
 ### 참고/레거시 가능성 있음
 
@@ -175,7 +190,8 @@ GitHub Pages는 `main` 브랜치 루트(`/`) 기반입니다.
 2. `index.html`
 3. `config.public.js`
 4. `GOOGLE_MAPS_INTEGRATION_GUIDE.md`
-5. `HANDOFF_FOR_NEXT_AGENT.md`
+5. `GOOGLE_PLACES_API_PLAN.md`
+6. `HANDOFF_FOR_NEXT_AGENT.md`
 
 ## 12. 로컬 백업 메모
 
