@@ -2056,6 +2056,11 @@
                       <tr><th>요금</th><td>1,642.21 EUR + 40.00 EUR = 1,682.21 EUR</td></tr>
                       <tr><th>결제</th><td>호텔에서 결제 처리 · full prepayment required<span class="ko-translation">한글: 호텔에서 결제 처리 · 전액 선결제 필요</span></td></tr>
                       <tr><th>정책</th><td>Non refundable · no-show 시 보증금 환불 불가 · pedestrian street access only<span class="ko-translation">한글: 환불 불가 · 노쇼 시 보증금 환불 불가 · 보행자 전용 거리라 차량 문앞 진입 불가</span></td></tr>
+                      <tr><th>도착 안내</th><td>도착 예정 시간을 호텔에 미리 알려주면 준비에 도움이 돼요. WhatsApp 또는 +351 218 295 200으로 연락 가능하며, WhatsApp은 메시지만 가능하고 통화는 불가해요.</td></tr>
+                      <tr><th>교통편</th><td>지하철로 접근 가능하지만 짐이 많으면 호텔 프라이빗 트랜스퍼를 요청할 수 있어요. 차량 이용 시 호텔 앞 진입은 불가해요.</td></tr>
+                      <tr><th>주차</th><td>Hotel Mundial 주차장 권장 · 호텔에서 도보 약 3분 · 1일 25€ · 사전 예약 불가 · 당일 현장 가능 여부에 따라 이용</td></tr>
+                      <tr><th>게스트 투어</th><td>Lisbon Unfolded: A Private Journey Through Eight Centuries · 숙박객 전용 프라이빗 투어 · 매주 금요일 16:00~18:00 · 영어 진행 · 공휴일 제외 · 시작 2시간 전까지 컨시어지 등록</td></tr>
+                      <tr><th>호텔 추천</th><td>시그니처 오리 크로켓과 클로이스터 휴식 추천. 호텔이 리스본 맛집, 관광지, 휴식 명소도 안내해줄 수 있어요.</td></tr>
                     </tbody>
                   </table>
                   <div class="map-links" style="margin-top:10px">
@@ -2697,10 +2702,11 @@
           label: "5/3 (일)",
           title: "인천 출국 → 리스본 도착",
           items: [
-            { time: "10:00", type: "critical", title: "인천 T2 도착 — KE921 체크인", summary: "출발 2시간 45분 전 도착 기준으로 여유 있게 수속을 시작해요. 대한항공 e-티켓 기준 예약번호와 좌석, 수하물 정보를 같이 확인하면 좋아요.", move: "공항까지 자차 또는 공항버스로 이동", duration: "출발지 기준 상이", location: "Incheon International Airport Terminal 2", details: [["항공", "KE921 (대한항공)"], ["예약번호", "EH6OZW"], ["좌석", "철완 36H / 나라 36J"], ["티켓번호", "철완 1802353367488 / 나라 1802353263946"], ["클래스", "철완 E / 나라 E"], ["수하물", "1 Piece x2"]], warning: "반드시 오전 10시까지 공항 도착.", map: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" },
+            { time: "06:40", type: "critical", title: "⚠ 집 → 인천공항 T2 리무진버스 탑승", summary: "출국일 아침 집 근처 정류장에서 인천공항 제2터미널로 가는 예매 완료 리무진버스를 타야 해요. 좌석이 지정된 시외우등 버스라 출발 시간 전에 정류장에 도착해 표와 좌석을 확인하세요.", move: "리무진버스 이동", duration: "버스 약 2시간 내외 예상", location: "포레스티아 서문", places: [{ name: "출발 정류장", location: "포레스티아 서문", href: "https://www.google.com/maps/search/?api=1&query=%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%95%84%20%EC%84%9C%EB%AC%B8" }, { name: "도착 터미널", location: "Incheon International Airport Terminal 2", href: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" }], details: [["예매", "공항 리무진버스 예매 완료"], ["구간", "[경기] 포레스티아 서문 → [인천] 인천공항(제2터미널)"], ["출발일시", "2026.05.03 (일) 06:40"], ["승차구분", "일반 2명"], ["좌석", "10, 11번"], ["버스회사", "경기고속"], ["버스등급", "시외우등"], ["결제금액", "23,800원"], ["메모", "전체 예매 2건 합계 47,600원"]], warning: "버스 출발 시간은 항공편보다 앞단에서 고정된 시간이므로 06:30 전후에는 정류장에 도착해 있어야 해요.", map: "https://www.google.com/maps/search/?api=1&query=%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%95%84%20%EC%84%9C%EB%AC%B8" },
+            { time: "10:00", type: "critical", title: "인천 T2 도착 — KE921 체크인", summary: "출발 2시간 45분 전 도착 기준으로 여유 있게 수속을 시작해요. 대한항공 e-티켓 기준 예약번호와 좌석, 수하물 정보를 같이 확인하면 좋아요.", move: "리무진버스 하차 후 공항 내부 이동", duration: "도보 약 10~15분", location: "Incheon International Airport Terminal 2", details: [["항공", "KE921 (대한항공)"], ["예약번호", "EH6OZW"], ["좌석", "철완 36H / 나라 36J"], ["티켓번호", "철완 1802353367488 / 나라 1802353263946"], ["클래스", "철완 E / 나라 E"], ["수하물", "1 Piece x2"]], warning: "반드시 오전 10시까지 공항 도착.", map: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" },
             { time: "12:45", type: "flight", title: "KE921 출발", summary: "인천 T2에서 리스본 T1으로 이동하는 장거리 구간이에요. 티켓 PDF 기준으로 두 사람 모두 일반석 스탠다드 클래스이며, 보잉 787-9 기종으로 15시간 35분 비행해요.", move: "항공 이동", duration: "항공 15시간 35분", location: "Incheon International Airport Terminal 2", details: [["구간", "ICN T2 → LIS T1"], ["시간", "03 May 2026 12:45 → 20:20"], ["소요", "15시간 35분"], ["기종", "Boeing 787-9"], ["좌석", "철완 36H / 나라 36J"], ["유효기간", "철완 03 May 2027 / 나라 03 May 2027"]], map: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" },
             { time: "20:20", type: "flight", title: "리스본 T1 도착", summary: "도착 후 시내 호텔까지 택시/우버로 이동해요.", move: "공항에서 택시 또는 우버 이동", duration: "택시/우버 약 20~30분", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: [["예산", "20€ 내외"]], warning: "호텔은 보행자 구역이라 도로 하차 후 도보 진입.", map: "https://www.google.com/maps/search/?api=1&query=Lisbon%20Humberto%20Delgado%20Airport%20Terminal%201" },
-            { time: "22:00", type: "sight", title: "Convent Square Lisbon 체크인 + 근처 가벼운 저녁", summary: "도착일은 체력 우선으로 호텔 근처 카페에서 가볍게 먹고 휴식해요. 보행자 전용 진입이라 도로변 하차 후 도보 이동을 기준으로 생각하면 돼요.", move: "하차 후 호텔 체크인", duration: "도보 약 3~5분", location: "Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal", details: [["숙소명", "Convent Square Lisbon, Vignette Collection"], ["예약번호", "41605443"], ["전화", "351218295200"], ["이메일", "stay@conventsquarehotel.com"], ["객실", "1 King Deluxe Cloister View"], ["투숙", "1 room / 2 adults / 3 May 2026 - 8 May 2026"], ["요금", "1,682.21 EUR (5박 1,642.21 + 부가요금 40.00)"], ["결제", "호텔에서 처리 / full prepayment required"], ["정책", "non refundable / no-show 시 보증금 환불 불가"]], warning: "호텔 접근은 pedestrian street only라 차량이 문앞까지 들어가지 못해요.", map: "https://maps.google.com/?cid=7850292069258072457" }
+            { time: "22:00", type: "sight", title: "Convent Square Lisbon 체크인 + 근처 가벼운 저녁", summary: "도착일은 체력 우선으로 호텔 근처 카페에서 가볍게 먹고 휴식해요. 보행자 전용 진입이라 도로변 하차 후 도보 이동을 기준으로 생각하면 돼요.", move: "하차 후 호텔 체크인", duration: "도보 약 3~5분", location: "Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal", details: [["숙소명", "Convent Square Lisbon, Vignette Collection"], ["예약번호", "41605443"], ["전화", "351218295200"], ["이메일", "stay@conventsquarehotel.com"], ["객실", "1 King Deluxe Cloister View"], ["투숙", "1 room / 2 adults / 3 May 2026 - 8 May 2026"], ["요금", "1,682.21 EUR (5박 1,642.21 + 부가요금 40.00)"], ["결제", "호텔에서 처리 / full prepayment required"], ["정책", "non refundable / no-show 시 보증금 환불 불가"], ["도착 안내", "도착 예정 시간을 호텔에 미리 알려주면 준비에 도움이 돼요."], ["연락", "WhatsApp 또는 +351 218 295 200 / WhatsApp은 메시지만 가능, 통화 불가"], ["교통편", "지하철 접근 가능 / 짐이 많으면 호텔 프라이빗 트랜스퍼 요청 가능"], { label: "권장 주차", value: "Hotel Mundial Parking, Praça Martim Moniz 2, 1100-341 Lisboa, Portugal", copyValue: "Hotel Mundial Parking, Praça Martim Moniz 2, 1100-341 Lisboa, Portugal", href: "https://www.google.com/maps/search/?api=1&query=Hotel%20Mundial%20Parking%2C%20Pra%C3%A7a%20Martim%20Moniz%202%2C%201100-341%20Lisboa%2C%20Portugal" }, ["주차 요금", "Hotel Mundial 주차장 1일 25€ / 호텔까지 도보 약 3분 / 사전 예약 불가, 당일 현장 가능 여부 기준"], ["호텔 추천", "시그니처 오리 크로켓과 클로이스터 휴식 추천"], ["숙박객 투어", "Lisbon Unfolded: A Private Journey Through Eight Centuries / 금요일 16:00~18:00 / 영어 / 공휴일 제외 / 시작 2시간 전까지 컨시어지 등록"]], warning: "호텔 접근은 pedestrian street only라 차량이 문앞까지 들어가지 못해요.", tip: "호텔 팀이 리스본 맛집, 관광지, 휴식 명소도 안내해줄 수 있어요.", map: "https://maps.google.com/?cid=7850292069258072457" }
           ]
         },
         {
@@ -2846,6 +2852,15 @@
             { time: "17:00", type: "flight", title: "마드리드 T1 KE914 체크인", summary: "귀국편 수속이에요. 대한항공 e-티켓 PDF 기준으로 예약번호, 좌석, 티켓번호를 같이 확인해두면 체크인 때 덜 헷갈려요.", move: "공항 내부 이동", duration: "도보 약 5~10분", location: "Madrid Barajas Airport Terminal 1", details: [["항공편", "KE914 (대한항공)"], ["예약번호", "철완 EM8HFD / 나라 EM7D8F"], ["좌석", "철완 52H / 나라 52J"], ["티켓번호", "철완 1802353365545 / 나라 1802353263946"], ["클래스", "철완 X / 나라 E"], ["수하물", "1 Piece x2"]], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+Terminal+1" },
             { time: "20:00", type: "flight", title: "KE914 출발 (마드리드 → 인천)", summary: "귀국편 출발이에요. 마드리드 T1에서 인천 T2까지 13시간 비행으로, 두 사람 모두 보잉 787-9 기종 탑승 정보가 확인돼 있어요.", move: "항공 이동", duration: "항공 13시간", location: "Madrid Barajas Airport Terminal 1", details: [["구간", "MAD T1 → ICN T2"], ["시간", "12 May 2026 20:00 → 13 May 2026 16:00"], ["소요", "13시간 00분"], ["기종", "Boeing 787-9"], ["유효기간", "철완 21 Oct 2025 - 21 Oct 2026 / 나라 12 May 2027"]], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+Terminal+1" }
           ]
+        },
+        {
+          id: "0513",
+          label: "5/13 (수)",
+          title: "인천 도착 → 집",
+          items: [
+            { time: "16:00", type: "flight", title: "인천 T2 도착", summary: "KE914 귀국편 도착 후 입국 심사, 수하물 수취, 세관 통과를 진행해요. 리무진버스 출발까지 시간이 있으니 짐을 찾은 뒤 서두르지 말고 승차 위치를 확인하면 됩니다.", move: "입국 심사 + 수하물 수취", duration: "공항 처리 약 60~90분 예상", location: "Incheon International Airport Terminal 2", details: [["항공편", "KE914"], ["구간", "MAD T1 → ICN T2"], ["도착", "2026.05.13 (수) 16:00"], ["다음 일정", "18:30 리무진버스 탑승"]], map: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" },
+            { time: "18:30", type: "critical", title: "⚠ 인천공항 T2 → 집 리무진버스 탑승", summary: "귀국 후 인천공항 제2터미널에서 포레스티아 서문으로 가는 예매 완료 리무진버스를 타면 돼요. 항공 도착 후 입국 절차와 짐 찾는 시간을 감안해도 18:30 출발이라 비교적 여유가 있습니다.", move: "리무진버스 이동", duration: "버스 약 2시간 내외 예상", location: "Incheon International Airport Terminal 2", places: [{ name: "출발 터미널", location: "Incheon International Airport Terminal 2", href: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" }, { name: "도착 정류장", location: "포레스티아 서문", href: "https://www.google.com/maps/search/?api=1&query=%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8B%B0%EC%95%84%20%EC%84%9C%EB%AC%B8" }], details: [["예매", "공항 리무진버스 예매 완료"], ["구간", "[인천] 인천공항(제2터미널) → [경기] 포레스티아 서문"], ["출발일시", "2026.05.13 (수) 18:30"], ["승차구분", "일반 2명"], ["좌석", "16, 17번"], ["버스회사", "경기고속"], ["버스등급", "시외우등"], ["결제금액", "23,800원"], ["메모", "전체 예매 2건 합계 47,600원"]], warning: "입국 후에는 먼저 버스 승차 위치를 확인하고, 탑승 전 화장실과 물 구매까지 여유 있게 마무리하세요.", map: "https://maps.google.com/?q=Incheon+International+Airport+Terminal+2" }
+          ]
         }
       ];
 
@@ -2868,7 +2883,10 @@
             { id: "docs_9", title: "Vueling 앱 설치", note: "온라인 체크인 출발 2시간 전까지", urgency: "출발 전" },
             { id: "docs_10", title: "Iberia Express 온라인 체크인", note: "checkin.iberiaexpress.com / 출발 전까지", urgency: "출발 전" },
             { id: "docs_11", title: "카타마란 티켓 PDF 저장", note: "SYS-T129013463 / 오프라인 열람 가능하게 저장", urgency: "출발 전" },
-            { id: "docs_12", title: "카타마란 여권 정보 제출", note: "sailpalmaofficial@gmail.com 으로 두 사람 모두 여권 영문 이름, 여권번호, 국적, 생년월일, 만료일, 여권 사진면 전달", urgency: "지금 바로" }
+            { id: "docs_12", title: "카타마란 여권 정보 제출", note: "sailpalmaofficial@gmail.com 으로 두 사람 모두 여권 영문 이름, 여권번호, 국적, 생년월일, 만료일, 여권 사진면 전달", urgency: "지금 바로" },
+            { id: "docs_13", title: "여권 사진면 사본 저장", note: "휴대폰 사진첩 + 클라우드 + 오프라인 파일앱에 저장. 종이 사본 1부도 캐리어에 분산", urgency: "출발 전" },
+            { id: "docs_14", title: "예약 확인서 오프라인 폴더 만들기", note: "항공권, 호텔, 렌터카, 카타마란, Noobai, BAHR, 리무진버스 예매 화면을 한 폴더에 저장", urgency: "출발 전" },
+            { id: "docs_15", title: "긴급 연락처 메모", note: "여행자보험 연락처, 카드사 분실신고, 호텔 전화번호, 한국 대사관 연락처를 메모앱에 저장", urgency: "출발 전" }
           ]
         },
         {
@@ -2890,7 +2908,11 @@
             { id: "money_2", title: "현지 결제 시 EUR 선택 숙지", note: "원화(KRW) 결제 DCC 뜨면 무조건 거절. 손해", urgency: "지금 바로" },
             { id: "money_3", title: "렌터카용 본인명의 실물 신용카드 준비", note: "가상카드 X. 철완 본인 명의 카드만 유효", urgency: "지금 바로" },
             { id: "money_4", title: "Fontsanta 잔여금 35.20 EUR 준비", note: "체크인 시 현장 결제", urgency: "출발 전" },
-            { id: "money_5", title: "마드리드 공항 보관/택시 비용 대비", note: "T1 짐 보관소 + 택시/Cabify 이동 비용 여유 있게 준비", urgency: "현지에서" }
+            { id: "money_5", title: "마드리드 공항 보관/택시 비용 대비", note: "T1 짐 보관소 + 택시/Cabify 이동 비용 여유 있게 준비", urgency: "현지에서" },
+            { id: "money_6", title: "현금 200~300 EUR 준비", note: "소액권 위주로 준비. 현금만 받는 카페/바, 팁, 비상 택시비 대비", urgency: "출발 전" },
+            { id: "money_7", title: "해외 결제 가능 카드 2장 분산", note: "주카드 + 예비카드를 서로 다른 가방에 분산 보관. 해외 원화결제 차단/알림 설정 확인", urgency: "출발 전" },
+            { id: "money_8", title: "카드사 해외사용 알림 확인", note: "해외 결제 차단 여부, 앱 푸시/문자 알림, 분실신고 메뉴 위치 확인", urgency: "출발 전" },
+            { id: "money_9", title: "동전/소액권 지갑 준비", note: "유료 화장실, 락커, 소액 팁, 작은 매장 결제 대비", urgency: "출발 전" }
           ]
         },
         {
@@ -2903,7 +2925,10 @@
             { id: "baggage_4", title: "귀중품 기내 분산 보관", note: "여권, 카드, 현금은 기내 가방에. 위탁 수하물에 넣지 말 것", urgency: "지금 바로" },
             { id: "baggage_5", title: "수하물 잠금장치 TSA", note: "유럽도 TSA 자물쇠 권장", urgency: "출발 전" },
             { id: "baggage_6", title: "수하물 택 및 네임태그 부착", note: "이름, 연락처, 이메일 기재", urgency: "출발 전" },
-            { id: "baggage_7", title: "접이식 보스턴백 준비", note: "빈 보스턴백은 24인치 안에 넣어가고, 귀국 전 쇼핑짐/빨래 분산용으로 사용. 별도 위탁 3번째 가방으로 쓰면 대한항공 추가요금 주의", urgency: "출발 전" }
+            { id: "baggage_7", title: "접이식 보스턴백 준비", note: "빈 보스턴백은 24인치 안에 넣어가고, 귀국 전 쇼핑짐/빨래 분산용으로 사용. 별도 위탁 3번째 가방으로 쓰면 대한항공 추가요금 주의", urgency: "출발 전" },
+            { id: "baggage_8", title: "캐리어 저울 또는 휴대용 저울", note: "Vueling 25kg, Iberia 23kg, 귀국 수하물 무게 초과 방지", urgency: "출발 전" },
+            { id: "baggage_9", title: "세탁물/젖은 옷 분리백", note: "해변, 온천, 카타마란 후 젖은 수영복과 빨래 분리용", urgency: "출발 전" },
+            { id: "baggage_10", title: "기내 1박 생존 파우치", note: "칫솔, 렌즈/안경, 약, 충전 케이블, 속옷 1벌을 기내 가방에 분산", urgency: "출발 전" }
           ]
         },
         {
@@ -2915,7 +2940,10 @@
             { id: "clothes_3", title: "수영복 (두 명 모두)", note: "Fontsanta 온천, Es Trenc, Caló des Moro", urgency: "지금 바로" },
             { id: "clothes_4", title: "가벼운 겉옷 또는 가디건", note: "5월 유럽 저녁은 쌀 수 있음. 특히 리스본", urgency: "출발 전" },
             { id: "clothes_5", title: "저녁 외출복", note: "Noobai 5/4, BAHR 5/7, Fontsanta 레스토랑 5/11", urgency: "출발 전" },
-            { id: "clothes_6", title: "자외선 차단 의류", note: "마요르카 해변 장시간 노출", urgency: "출발 전" }
+            { id: "clothes_6", title: "자외선 차단 의류", note: "마요르카 해변 장시간 노출", urgency: "출발 전" },
+            { id: "clothes_7", title: "선글라스", note: "벨렘 강변, 호카곶, 마요르카 해변, 카타마란 햇빛 대비", urgency: "출발 전" },
+            { id: "clothes_8", title: "모자 또는 캡", note: "마요르카 해변과 카타마란 투어 자외선 대비", urgency: "출발 전" },
+            { id: "clothes_9", title: "얇은 잠옷/라운지웨어", note: "호텔 휴식과 장거리 이동 후 편하게 입을 옷", urgency: "출발 전" }
           ]
         },
         {
@@ -2927,7 +2955,10 @@
             { id: "beauty_3", title: "립밤", note: "장거리 비행 + 유럽 건조한 날씨", urgency: "출발 전" },
             { id: "beauty_4", title: "수분 미스트", note: "15시간 장거리 비행용", urgency: "출발 전" },
             { id: "beauty_5", title: "비치 타월", note: "Fontsanta 호텔에서 빌려줌. 별도 챙길 필요 없음", urgency: "현지에서" },
-            { id: "beauty_6", title: "멀미약", note: "마요르카 북서부 산악 드라이브 구불구불함", urgency: "출발 전" }
+            { id: "beauty_6", title: "멀미약", note: "마요르카 북서부 산악 드라이브 구불구불함", urgency: "출발 전" },
+            { id: "beauty_7", title: "칫솔/치약/치실", note: "장거리 비행과 레이어오버 대비. 기내용은 100ml 이하", urgency: "출발 전" },
+            { id: "beauty_8", title: "렌즈/안경/인공눈물", note: "장거리 비행 건조함과 해변 바람 대비. 인공눈물은 기내용 파우치에", urgency: "출발 전" },
+            { id: "beauty_9", title: "손소독 티슈/물티슈", note: "공항, 기차, 렌터카, 해변 이동 중 손 닦을 때 유용", urgency: "출발 전" }
           ]
         },
         {
@@ -2939,7 +2970,9 @@
             { id: "medicine_3", title: "지사제", note: "해산물 많이 먹는 여행", urgency: "출발 전" },
             { id: "medicine_4", title: "밴드 및 습윤밴드", note: "돌바닥 장거리 워킹 대비", urgency: "출발 전" },
             { id: "medicine_5", title: "모기 기피제", note: "5월 남유럽 모기 있음", urgency: "출발 전" },
-            { id: "medicine_6", title: "처방약 챙기기", note: "복용 중인 약 있으면 처방전 사본도 함께", urgency: "지금 바로" }
+            { id: "medicine_6", title: "처방약 챙기기", note: "복용 중인 약 있으면 처방전 사본도 함께", urgency: "지금 바로" },
+            { id: "medicine_7", title: "감기약/목캔디", note: "장거리 비행과 에어컨, 일교차 대비", urgency: "출발 전" },
+            { id: "medicine_8", title: "알레르기약", note: "음식, 꽃가루, 먼지 반응 대비. 평소 먹던 약 기준", urgency: "출발 전" }
           ]
         },
         {
@@ -2949,12 +2982,18 @@
             { id: "device_1", title: "스페인 포르투갈 어댑터", note: "유럽 Type C 220V. 한국 플러그와 다름", urgency: "지금 바로" },
             { id: "device_2", title: "보조배터리", note: "기내 반입만 가능. 위탁 X. 100Wh 이하", urgency: "출발 전" },
             { id: "device_3", title: "카메라 및 여분 배터리", note: "마요르카 해변, 신트라, 리스본 골목", urgency: "출발 전" },
-            { id: "device_4", title: "유심 또는 포켓 와이파이", note: "유럽 유심 미리 구매 추천. 스페인 + 포르투갈 커버 확인", urgency: "지금 바로" },
+            { id: "device_4", title: "eSIM 구매 및 설치", note: "스페인 + 포르투갈 모두 커버되는 유럽 eSIM으로 준비. 출국 전 설치하고 현지 도착 후 활성화", urgency: "지금 바로" },
             { id: "device_5", title: "이어폰", note: "15시간 + 13시간 장거리 비행용", urgency: "출발 전" },
             { id: "device_6", title: "충전 케이블 여분", note: "분실 대비", urgency: "출발 전" },
             { id: "device_7", title: "방수 케이스", note: "마요르카 해변 스마트폰 보호", urgency: "출발 전" },
             { id: "device_8", title: "우버 앱 설치", note: "리스본 / 마드리드 공항 이동과 시내 이동 대비", urgency: "출발 전" },
-            { id: "device_9", title: "FREE NOW 앱 설치", note: "리스본 새벽 공항 이동 대안 확보", urgency: "출발 전" }
+            { id: "device_9", title: "FREE NOW 앱 설치", note: "리스본 새벽 공항 이동 대안 확보", urgency: "출발 전" },
+            { id: "device_10", title: "eSIM QR/활성화 코드 저장", note: "QR 코드와 주문 메일을 사진첩/파일앱에 저장. 현지 데이터 안 될 때도 열 수 있게 준비", urgency: "출발 전" },
+            { id: "device_11", title: "데이터 로밍 설정 확인", note: "한국 유심 데이터 로밍은 꺼두고, 현지 도착 후 eSIM 회선 데이터 로밍만 켜기", urgency: "출발 전" },
+            { id: "device_12", title: "구글맵 오프라인 지도 저장", note: "리스본, 카스카이스, 마요르카, 마드리드 지도 미리 다운로드", urgency: "출발 전" },
+            { id: "device_13", title: "번역 앱 오프라인 언어 저장", note: "스페인어, 포르투갈어, 한국어 오프라인 번역팩 저장", urgency: "출발 전" },
+            { id: "device_14", title: "멀티 충전기 또는 2포트 충전기", note: "호텔에서 휴대폰 2대, 보조배터리, 카메라 배터리 동시 충전 대비", urgency: "출발 전" },
+            { id: "device_15", title: "리무진버스 예매 화면 캡처", note: "5/3 좌석 10/11, 5/13 좌석 16/17 예매 화면을 오프라인 저장", urgency: "출발 전" }
           ]
         },
         {
@@ -2967,7 +3006,9 @@
             { id: "car_4", title: "구글맵 오프라인 지도 다운로드", note: "마요르카 전체 + 팔마 시내. 현지 데이터 끊길 때 대비", urgency: "지금 바로" },
             { id: "car_5", title: "주요 경로 미리 저장", note: "La Lonja 마리나, 카타마란 미팅포인트, 라 세우, Portixol, Fontsanta, 공항", urgency: "출발 전" },
             { id: "car_6", title: "반납 전 주유 확인", note: "공항 10km 이내 주유소. Repsol 또는 Cepsa. 영수증 보관", urgency: "현지에서" },
-            { id: "car_7", title: "차량 픽업 즉시 외관 사진", note: "인수 직후 전방위 사진 촬영", urgency: "현지에서" }
+            { id: "car_7", title: "차량 픽업 즉시 외관 사진", note: "인수 직후 전방위 사진 촬영", urgency: "현지에서" },
+            { id: "car_8", title: "렌터카 내비 목적지 즐겨찾기", note: "Fontsanta, Caló des Moro, Cala Figuera, La Lonja Marina, Palma Airport, 주유소를 저장", urgency: "출발 전" },
+            { id: "car_9", title: "주차 결제용 카드/현금 준비", note: "Es Trenc, Palma 시내, 해변 주차장 결제 대비", urgency: "출발 전" }
           ]
         },
         {
@@ -2975,6 +3016,9 @@
           title: "현지 체크",
           items: [
             { id: "onsite_1", title: "Convent Square 보행자 구역 픽업 포인트 확인", note: "체크인 전후 차량 하차 위치 미리 확인", urgency: "현지에서" },
+            { id: "onsite_1a", title: "Convent Square 도착 예정 시간 공유", note: "WhatsApp 또는 +351 218 295 200으로 도착 예정 시간을 메시지로 알려두면 좋아요. WhatsApp은 메시지만 가능", urgency: "출발 전" },
+            { id: "onsite_1b", title: "Hotel Mundial 주차장 위치 저장", note: "차량 이용 시 권장 주차장. 호텔 도보 약 3분, 1일 25€, 사전 예약 불가", urgency: "출발 전" },
+            { id: "onsite_1c", title: "Convent Square 금요일 프라이빗 투어 확인", note: "Lisbon Unfolded 투어는 금요일 16:00~18:00 영어 진행. 원하면 시작 2시간 전까지 컨시어지 등록", urgency: "현지에서" },
             { id: "onsite_2", title: "Fontsanta 온천 서킷 포함 여부 확인", note: "체크인 시 Thermal circuit 포함 여부와 이용 가능 시간 확인", urgency: "현지에서" },
             { id: "onsite_3", title: "Fontsanta 스파/레스토랑 예약 재확인", note: "체크인 시 프런트에서 스파와 레스토랑 예약 상태 다시 확인", urgency: "현지에서" },
             { id: "onsite_4", title: "호텔 비치 타월 대여 요청", note: "Es Trenc / 카타마란 대비", urgency: "현지에서" },
@@ -2994,6 +3038,7 @@
           id: "daycheck",
           title: "당일 체크",
           items: [
+            { id: "daycheck_0", title: "5/3 06:40 집 앞 리무진버스 탑승", note: "포레스티아 서문 → 인천공항 T2. 경기고속 시외우등, 좌석 10/11번", urgency: "지금 바로" },
             { id: "daycheck_1", title: "5/3 출국 인천 T2 10:00 도착", note: "KE921 12:45 출발. 2시간 45분 여유", urgency: "지금 바로" },
             { id: "daycheck_2", title: "5/8 리스본 새벽 05:00 호텔 출발", note: "VY3437 08:50 출발. 공항 05:40 도착 목표", urgency: "지금 바로" },
             { id: "daycheck_3", title: "5/8 렌터카 픽업 서류 4종 준비", note: "국제면허 + 한국면허 + 여권 + 본인명의 실물카드", urgency: "지금 바로" },
@@ -3002,12 +3047,14 @@
             { id: "daycheck_5", title: "5/11 밤 귀국 짐 완전히 싸두기", note: "23kg 제한 확인", urgency: "지금 바로" },
             { id: "daycheck_6", title: "5/12 새벽 05:40 체크아웃", note: "잔여금 35.20 EUR 현장 결제", urgency: "지금 바로" },
             { id: "daycheck_7", title: "5/12 렌터카 반납 주유 영수증 지참", note: "06:30 반납", urgency: "지금 바로" },
-            { id: "daycheck_8", title: "5/12 15:30 전 마드리드 시내 출발", note: "택시/Cabify로 T1 복귀 시작", urgency: "지금 바로" }
+            { id: "daycheck_8", title: "5/12 15:30 전 마드리드 시내 출발", note: "택시/Cabify로 T1 복귀 시작", urgency: "지금 바로" },
+            { id: "daycheck_9", title: "5/13 18:30 귀국 리무진버스 탑승", note: "인천공항 T2 → 포레스티아 서문. 경기고속 시외우등, 좌석 16/17번", urgency: "현지에서" }
           ]
         }
       ];
 
       const checklistGroups = [
+        { id: "all", label: "전체", categoryIds: checklistCategories.map((category) => category.id) },
         { id: "docs", label: "서류&증명", categoryIds: ["docs"] },
         { id: "booking", label: "예약", categoryIds: ["booking"] },
         { id: "money", label: "금융", categoryIds: ["money"] },
@@ -3165,7 +3212,7 @@
 
       let activeFoodRegion = foodRegions[0].id;
       let activeFoodCategory = foodCategories[0].id;
-      let activeChecklistGroup = checklistGroups[0].id;
+      let activeChecklistGroup = "all";
 
       document.body.dataset.activePanel = "overview";
 
