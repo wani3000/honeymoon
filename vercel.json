@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "config.public.js", "use": "@vercel/static" },
+    { "src": "config.example.js", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" },
+    { "src": "api/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/google-place-search", "dest": "/api/google-place-search.js" },
+    { "src": "/api/google-place-details", "dest": "/api/google-place-details.js" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/config.public.js", "dest": "/config.public.js" },
+    { "src": "/config.example.js", "dest": "/config.example.js" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

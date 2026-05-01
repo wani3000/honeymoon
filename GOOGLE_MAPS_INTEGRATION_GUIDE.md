@@ -47,12 +47,19 @@ window.TRIP_PLACES_API_BASE
 window.TRIP_PLACES_API_BASE = "https://YOUR-VERCEL-PROJECT.vercel.app";
 ```
 
+현재 Vercel API base:
+
+```js
+window.TRIP_PLACES_API_BASE = "https://honeymoon-delta.vercel.app";
+```
+
 현재 저장소 상태:
 
 - `/Users/chulwan/Documents/GitHub/europe/config.public.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.js`
 - `/Users/chulwan/Documents/GitHub/europe/config.example.js`
 - `/Users/chulwan/Documents/GitHub/europe/GOOGLE_PLACES_API_PLAN.md`
+- `/Users/chulwan/Documents/GitHub/europe/vercel.json`
 
 주의:
 

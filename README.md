@@ -3,6 +3,7 @@
 모바일 중심 신혼여행 플래너 단일 페이지 프로젝트입니다.
 
 배포: [https://wani3000.github.io/honeymoon/](https://wani3000.github.io/honeymoon/)
+Vercel/API 배포: [https://honeymoon-delta.vercel.app/](https://honeymoon-delta.vercel.app/)
 
 최신 커밋 기준은 `git log -1 --oneline`으로 확인하세요. GitHub Pages 배포는 `main` 브랜치 푸시 후 자동 반영됩니다.
 
@@ -94,6 +95,7 @@
 - `api/google-place-details.js`: Google Places API 상세정보 서버리스 프록시
 - `api/google-place-search.js`: Google Places `placeId` 검색용 서버리스 프록시
 - `GOOGLE_PLACES_API_PLAN.md`: Places API 적용 계획과 남은 작업
+- `vercel.json`: Vercel 정적 파일 + API 함수 배포 설정
 - `styles.css`, `app.js`: 보조/이전 분리 파일
 
 ## 다음 에이전트 시작 순서
@@ -175,6 +177,12 @@ GOOGLE_PLACES_API_KEY=...
 
 ```js
 window.TRIP_PLACES_API_BASE = "https://YOUR-VERCEL-PROJECT.vercel.app";
+```
+
+현재 배포용 설정:
+
+```js
+window.TRIP_PLACES_API_BASE = "https://honeymoon-delta.vercel.app";
 ```
 
 상세 절차는 `GOOGLE_PLACES_API_PLAN.md`를 기준으로 진행하세요.

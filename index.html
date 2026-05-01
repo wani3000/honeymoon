@@ -63,7 +63,8 @@
 
       body { display: flex; justify-content: center; }
 
-      body[data-active-panel="schedule"] .hero {
+      body[data-active-panel="schedule"] .hero,
+      body[data-active-panel="food"] .hero {
         display: none;
       }
 
@@ -212,6 +213,10 @@
 
       .panel.schedule-panel {
         padding-bottom: 92px;
+      }
+
+      .panel[data-panel="food"] .section {
+        padding-top: 0;
       }
 
       .section {
@@ -960,7 +965,20 @@
         line-height: 1.65;
       }
 
-      .food-region-tabs,
+      .food-region-tabs {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        margin: -16px -14px 0;
+        padding: 8px 14px 0;
+        border-bottom: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(16px);
+      }
+
       .food-category-tabs {
         display: flex;
         gap: 8px;
@@ -974,7 +992,21 @@
         display: none;
       }
 
-      .food-region-tab,
+      .food-region-tab {
+        min-width: 0;
+        min-height: 44px;
+        border: 0;
+        border-bottom: 3px solid transparent;
+        border-radius: 0;
+        background: transparent;
+        color: var(--muted);
+        padding: 0 4px 8px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
       .food-category-tab {
         flex: 0 0 auto;
         min-height: 38px;
@@ -989,7 +1021,12 @@
         white-space: nowrap;
       }
 
-      .food-region-tab.active,
+      .food-region-tab.active {
+        background: transparent;
+        border-bottom-color: var(--blue);
+        color: var(--blue);
+      }
+
       .food-category-tab.active {
         background: var(--blue);
         border-color: var(--blue);
@@ -1159,6 +1196,294 @@
         font-size: 13px;
         line-height: 1.5;
       }
+
+      /* Visual refresh: sparse neighborhood-app style */
+      :root {
+        --bg: #f7f8fa;
+        --panel: #ffffff;
+        --panel-soft: #f1f2f4;
+        --surface-2: #eceef1;
+        --text: #22272f;
+        --muted: #8a9099;
+        --line: #eceef1;
+        --blue: #242a31;
+        --green: #1f7a58;
+        --yellow: #8a6d00;
+        --red: #d1433a;
+        --orange: #ff5a00;
+        --danger-bg: #fff0ef;
+        --tip-bg: #eef8f2;
+        --tab-bg: #f1f2f4;
+        --accent-soft: #f1f2f4;
+        --nav-bg: rgba(255, 255, 255, 0.96);
+        --indicator: #242a31;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101113;
+          --panel: #17191c;
+          --panel-soft: #202329;
+          --surface-2: #272b31;
+          --text: #f1f3f5;
+          --muted: #9aa1aa;
+          --line: #2a2f36;
+          --blue: #f1f3f5;
+          --green: #80d4aa;
+          --yellow: #e5c86b;
+          --red: #ffb4ab;
+          --orange: #ff9b63;
+          --danger-bg: rgba(255, 180, 171, 0.12);
+          --tip-bg: rgba(128, 212, 170, 0.12);
+          --tab-bg: #202329;
+          --accent-soft: #202329;
+          --nav-bg: rgba(16, 17, 19, 0.96);
+          --indicator: #f1f3f5;
+        }
+      }
+
+      html, body {
+        background: var(--bg);
+        letter-spacing: -0.01em;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .app {
+        padding: 34px 20px 32px;
+      }
+
+      .hero {
+        padding: 22px 0 30px;
+        border-bottom: 0;
+      }
+
+      .eyebrow, .section-label {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0.02em;
+      }
+
+      h1 {
+        color: var(--text);
+        font-size: 30px;
+        line-height: 1.12;
+        font-weight: 850;
+        letter-spacing: -0.035em;
+      }
+
+      h2 {
+        color: var(--text);
+        font-weight: 850;
+        letter-spacing: -0.025em;
+      }
+
+      .hero-copy {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .chips {
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .chip, .action-link, .priority-pill, .copy-button, .hm-reset {
+        border: 0;
+        border-radius: 999px;
+        background: var(--panel-soft);
+        color: var(--text);
+        font-weight: 850;
+      }
+
+      .chip {
+        min-height: 42px;
+        padding: 0 17px;
+        font-size: 14px;
+      }
+
+      .action-link {
+        min-height: 38px;
+        padding: 0 15px;
+        font-size: 12px;
+      }
+
+      .action-link.map,
+      .map-card-link {
+        background: var(--panel-soft);
+        border: 0;
+        color: var(--text);
+      }
+
+      .action-link.alt {
+        background: rgba(255, 90, 0, 0.12);
+        color: var(--orange);
+        border: 0;
+      }
+
+      .bottom-tabs {
+        left: 50%;
+        bottom: 0;
+        width: min(100%, 480px);
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+        gap: 0;
+        border: 0;
+        border-top: 1px solid var(--line);
+        border-radius: 0;
+        box-shadow: none;
+        background: var(--nav-bg);
+      }
+
+      .main-tab {
+        min-height: 56px;
+        padding: 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        background: transparent;
+      }
+
+      .main-tab.active {
+        color: var(--text);
+      }
+
+      .main-tab.active::before {
+        display: none;
+      }
+
+      .panel,
+      .panel.schedule-panel {
+        padding-bottom: 88px;
+      }
+
+      .section {
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .card,
+      .stat,
+      .hm-item,
+      .lang-box,
+      .map-card,
+      .map-frame,
+      .map-preview-note,
+      .item-map-preview {
+        border-color: var(--line);
+        box-shadow: none;
+      }
+
+      .card,
+      .hm-item {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        background: transparent;
+      }
+
+      .stat,
+      .lang-box,
+      .map-preview-note {
+        border: 0;
+        border-radius: 18px;
+        background: var(--panel-soft);
+      }
+
+      .schedule-date-tabs {
+        margin: -26px -20px 18px;
+        padding: 12px 20px 10px;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .date-tab,
+      .food-category-tab {
+        min-height: 42px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--panel-soft);
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .date-tab.active,
+      .food-category-tab.active {
+        background: var(--indicator);
+        border-color: var(--indicator);
+        color: var(--panel);
+      }
+
+      .food-region-tabs {
+        margin: -26px -20px 0;
+        padding: 12px 20px 0;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+      }
+
+      .food-region-tab {
+        min-height: 50px;
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 900;
+        border-bottom-width: 3px;
+      }
+
+      .food-region-tab.active {
+        color: var(--text);
+        border-bottom-color: var(--text);
+      }
+
+      .food-card,
+      .phrase-card,
+      .timeline-item,
+      .overview-item,
+      .hm-category {
+        border-bottom-color: var(--line);
+      }
+
+      .food-card-title,
+      .timeline-title,
+      .overview-title,
+      .hm-category-title,
+      .phrase-head h3 {
+        color: var(--text);
+        font-weight: 850;
+        letter-spacing: -0.02em;
+      }
+
+      .food-card-meta,
+      .food-card-review,
+      .timeline-summary,
+      .overview-subtitle,
+      .hm-category-count,
+      .hm-item-note,
+      .phrase-meaning {
+        color: var(--muted);
+      }
+
+      .badge.warning,
+      .must-visit-alert {
+        background: var(--danger-bg);
+        color: var(--red);
+        border: 0;
+      }
+
+      .badge.tip {
+        background: var(--tip-bg);
+        color: var(--green);
+      }
+
+      @media (max-width: 480px) {
+        .app {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1176,10 +1501,10 @@
 
       <nav class="bottom-tabs" id="mainTabs">
         <button class="main-tab active" data-panel="overview" type="button">개요</button>
-        <button class="main-tab" data-panel="schedule" type="button">일정표</button>
-        <button class="main-tab" data-panel="checklist" type="button">예약 체크</button>
-        <button class="main-tab" data-panel="food" type="button">주변 맛집</button>
-        <button class="main-tab" data-panel="language" type="button">여행 회화</button>
+        <button class="main-tab" data-panel="schedule" type="button">일정</button>
+        <button class="main-tab" data-panel="checklist" type="button">예약</button>
+        <button class="main-tab" data-panel="food" type="button">맛집</button>
+        <button class="main-tab" data-panel="language" type="button">회화</button>
       </nav>
 
       <section class="panel active" data-panel="overview">
@@ -1366,11 +1691,6 @@
 
       <section class="panel" data-panel="food">
         <section class="section">
-          <div class="food-guide-head">
-            <p class="section-label">Local Food Guide</p>
-            <h2>주변 맛집</h2>
-            <p class="food-guide-copy">예약 식당이 아니라, 당일 동선 근처에서 즉흥으로 들를 카페·맛집·바·루프탑 후보를 모아둔 탭이에요. 구역별로 Google Maps와 Tripadvisor 공개 정보를 대조해서 바로 찾아가기 쉬운 후보만 정리했어요.</p>
-          </div>
           <div class="food-region-tabs" id="foodRegionTabs" aria-label="맛집 지역 선택"></div>
           <div class="food-category-tabs" id="foodCategoryTabs" aria-label="맛집 카테고리 선택"></div>
           <div class="food-guide-summary">
@@ -2016,12 +2336,10 @@
       ];
 
       const foodRegions = [
-        { id: "lisbon-home", label: "리스본 숙소", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 13 },
-        { id: "cascais", label: "카스카이스", base: "Cascais 시내", dates: "5/6", planned: 8 },
-        { id: "cabo-roca", label: "호카곶", base: "Cabo da Roca 주변", dates: "5/6", planned: 4 },
-        { id: "mallorca-home", label: "마요르카 숙소", base: "Fontsanta Hotel / Campos", dates: "5/8~5/12", planned: 8 },
-        { id: "mallorca-beach", label: "마요르카 해변", base: "Caló des Moro / Es Trenc / Palma Marina", dates: "5/9~5/11", planned: 9 },
-        { id: "madrid", label: "마드리드", base: "Puerta del Sol / Gran Vía", dates: "5/12", planned: 8 }
+        { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 13, placeRegions: ["lisbon-home"] },
+        { id: "cascais", tabLabel: "카스카이스", label: "카스카이스 근처", base: "Cascais 시내", dates: "5/6", planned: 8, placeRegions: ["cascais"] },
+        { id: "cabo-roca", tabLabel: "호곶", label: "호카곶 근처", base: "Cabo da Roca 주변", dates: "5/6", planned: 4, placeRegions: ["cabo-roca"] },
+        { id: "mallorca", tabLabel: "마요르카", label: "마요르카 전체", base: "Fontsanta / Caló des Moro / Es Trenc / Palma Marina", dates: "5/8~5/12", planned: 17, placeRegions: ["mallorca-home", "mallorca-beach"] }
       ];
 
       const foodCategories = [
@@ -2032,12 +2350,10 @@
       ];
 
       const foodCategoryTargets = {
-        "lisbon-home": { cafe: 3, restaurant: 5, bar: 3, rooftop: 2 },
+        lisbon: { cafe: 3, restaurant: 5, bar: 3, rooftop: 2 },
         cascais: { cafe: 2, restaurant: 3, bar: 2, rooftop: 1 },
         "cabo-roca": { cafe: 1, restaurant: 2, bar: 1, rooftop: 0 },
-        "mallorca-home": { cafe: 2, restaurant: 3, bar: 2, rooftop: 1 },
-        "mallorca-beach": { cafe: 2, restaurant: 4, bar: 2, rooftop: 1 },
-        madrid: { cafe: 2, restaurant: 3, bar: 2, rooftop: 1 }
+        mallorca: { cafe: 4, restaurant: 7, bar: 4, rooftop: 2 }
       };
 
       const foodPlaces = [
@@ -2691,19 +3007,21 @@
         const region = foodRegions.find((item) => item.id === activeFoodRegion) || foodRegions[0];
         const category = foodCategories.find((item) => item.id === activeFoodCategory) || foodCategories[0];
         const targetCount = foodCategoryTargets[region.id]?.[category.id] ?? 0;
-        const places = foodPlaces.filter((place) => place.region === region.id && place.category === category.id);
+        const regionKeys = region.placeRegions || [region.id];
+        const places = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === category.id);
 
         foodRegionTabsEl.innerHTML = foodRegions.map((item) => {
-          const count = foodPlaces.filter((place) => place.region === item.id).length;
+          const itemRegionKeys = item.placeRegions || [item.id];
+          const count = foodPlaces.filter((place) => itemRegionKeys.includes(place.region)).length;
           return `
-            <button class="food-region-tab${item.id === activeFoodRegion ? " active" : ""}" type="button" data-food-region="${item.id}">
-              ${item.label} ${count}/${item.planned}
+            <button class="food-region-tab${item.id === activeFoodRegion ? " active" : ""}" type="button" data-food-region="${item.id}" title="${item.label} ${count}/${item.planned}">
+              ${item.tabLabel}
             </button>
           `;
         }).join("");
 
         foodCategoryTabsEl.innerHTML = foodCategories.map((item) => {
-          const count = foodPlaces.filter((place) => place.region === region.id && place.category === item.id).length;
+          const count = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === item.id).length;
           const target = foodCategoryTargets[region.id]?.[item.id] ?? 0;
           return `
             <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}">

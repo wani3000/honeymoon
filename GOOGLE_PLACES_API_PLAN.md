@@ -49,6 +49,12 @@ GOOGLE_PLACES_API_KEY=...
 window.TRIP_PLACES_API_BASE = "https://YOUR-VERCEL-PROJECT.vercel.app";
 ```
 
+현재 프로젝트의 Vercel Production URL:
+
+```js
+window.TRIP_PLACES_API_BASE = "https://honeymoon-delta.vercel.app";
+```
+
 GitHub Pages 프론트는 그대로 두고, 데이터만 Vercel API에서 받아오는 방식입니다.
 
 ## 엔드포인트
@@ -145,7 +151,7 @@ places.id,places.displayName,places.formattedAddress,places.googleMapsUri
 
 - [ ] Vercel API 배포
 - [ ] `GOOGLE_PLACES_API_KEY` 환경변수 설정
-- [ ] `window.TRIP_PLACES_API_BASE` 설정
+- [x] `window.TRIP_PLACES_API_BASE` 설정
 - [ ] 50곳 `placeId` 검색 및 확정
 - [ ] `foodPlaces`에 `placeId` 추가
 - [ ] 주변 맛집 탭에서 실시간 Google 데이터 표시 확인
