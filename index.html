@@ -3075,6 +3075,8 @@
       ];
 
       const foodCategories = [
+        { id: "reserved", label: "예약" },
+        { id: "all", label: "전체" },
         { id: "cafe", label: "☕ 카페" },
         { id: "restaurant", label: "🍽️ 맛집" },
         { id: "bar", label: "🍷 바" },
@@ -3911,14 +3913,23 @@
         }).join("");
       }
 
+      function getFoodCategoryLabel(categoryId) {
+        return foodCategories.find((item) => item.id === categoryId)?.label || "";
+      }
+
       function renderFoodGuide() {
         const region = foodRegions.find((item) => item.id === activeFoodRegion) || foodRegions[0];
         const category = foodCategories.find((item) => item.id === activeFoodCategory) || foodCategories[0];
-        const targetCount = foodCategoryTargets[region.id]?.[category.id] ?? 0;
         const regionKeys = region.placeRegions || [region.id];
-        const places = foodPlaces
-          .filter((place) => regionKeys.includes(place.region) && place.category === category.id)
+        const allRegionPlaces = foodPlaces.filter((place) => regionKeys.includes(place.region));
+        const places = allRegionPlaces
+          .filter((place) => {
+            if (category.id === "reserved") return Boolean(place.reserved);
+            if (category.id === "all") return true;
+            return place.category === category.id;
+          })
           .sort((a, b) => Number(Boolean(b.reserved)) - Number(Boolean(a.reserved)) || Number(b.googleRating || 0) - Number(a.googleRating || 0));
+        const targetCount = ["reserved", "all"].includes(category.id) ? 0 : foodCategoryTargets[region.id]?.[category.id] ?? 0;
         const foodMapApiKey = (window.TRIP_MAPS_API_KEY || "").trim();
 
         foodRegionTabsEl.innerHTML = foodRegions.map((item) => {
@@ -3932,7 +3943,11 @@
         }).join("");
 
         foodCategoryTabsEl.innerHTML = foodCategories.map((item) => {
-          const count = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === item.id).length;
+          const count = item.id === "reserved"
+            ? allRegionPlaces.filter((place) => place.reserved).length
+            : item.id === "all"
+            ? allRegionPlaces.length
+            : allRegionPlaces.filter((place) => place.category === item.id).length;
           const target = foodCategoryTargets[region.id]?.[item.id] ?? 0;
           return `
             <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}" title="${item.label} ${target ? `${count}/${target}` : `${count}곳`}">
@@ -3991,7 +4006,7 @@
                   <div class="food-card-meta">${escapeHtml(displayAddress)}</div>
                 </div>
               </div>
-              <div class="food-card-meta food-card-route-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(category.label)}</div>
+              <div class="food-card-meta food-card-route-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(getFoodCategoryLabel(place.category))}</div>
               <p class="food-card-copy">${escapeHtml(place.description || "")}</p>
               <p class="food-card-copy"><strong>${["shopping", "lodging", "sightseeing"].includes(place.category) ? "핵심 정보" : "대표 메뉴"}</strong> ${escapeHtml(place.signature || "")}</p>
               <div class="food-rating">
@@ -4065,9 +4080,23 @@
       }
 
       function scrollViewportToTop() {
-        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        const root = document.scrollingElement || document.documentElement;
+        root.scrollTop = 0;
+        root.scrollLeft = 0;
         document.documentElement.scrollTop = 0;
+        document.documentElement.scrollLeft = 0;
         document.body.scrollTop = 0;
+        document.body.scrollLeft = 0;
+        window.scrollTo(0, 0);
+      }
+
+      function resetViewportAfterTabChange() {
+        scrollViewportToTop();
+        requestAnimationFrame(() => {
+          scrollViewportToTop();
+          requestAnimationFrame(scrollViewportToTop);
+        });
+        setTimeout(scrollViewportToTop, 80);
       }
 
       function setMainPanel(name, options = {}) {
@@ -4129,9 +4158,9 @@
       mainTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           const panelName = tab.dataset.panel;
-          scrollViewportToTop();
           setMainPanel(panelName, { resetScheduleDate: panelName === "schedule" });
-          requestAnimationFrame(scrollViewportToTop);
+          tab.blur();
+          resetViewportAfterTabChange();
         });
       });
 
