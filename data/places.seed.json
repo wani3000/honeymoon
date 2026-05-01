@@ -1,0 +1,627 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "places": [
+    {
+      "slug": "lisbon-convent-square",
+      "city": "lisbon",
+      "name": "Convent Square Lisbon, Vignette Collection by IHG",
+      "query": "Convent Square Lisbon, Vignette Collection by IHG",
+      "note": "숙소 · 5/3~5/8",
+      "tags": ["숙소", "예약"],
+      "reservation": true
+    },
+    {
+      "slug": "lisbon-lis-airport",
+      "city": "lisbon",
+      "name": "Humberto Delgado Airport",
+      "query": "Humberto Delgado Airport Lisbon",
+      "note": "이동 핵심",
+      "tags": ["공항", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-cais-do-sodre",
+      "city": "lisbon",
+      "name": "Cais do Sodre",
+      "query": "Cais do Sodre Lisbon",
+      "note": "이동 핵심",
+      "tags": ["역", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-rossio",
+      "city": "lisbon",
+      "name": "Rossio",
+      "query": "Rossio Lisbon station",
+      "note": "이동 핵심",
+      "tags": ["역", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-castelo-sao-jorge",
+      "city": "lisbon",
+      "name": "Castelo de Sao Jorge",
+      "query": "Castelo de Sao Jorge Lisbon",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-praca-do-comercio",
+      "city": "lisbon",
+      "name": "Praca do Comercio",
+      "query": "Praca do Comercio Lisbon",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-jeronimos",
+      "city": "lisbon",
+      "name": "Jeronimos Monastery",
+      "query": "Jeronimos Monastery Lisbon",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-santa-justa-lift",
+      "city": "lisbon",
+      "name": "Santa Justa Lift",
+      "query": "Santa Justa Lift Lisbon",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-chiado",
+      "city": "lisbon",
+      "name": "Chiado",
+      "query": "Chiado Lisbon",
+      "note": "쇼핑/카페",
+      "tags": ["쇼핑", "카페"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-pasteis-de-belem",
+      "city": "lisbon",
+      "name": "Pasteis de Belem",
+      "query": "Pasteis de Belem Lisbon",
+      "note": "원조 에그타르트",
+      "tags": ["디저트"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-time-out-market",
+      "city": "lisbon",
+      "name": "Time Out Market Lisboa",
+      "query": "Time Out Market Lisboa",
+      "note": "푸드홀",
+      "tags": ["푸드홀"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-noobai",
+      "city": "lisbon",
+      "name": "Noobai Cafe",
+      "query": "Noobai Cafe Lisbon",
+      "note": "예약완료",
+      "tags": ["식당", "예약"],
+      "reservation": true
+    },
+    {
+      "slug": "lisbon-bahr",
+      "city": "lisbon",
+      "name": "BAHR & Terrace",
+      "query": "BAHR & Terrace Lisbon",
+      "note": "예약완료",
+      "tags": ["식당", "예약"],
+      "reservation": true
+    },
+    {
+      "slug": "lisbon-sea-me",
+      "city": "lisbon",
+      "name": "Sea Me Peixaria Moderna",
+      "query": "Sea Me Peixaria Moderna Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-solar-dos-presuntos",
+      "city": "lisbon",
+      "name": "Solar dos Presuntos",
+      "query": "Solar dos Presuntos Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-o-velho-eurico",
+      "city": "lisbon",
+      "name": "O Velho Eurico",
+      "query": "O Velho Eurico Lisbon",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-by-the-wine",
+      "city": "lisbon",
+      "name": "By The Wine",
+      "query": "By The Wine Lisbon",
+      "note": "와인바 후보",
+      "tags": ["바"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-bessa",
+      "city": "lisbon",
+      "name": "Bessa Restaurante",
+      "query": "Bessa Restaurante Lisbon",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-a-cevicheria",
+      "city": "lisbon",
+      "name": "A Cevicheria",
+      "query": "A Cevicheria Lisbon",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-ramiro",
+      "city": "lisbon",
+      "name": "Cervejaria Ramiro",
+      "query": "Cervejaria Ramiro Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-taberna-flores",
+      "city": "lisbon",
+      "name": "Taberna da Rua das Flores",
+      "query": "Taberna da Rua das Flores Lisbon",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-tasca-do-chico",
+      "city": "lisbon",
+      "name": "A Tasca do Chico",
+      "query": "A Tasca do Chico Lisbon",
+      "note": "파두/바 후보",
+      "tags": ["바", "파두"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-suba",
+      "city": "lisbon",
+      "name": "SUBA Restaurant",
+      "query": "SUBA Restaurant Lisbon",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-bonjardim",
+      "city": "lisbon",
+      "name": "Bonjardim",
+      "query": "Bonjardim Lisbon",
+      "note": "치킨 맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-chapito",
+      "city": "lisbon",
+      "name": "Chapito a Mesa",
+      "query": "Chapito a Mesa Lisbon",
+      "note": "뷰 맛집 후보",
+      "tags": ["식당", "뷰"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-a-ginjinha",
+      "city": "lisbon",
+      "name": "A Ginjinha",
+      "query": "A Ginjinha Lisbon",
+      "note": "진지냐 한잔",
+      "tags": ["바"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-a-brasileira",
+      "city": "lisbon",
+      "name": "A Brasileira",
+      "query": "A Brasileira Lisbon",
+      "note": "카페 후보",
+      "tags": ["카페"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-zara-rossio",
+      "city": "lisbon",
+      "name": "Zara Rossio",
+      "query": "Zara Rossio Lisbon",
+      "note": "쇼핑 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-armazens-do-chiado",
+      "city": "lisbon",
+      "name": "Armazens do Chiado",
+      "query": "Armazens do Chiado Lisbon",
+      "note": "쇼핑 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-conserveira",
+      "city": "lisbon",
+      "name": "Conserveira de Lisboa",
+      "query": "Conserveira de Lisboa",
+      "note": "기념품 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-a-vida-portuguesa",
+      "city": "lisbon",
+      "name": "A Vida Portuguesa Chiado",
+      "query": "A Vida Portuguesa Chiado Lisbon",
+      "note": "기념품 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "lisbon-luvaria-ulisses",
+      "city": "lisbon",
+      "name": "Luvaria Ulisses",
+      "query": "Luvaria Ulisses Lisbon",
+      "note": "소품 쇼핑",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "outskirts-cascais",
+      "city": "lisbon-outskirts",
+      "name": "Cascais",
+      "query": "Cascais Portugal",
+      "note": "근교 산책",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "outskirts-cascais-marina",
+      "city": "lisbon-outskirts",
+      "name": "Cascais Marina",
+      "query": "Cascais Marina Portugal",
+      "note": "근교 산책",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "outskirts-sintra-center",
+      "city": "lisbon-outskirts",
+      "name": "Centro historico de Sintra",
+      "query": "Centro historico de Sintra",
+      "note": "근교 산책",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "outskirts-cabo-da-roca",
+      "city": "lisbon-outskirts",
+      "name": "Cabo da Roca",
+      "query": "Cabo da Roca Portugal",
+      "note": "근교 전망",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "outskirts-pena-palace",
+      "city": "lisbon-outskirts",
+      "name": "Park and National Palace of Pena",
+      "query": "Pena Palace Sintra",
+      "note": "근교 관광",
+      "tags": ["근교", "관광"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-fontsanta",
+      "city": "mallorca",
+      "name": "Fontsanta Hotel Thermal Spa & Wellness",
+      "query": "Fontsanta Hotel Thermal Spa & Wellness Mallorca",
+      "note": "숙소 · 5/8~5/12",
+      "tags": ["숙소", "예약"],
+      "reservation": true
+    },
+    {
+      "slug": "mallorca-pmi-airport",
+      "city": "mallorca",
+      "name": "Palma de Mallorca Airport",
+      "query": "Palma de Mallorca Airport",
+      "note": "이동 핵심",
+      "tags": ["공항", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-record-go",
+      "city": "mallorca",
+      "name": "Record go Mobility - Palma de Mallorca",
+      "query": "Record Go Palma de Mallorca Airport",
+      "note": "렌터카 픽업",
+      "tags": ["렌터카", "이동"],
+      "reservation": true
+    },
+    {
+      "slug": "mallorca-la-lonja-marina",
+      "city": "mallorca",
+      "name": "La Lonja Marina Charter",
+      "query": "La Lonja Marina Charter Palma",
+      "note": "카타마란 집결",
+      "tags": ["액티비티", "예약"],
+      "reservation": true
+    },
+    {
+      "slug": "mallorca-palma-cathedral",
+      "city": "mallorca",
+      "name": "Palma Cathedral",
+      "query": "Palma Cathedral",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-parc-de-la-mar",
+      "city": "mallorca",
+      "name": "Parc de la Mar",
+      "query": "Parc de la Mar Palma",
+      "note": "팔마 산책",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-calo-des-moro",
+      "city": "mallorca",
+      "name": "Calo des Moro",
+      "query": "Calo des Moro Mallorca",
+      "note": "해변",
+      "tags": ["해변"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-es-trenc",
+      "city": "mallorca",
+      "name": "Es Trenc",
+      "query": "Es Trenc Mallorca",
+      "note": "해변",
+      "tags": ["해변"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-cala-figuera",
+      "city": "mallorca",
+      "name": "Cala Figuera",
+      "query": "Cala Figuera Mallorca",
+      "note": "해변 산책",
+      "tags": ["해변"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-cala-mondrago",
+      "city": "mallorca",
+      "name": "Cala Mondrago",
+      "query": "Cala Mondrago Mallorca",
+      "note": "대체 해변",
+      "tags": ["해변"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-cala-llombards",
+      "city": "mallorca",
+      "name": "Cala Llombards",
+      "query": "Cala Llombards Mallorca",
+      "note": "해변",
+      "tags": ["해변"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-valldemossa",
+      "city": "mallorca",
+      "name": "Valldemossa",
+      "query": "Valldemossa Mallorca",
+      "note": "근교 관광",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-deia",
+      "city": "mallorca",
+      "name": "Deia",
+      "query": "Deia Mallorca",
+      "note": "근교 관광",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-port-de-soller",
+      "city": "mallorca",
+      "name": "Port de Soller",
+      "query": "Port de Soller Mallorca",
+      "note": "근교 관광",
+      "tags": ["근교"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-portixol",
+      "city": "mallorca",
+      "name": "Portixol",
+      "query": "Portixol Mallorca",
+      "note": "해안 산책",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-santanyi-market",
+      "city": "mallorca",
+      "name": "Santanyi Market",
+      "query": "Santanyi Market Mallorca",
+      "note": "시장",
+      "tags": ["시장"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-cassai-beach-house",
+      "city": "mallorca",
+      "name": "Cassai Beach House",
+      "query": "Cassai Beach House Mallorca",
+      "note": "식당 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-fontsanta-restaurant",
+      "city": "mallorca",
+      "name": "Fontsanta Restaurant Tess de Mar",
+      "query": "Tess de Mar Fontsanta Mallorca",
+      "note": "호텔 식당",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-el-camino",
+      "city": "mallorca",
+      "name": "El Camino",
+      "query": "El Camino Palma Mallorca",
+      "note": "맛집 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-the-sea-club",
+      "city": "mallorca",
+      "name": "The Sea Club Cap Rocat",
+      "query": "The Sea Club Cap Rocat Mallorca",
+      "note": "식당 후보",
+      "tags": ["식당", "뷰"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-mirador-de-cabrera",
+      "city": "mallorca",
+      "name": "Mirador de Cabrera",
+      "query": "Mirador de Cabrera Mallorca",
+      "note": "전망",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-vela-mallorca",
+      "city": "mallorca",
+      "name": "Vela Mallorca Boat Tours",
+      "query": "Vela Mallorca Boat Tours",
+      "note": "요트 대안",
+      "tags": ["액티비티"],
+      "reservation": false
+    },
+    {
+      "slug": "mallorca-fervor",
+      "city": "mallorca",
+      "name": "FERVOR Palma",
+      "query": "FERVOR Palma",
+      "note": "팔마 점심 후보",
+      "tags": ["식당"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-barajas-t1",
+      "city": "madrid",
+      "name": "Madrid Barajas Airport T1",
+      "query": "Madrid Barajas Airport T1",
+      "note": "이동 핵심",
+      "tags": ["공항", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-excess-baggage",
+      "city": "madrid",
+      "name": "Excess Baggage Company",
+      "query": "Excess Baggage Company Madrid Barajas T1",
+      "note": "짐보관",
+      "tags": ["이동"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-atocha",
+      "city": "madrid",
+      "name": "Atocha Station",
+      "query": "Atocha Station Madrid",
+      "note": "이동 핵심",
+      "tags": ["역", "이동"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-plaza-mayor",
+      "city": "madrid",
+      "name": "Plaza Mayor",
+      "query": "Plaza Mayor Madrid",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-retiro",
+      "city": "madrid",
+      "name": "El Retiro Park",
+      "query": "El Retiro Park Madrid",
+      "note": "관광",
+      "tags": ["관광"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-loewe-serrano",
+      "city": "madrid",
+      "name": "CASA LOEWE Madrid",
+      "query": "CASA LOEWE Madrid Serrano 34",
+      "note": "쇼핑 핵심",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-el-corte-ingles-preciados",
+      "city": "madrid",
+      "name": "El Corte Ingles Preciados",
+      "query": "El Corte Ingles Preciados Madrid",
+      "note": "쇼핑 핵심",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-zara-gran-via",
+      "city": "madrid",
+      "name": "Zara Gran Via",
+      "query": "Zara Gran Via Madrid",
+      "note": "쇼핑 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    },
+    {
+      "slug": "madrid-primark-gran-via",
+      "city": "madrid",
+      "name": "Primark Gran Via",
+      "query": "Primark Gran Via Madrid",
+      "note": "쇼핑 후보",
+      "tags": ["쇼핑"],
+      "reservation": false
+    }
+  ]
+}

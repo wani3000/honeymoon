@@ -89,12 +89,16 @@ Vercel/API 배포: [https://honeymoon-delta.vercel.app/](https://honeymoon-delta
 
 - `index.html`: 실제 동작 코드(마크업/스타일/스크립트)
 - `assets/route-overview.svg`: 경로 개요 이미지
+- `data/places.seed.json`: 사람이 관리하는 장소 원본 입력 파일
+- `data/places.resolved.json`: Google Places 기준 보강 결과 파일(생성 대상)
 - `config.public.js`: 현재 배포용 Google Static Maps API 키 파일
 - `config.js`: 로컬 전용 API 키 파일(버전 관리 제외)
 - `config.example.js`: 키 파일 예시
 - `api/google-place-details.js`: Google Places API 상세정보 서버리스 프록시
 - `api/google-place-search.js`: Google Places `placeId` 검색용 서버리스 프록시
+- `scripts/build-places-db.mjs`: 장소 seed 파일을 `placeId/googleMapsUri`로 보강하는 스크립트
 - `GOOGLE_PLACES_API_PLAN.md`: Places API 적용 계획과 남은 작업
+- `PLACES_DATA_WORKFLOW.md`: 장소 원본 데이터 관리 방식과 실행 절차
 - `vercel.json`: Vercel 정적 파일 + API 함수 배포 설정
 - `styles.css`, `app.js`: 보조/이전 분리 파일
 

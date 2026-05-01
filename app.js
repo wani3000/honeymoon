@@ -357,6 +357,196 @@ const data = {
   ]
 };
 
+const PLACES_DATA_URL = "./data/places.resolved.json";
+const PLACE_NAME_ALIASES = {
+  "convent square lisbon": "lisbon-convent-square",
+  "convent square lisbon, vignette collection by ihg": "lisbon-convent-square",
+  "lis airport": "lisbon-lis-airport",
+  "humberto delgado airport": "lisbon-lis-airport",
+  rossio: "lisbon-rossio",
+  "rossio station": "lisbon-rossio",
+  "cais do sodre": "lisbon-cais-do-sodre",
+  "cais do sodre station": "lisbon-cais-do-sodre",
+  "cais do sodré": "lisbon-cais-do-sodre",
+  "cais do sodré station": "lisbon-cais-do-sodre",
+  "castelo de sao jorge": "lisbon-castelo-sao-jorge",
+  "castelo de são jorge": "lisbon-castelo-sao-jorge",
+  "praca do comercio": "lisbon-praca-do-comercio",
+  "praça do comércio": "lisbon-praca-do-comercio",
+  "jeronimos monastery": "lisbon-jeronimos",
+  "jerónimos monastery": "lisbon-jeronimos",
+  chiado: "lisbon-chiado",
+  "pasteis de belem": "lisbon-pasteis-de-belem",
+  "pastéis de belém": "lisbon-pasteis-de-belem",
+  "time out market lisboa": "lisbon-time-out-market",
+  noobai: "lisbon-noobai",
+  "bahr & terrace": "lisbon-bahr",
+  "bahr and terrace": "lisbon-bahr",
+  cascais: "outskirts-cascais",
+  "cascais marina": "outskirts-cascais-marina",
+  "cape roca": "outskirts-cabo-da-roca",
+  "cabo da roca": "outskirts-cabo-da-roca",
+  "cabo da roca, portugal": "outskirts-cabo-da-roca",
+  "cabo da roca portugal": "outskirts-cabo-da-roca",
+  "cabo da rocha": "outskirts-cabo-da-roca",
+  "national palace of pena": "outskirts-pena-palace",
+  "pena palace": "outskirts-pena-palace",
+  "sintra village center": "outskirts-sintra-center",
+  "fontsanta hotel thermal spa": "mallorca-fontsanta",
+  "fontsanta hotel thermal spa & wellness": "mallorca-fontsanta",
+  "record go": "mallorca-record-go",
+  "record go rent a car": "mallorca-record-go",
+  "palma de mallorca airport": "mallorca-pmi-airport",
+  "la lonja marina charter": "mallorca-la-lonja-marina",
+  "catedral la seu": "mallorca-palma-cathedral",
+  "palma cathedral": "mallorca-palma-cathedral",
+  "calo des moro": "mallorca-calo-des-moro",
+  "caló des moro": "mallorca-calo-des-moro",
+  "es trenc beach": "mallorca-es-trenc",
+  "cala figuera": "mallorca-cala-figuera",
+  "cala mondrago": "mallorca-cala-mondrago",
+  "cala mondragó": "mallorca-cala-mondrago",
+  valldemossa: "mallorca-valldemossa",
+  deia: "mallorca-deia",
+  "deià": "mallorca-deia",
+  portixol: "mallorca-portixol",
+  "el retiro park": "madrid-retiro",
+  "casa loewe madrid": "madrid-loewe-serrano",
+  "loewe madrid": "madrid-loewe-serrano",
+  "el corte ingles preciados": "madrid-el-corte-ingles-preciados",
+  "el corte inglés preciados": "madrid-el-corte-ingles-preciados",
+  "zara gran via": "madrid-zara-gran-via",
+  "zara gran vía": "madrid-zara-gran-via",
+  "primark gran via": "madrid-primark-gran-via",
+  "primark gran vía": "madrid-primark-gran-via"
+};
+const ROUTE_ALIASES = {
+  "리스본 숙소": ["lisbon-convent-square"],
+  "신트라 + 호카곶 지도": ["lisbon-rossio", "outskirts-pena-palace", "outskirts-cabo-da-roca"],
+  "마요르카 드라이브": [
+    "mallorca-fontsanta",
+    "mallorca-calo-des-moro",
+    "mallorca-valldemossa",
+    "mallorca-deia",
+    "mallorca-palma-cathedral"
+  ],
+  "리스본 첫 일정": ["lisbon-convent-square", "lisbon-castelo-sao-jorge", "lisbon-time-out-market"],
+  "벨렘 데이": ["lisbon-jeronimos", "lisbon-pasteis-de-belem"],
+  "신트라 + 호카곶": ["outskirts-pena-palace", "outskirts-cabo-da-roca"],
+  "마요르카 남동부": ["mallorca-fontsanta", "mallorca-calo-des-moro", "mallorca-cala-figuera"]
+};
+const appState = {
+  placesIndex: null
+};
+
+const normalizePlaceKey = (value = "") =>
+  String(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const buildPlacesIndex = (places = []) => {
+  const bySlug = new Map();
+  const byName = new Map();
+
+  places.forEach((place) => {
+    bySlug.set(place.slug, place);
+
+    [place.slug, place.name, place.googleName].forEach((candidate) => {
+      const key = normalizePlaceKey(candidate);
+      if (key && !byName.has(key)) {
+        byName.set(key, place);
+      }
+    });
+  });
+
+  return { bySlug, byName };
+};
+
+const findPlaceRecord = (identifier, placesIndex = appState.placesIndex) => {
+  if (!placesIndex || !identifier) {
+    return null;
+  }
+
+  if (placesIndex.bySlug.has(identifier)) {
+    return placesIndex.bySlug.get(identifier);
+  }
+
+  const key = normalizePlaceKey(identifier);
+  const aliasedSlug = PLACE_NAME_ALIASES[key];
+
+  if (aliasedSlug && placesIndex.bySlug.has(aliasedSlug)) {
+    return placesIndex.bySlug.get(aliasedSlug);
+  }
+
+  return placesIndex.byName.get(key) || null;
+};
+
+const buildGoogleDirectionsUrl = (places = [], fallbackHref = "#") => {
+  if (!places.length) {
+    return fallbackHref;
+  }
+
+  if (places.length === 1) {
+    return places[0].googleMapsUri || fallbackHref;
+  }
+
+  const [origin, ...rest] = places;
+  const destination = rest[rest.length - 1];
+  const waypoints = rest.slice(0, -1);
+  const params = new URLSearchParams({
+    api: "1",
+    origin: origin.googleName || origin.name,
+    origin_place_id: origin.placeId,
+    destination: destination.googleName || destination.name,
+    destination_place_id: destination.placeId,
+    travelmode: "driving"
+  });
+
+  if (waypoints.length) {
+    params.set(
+      "waypoints",
+      waypoints.map((place) => place.googleName || place.name).join("|")
+    );
+    params.set(
+      "waypoint_place_ids",
+      waypoints.map((place) => place.placeId).join("|")
+    );
+  }
+
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+};
+
+const resolveMapLinkHref = (item) => {
+  const routeSlugs = ROUTE_ALIASES[item.label];
+  if (!routeSlugs) {
+    return item.href;
+  }
+
+  const places = routeSlugs.map((slug) => findPlaceRecord(slug)).filter(Boolean);
+  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, item.href) : item.href;
+};
+
+const resolveMapCardHref = (card) => {
+  const routeSlugs = ROUTE_ALIASES[card.title];
+  if (!routeSlugs) {
+    return card.href;
+  }
+
+  const places = routeSlugs.map((slug) => findPlaceRecord(slug)).filter(Boolean);
+  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, card.href) : card.href;
+};
+
+const resolvePlaceItem = (item) => {
+  const place = findPlaceRecord(item.slug || item.name);
+  return place?.googleMapsUri ? { ...item, href: place.googleMapsUri } : item;
+};
+
+const resolveStayLink = (title) => findPlaceRecord(title)?.googleMapsUri || null;
+
 const renderBadges = (items) => items.map((item) => `<span class="meta-chip">${item}</span>`).join("");
 const renderList = (items) => `<ul class="detail-list">${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 const staticMapsApiKey = window.TRIP_MAPS_API_KEY || "";
@@ -379,7 +569,10 @@ const buildStaticMapUrl = (card) => {
 const renderPlaces = (items = []) =>
   items.length
     ? `<div class="place-list">${items
-        .map((item) => `<a class="place-link" href="${item.href}" target="_blank" rel="noreferrer">${item.name}</a>`)
+        .map((item) => {
+          const resolvedItem = resolvePlaceItem(item);
+          return `<a class="place-link" href="${resolvedItem.href}" target="_blank" rel="noreferrer">${resolvedItem.name}</a>`;
+        })
         .join("")}</div>`
     : "";
 const renderCritical = (items = []) =>
@@ -410,121 +603,173 @@ const renderMapPreviewCards = () =>
           <div class="map-card-body">
             <h3 class="map-card-title">${card.title}</h3>
             <p class="map-card-copy">${card.copy}</p>
-            <a class="map-card-link" href="${card.href}" target="_blank" rel="noreferrer">Google Maps 열기</a>
+            <a class="map-card-link" href="${resolveMapCardHref(card)}" target="_blank" rel="noreferrer">Google Maps 열기</a>
           </div>
         </article>
       `
     )
     .join("");
 
-document.getElementById("trip-stats").innerHTML = data.stats
-  .map(
-    (item) => `
-      <article class="stat-card">
-        <div class="stat-label">${item.label}</div>
-        <div class="stat-value">${item.value}</div>
-      </article>
-    `
-  )
-  .join("");
+const renderStats = () => {
+  document.getElementById("trip-stats").innerHTML = data.stats
+    .map(
+      (item) => `
+        <article class="stat-card">
+          <div class="stat-label">${item.label}</div>
+          <div class="stat-value">${item.value}</div>
+        </article>
+      `
+    )
+    .join("");
+};
 
-document.getElementById("map-links").innerHTML = data.maps
-  .map((item) => `<a class="map-link" href="${item.href}" target="_blank" rel="noreferrer">${item.label}</a>`)
-  .join("");
+const renderMapLinks = () => {
+  document.getElementById("map-links").innerHTML = data.maps
+    .map((item) => `<a class="map-link" href="${resolveMapLinkHref(item)}" target="_blank" rel="noreferrer">${item.label}</a>`)
+    .join("");
+};
 
-document.getElementById("map-preview-help").innerHTML = renderMapPreviewHelp();
-document.getElementById("map-preview-grid").innerHTML = renderMapPreviewCards();
-
-document.getElementById("flight-list").innerHTML = data.flights
-  .map(
-    (item) => `
-      <article class="info-card">
-        <div class="info-top">
-          <div>
-            <h3 class="info-title">${item.title}</h3>
-            <p class="subtle">${item.subtitle}</p>
+const renderFlights = () => {
+  document.getElementById("flight-list").innerHTML = data.flights
+    .map(
+      (item) => `
+        <article class="info-card">
+          <div class="info-top">
+            <div>
+              <h3 class="info-title">${item.title}</h3>
+              <p class="subtle">${item.subtitle}</p>
+            </div>
+            <span class="badge ${item.badgeClass}">${item.badge}</span>
           </div>
-          <span class="badge ${item.badgeClass}">${item.badge}</span>
-        </div>
-        ${renderList(item.details)}
-      </article>
-    `
-  )
-  .join("");
+          ${renderList(item.details)}
+        </article>
+      `
+    )
+    .join("");
+};
 
-document.getElementById("stay-list").innerHTML = data.stays
-  .map(
-    (item) => `
-      <article class="info-card">
-        <div class="info-top">
-          <div>
-            <h3 class="info-title">${item.title}</h3>
-            <p class="subtle">${item.subtitle}</p>
+const renderStays = () => {
+  document.getElementById("stay-list").innerHTML = data.stays
+    .map((item) => {
+      const stayHref = resolveStayLink(item.title);
+      const titleMarkup = stayHref
+        ? `<a class="place-link" href="${stayHref}" target="_blank" rel="noreferrer">${item.title}</a>`
+        : item.title;
+
+      return `
+        <article class="info-card">
+          <div class="info-top">
+            <div>
+              <h3 class="info-title">${titleMarkup}</h3>
+              <p class="subtle">${item.subtitle}</p>
+            </div>
+            <span class="badge ${item.badgeClass}">${item.badge}</span>
           </div>
-          <span class="badge ${item.badgeClass}">${item.badge}</span>
-        </div>
-        ${renderList(item.details)}
-      </article>
-    `
-  )
-  .join("");
+          ${renderList(item.details)}
+        </article>
+      `;
+    })
+    .join("");
+};
 
-document.getElementById("priority-list").innerHTML = data.priorities
-  .map((item) => `<div class="priority-pill">${item}</div>`)
-  .join("");
+const renderPriorities = () => {
+  document.getElementById("priority-list").innerHTML = data.priorities
+    .map((item) => `<div class="priority-pill">${item}</div>`)
+    .join("");
+};
 
-document.getElementById("todo-list").innerHTML = data.todos
-  .map(
-    (item) => `
-      <article class="todo-item">
-        <div class="check ${item.urgency === "red" ? "urgent" : ""}" aria-hidden="true"></div>
-        <div class="todo-text">
-          <h3 class="todo-title">${item.title}</h3>
-          <div class="todo-meta">${item.due}</div>
-        </div>
-      </article>
-    `
-  )
-  .join("");
-
-document.getElementById("timeline").innerHTML = data.timeline
-  .map(
-    (item) => `
-      <article class="day-card">
-        <div class="day-top">
-          <div>
-            <div class="day-date">${item.date}</div>
-            <h3 class="day-title">${item.title}</h3>
+const renderTodos = () => {
+  document.getElementById("todo-list").innerHTML = data.todos
+    .map(
+      (item) => `
+        <article class="todo-item">
+          <div class="check ${item.urgency === "red" ? "urgent" : ""}" aria-hidden="true"></div>
+          <div class="todo-text">
+            <h3 class="todo-title">${item.title}</h3>
+            <div class="todo-meta">${item.due}</div>
           </div>
-        </div>
-        <div class="meta-chips">${renderBadges(item.chips)}</div>
-        <p class="day-summary">${item.focus}</p>
-        ${renderPlaces(item.places)}
-        ${renderList(item.points)}
-        ${renderCritical(item.critical)}
-      </article>
-    `
-  )
-  .join("");
+        </article>
+      `
+    )
+    .join("");
+};
 
-document.getElementById("reservation-list").innerHTML = data.reservations
-  .map(
-    (item) => `
-      <article class="reservation-card">
-        <div class="reservation-top">
-          <div>
-            <h3 class="reservation-title">${item.title}</h3>
-            <p class="subtle">${item.subtitle}</p>
+const renderTimeline = () => {
+  document.getElementById("timeline").innerHTML = data.timeline
+    .map(
+      (item) => `
+        <article class="day-card">
+          <div class="day-top">
+            <div>
+              <div class="day-date">${item.date}</div>
+              <h3 class="day-title">${item.title}</h3>
+            </div>
           </div>
-          <span class="badge ${item.badgeClass}">${item.badge}</span>
-        </div>
-        ${renderList(item.details)}
-      </article>
-    `
-  )
-  .join("");
+          <div class="meta-chips">${renderBadges(item.chips)}</div>
+          <p class="day-summary">${item.focus}</p>
+          ${renderPlaces(item.places)}
+          ${renderList(item.points)}
+          ${renderCritical(item.critical)}
+        </article>
+      `
+    )
+    .join("");
+};
 
-document.getElementById("tips-list").innerHTML = data.tips.map((tip) => `<li>${tip}</li>`).join("");
+const renderReservations = () => {
+  document.getElementById("reservation-list").innerHTML = data.reservations
+    .map(
+      (item) => `
+        <article class="reservation-card">
+          <div class="reservation-top">
+            <div>
+              <h3 class="reservation-title">${item.title}</h3>
+              <p class="subtle">${item.subtitle}</p>
+            </div>
+            <span class="badge ${item.badgeClass}">${item.badge}</span>
+          </div>
+          ${renderList(item.details)}
+        </article>
+      `
+    )
+    .join("");
+};
+
+const renderTips = () => {
+  document.getElementById("tips-list").innerHTML = data.tips.map((tip) => `<li>${tip}</li>`).join("");
+};
+
+const renderApp = () => {
+  renderStats();
+  renderMapLinks();
+  document.getElementById("map-preview-help").innerHTML = renderMapPreviewHelp();
+  document.getElementById("map-preview-grid").innerHTML = renderMapPreviewCards();
+  renderFlights();
+  renderStays();
+  renderPriorities();
+  renderTodos();
+  renderTimeline();
+  renderReservations();
+  renderTips();
+};
+
+const loadPlacesData = async () => {
+  try {
+    const response = await fetch(PLACES_DATA_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load places data: ${response.status}`);
+    }
+
+    const resolved = await response.json();
+    appState.placesIndex = buildPlacesIndex(resolved.places || []);
+    renderApp();
+  } catch (error) {
+    console.warn("Places data unavailable, keeping fallback map links.", error);
+  }
+};
+
+renderApp();
+loadPlacesData();
 
 const tabButtons = document.querySelectorAll(".tab-button");
 const tabPanels = document.querySelectorAll(".tab-panel");

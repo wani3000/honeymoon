@@ -5,7 +5,8 @@ const DEFAULT_FIELD_MASK = [
   "googleMapsUri",
   "rating",
   "userRatingCount",
-  "regularOpeningHours"
+  "regularOpeningHours",
+  "photos"
 ].join(",");
 
 const ALLOWED_ORIGINS = new Set([
@@ -82,7 +83,17 @@ module.exports = async function handler(req, res) {
       googleMapsUri: body.googleMapsUri || "",
       rating: body.rating || null,
       userRatingCount: body.userRatingCount || null,
-      regularOpeningHours: body.regularOpeningHours || null
+      regularOpeningHours: body.regularOpeningHours || null,
+      photos: (body.photos || []).slice(0, 1).map((photo) => ({
+        name: photo.name || "",
+        widthPx: photo.widthPx || null,
+        heightPx: photo.heightPx || null,
+        authorAttributions: (photo.authorAttributions || []).map((attribution) => ({
+          displayName: attribution.displayName || "",
+          uri: attribution.uri || "",
+          photoUri: attribution.photoUri || ""
+        }))
+      }))
     });
   } catch (error) {
     res.status(502).json({

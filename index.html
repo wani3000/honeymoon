@@ -1066,10 +1066,7 @@
       }
 
       .food-card-head {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 12px;
+        display: block;
       }
 
       .food-card-title {
@@ -1079,20 +1076,32 @@
       }
 
       .food-rating {
-        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        color: var(--text);
         font-size: 12px;
-        font-weight: 700;
-        line-height: 1.5;
-        text-align: right;
-        white-space: nowrap;
+        font-weight: 850;
+        line-height: 1.55;
       }
 
       .food-live {
-        margin-top: 6px;
-        color: var(--green-ink);
-        font-size: 11px;
+        color: var(--green);
+        font-size: 12px;
         font-weight: 800;
-        line-height: 1.45;
+        line-height: 1.55;
+      }
+
+      .food-rating-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: var(--panel-soft);
+        color: var(--text);
       }
 
       .food-card-meta {
@@ -1108,11 +1117,57 @@
         line-height: 1.65;
       }
 
-      .food-card-review {
-        margin-top: 10px;
+      .food-card-media {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .food-media-link {
+        display: block;
+        min-height: 112px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: var(--panel-soft);
+      }
+
+      .food-media-link img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+
+      .food-media-attribution {
+        grid-column: 1 / -1;
+        margin-top: -2px;
         color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .food-media-attribution a {
+        color: inherit;
+      }
+
+      .food-card-review {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: var(--panel-soft);
+        color: var(--text);
         font-size: 13px;
         line-height: 1.6;
+      }
+
+      .food-review-label {
+        display: block;
+        margin-bottom: 2px;
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 850;
       }
 
       .food-card-actions {
@@ -1120,6 +1175,12 @@
         flex-wrap: wrap;
         gap: 8px;
         margin-top: 12px;
+      }
+
+      @media (max-width: 420px) {
+        .food-card-media {
+          grid-template-columns: 1fr;
+        }
       }
 
       .food-empty {
@@ -1274,7 +1335,12 @@
       }
 
       .hero {
-        padding: 18px 0 18px;
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        margin: -34px -20px 0;
+        padding: 34px 20px 18px;
+        background: var(--bg);
         border-bottom: 0;
       }
 
@@ -1444,6 +1510,7 @@
       }
 
       .schedule-date-tabs {
+        top: 86px;
         margin: -26px -20px 18px;
         padding: 12px 20px 10px;
         background: color-mix(in srgb, var(--bg) 94%, transparent);
@@ -1482,9 +1549,24 @@
       }
 
       .food-region-tabs {
+        top: 86px;
         margin: -26px -20px 0;
         padding: 12px 20px 0;
         background: color-mix(in srgb, var(--bg) 94%, transparent);
+      }
+
+      .food-category-tabs {
+        position: sticky;
+        top: 148px;
+        z-index: 14;
+        margin: 0 -20px;
+        padding: 10px 20px 12px;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        backdrop-filter: blur(16px);
+      }
+
+      .food-guide-summary {
+        margin-top: 18px;
       }
 
       .food-region-tab {
@@ -2048,7 +2130,15 @@
 
       async function loadTripConfig() {
         await loadOptionalScript("./config.public.js");
+        const publicMapsApiKey = window.TRIP_MAPS_API_KEY || "";
+        const publicPlacesApiBase = window.TRIP_PLACES_API_BASE || "";
         await loadOptionalScript("./config.js");
+        if (!String(window.TRIP_MAPS_API_KEY || "").trim() && publicMapsApiKey) {
+          window.TRIP_MAPS_API_KEY = publicMapsApiKey;
+        }
+        if (!String(window.TRIP_PLACES_API_BASE || "").trim() && publicPlacesApiBase) {
+          window.TRIP_PLACES_API_BASE = publicPlacesApiBase;
+        }
       }
 
       const staticMapCards = [
@@ -2739,6 +2829,42 @@
         return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
       }
 
+      function buildFoodMapThumbnailUrl(place, apiKey) {
+        const location = (place.address || place.name || "").trim();
+        if (!location || !apiKey) return "";
+        const params = new URLSearchParams({
+          size: "900x560",
+          scale: "2",
+          maptype: "roadmap",
+          zoom: "15",
+          style: "feature:poi|visibility:simplified",
+          key: apiKey
+        });
+        params.append("markers", `color:0x242a31|${location}`);
+        return `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`;
+      }
+
+      function buildPlacePhotoProxyUrl(live) {
+        const apiBase = getPlacesApiBase();
+        const photoName = live?.photos?.[0]?.name || "";
+        if (!apiBase || !photoName) return "";
+        const params = new URLSearchParams({
+          name: photoName,
+          maxWidthPx: "720"
+        });
+        return `${apiBase}/api/google-place-photo?${params.toString()}`;
+      }
+
+      function buildPhotoAttributionHtml(live) {
+        const attributions = live?.photos?.[0]?.authorAttributions || [];
+        if (!attributions.length) return "";
+        const names = attributions.map((item) => {
+          const name = escapeHtml(item.displayName || "Google Maps 사용자");
+          return item.uri ? `<a href="${escapeHtml(item.uri)}" target="_blank" rel="noreferrer">${name}</a>` : name;
+        });
+        return `<div class="food-media-attribution">사진: ${names.join(", ")}</div>`;
+      }
+
       function renderMapPreviews() {
         const apiKey = (window.TRIP_MAPS_API_KEY || "").trim();
         if (!apiKey) {
@@ -3086,6 +3212,7 @@
         const targetCount = foodCategoryTargets[region.id]?.[category.id] ?? 0;
         const regionKeys = region.placeRegions || [region.id];
         const places = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === category.id);
+        const foodMapApiKey = (window.TRIP_MAPS_API_KEY || "").trim();
 
         foodRegionTabsEl.innerHTML = foodRegions.map((item) => {
           const itemRegionKeys = item.placeRegions || [item.id];
@@ -3126,9 +3253,29 @@
           const displayName = live?.name || place.name;
           const displayAddress = live?.address || place.address || "";
           const displayHref = live?.googleMapsUri || place.href;
-          const displayRating = live?.rating ? `${live.rating}${live.userRatingCount ? ` (${live.userRatingCount.toLocaleString("ko-KR")})` : ""}` : (place.googleRating || "-");
+          const displayRating = formatGoogleRating(live, place);
+          const displayReviewCount = formatGoogleReviewCount(live);
           const openNow = getOpenNowLabel(live);
+          const liveLabels = live ? ["Google 실시간", openNow].filter(Boolean) : [];
           const mapHref = normalizeGoogleMapsHref(displayHref, displayAddress || displayName);
+          const photoSrc = buildPlacePhotoProxyUrl(live);
+          const mapThumbSrc = buildFoodMapThumbnailUrl({ ...place, address: displayAddress, name: displayName }, foodMapApiKey);
+          const photoAttributionHtml = buildPhotoAttributionHtml(live);
+          const mediaHtml = (photoSrc || mapThumbSrc) ? `
+              <div class="food-card-media">
+                ${photoSrc ? `
+                  <a class="food-media-link" href="${mapHref}" target="_blank" rel="noreferrer">
+                    <img src="${photoSrc}" alt="${escapeHtml(displayName)} 사진" loading="lazy" referrerpolicy="no-referrer" />
+                  </a>
+                ` : ""}
+                ${mapThumbSrc ? `
+                  <a class="food-media-link" href="${mapHref}" target="_blank" rel="noreferrer">
+                    <img src="${mapThumbSrc}" alt="${escapeHtml(displayName)} 지도 썸네일" loading="lazy" />
+                  </a>
+                ` : ""}
+                ${photoAttributionHtml}
+              </div>
+            ` : "";
           return `
             <article class="food-card">
               <div class="food-card-head">
@@ -3136,16 +3283,17 @@
                   <h3 class="food-card-title">${escapeHtml(displayName)}</h3>
                   <div class="food-card-meta">${escapeHtml(displayAddress)}</div>
                 </div>
-                <div class="food-rating">
-                  Google ${escapeHtml(displayRating)}<br />
-                  Tripadvisor ${escapeHtml(place.tripadvisorRating || "-")}
-                  ${live ? `<div class="food-live">실시간 Google${openNow ? `<br />${escapeHtml(openNow)}` : ""}</div>` : ""}
-                </div>
               </div>
               <div class="food-card-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(category.label)}</div>
               <p class="food-card-copy">${escapeHtml(place.description || "")}</p>
               <p class="food-card-copy"><strong>대표 메뉴</strong> ${escapeHtml(place.signature || "")}</p>
-              <p class="food-card-review">${escapeHtml(place.review || "")}</p>
+              <div class="food-rating">
+                <span class="food-rating-pill">${escapeHtml(displayRating)}</span>
+                <span class="food-rating-pill">${escapeHtml(displayReviewCount)}</span>
+                ${liveLabels.map((label) => `<span class="food-rating-pill food-live">${escapeHtml(label)}</span>`).join("")}
+              </div>
+              ${mediaHtml}
+              <p class="food-card-review"><span class="food-review-label">대표리뷰요약:</span>${escapeHtml(place.review || "")}</p>
               <div class="food-card-actions">
                 <button class="copy-button" type="button" data-copy="${escapeHtml(displayName)}">상호명 복사</button>
                 ${displayAddress ? `<button class="copy-button" type="button" data-copy="${escapeHtml(displayAddress)}">주소 복사</button>` : ""}
@@ -3171,6 +3319,16 @@
       function getOpenNowLabel(live) {
         if (!live?.regularOpeningHours || typeof live.regularOpeningHours.openNow !== "boolean") return "";
         return live.regularOpeningHours.openNow ? "영업 중" : "영업 종료";
+      }
+
+      function formatGoogleRating(live, place) {
+        const rating = Number(live?.rating || place.googleRating || 0);
+        return rating ? `별점 5/${rating.toFixed(1)}` : "별점 -";
+      }
+
+      function formatGoogleReviewCount(live) {
+        const count = Number(live?.userRatingCount || 0);
+        return count ? `리뷰 ${count.toLocaleString("ko-KR")}` : "리뷰 -";
       }
 
       function hydrateLiveFoodPlaces(places, regionId, categoryId) {

@@ -1,0 +1,1335 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-01T02:56:26.440Z",
+  "source": "proxy",
+  "places": [
+    {
+      "slug": "lisbon-convent-square",
+      "city": "lisbon",
+      "name": "Convent Square Lisbon, Vignette Collection by IHG",
+      "query": "Convent Square Lisbon, Vignette Collection by IHG",
+      "note": "숙소 · 5/3~5/8",
+      "tags": [
+        "숙소",
+        "예약"
+      ],
+      "reservation": true,
+      "placeId": "ChIJ7bPgbOIzGQ0RiZExWwvX8Ww",
+      "googleMapsUri": "https://maps.google.com/?cid=7850292069258072457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. Dom Antão de Almada 4, 1100-373 Lisboa, Portugal",
+      "googleName": "Convent Square Lisbon, Vignette Collection by IHG",
+      "rating": 4.7,
+      "userRatingCount": 448,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:34.057Z"
+    },
+    {
+      "slug": "lisbon-lis-airport",
+      "city": "lisbon",
+      "name": "Humberto Delgado Airport",
+      "query": "Humberto Delgado Airport Lisbon",
+      "note": "이동 핵심",
+      "tags": [
+        "공항",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJgwHZFkYyGQ0RRm0DWD6lZgo",
+      "googleMapsUri": "https://maps.google.com/?cid=749468075186941254&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Alameda das Comunidades Portuguesas, 1700-111 Lisboa, Portugal",
+      "googleName": "Humberto Delgado Airport",
+      "rating": 3.6,
+      "userRatingCount": 59759,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:34.964Z"
+    },
+    {
+      "slug": "lisbon-cais-do-sodre",
+      "city": "lisbon",
+      "name": "Cais do Sodre",
+      "query": "Cais do Sodre Lisbon",
+      "note": "이동 핵심",
+      "tags": [
+        "역",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJW1nv-n00GQ0R8S9HJ4O-jJY",
+      "googleMapsUri": "https://maps.google.com/?cid=10848255072937652209&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Cais do Sodre, Lisboa, Portugal",
+      "googleName": "Cais do Sodre",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:35.776Z"
+    },
+    {
+      "slug": "lisbon-rossio",
+      "city": "lisbon",
+      "name": "Rossio",
+      "query": "Rossio Lisbon station",
+      "note": "이동 핵심",
+      "tags": [
+        "역",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJtRNGuIAzGQ0RhsoDyDD_gr0",
+      "googleMapsUri": "https://maps.google.com/?cid=13655757605119969926&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. 1º de Dezembro 125, 1249-970 Lisboa, Portugal",
+      "googleName": "Rossio",
+      "rating": 4.3,
+      "userRatingCount": 1689,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:36.634Z"
+    },
+    {
+      "slug": "lisbon-castelo-sao-jorge",
+      "city": "lisbon",
+      "name": "Castelo de Sao Jorge",
+      "query": "Castelo de Sao Jorge Lisbon",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJm8MOtHc0GQ0R1zPkmUFwwLQ",
+      "googleMapsUri": "https://maps.google.com/?cid=13024533549412529111&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal",
+      "googleName": "Castelo de São Jorge",
+      "rating": 4.5,
+      "userRatingCount": 99998,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:37.350Z"
+    },
+    {
+      "slug": "lisbon-praca-do-comercio",
+      "city": "lisbon",
+      "name": "Praca do Comercio",
+      "query": "Praca do Comercio Lisbon",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJY0ulMHo0GQ0RROAoa18vUzA",
+      "googleMapsUri": "https://maps.google.com/?cid=3482179023753764932&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "1100-148 Lisbon, Portugal",
+      "googleName": "Praça do Comércio",
+      "rating": 4.7,
+      "userRatingCount": 130128,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:38.161Z"
+    },
+    {
+      "slug": "lisbon-jeronimos",
+      "city": "lisbon",
+      "name": "Jeronimos Monastery",
+      "query": "Jeronimos Monastery Lisbon",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJS5zCw0LLHg0R7euWjjRddYc",
+      "googleMapsUri": "https://maps.google.com/?cid=9760810247707356141&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Praça do Império 1400-206 Lisboa, 1400-206 Lisboa, Portugal",
+      "googleName": "Jerónimos Monastery",
+      "rating": 4.5,
+      "userRatingCount": 60462,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:38.922Z"
+    },
+    {
+      "slug": "lisbon-santa-justa-lift",
+      "city": "lisbon",
+      "name": "Santa Justa Lift",
+      "query": "Santa Justa Lift Lisbon",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJL42Kt3g0GQ0RfGlw4GJ8FOE",
+      "googleMapsUri": "https://maps.google.com/?cid=16218724922182101372&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. de Santa Justa, 1150-060 Lisboa, Portugal",
+      "googleName": "Santa Justa Lift",
+      "rating": 4.1,
+      "userRatingCount": 57687,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:39.722Z"
+    },
+    {
+      "slug": "lisbon-chiado",
+      "city": "lisbon",
+      "name": "Chiado",
+      "query": "Chiado Lisbon",
+      "note": "쇼핑/카페",
+      "tags": [
+        "쇼핑",
+        "카페"
+      ],
+      "reservation": false,
+      "placeId": "ChIJDzmmAn80GQ0Rlx7cb1YcBeA",
+      "googleMapsUri": "https://maps.google.com/?cid=16142339596948872855&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Chiado, 1200-445 Lisboa, Portugal",
+      "googleName": "Chiado",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:40.495Z"
+    },
+    {
+      "slug": "lisbon-pasteis-de-belem",
+      "city": "lisbon",
+      "name": "Pasteis de Belem",
+      "query": "Pasteis de Belem Lisbon",
+      "note": "원조 에그타르트",
+      "tags": [
+        "디저트"
+      ],
+      "reservation": false,
+      "placeId": "ChIJW3H9LkXLHg0RZZZttMb27_8",
+      "googleMapsUri": "https://maps.google.com/?cid=18442230332396508773&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. de Belém 84 92, 1300-085 Lisboa, Portugal",
+      "googleName": "Pastéis de Belém",
+      "rating": 4.6,
+      "userRatingCount": 97542,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:41.391Z"
+    },
+    {
+      "slug": "lisbon-time-out-market",
+      "city": "lisbon",
+      "name": "Time Out Market Lisboa",
+      "query": "Time Out Market Lisboa",
+      "note": "푸드홀",
+      "tags": [
+        "푸드홀"
+      ],
+      "reservation": false,
+      "placeId": "ChIJdWBeWYc0GQ0RktxySU7hjxM",
+      "googleMapsUri": "https://maps.google.com/?cid=1409592934746217618&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Mercado da Ribeira, Av. 24 de Julho, 1200-479 Lisboa, Portugal",
+      "googleName": "Time Out Market",
+      "rating": 4.4,
+      "userRatingCount": 73296,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:42.177Z"
+    },
+    {
+      "slug": "lisbon-noobai",
+      "city": "lisbon",
+      "name": "Noobai Cafe",
+      "query": "Noobai Cafe Lisbon",
+      "note": "예약완료",
+      "tags": [
+        "식당",
+        "예약"
+      ],
+      "reservation": true,
+      "placeId": "ChIJA5Ph5IA0GQ0RF485GjsFk7I",
+      "googleMapsUri": "https://maps.google.com/?cid=12867634311728828183&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Coordenadas 38.70958301476143, -9.147937875251364, Miradouro de Santa Catarina S/N (Adamastor, 1200-401 Lisboa, Portugal",
+      "googleName": "Noobai - Rooftop Bar e Restaurante",
+      "rating": 4.2,
+      "userRatingCount": 3965,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:42.894Z"
+    },
+    {
+      "slug": "lisbon-bahr",
+      "city": "lisbon",
+      "name": "BAHR & Terrace",
+      "query": "BAHR & Terrace Lisbon",
+      "note": "예약완료",
+      "tags": [
+        "식당",
+        "예약"
+      ],
+      "reservation": true,
+      "placeId": "ChIJa267yck1GQ0RnSh-xkfa7Ko",
+      "googleMapsUri": "https://maps.google.com/?cid=12316459082759153821&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Praça Luís de Camões 2 5º Piso, 1200-243 Lisboa, Portugal",
+      "googleName": "BAHR & Terrace",
+      "rating": 4.5,
+      "userRatingCount": 686,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:43.641Z"
+    },
+    {
+      "slug": "lisbon-sea-me",
+      "city": "lisbon",
+      "name": "Sea Me Peixaria Moderna",
+      "query": "Sea Me Peixaria Moderna Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJqcsVyn80GQ0RDubHBggr3Uc",
+      "googleMapsUri": "https://maps.google.com/?cid=5178342460019435022&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Rua do Loreto 21, 1200-241 Lisboa, Portugal",
+      "googleName": "Sea Me Peixaria Moderna",
+      "rating": 4.2,
+      "userRatingCount": 3470,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:44.372Z"
+    },
+    {
+      "slug": "lisbon-solar-dos-presuntos",
+      "city": "lisbon",
+      "name": "Solar dos Presuntos",
+      "query": "Solar dos Presuntos Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJnQ5sZoEzGQ0RYIZ9tHaSlV8",
+      "googleMapsUri": "https://maps.google.com/?cid=6887572243664963168&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Junto ao Elevador do Lavra, R. das Portas de Santo Antão 150, 1150-269 Lisboa, Portugal",
+      "googleName": "Solar dos Presuntos",
+      "rating": 4.5,
+      "userRatingCount": 6192,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:45.213Z"
+    },
+    {
+      "slug": "lisbon-o-velho-eurico",
+      "city": "lisbon",
+      "name": "O Velho Eurico",
+      "query": "O Velho Eurico Lisbon",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJNSbwEng0GQ0RJZqJC6w1hYU",
+      "googleMapsUri": "https://maps.google.com/?cid=9621155191991147045&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "LG de São Cristóvão 3, 1100-179 Lisboa, Portugal",
+      "googleName": "O Velho Eurico",
+      "rating": 4.4,
+      "userRatingCount": 4120,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:46.039Z"
+    },
+    {
+      "slug": "lisbon-by-the-wine",
+      "city": "lisbon",
+      "name": "By The Wine",
+      "query": "By The Wine Lisbon",
+      "note": "와인바 후보",
+      "tags": [
+        "바"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ64I3aH40GQ0RdEyDXSB5DRY",
+      "googleMapsUri": "https://maps.google.com/?cid=1589059423446453364&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Rua das Flores 41 43, 1200-193 Lisboa, Portugal",
+      "googleName": "BytheWine",
+      "rating": 4.6,
+      "userRatingCount": 3250,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:47.093Z"
+    },
+    {
+      "slug": "lisbon-bessa",
+      "city": "lisbon",
+      "name": "Bessa Restaurante",
+      "query": "Bessa Restaurante Lisbon",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ9xdTTXg0GQ0RutKXNBrE3_0",
+      "googleMapsUri": "https://maps.google.com/?cid=18293555828232803002&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. dos Douradores no 210, 1100-208 Lisboa, Portugal",
+      "googleName": "Bessa Restaurante(seafood restaurant ))",
+      "rating": 4.8,
+      "userRatingCount": 6423,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:47.864Z"
+    },
+    {
+      "slug": "lisbon-a-cevicheria",
+      "city": "lisbon",
+      "name": "A Cevicheria",
+      "query": "A Cevicheria Lisbon",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJyyTUEX8zGQ0RTXOUNSHpdQM",
+      "googleMapsUri": "https://maps.google.com/?cid=249361683231044429&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. Dom Pedro V 129, 1250-096 Lisboa, Portugal",
+      "googleName": "A Cevicheria",
+      "rating": 4.6,
+      "userRatingCount": 8921,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:48.691Z"
+    },
+    {
+      "slug": "lisbon-ramiro",
+      "city": "lisbon",
+      "name": "Cervejaria Ramiro",
+      "query": "Cervejaria Ramiro Lisbon",
+      "note": "해산물 맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ-R6VlIUzGQ0RX8x1jtg9lh0",
+      "googleMapsUri": "https://maps.google.com/?cid=2131959473918823519&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Av. Alm. Reis 1 H, 1150-007 Lisboa, Portugal",
+      "googleName": "Restaurant - Cervejaria Ramiro",
+      "rating": 4.4,
+      "userRatingCount": 19996,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:49.407Z"
+    },
+    {
+      "slug": "lisbon-taberna-flores",
+      "city": "lisbon",
+      "name": "Taberna da Rua das Flores",
+      "query": "Taberna da Rua das Flores Lisbon",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJFYIWTn40GQ0R_Qjpat06bd0",
+      "googleMapsUri": "https://maps.google.com/?cid=15955473777499375869&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Rua das Flores 103 109, 1200-194 Lisboa, Portugal",
+      "googleName": "Taberna da Rua das Flores",
+      "rating": 4.3,
+      "userRatingCount": 3079,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:50.149Z"
+    },
+    {
+      "slug": "lisbon-tasca-do-chico",
+      "city": "lisbon",
+      "name": "A Tasca do Chico",
+      "query": "A Tasca do Chico Lisbon",
+      "note": "파두/바 후보",
+      "tags": [
+        "바",
+        "파두"
+      ],
+      "reservation": false,
+      "placeId": "ChIJk0fmv380GQ0RHFIjl0TMddc",
+      "googleMapsUri": "https://maps.google.com/?cid=15525539885395169820&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. do Diário de Notícias 39, 1200-141 Lisboa, Portugal",
+      "googleName": "A Tasca do Chico",
+      "rating": 4,
+      "userRatingCount": 3723,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:50.877Z"
+    },
+    {
+      "slug": "lisbon-suba",
+      "city": "lisbon",
+      "name": "SUBA Restaurant",
+      "query": "SUBA Restaurant Lisbon",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJI9IK9IA0GQ0R0i3OaHLNWHc",
+      "googleMapsUri": "https://maps.google.com/?cid=8599849379732270546&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Tv. da Portuguesa 53, 1200-401 Lisboa, Portugal",
+      "googleName": "SUBA Restaurante",
+      "rating": 4.6,
+      "userRatingCount": 408,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:51.656Z"
+    },
+    {
+      "slug": "lisbon-bonjardim",
+      "city": "lisbon",
+      "name": "Bonjardim",
+      "query": "Bonjardim Lisbon",
+      "note": "치킨 맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJB0wsKIEzGQ0RHsU0tgF4b-w",
+      "googleMapsUri": "https://maps.google.com/?cid=17036967864113087774&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Tv. de Santo Antão 11, 1150-312 Lisboa, Portugal",
+      "googleName": "Bonjardim",
+      "rating": 4.1,
+      "userRatingCount": 6664,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:52.416Z"
+    },
+    {
+      "slug": "lisbon-chapito",
+      "city": "lisbon",
+      "name": "Chapito a Mesa",
+      "query": "Chapito a Mesa Lisbon",
+      "note": "뷰 맛집 후보",
+      "tags": [
+        "식당",
+        "뷰"
+      ],
+      "reservation": false,
+      "placeId": "ChIJseKZm3c0GQ0ReEozouqhXtQ",
+      "googleMapsUri": "https://maps.google.com/?cid=15302846612967213688&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Costa do Castelo 7, 1149-079 Lisboa, Portugal",
+      "googleName": "Chapitô à Mesa",
+      "rating": 4.2,
+      "userRatingCount": 5053,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:53.162Z"
+    },
+    {
+      "slug": "lisbon-a-ginjinha",
+      "city": "lisbon",
+      "name": "A Ginjinha",
+      "query": "A Ginjinha Lisbon",
+      "note": "진지냐 한잔",
+      "tags": [
+        "바"
+      ],
+      "reservation": false,
+      "placeId": "ChIJmWBZR4czGQ0R0us-gvCVW3g",
+      "googleMapsUri": "https://maps.google.com/?cid=8672690367641873362&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Largo São Domingos 8, 1150-320 Lisboa, Portugal",
+      "googleName": "A Ginjinha",
+      "rating": 4.6,
+      "userRatingCount": 3500,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:54.009Z"
+    },
+    {
+      "slug": "lisbon-a-brasileira",
+      "city": "lisbon",
+      "name": "A Brasileira",
+      "query": "A Brasileira Lisbon",
+      "note": "카페 후보",
+      "tags": [
+        "카페"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ6QQiHX80GQ0RU5XEIRyTjvQ",
+      "googleMapsUri": "https://maps.google.com/?cid=17622184140982228307&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. Garrett 120 122, 1200-205 Lisboa, Portugal",
+      "googleName": "A Brasileira",
+      "rating": 4.2,
+      "userRatingCount": 9959,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:54.746Z"
+    },
+    {
+      "slug": "lisbon-zara-rossio",
+      "city": "lisbon",
+      "name": "Zara Rossio",
+      "query": "Zara Rossio Lisbon",
+      "note": "쇼핑 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJyQFpZ1MzGQ0RCeXeQY2jspk",
+      "googleMapsUri": "https://maps.google.com/?cid=11075094260748313865&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Praça Dom Pedro IV 96 122, 1100-026 Lisboa, Portugal",
+      "googleName": "Zara",
+      "rating": 3.7,
+      "userRatingCount": 709,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:55.483Z"
+    },
+    {
+      "slug": "lisbon-armazens-do-chiado",
+      "city": "lisbon",
+      "name": "Armazens do Chiado",
+      "query": "Armazens do Chiado Lisbon",
+      "note": "쇼핑 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJXQUu_2M1GQ0RUm6NRJ0UCOs",
+      "googleMapsUri": "https://maps.google.com/?cid=16935809064419290706&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. do Carmo, 1200-094 Lisboa, Portugal",
+      "googleName": "Armazéns do Chiado",
+      "rating": 4.4,
+      "userRatingCount": 9070,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:56.242Z"
+    },
+    {
+      "slug": "lisbon-conserveira",
+      "city": "lisbon",
+      "name": "Conserveira de Lisboa",
+      "query": "Conserveira de Lisboa",
+      "note": "기념품 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJK9of43k0GQ0Re83_E56rp28",
+      "googleMapsUri": "https://maps.google.com/?cid=8045587954749394299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. dos Bacalhoeiros 34, 1100-071 Lisboa, Portugal",
+      "googleName": "Conserveira de Lisboa",
+      "rating": 4.5,
+      "userRatingCount": 827,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:56.967Z"
+    },
+    {
+      "slug": "lisbon-a-vida-portuguesa",
+      "city": "lisbon",
+      "name": "A Vida Portuguesa Chiado",
+      "query": "A Vida Portuguesa Chiado Lisbon",
+      "note": "기념품 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJjV9a2340GQ0RksyzcqklJxA",
+      "googleMapsUri": "https://maps.google.com/?cid=1163940438402649234&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. Nova do Almada 72, 1200-289 Lisboa, Portugal",
+      "googleName": "A Vida Portuguesa",
+      "rating": 4.6,
+      "userRatingCount": 1120,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:57.692Z"
+    },
+    {
+      "slug": "lisbon-luvaria-ulisses",
+      "city": "lisbon",
+      "name": "Luvaria Ulisses",
+      "query": "Luvaria Ulisses Lisbon",
+      "note": "소품 쇼핑",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ4ZIOsXg0GQ0RnQVQEww9-1U",
+      "googleMapsUri": "https://maps.google.com/?cid=6195612834451162525&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "R. do Carmo 87 A, 1200-093 Lisboa, Portugal",
+      "googleName": "Luvaria Ulisses",
+      "rating": 4.6,
+      "userRatingCount": 235,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:58.414Z"
+    },
+    {
+      "slug": "outskirts-cascais",
+      "city": "lisbon-outskirts",
+      "name": "Cascais",
+      "query": "Cascais Portugal",
+      "note": "근교 산책",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJKeN1nC7EHg0RA7J6iWYQ6QA",
+      "googleMapsUri": "https://maps.google.com/?cid=65601702152811011&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Cascais, Portugal",
+      "googleName": "Cascais",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:59.121Z"
+    },
+    {
+      "slug": "outskirts-cascais-marina",
+      "city": "lisbon-outskirts",
+      "name": "Cascais Marina",
+      "query": "Cascais Marina Portugal",
+      "note": "근교 산책",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJmaqD337FHg0RI9s4IV2qTMY",
+      "googleMapsUri": "https://maps.google.com/?cid=14288983034705795875&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Casa de São Bernardo, 2750-800 Cascais, Portugal",
+      "googleName": "Cascais Marina",
+      "rating": 4.5,
+      "userRatingCount": 8412,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:55:59.894Z"
+    },
+    {
+      "slug": "outskirts-sintra-center",
+      "city": "lisbon-outskirts",
+      "name": "Centro historico de Sintra",
+      "query": "Centro historico de Sintra",
+      "note": "근교 산책",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJA5gcEDTbHg0RVGbP3ycphAo",
+      "googleMapsUri": "https://maps.google.com/?cid=757775888540460628&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Sintra, 2710-555 Sintra, Portugal",
+      "googleName": "Historic Center",
+      "rating": 4.7,
+      "userRatingCount": 1225,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:00.615Z"
+    },
+    {
+      "slug": "outskirts-cabo-da-roca",
+      "city": "lisbon-outskirts",
+      "name": "Cabo da Roca",
+      "query": "Cabo da Roca Portugal",
+      "note": "근교 전망",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJjUNdI8DaHg0Rr7P8mKjYOpU",
+      "googleMapsUri": "https://maps.google.com/?cid=10753145278933283759&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Estrada do Cabo da Roca s/n, 2705-001 Colares, Portugal",
+      "googleName": "Cape Roca",
+      "rating": 4.8,
+      "userRatingCount": 67692,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:01.466Z"
+    },
+    {
+      "slug": "outskirts-pena-palace",
+      "city": "lisbon-outskirts",
+      "name": "Park and National Palace of Pena",
+      "query": "Pena Palace Sintra",
+      "note": "근교 관광",
+      "tags": [
+        "근교",
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJZ1qc8r_aHg0RWDtny30aJ3c",
+      "googleMapsUri": "https://maps.google.com/?cid=8585860342190914392&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Estrada da Pena, 2710-609 Sintra, Portugal",
+      "googleName": "National Palace of Pena",
+      "rating": 4.4,
+      "userRatingCount": 104157,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:02.160Z"
+    },
+    {
+      "slug": "mallorca-fontsanta",
+      "city": "mallorca",
+      "name": "Fontsanta Hotel Thermal Spa & Wellness",
+      "query": "Fontsanta Hotel Thermal Spa & Wellness Mallorca",
+      "note": "숙소 · 5/8~5/12",
+      "tags": [
+        "숙소",
+        "예약"
+      ],
+      "reservation": true,
+      "placeId": "ChIJr_-OK1iplxIRSubL0HcW_x4",
+      "googleMapsUri": "https://maps.google.com/?cid=2233528644058998346&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Illes Balears, Spain",
+      "googleName": "Fontsanta Hotel Thermal Spa & Wellness – Preferred Hotels & Resorts",
+      "rating": 4.5,
+      "userRatingCount": 134,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:03.037Z"
+    },
+    {
+      "slug": "mallorca-pmi-airport",
+      "city": "mallorca",
+      "name": "Palma de Mallorca Airport",
+      "query": "Palma de Mallorca Airport",
+      "note": "이동 핵심",
+      "tags": [
+        "공항",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ8zXb9S-UlxIRVvm3aWXaMXA",
+      "googleMapsUri": "https://maps.google.com/?cid=8084482935206967638&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Autopista de Llevant, Platja de Palma i Pla de Sant Jordi, 07611 Palma, Illes Balears, Spain",
+      "googleName": "Palma de Mallorca Airport",
+      "rating": 4.1,
+      "userRatingCount": 40655,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:03.738Z"
+    },
+    {
+      "slug": "mallorca-record-go",
+      "city": "mallorca",
+      "name": "Record go Mobility - Palma de Mallorca",
+      "query": "Record Go Palma de Mallorca Airport",
+      "note": "렌터카 픽업",
+      "tags": [
+        "렌터카",
+        "이동"
+      ],
+      "reservation": true,
+      "placeId": "ChIJ4QLDedb_Xw0RdFI_nfZCuMo",
+      "googleMapsUri": "https://maps.google.com/?cid=14607499018343764596&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Disseminat Aeropuerto son Sant Joan, Platja de Palma i Pla de Sant Jordi, 07611 Base Aerea Son Sant Joan, Illes Balears, Spain",
+      "googleName": "Record go Mobility - Palma de Mallorca",
+      "rating": 3.6,
+      "userRatingCount": 20655,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:04.428Z"
+    },
+    {
+      "slug": "mallorca-la-lonja-marina",
+      "city": "mallorca",
+      "name": "La Lonja Marina Charter",
+      "query": "La Lonja Marina Charter Palma",
+      "note": "카타마란 집결",
+      "tags": [
+        "액티비티",
+        "예약"
+      ],
+      "reservation": true,
+      "placeId": "ChIJ_Wb8nkOSlxIR9da4oI_3b_A",
+      "googleMapsUri": "https://maps.google.com/?cid=17325338487766439669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Muelle de la lonja, s/n, Centre, 07012 Palma, Illes Balears, Spain",
+      "googleName": "La Lonja Marina Charter",
+      "rating": 4.4,
+      "userRatingCount": 2090,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:05.246Z"
+    },
+    {
+      "slug": "mallorca-palma-cathedral",
+      "city": "mallorca",
+      "name": "Palma Cathedral",
+      "query": "Palma Cathedral",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJVY-vfUWSlxIRqoH9muibDFQ",
+      "googleMapsUri": "https://maps.google.com/?cid=6056387022241497514&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Plaça de la Seu, s/n, Centre, 07001 Palma, Illes Balears, Spain",
+      "googleName": "Catedral-Basílica de Santa María de Mallorca",
+      "rating": 4.7,
+      "userRatingCount": 63868,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:05.933Z"
+    },
+    {
+      "slug": "mallorca-parc-de-la-mar",
+      "city": "mallorca",
+      "name": "Parc de la Mar",
+      "query": "Parc de la Mar Palma",
+      "note": "팔마 산책",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJWx64PE-SlxIR1iNXBEL3elY",
+      "googleMapsUri": "https://maps.google.com/?cid=6231564897333224406&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Parque del Mar, Centre, Palma, Illes Balears, Spain",
+      "googleName": "Parque del Mar",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:06.707Z"
+    },
+    {
+      "slug": "mallorca-calo-des-moro",
+      "city": "mallorca",
+      "name": "Calo des Moro",
+      "query": "Calo des Moro Mallorca",
+      "note": "해변",
+      "tags": [
+        "해변"
+      ],
+      "reservation": false,
+      "placeId": "ChIJI1J5hBhVlhIRp9hdEN6Mb70",
+      "googleMapsUri": "https://maps.google.com/?cid=13650283880968476839&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Caló del Moro, 07650 Sant Antoni de Portmany, Illes Balears, Spain",
+      "googleName": "Caló del Moro",
+      "rating": 4.6,
+      "userRatingCount": 8967,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:07.445Z"
+    },
+    {
+      "slug": "mallorca-es-trenc",
+      "city": "mallorca",
+      "name": "Es Trenc",
+      "query": "Es Trenc Mallorca",
+      "note": "해변",
+      "tags": [
+        "해변"
+      ],
+      "reservation": false,
+      "placeId": "ChIJdwuOeSGplxIR8cfhhEz9PV0",
+      "googleMapsUri": "https://maps.google.com/?cid=6718804724195379185&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Es Trenc, Spain",
+      "googleName": "Es Trenc",
+      "rating": 4.1,
+      "userRatingCount": 13510,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:08.118Z"
+    },
+    {
+      "slug": "mallorca-cala-figuera",
+      "city": "mallorca",
+      "name": "Cala Figuera",
+      "query": "Cala Figuera Mallorca",
+      "note": "해변 산책",
+      "tags": [
+        "해변"
+      ],
+      "reservation": false,
+      "placeId": "ChIJu8vOySRUlhIR4EBXf3GvAgo",
+      "googleMapsUri": "https://maps.google.com/?cid=721331792335290592&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "07659 Cala Figuera, Balearic Islands, Spain",
+      "googleName": "Cala Figuera",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:08.824Z"
+    },
+    {
+      "slug": "mallorca-cala-mondrago",
+      "city": "mallorca",
+      "name": "Cala Mondrago",
+      "query": "Cala Mondrago Mallorca",
+      "note": "대체 해변",
+      "tags": [
+        "해변"
+      ],
+      "reservation": false,
+      "placeId": "ChIJg0Av669WlhIRYN7EK7W8L2Q",
+      "googleMapsUri": "https://maps.google.com/?cid=7219196214007619168&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Cala Mondragó, 07691 Cala Mondragó, Illes Balears, Spain",
+      "googleName": "Cala Mondragó",
+      "rating": 4.6,
+      "userRatingCount": 4884,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:09.518Z"
+    },
+    {
+      "slug": "mallorca-cala-llombards",
+      "city": "mallorca",
+      "name": "Cala Llombards",
+      "query": "Cala Llombards Mallorca",
+      "note": "해변",
+      "tags": [
+        "해변"
+      ],
+      "reservation": false,
+      "placeId": "ChIJcyeJB_5UlhIR0EBXf3GvAgo",
+      "googleMapsUri": "https://maps.google.com/?cid=721331792335290576&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "07690 Cala Llombards, Illes Balears, Spain",
+      "googleName": "Cala Llombards",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:10.192Z"
+    },
+    {
+      "slug": "mallorca-valldemossa",
+      "city": "mallorca",
+      "name": "Valldemossa",
+      "query": "Valldemossa Mallorca",
+      "note": "근교 관광",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ_8aKugPulxIRPhKWi-dSSJI",
+      "googleMapsUri": "https://maps.google.com/?cid=10540766082293436990&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "07170 Valldemossa, Balearic Islands, Spain",
+      "googleName": "Valldemossa",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:10.902Z"
+    },
+    {
+      "slug": "mallorca-deia",
+      "city": "mallorca",
+      "name": "Deia",
+      "query": "Deia Mallorca",
+      "note": "근교 관광",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJc1QMHLPvlxIR4tTUbbPZf_k",
+      "googleMapsUri": "https://maps.google.com/?cid=17978327602151347426&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "07179 Deià, Balearic Islands, Spain",
+      "googleName": "Deià",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:11.592Z"
+    },
+    {
+      "slug": "mallorca-port-de-soller",
+      "city": "mallorca",
+      "name": "Port de Soller",
+      "query": "Port de Soller Mallorca",
+      "note": "근교 관광",
+      "tags": [
+        "근교"
+      ],
+      "reservation": false,
+      "placeId": "ChIJl4UEL_vllxIRYD5Xf3GvAgo",
+      "googleMapsUri": "https://maps.google.com/?cid=721331792335289952&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Port de Sóller, Balearic Islands, Spain",
+      "googleName": "Port de Sóller",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:12.311Z"
+    },
+    {
+      "slug": "mallorca-portixol",
+      "city": "mallorca",
+      "name": "Portixol",
+      "query": "Portixol Mallorca",
+      "note": "해안 산책",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJHcHfD7iTlxIR4zXJCBxQhk4",
+      "googleMapsUri": "https://maps.google.com/?cid=5658298063174317539&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer de la Sirena, 27, Platja de Palma i Pla de Sant Jordi, 07006 Palma, Illes Balears, Spain",
+      "googleName": "Portixol Hotel",
+      "rating": 4.3,
+      "userRatingCount": 1592,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:13.065Z"
+    },
+    {
+      "slug": "mallorca-santanyi-market",
+      "city": "mallorca",
+      "name": "Santanyi Market",
+      "query": "Santanyi Market Mallorca",
+      "note": "시장",
+      "tags": [
+        "시장"
+      ],
+      "reservation": false,
+      "placeId": "ChIJkYyBKABVlhIRDGwY7VJ7V8Q",
+      "googleMapsUri": "https://maps.google.com/?cid=14147912350503037964&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Plaça Major, 07650 Santanyí, Illes Balears, Spain",
+      "googleName": "Santanyí Market",
+      "rating": 4.3,
+      "userRatingCount": 618,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:13.860Z"
+    },
+    {
+      "slug": "mallorca-cassai-beach-house",
+      "city": "mallorca",
+      "name": "Cassai Beach House",
+      "query": "Cassai Beach House Mallorca",
+      "note": "식당 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJBUROGKOplxIRi0kZM5E0HLw",
+      "googleMapsUri": "https://maps.google.com/?cid=13554766776710547851&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer Major, 21, 07638 Colònia de Sant Jordi, Illes Balears, Spain",
+      "googleName": "CASSAI Beach House",
+      "rating": 3.9,
+      "userRatingCount": 3850,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:14.654Z"
+    },
+    {
+      "slug": "mallorca-fontsanta-restaurant",
+      "city": "mallorca",
+      "name": "Fontsanta Restaurant Tess de Mar",
+      "query": "Tess de Mar Fontsanta Mallorca",
+      "note": "호텔 식당",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJL9Ytb-KtlxIRUFYgdZr6jhE",
+      "googleMapsUri": "https://maps.google.com/?cid=1265224086634649168&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer Nou, 10, 07630 Campos, Illes Balears, Spain",
+      "googleName": "Tess de Mar - Adults Only",
+      "rating": 4.5,
+      "userRatingCount": 225,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:15.421Z"
+    },
+    {
+      "slug": "mallorca-el-camino",
+      "city": "mallorca",
+      "name": "El Camino",
+      "query": "El Camino Palma Mallorca",
+      "note": "맛집 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJK3PlkMmTlxIRi534SQWzYm0",
+      "googleMapsUri": "https://maps.google.com/?cid=7882059133149027723&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer de Can Brondo, 4, Centre, 07001 Palma, Illes Balears, Spain",
+      "googleName": "El Camino",
+      "rating": 4.7,
+      "userRatingCount": 2901,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:16.149Z"
+    },
+    {
+      "slug": "mallorca-the-sea-club",
+      "city": "mallorca",
+      "name": "The Sea Club Cap Rocat",
+      "query": "The Sea Club Cap Rocat Mallorca",
+      "note": "식당 후보",
+      "tags": [
+        "식당",
+        "뷰"
+      ],
+      "reservation": false,
+      "placeId": "ChIJW0fKNk6XlxIRY8IT2Te_8n0",
+      "googleMapsUri": "https://maps.google.com/?cid=9075526445691028067&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer d'Enderrocat, s/n, 07609 Cala Blava, Illes Balears, Spain",
+      "googleName": "Sea Club, Cap Rocat",
+      "rating": 4.3,
+      "userRatingCount": 427,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:16.994Z"
+    },
+    {
+      "slug": "mallorca-mirador-de-cabrera",
+      "city": "mallorca",
+      "name": "Mirador de Cabrera",
+      "query": "Mirador de Cabrera Mallorca",
+      "note": "전망",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJjfh4wqGmlxIRJlj2KlTADLo",
+      "googleMapsUri": "https://maps.google.com/?cid=13406301658505697318&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Pas de, Carrer de Murillo, 8, 07639 Es Pas de Vallgornera, Illes Balears, Spain",
+      "googleName": "Restaurante Mirador de Cabrera",
+      "rating": 4.5,
+      "userRatingCount": 517,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:17.733Z"
+    },
+    {
+      "slug": "mallorca-vela-mallorca",
+      "city": "mallorca",
+      "name": "Vela Mallorca Boat Tours",
+      "query": "Vela Mallorca Boat Tours",
+      "note": "요트 대안",
+      "tags": [
+        "액티비티"
+      ],
+      "reservation": false,
+      "placeId": "ChIJR9dj-LCTlxIRLFAUzLJGCxE",
+      "googleMapsUri": "https://maps.google.com/?cid=1228153057130598444&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Muelle Pelaires, sn, 07015 Palma, Illes Balears, Spain",
+      "googleName": "Vela Mayorca - Boat tours",
+      "rating": 5,
+      "userRatingCount": 170,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:18.791Z"
+    },
+    {
+      "slug": "mallorca-fervor",
+      "city": "mallorca",
+      "name": "FERVOR Palma",
+      "query": "FERVOR Palma",
+      "note": "팔마 점심 후보",
+      "tags": [
+        "식당"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ84-R51GSlxIR0dDH6VOAVkQ",
+      "googleMapsUri": "https://maps.google.com/?cid=4924264340469043409&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Carrer dels Hostals, 4, Centre, 07002 Palma, Illes Balears, Spain",
+      "googleName": "FERVOR Palma",
+      "rating": 4.6,
+      "userRatingCount": 2790,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:19.458Z"
+    },
+    {
+      "slug": "madrid-barajas-t1",
+      "city": "madrid",
+      "name": "Madrid Barajas Airport T1",
+      "query": "Madrid Barajas Airport T1",
+      "note": "이동 핵심",
+      "tags": [
+        "공항",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ3RiXtdExQg0RmQkSacZCGJM",
+      "googleMapsUri": "https://maps.google.com/?cid=10599295142950209945&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Terminal 1, Av de la Hispanidad, s/n, Barajas, 28042 Madrid, Spain",
+      "googleName": "Terminal 1",
+      "rating": null,
+      "userRatingCount": null,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:20.183Z"
+    },
+    {
+      "slug": "madrid-excess-baggage",
+      "city": "madrid",
+      "name": "Excess Baggage Company",
+      "query": "Excess Baggage Company Madrid Barajas T1",
+      "note": "짐보관",
+      "tags": [
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJi1oDng8uQg0REMZWUDV52zQ",
+      "googleMapsUri": "https://maps.google.com/?cid=3808771179759978000&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Terminal 4 Llegadas / Arrivals, Aeropuerto Barajas, Barajas, 28042 Madrid, Spain",
+      "googleName": "Excess Baggage Company",
+      "rating": 3.5,
+      "userRatingCount": 129,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:20.922Z"
+    },
+    {
+      "slug": "madrid-atocha",
+      "city": "madrid",
+      "name": "Atocha Station",
+      "query": "Atocha Station Madrid",
+      "note": "이동 핵심",
+      "tags": [
+        "역",
+        "이동"
+      ],
+      "reservation": false,
+      "placeId": "ChIJF9jNRSQmQg0RWwNljcL5Rzk",
+      "googleMapsUri": "https://maps.google.com/?cid=4127542197499528027&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Pl. del Emperador Carlos V, Arganzuela, 28045 Madrid, Spain",
+      "googleName": "Madrid Puerta de Atocha - Almudena Grandes",
+      "rating": 4,
+      "userRatingCount": 25281,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:21.696Z"
+    },
+    {
+      "slug": "madrid-plaza-mayor",
+      "city": "madrid",
+      "name": "Plaza Mayor",
+      "query": "Plaza Mayor Madrid",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJZX56134oQg0RHBgRAVQ8pkk",
+      "googleMapsUri": "https://maps.google.com/?cid=5306995542395525148&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Pl. Mayor, Centro, 28012 Madrid, Spain",
+      "googleName": "Plaza Mayor",
+      "rating": 4.6,
+      "userRatingCount": 200137,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:22.436Z"
+    },
+    {
+      "slug": "madrid-retiro",
+      "city": "madrid",
+      "name": "El Retiro Park",
+      "query": "El Retiro Park Madrid",
+      "note": "관광",
+      "tags": [
+        "관광"
+      ],
+      "reservation": false,
+      "placeId": "ChIJe4IR9Z8oQg0RrqMktRYnbJ4",
+      "googleMapsUri": "https://maps.google.com/?cid=11415542133959205806&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Retiro, 28009 Madrid, Spain",
+      "googleName": "El Retiro Park",
+      "rating": 4.8,
+      "userRatingCount": 210673,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:23.251Z"
+    },
+    {
+      "slug": "madrid-loewe-serrano",
+      "city": "madrid",
+      "name": "CASA LOEWE Madrid",
+      "query": "CASA LOEWE Madrid Serrano 34",
+      "note": "쇼핑 핵심",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJe6rNNJcoQg0RPPUKFs4u2U0",
+      "googleMapsUri": "https://maps.google.com/?cid=5609566273534620988&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "C. de Serrano, 34, Salamanca, 28001 Madrid, Spain",
+      "googleName": "Loewe Madrid",
+      "rating": 4.2,
+      "userRatingCount": 789,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:24.012Z"
+    },
+    {
+      "slug": "madrid-el-corte-ingles-preciados",
+      "city": "madrid",
+      "name": "El Corte Ingles Preciados",
+      "query": "El Corte Ingles Preciados Madrid",
+      "note": "쇼핑 핵심",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJwaZ4XJgpQg0Rc2zf8sJEfTE",
+      "googleMapsUri": "https://maps.google.com/?cid=3566082084036373619&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "C. de Preciados, 3, Centro, 28013 Madrid, Spain",
+      "googleName": "El Corte Inglés Preciados",
+      "rating": 4.3,
+      "userRatingCount": 19233,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:24.852Z"
+    },
+    {
+      "slug": "madrid-zara-gran-via",
+      "city": "madrid",
+      "name": "Zara Gran Via",
+      "query": "Zara Gran Via Madrid",
+      "note": "쇼핑 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJdXCin30oQg0RKo51ZGiS4yM",
+      "googleMapsUri": "https://maps.google.com/?cid=2586071588100476458&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Gran Vía, 34, Centro, 28013 Madrid, Spain",
+      "googleName": "Zara",
+      "rating": 4.1,
+      "userRatingCount": 8528,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:25.620Z"
+    },
+    {
+      "slug": "madrid-primark-gran-via",
+      "city": "madrid",
+      "name": "Primark Gran Via",
+      "query": "Primark Gran Via Madrid",
+      "note": "쇼핑 후보",
+      "tags": [
+        "쇼핑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJaUu5gn0oQg0RJGkn0OeXftE",
+      "googleMapsUri": "https://maps.google.com/?cid=15095670022877964580&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Gran Vía, 32, Centro, 28013 Madrid, Spain",
+      "googleName": "Primark",
+      "rating": 4.2,
+      "userRatingCount": 103543,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T02:56:26.440Z"
+    }
+  ]
+}
