@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>신혼여행 플랜</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <style>
       :root {
         color-scheme: light dark;
@@ -26,6 +28,7 @@
         --accent-soft: #ede7f6;
         --nav-bg: rgba(255, 255, 255, 0.94);
         --indicator: #ede7f6;
+        --font-main: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       }
 
       @media (prefers-color-scheme: dark) {
@@ -58,15 +61,17 @@
         min-height: 100%;
         background: var(--bg);
         color: var(--text);
-        font-family: system-ui, sans-serif;
+        font-family: var(--font-main);
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font-family: var(--font-main);
       }
 
       body { display: flex; justify-content: center; }
-
-      body[data-active-panel="schedule"] .hero,
-      body[data-active-panel="food"] .hero {
-        display: none;
-      }
 
       .app {
         width: min(100%, 480px);
@@ -1139,16 +1144,22 @@
         align-items: center;
         justify-content: space-between;
         gap: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
       }
 
-      .phrase-head h3 { font-size: 17px; font-weight: 700; }
+      .phrase-head h3 {
+        color: var(--text);
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 1.3;
+        letter-spacing: -0.03em;
+      }
 
       .phrase-meaning {
         color: var(--muted);
         font-size: 13px;
         line-height: 1.5;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
 
       .lang-grid {
@@ -1185,21 +1196,25 @@
       }
 
       .lang-phrase {
-        font-size: 15px;
-        font-weight: 800;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
         line-height: 1.45;
       }
 
       .lang-read {
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.5;
+        margin-top: 8px;
+        color: var(--text);
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.45;
+        letter-spacing: -0.03em;
       }
 
       /* Visual refresh: sparse neighborhood-app style */
       :root {
-        --bg: #f7f8fa;
+        --bg: #ffffff;
         --panel: #ffffff;
         --panel-soft: #f1f2f4;
         --surface-2: #eceef1;
@@ -1221,7 +1236,7 @@
 
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #101113;
+          --bg: #ffffff;
           --panel: #17191c;
           --panel-soft: #202329;
           --surface-2: #272b31;
@@ -1249,13 +1264,24 @@
         text-rendering: optimizeLegibility;
       }
 
+      html {
+        overflow-y: scroll;
+        scrollbar-gutter: stable;
+      }
+
       .app {
         padding: 34px 20px 32px;
       }
 
       .hero {
-        padding: 22px 0 30px;
+        padding: 18px 0 18px;
         border-bottom: 0;
+      }
+
+      .hero .eyebrow,
+      .hero-copy,
+      .chips {
+        display: none;
       }
 
       .eyebrow, .section-label {
@@ -1290,7 +1316,15 @@
         margin-top: 18px;
       }
 
-      .chip, .action-link, .priority-pill, .copy-button, .hm-reset {
+      .action-link, .copy-button, .hm-reset {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #ffffff;
+        color: var(--text);
+        font-weight: 850;
+      }
+
+      .chip, .priority-pill {
         border: 0;
         border-radius: 999px;
         background: var(--panel-soft);
@@ -1312,44 +1346,52 @@
 
       .action-link.map,
       .map-card-link {
-        background: var(--panel-soft);
-        border: 0;
+        background: #ffffff;
+        border: 1px solid var(--line);
         color: var(--text);
       }
 
       .action-link.alt {
-        background: rgba(255, 90, 0, 0.12);
+        background: #ffffff;
         color: var(--orange);
-        border: 0;
+        border: 1px solid color-mix(in srgb, var(--orange) 44%, var(--line));
       }
 
       .bottom-tabs {
         left: 50%;
         bottom: 0;
         width: min(100%, 480px);
-        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-        gap: 0;
+        height: calc(68px + env(safe-area-inset-bottom));
+        padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+        gap: 6px;
         border: 0;
         border-top: 1px solid var(--line);
         border-radius: 0;
         box-shadow: none;
         background: var(--nav-bg);
+        align-items: stretch;
       }
 
       .main-tab {
-        min-height: 56px;
-        padding: 0 4px;
+        min-width: 0;
+        min-height: 42px;
+        padding: 0 8px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--muted);
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 850;
         background: transparent;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        line-height: 1.1;
       }
 
       .main-tab.active {
-        color: var(--text);
+        color: #ffffff;
+        background: var(--text);
+        border: 1px solid var(--text);
       }
 
       .main-tab.active::before {
@@ -1358,7 +1400,7 @@
 
       .panel,
       .panel.schedule-panel {
-        padding-bottom: 88px;
+        padding-bottom: 92px;
       }
 
       .section {
@@ -1394,6 +1436,13 @@
         background: var(--panel-soft);
       }
 
+      .map-card,
+      .item-map-preview,
+      .map-frame {
+        border: 0;
+        background: var(--panel-soft);
+      }
+
       .schedule-date-tabs {
         margin: -26px -20px 18px;
         padding: 12px 20px 10px;
@@ -1403,8 +1452,9 @@
 
       .date-tab,
       .food-category-tab {
+        flex: 0 0 auto;
         min-height: 42px;
-        border: 0;
+        border: 1px solid transparent;
         border-radius: 999px;
         background: var(--panel-soft);
         color: var(--text);
@@ -1414,9 +1464,21 @@
 
       .date-tab.active,
       .food-category-tab.active {
-        background: var(--indicator);
-        border-color: var(--indicator);
-        color: var(--panel);
+        background: var(--text);
+        border-color: var(--text);
+        color: #ffffff;
+      }
+
+      .food-category-tab {
+        background: #ffffff;
+        border-color: var(--line);
+        color: var(--text);
+      }
+
+      .food-category-tab.active {
+        background: var(--text);
+        border-color: var(--text);
+        color: #ffffff;
       }
 
       .food-region-tabs {
@@ -1426,6 +1488,7 @@
       }
 
       .food-region-tab {
+        width: 100%;
         min-height: 50px;
         color: var(--muted);
         font-size: 15px;
@@ -1436,6 +1499,7 @@
       .food-region-tab.active {
         color: var(--text);
         border-bottom-color: var(--text);
+        background: #ffffff;
       }
 
       .food-card,
@@ -1478,6 +1542,11 @@
         color: var(--green);
       }
 
+      .hm-badge,
+      .lang-label {
+        border: 0;
+      }
+
       @media (max-width: 480px) {
         .app {
           padding-left: 20px;
@@ -1489,8 +1558,8 @@
   <body>
     <main class="app">
       <section class="hero">
-        <p class="eyebrow">Honeymoon Planner</p>
-        <h1>리스본 · 마요르카 · 마드리드</h1>
+        <p class="eyebrow">Trip</p>
+        <h1 id="mainPanelTitle">개요</h1>
         <p class="hero-copy">개요, 일정표, 예약 체크, 메모를 한 화면 구조 안에서 보고 일정표 탭에서는 날짜별 섹션으로 바로 점프할 수 있게 구성했어요.</p>
         <div class="chips">
           <span class="chip">10박 11일</span>
@@ -1711,13 +1780,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Hola</div>
                   <div class="lang-read">올라</div>
+                  <div class="lang-phrase">Hola</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Olá</div>
                   <div class="lang-read">올라</div>
+                  <div class="lang-phrase">Olá</div>
                 </div>
               </div>
             </article>
@@ -1728,13 +1797,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Gracias</div>
                   <div class="lang-read">그라시아스</div>
+                  <div class="lang-phrase">Gracias</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Obrigado / Obrigada</div>
                   <div class="lang-read">오브리가두 / 오브리가다</div>
+                  <div class="lang-phrase">Obrigado / Obrigada</div>
                 </div>
               </div>
             </article>
@@ -1745,13 +1814,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Perdón</div>
                   <div class="lang-read">뻬르돈</div>
+                  <div class="lang-phrase">Perdón</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Com licença</div>
                   <div class="lang-read">콩 리쎈사</div>
+                  <div class="lang-phrase">Com licença</div>
                 </div>
               </div>
             </article>
@@ -1762,13 +1831,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">¿Habla inglés?</div>
                   <div class="lang-read">아블라 잉글레스?</div>
+                  <div class="lang-phrase">¿Habla inglés?</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Fala inglês?</div>
                   <div class="lang-read">팔라 잉글레스?</div>
+                  <div class="lang-phrase">Fala inglês?</div>
                 </div>
               </div>
             </article>
@@ -1779,13 +1848,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Soy coreano / Soy coreana</div>
                   <div class="lang-read">소이 코레아노 / 소이 코레아나</div>
+                  <div class="lang-phrase">Soy coreano / Soy coreana</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Sou coreano / Sou coreana</div>
                   <div class="lang-read">소우 코레아누 / 소우 코레아나</div>
+                  <div class="lang-phrase">Sou coreano / Sou coreana</div>
                 </div>
               </div>
             </article>
@@ -1796,13 +1865,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Estamos de luna de miel</div>
                   <div class="lang-read">에스따모스 데 루나 데 미엘</div>
+                  <div class="lang-phrase">Estamos de luna de miel</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Estamos em lua de mel</div>
                   <div class="lang-read">에스타무스 엥 루아 드 멜</div>
+                  <div class="lang-phrase">Estamos em lua de mel</div>
                 </div>
               </div>
             </article>
@@ -1813,13 +1882,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Tengo una reserva</div>
                   <div class="lang-read">뗑고 우나 레세르바</div>
+                  <div class="lang-phrase">Tengo una reserva</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Tenho uma reserva</div>
                   <div class="lang-read">뗑요 우마 헤제르바</div>
+                  <div class="lang-phrase">Tenho uma reserva</div>
                 </div>
               </div>
             </article>
@@ -1830,13 +1899,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Está muy rico</div>
                   <div class="lang-read">에스따 무이 리코</div>
+                  <div class="lang-phrase">Está muy rico</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Está muito bom</div>
                   <div class="lang-read">에스타 무잉뚜 봉</div>
+                  <div class="lang-phrase">Está muito bom</div>
                 </div>
               </div>
             </article>
@@ -1847,13 +1916,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Es la mejor comida que he probado</div>
                   <div class="lang-read">에스 라 메호르 꼬미다 께 에 프로바도</div>
+                  <div class="lang-phrase">Es la mejor comida que he probado</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">É a melhor comida que já provei</div>
                   <div class="lang-read">에 아 멜료르 꼬미다 께 자 프로베이</div>
+                  <div class="lang-phrase">É a melhor comida que já provei</div>
                 </div>
               </div>
             </article>
@@ -1864,13 +1933,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Quiero hacer el check-in</div>
                   <div class="lang-read">끼에로 아세르 엘 체킨</div>
+                  <div class="lang-phrase">Quiero hacer el check-in</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Quero fazer o check-in</div>
                   <div class="lang-read">께루 파제르 우 체킨</div>
+                  <div class="lang-phrase">Quero fazer o check-in</div>
                 </div>
               </div>
             </article>
@@ -1881,13 +1950,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Quiero esto, por favor</div>
                   <div class="lang-read">끼에로 에스또, 뽀르 파보르</div>
+                  <div class="lang-phrase">Quiero esto, por favor</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Quero isto, por favor</div>
                   <div class="lang-read">께루 이스뚜, 뽀르 파보르</div>
+                  <div class="lang-phrase">Quero isto, por favor</div>
                 </div>
               </div>
             </article>
@@ -1898,13 +1967,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Una botella de agua, por favor</div>
                   <div class="lang-read">우나 보떼야 데 아구아, 뽀르 파보르</div>
+                  <div class="lang-phrase">Una botella de agua, por favor</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Uma garrafa de água, por favor</div>
                   <div class="lang-read">우마 가하파 지 아구아, 뽀르 파보르</div>
+                  <div class="lang-phrase">Uma garrafa de água, por favor</div>
                 </div>
               </div>
             </article>
@@ -1915,13 +1984,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">La cuenta, por favor</div>
                   <div class="lang-read">라 꾸엔따, 뽀르 파보르</div>
+                  <div class="lang-phrase">La cuenta, por favor</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">A conta, por favor</div>
                   <div class="lang-read">아 꽁따, 뽀르 파보르</div>
+                  <div class="lang-phrase">A conta, por favor</div>
                 </div>
               </div>
             </article>
@@ -1932,13 +2001,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">¿Dónde está el baño?</div>
                   <div class="lang-read">돈데 에스따 엘 바뇨?</div>
+                  <div class="lang-phrase">¿Dónde está el baño?</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Onde fica o banheiro?</div>
                   <div class="lang-read">온지 피카 우 바녜이루?</div>
+                  <div class="lang-phrase">Onde fica o banheiro?</div>
                 </div>
               </div>
             </article>
@@ -1949,13 +2018,13 @@
               <div class="lang-grid">
                 <div class="lang-box">
                   <div class="lang-label es">스페인어</div>
-                  <div class="lang-phrase">Ayúdeme, por favor</div>
                   <div class="lang-read">아유데메, 뽀르 파보르</div>
+                  <div class="lang-phrase">Ayúdeme, por favor</div>
                 </div>
                 <div class="lang-box">
                   <div class="lang-label pt">포르투갈어</div>
-                  <div class="lang-phrase">Ajude-me, por favor</div>
                   <div class="lang-read">아주지 미, 뽀르 파보르</div>
+                  <div class="lang-phrase">Ajude-me, por favor</div>
                 </div>
               </div>
             </article>
@@ -2357,61 +2426,61 @@
       };
 
       const foodPlaces = [
-        { region: "lisbon-home", category: "cafe", name: "Nicolau Lisboa", address: "Rua de São Nicolau 17, 1100-547 Lisboa, Portugal", googleRating: "4.3", tripadvisorRating: "4.1", distance: "Convent Square에서 도보 약 5분", description: "바이샤 중심의 브런치 카페. 늦은 아침이나 가벼운 점심으로 쓰기 좋아요.", signature: "팬케이크, 에그 베네딕트, 브런치 플레이트", review: "활기찬 분위기와 건강한 브런치 메뉴가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Nicolau%20Lisboa%2C%20Rua%20de%20S%C3%A3o%20Nicolau%2017%2C%20Lisboa" },
-        { region: "lisbon-home", category: "cafe", name: "Fábrica Coffee Roasters", address: "Rua das Portas de Santo Antão 136, 1150-269 Lisboa, Portugal", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 8분", description: "스페셜티 커피를 마시기 좋은 로스터리 카페. 아침 카페인 충전용으로 좋아요.", signature: "플랫화이트, 콜드브루, 토스트", review: "커피 맛이 안정적이고 관광지 카페보다 진지하다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=F%C3%A1brica%20Coffee%20Roasters%20Rua%20das%20Portas%20de%20Santo%20Ant%C3%A3o%20136%20Lisboa" },
-        { region: "lisbon-home", category: "cafe", name: "A Brasileira", address: "Rua Garrett 120-122, 1200-205 Lisboa, Portugal", googleRating: "4.0", tripadvisorRating: "3.6", distance: "Convent Square에서 도보 약 12분", description: "치아두의 역사적인 카페. 맛보다 분위기와 사진용으로 보는 곳이에요.", signature: "에스프레소, 파스텔 드 나타", review: "공간은 아름답지만 가격과 서비스는 관광지 느낌이라는 후기가 섞여 있어요.", href: "https://www.google.com/maps/search/?api=1&query=A%20Brasileira%2C%20Rua%20Garrett%20120-122%2C%20Lisboa" },
-        { region: "lisbon-home", category: "restaurant", name: "Taberna da Rua das Flores", address: "Rua das Flores 103, 1200-194 Lisboa, Portugal", googleRating: "4.5", tripadvisorRating: "4.2", distance: "Convent Square에서 도보 약 13분", description: "작은 타베르나 감성의 포르투갈식 식당. 웨이팅 감수할 가치가 있어요.", signature: "오늘의 포르투갈 요리, 해산물 타파스", review: "작은 공간이지만 음식 개성이 강하고 현지 감성이 좋다는 평이 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Taberna%20da%20Rua%20das%20Flores%2C%20Lisboa" },
-        { region: "lisbon-home", category: "restaurant", name: "Prado", address: "Tv. Pedras Negras 2, 1100-404 Lisboa, Portugal", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 8분", description: "로컬 재료 중심의 모던 포르투갈 레스토랑. 예약 없이 시도는 이른 시간 추천.", signature: "제철 채소, 생선, 내추럴 와인", review: "재료가 신선하고 메뉴가 섬세하다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Prado%2C%20Travessa%20das%20Pedras%20Negras%202%2C%20Lisboa" },
-        { region: "lisbon-home", category: "restaurant", name: "Maria Catita", address: "Rua dos Bacalhoeiros 30, 1100-071 Lisboa, Portugal", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 9분", description: "바이샤에서 접근 쉬운 포르투갈 가정식 계열 식당.", signature: "문어, 대구 요리, 해물밥", review: "친절하고 포르투갈 음식 입문용으로 무난하다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Maria%20Catita%2C%20Rua%20dos%20Bacalhoeiros%2030%2C%20Lisboa" },
-        { region: "lisbon-home", category: "restaurant", name: "O Velho Eurico", address: "Largo São Cristóvão 3, 1100-179 Lisboa, Portugal", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 9분", description: "젊은 감성의 인기 포르투갈 타스카. 대기가 길 수 있어요.", signature: "비프 스테이크, 문어, 포르투갈식 작은 접시", review: "활기차고 음식이 진하다는 평이 많지만 웨이팅이 변수예요.", href: "https://www.google.com/maps/search/?api=1&query=O%20Velho%20Eurico%2C%20Lisboa" },
-        { region: "lisbon-home", category: "restaurant", name: "Cervejaria Ramiro", address: "Av. Alm. Reis 1 H, 1150-007 Lisboa, Portugal", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 18분 / 택시 약 8분", description: "해산물로 유명한 리스본 클래식. 즉흥 방문은 대기 시간 확인이 필요해요.", signature: "새우, 게, 조개, 프리구 스테이크 샌드위치", review: "해산물 품질은 좋지만 늘 붐빈다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Cervejaria%20Ramiro%2C%20Lisboa" },
-        { region: "lisbon-home", category: "bar", name: "A Ginjinha", address: "Largo São Domingos 8, 1150-320 Lisboa, Portugal", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 5분", description: "리스본 전통 체리 리큐어 한 잔을 빠르게 마시는 상징적인 바.", signature: "Ginjinha com elas / sem elas", review: "짧게 들러 리스본다운 한 잔을 하기 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=A%20Ginjinha%2C%20Largo%20S%C3%A3o%20Domingos%208%2C%20Lisboa" },
-        { region: "lisbon-home", category: "bar", name: "O Bom O Mau e O Vilão", address: "Rua do Alecrim 21, 1200-014 Lisboa, Portugal", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 16분", description: "Cais do Sodré 쪽 칵테일/라이브뮤직 바. 저녁 산책 후 한 잔 후보.", signature: "칵테일, 라이브 음악", review: "분위기와 음악이 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=O%20Bom%20O%20Mau%20e%20O%20Vil%C3%A3o%2C%20Lisboa" },
-        { region: "lisbon-home", category: "bar", name: "Pavilhão Chinês", address: "Rua Dom Pedro V 89, 1250-093 Lisboa, Portugal", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Convent Square에서 도보 약 22분 / 택시 약 8분", description: "앤티크 장식이 가득한 클래식 칵테일 바. 비 오는 밤에도 분위기 좋아요.", signature: "클래식 칵테일, 진토닉", review: "인테리어가 독특하고 박물관 같은 바라는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Pavilh%C3%A3o%20Chin%C3%AAs%2C%20Lisboa" },
-        { region: "lisbon-home", category: "rooftop", name: "Rossio Gastrobar", address: "Rua 1º de Dezembro 118, 1200-360 Lisboa, Portugal", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 6분", description: "Rossio 광장 위 전망을 보는 호텔 루프탑. 숙소 근처 즉흥 루프탑으로 제일 편해요.", signature: "칵테일, 스몰 플레이트", review: "전망과 칵테일 분위기가 좋다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Rossio%20Gastrobar%2C%20Rua%201%C2%BA%20de%20Dezembro%20118%2C%20Lisboa" },
-        { region: "lisbon-home", category: "rooftop", name: "TOPO Chiado", address: "Terraços do Carmo, 1200-288 Lisboa, Portugal", googleRating: "4.2", tripadvisorRating: "3.5", distance: "Convent Square에서 도보 약 10분", description: "Santa Justa와 Carmo 쪽 뷰가 좋은 캐주얼 루프탑. 음식보다 뷰 중심으로 가면 좋아요.", signature: "칵테일, 버거, 스낵", review: "전망은 좋고 음식/서비스 평은 엇갈린다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=TOPO%20Chiado%2C%20Lisboa" },
+        { region: "lisbon-home", category: "cafe", name: "Nicolau Lisboa", address: "Rua de São Nicolau 17, 1100-547 Lisboa, Portugal", placeId: "ChIJj7fHtnk0GQ0RmaMk-MWsx_I", googleRating: "4.3", tripadvisorRating: "4.1", distance: "Convent Square에서 도보 약 5분", description: "바이샤 중심의 브런치 카페. 늦은 아침이나 가벼운 점심으로 쓰기 좋아요.", signature: "팬케이크, 에그 베네딕트, 브런치 플레이트", review: "활기찬 분위기와 건강한 브런치 메뉴가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=17494141243815666585&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "cafe", name: "Fábrica Coffee Roasters", address: "Rua das Portas de Santo Antão 136, 1150-269 Lisboa, Portugal", placeId: "ChIJM9Q0OYEzGQ0R_mfBu1Aml5U", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 8분", description: "스페셜티 커피를 마시기 좋은 로스터리 카페. 아침 카페인 충전용으로 좋아요.", signature: "플랫화이트, 콜드브루, 토스트", review: "커피 맛이 안정적이고 관광지 카페보다 진지하다는 평가가 많아요.", href: "https://maps.google.com/?cid=10779126361323825150&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "cafe", name: "A Brasileira", address: "Rua Garrett 120-122, 1200-205 Lisboa, Portugal", placeId: "ChIJ6QQiHX80GQ0RU5XEIRyTjvQ", googleRating: "4.0", tripadvisorRating: "3.6", distance: "Convent Square에서 도보 약 12분", description: "치아두의 역사적인 카페. 맛보다 분위기와 사진용으로 보는 곳이에요.", signature: "에스프레소, 파스텔 드 나타", review: "공간은 아름답지만 가격과 서비스는 관광지 느낌이라는 후기가 섞여 있어요.", href: "https://maps.google.com/?cid=17622184140982228307&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "restaurant", name: "Taberna da Rua das Flores", address: "Rua das Flores 103, 1200-194 Lisboa, Portugal", placeId: "ChIJFYIWTn40GQ0R_Qjpat06bd0", googleRating: "4.5", tripadvisorRating: "4.2", distance: "Convent Square에서 도보 약 13분", description: "작은 타베르나 감성의 포르투갈식 식당. 웨이팅 감수할 가치가 있어요.", signature: "오늘의 포르투갈 요리, 해산물 타파스", review: "작은 공간이지만 음식 개성이 강하고 현지 감성이 좋다는 평이 많아요.", href: "https://maps.google.com/?cid=15955473777499375869&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "restaurant", name: "Prado", address: "Tv. Pedras Negras 2, 1100-404 Lisboa, Portugal", placeId: "ChIJWTnB0Hk0GQ0R009aJKom3Tw", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 8분", description: "로컬 재료 중심의 모던 포르투갈 레스토랑. 예약 없이 시도는 이른 시간 추천.", signature: "제철 채소, 생선, 내추럴 와인", review: "재료가 신선하고 메뉴가 섬세하다는 평가가 많아요.", href: "https://maps.google.com/?cid=4385704124324925395&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "restaurant", name: "Maria Catita", address: "Rua dos Bacalhoeiros 30, 1100-071 Lisboa, Portugal", placeId: "ChIJiza2WXc0GQ0R1Ui842I3ar4", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 9분", description: "바이샤에서 접근 쉬운 포르투갈 가정식 계열 식당.", signature: "문어, 대구 요리, 해물밥", review: "친절하고 포르투갈 음식 입문용으로 무난하다는 후기가 많아요.", href: "https://maps.google.com/?cid=13720840112604727509&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "restaurant", name: "O Velho Eurico", address: "Largo São Cristóvão 3, 1100-179 Lisboa, Portugal", placeId: "ChIJNSbwEng0GQ0RJZqJC6w1hYU", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 9분", description: "젊은 감성의 인기 포르투갈 타스카. 대기가 길 수 있어요.", signature: "비프 스테이크, 문어, 포르투갈식 작은 접시", review: "활기차고 음식이 진하다는 평이 많지만 웨이팅이 변수예요.", href: "https://maps.google.com/?cid=9621155191991147045&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "restaurant", name: "Cervejaria Ramiro", address: "Av. Alm. Reis 1 H, 1150-007 Lisboa, Portugal", placeId: "ChIJ-R6VlIUzGQ0RX8x1jtg9lh0", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 18분 / 택시 약 8분", description: "해산물로 유명한 리스본 클래식. 즉흥 방문은 대기 시간 확인이 필요해요.", signature: "새우, 게, 조개, 프리구 스테이크 샌드위치", review: "해산물 품질은 좋지만 늘 붐빈다는 후기가 많아요.", href: "https://maps.google.com/?cid=2131959473918823519&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "bar", name: "A Ginjinha", address: "Largo São Domingos 8, 1150-320 Lisboa, Portugal", placeId: "ChIJmWBZR4czGQ0R0us-gvCVW3g", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 5분", description: "리스본 전통 체리 리큐어 한 잔을 빠르게 마시는 상징적인 바.", signature: "Ginjinha com elas / sem elas", review: "짧게 들러 리스본다운 한 잔을 하기 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=8672690367641873362&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "bar", name: "O Bom O Mau e O Vilão", address: "Rua do Alecrim 21, 1200-014 Lisboa, Portugal", placeId: "ChIJe0uL0H00GQ0RAMXacHY1Oa0", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 16분", description: "Cais do Sodré 쪽 칵테일/라이브뮤직 바. 저녁 산책 후 한 잔 후보.", signature: "칵테일, 라이브 음악", review: "분위기와 음악이 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=12482066625049838848&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "bar", name: "Pavilhão Chinês", address: "Rua Dom Pedro V 89, 1250-093 Lisboa, Portugal", placeId: "ChIJXdqlc38zGQ0RSa19tKuo9VM", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Convent Square에서 도보 약 22분 / 택시 약 8분", description: "앤티크 장식이 가득한 클래식 칵테일 바. 비 오는 밤에도 분위기 좋아요.", signature: "클래식 칵테일, 진토닉", review: "인테리어가 독특하고 박물관 같은 바라는 평가가 많아요.", href: "https://maps.google.com/?cid=6049927129863138633&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "rooftop", name: "Rossio Gastrobar", address: "Rua 1º de Dezembro 118, 1200-360 Lisboa, Portugal", placeId: "ChIJ5aHRxTwzGQ0RXTsC8HNAJ2U", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Convent Square에서 도보 약 6분", description: "Rossio 광장 위 전망을 보는 호텔 루프탑. 숙소 근처 즉흥 루프탑으로 제일 편해요.", signature: "칵테일, 스몰 플레이트", review: "전망과 칵테일 분위기가 좋다는 평가가 많아요.", href: "https://maps.google.com/?cid=7288865388614531933&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "rooftop", name: "TOPO Chiado", address: "Terraços do Carmo, 1200-288 Lisboa, Portugal", placeId: "ChIJZ4OOtXg0GQ0RJuCBqTWaj_c", googleRating: "4.2", tripadvisorRating: "3.5", distance: "Convent Square에서 도보 약 10분", description: "Santa Justa와 Carmo 쪽 뷰가 좋은 캐주얼 루프탑. 음식보다 뷰 중심으로 가면 좋아요.", signature: "칵테일, 버거, 스낵", review: "전망은 좋고 음식/서비스 평은 엇갈린다는 후기가 많아요.", href: "https://maps.google.com/?cid=17838646204305629222&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
 
-        { region: "cascais", category: "cafe", name: "House of Wonders", address: "Largo da Misericórdia 53, 2750-436 Cascais, Portugal", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 7분", description: "채식/건강식과 루프탑 분위기를 같이 챙기는 카스카이스 인기 카페.", signature: "샐러드 플레이트, 주스, 케이크", review: "컬러풀한 음식과 루프탑 뷰가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=House%20of%20Wonders%2C%20Cascais" },
-        { region: "cascais", category: "cafe", name: "Bijou de Cascais", address: "Rua Alexandre Herculano 58, 2750-284 Cascais, Portugal", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 5분", description: "구시가지 안 전통 카페/파스텔라리아. 빠른 커피와 간식용으로 편해요.", signature: "커피, 파스텔 드 나타, 페이스트리", review: "위치가 좋고 전통 카페 분위기라는 평이 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Bijou%20de%20Cascais" },
-        { region: "cascais", category: "restaurant", name: "Restaurante Mar do Inferno", address: "Av. Rei Humberto II de Itália, 2750-800 Cascais, Portugal", googleRating: "4.5", tripadvisorRating: "4.4", distance: "Cascais 중심에서 도보 약 20분 / 택시 약 6분", description: "Boca do Inferno 근처 해산물 레스토랑. 바다 쪽 점심 후보로 좋아요.", signature: "그릴 생선, 새우, 해산물 플래터", review: "신선한 해산물과 해안 분위기가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Restaurante%20Mar%20do%20Inferno%2C%20Cascais" },
-        { region: "cascais", category: "restaurant", name: "Hífen", address: "Av. Dom Carlos I 48, 2750-310 Cascais, Portugal", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 8분", description: "바다 가까운 모던 레스토랑. 가볍지만 분위기 있는 점심/저녁 후보.", signature: "문어, 생선, 타파스 스타일 플레이트", review: "음식과 서비스가 세련됐다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=H%C3%ADfen%2C%20Cascais" },
-        { region: "cascais", category: "restaurant", name: "Taberna Clandestina Cascais", address: "Rua Afonso Sanches 69, 2750-282 Cascais, Portugal", googleRating: "4.6", tripadvisorRating: "4.8", distance: "Cascais 역에서 도보 약 6분", description: "작고 활기찬 타베르나. 즉흥으로 포르투갈식 작은 접시 먹기 좋아요.", signature: "타파스, 문어, 포르투갈 와인", review: "분위기가 좋고 음식이 신선하다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Taberna%20Clandestina%20Cascais" },
-        { region: "cascais", category: "bar", name: "O'Neill's Irish Pub Cascais", address: "Praça 5 de Outubro 7, 2750-320 Cascais, Portugal", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 7분", description: "구시가지 광장 근처 캐주얼 펍. 식사 후 맥주 한 잔 후보.", signature: "기네스, 맥주, 펍 스낵", review: "위치가 좋고 편하게 들르기 좋다는 평이 많아요.", href: "https://www.google.com/maps/search/?api=1&query=O%27Neill%27s%20Irish%20Pub%20Cascais" },
-        { region: "cascais", category: "bar", name: "John Bull Pub", address: "Largo Luís de Camões 4, 2750-326 Cascais, Portugal", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 8분", description: "오래된 펍 느낌의 맥주집. 카스카이스 밤 산책 후 가볍게 들르기 좋아요.", signature: "생맥주, 피시앤칩스", review: "친근한 분위기와 넓은 맥주 선택지가 좋다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=John%20Bull%20Pub%20Cascais" },
-        { region: "cascais", category: "rooftop", name: "House of Wonders Rooftop", address: "Largo da Misericórdia 53, 2750-436 Cascais, Portugal", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 7분", description: "채식 카페 위 루프탑. 카스카이스에서 전망과 휴식을 같이 잡는 선택지.", signature: "주스, 샐러드, 케이크, 와인", review: "루프탑 분위기와 컬러풀한 음식이 인상적이라는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=House%20of%20Wonders%20Rooftop%20Cascais" },
+        { region: "cascais", category: "cafe", name: "House of Wonders", address: "Largo da Misericórdia 53, 2750-436 Cascais, Portugal", placeId: "ChIJPQiMXy7EHg0Rw3Hi0c6K9Zg", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 7분", description: "채식/건강식과 루프탑 분위기를 같이 챙기는 카스카이스 인기 카페.", signature: "샐러드 플레이트, 주스, 케이크", review: "컬러풀한 음식과 루프탑 뷰가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=11021868283948331459&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "cafe", name: "Bijou de Cascais", address: "Rua Alexandre Herculano 58, 2750-284 Cascais, Portugal", placeId: "ChIJG9BPYIbFHg0RcKrYtza7I_4", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 5분", description: "구시가지 안 전통 카페/파스텔라리아. 빠른 커피와 간식용으로 편해요.", signature: "커피, 파스텔 드 나타, 페이스트리", review: "위치가 좋고 전통 카페 분위기라는 평이 많아요.", href: "https://maps.google.com/?cid=18312686353505626736&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "restaurant", name: "Restaurante Mar do Inferno", address: "Av. Rei Humberto II de Itália, 2750-800 Cascais, Portugal", placeId: "ChIJFUyilSDEHg0Ra2BicoiT6p8", googleRating: "4.5", tripadvisorRating: "4.4", distance: "Cascais 중심에서 도보 약 20분 / 택시 약 6분", description: "Boca do Inferno 근처 해산물 레스토랑. 바다 쪽 점심 후보로 좋아요.", signature: "그릴 생선, 새우, 해산물 플래터", review: "신선한 해산물과 해안 분위기가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=11523184810824720491&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "restaurant", name: "Hífen", address: "Av. Dom Carlos I 48, 2750-310 Cascais, Portugal", placeId: "ChIJFaKnFy7EHg0Rs45k6DCl7wI", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 8분", description: "바다 가까운 모던 레스토랑. 가볍지만 분위기 있는 점심/저녁 후보.", signature: "문어, 생선, 타파스 스타일 플레이트", review: "음식과 서비스가 세련됐다는 후기가 많아요.", href: "https://maps.google.com/?cid=211569336985620147&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "restaurant", name: "Taberna Clandestina Cascais", address: "Rua Afonso Sanches 69, 2750-282 Cascais, Portugal", placeId: "ChIJU9_Dcy_EHg0Rq9-dpcBMCkY", googleRating: "4.6", tripadvisorRating: "4.8", distance: "Cascais 역에서 도보 약 6분", description: "작고 활기찬 타베르나. 즉흥으로 포르투갈식 작은 접시 먹기 좋아요.", signature: "타파스, 문어, 포르투갈 와인", review: "분위기가 좋고 음식이 신선하다는 후기가 많아요.", href: "https://maps.google.com/?cid=5046930722718080939&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "bar", name: "O'Neill's Irish Pub Cascais", address: "Praça 5 de Outubro 7, 2750-320 Cascais, Portugal", placeId: "ChIJ-QS5kDPFHg0Rd2JX4OPMYBI", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 7분", description: "구시가지 광장 근처 캐주얼 펍. 식사 후 맥주 한 잔 후보.", signature: "기네스, 맥주, 펍 스낵", review: "위치가 좋고 편하게 들르기 좋다는 평이 많아요.", href: "https://maps.google.com/?cid=1324283569540391543&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "bar", name: "John Bull Pub", address: "Largo Luís de Camões 4, 2750-326 Cascais, Portugal", placeId: "ChIJBVfgAi_EHg0RbXSSd_Jw7xc", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Cascais 역에서 도보 약 8분", description: "오래된 펍 느낌의 맥주집. 카스카이스 밤 산책 후 가볍게 들르기 좋아요.", signature: "생맥주, 피시앤칩스", review: "친근한 분위기와 넓은 맥주 선택지가 좋다는 후기가 있어요.", href: "https://maps.google.com/?cid=1724721368996672621&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "rooftop", name: "House of Wonders Rooftop", address: "Largo da Misericórdia 53, 2750-436 Cascais, Portugal", placeId: "ChIJPQiMXy7EHg0Rw3Hi0c6K9Zg", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Cascais 역에서 도보 약 7분", description: "채식 카페 위 루프탑. 카스카이스에서 전망과 휴식을 같이 잡는 선택지.", signature: "주스, 샐러드, 케이크, 와인", review: "루프탑 분위기와 컬러풀한 음식이 인상적이라는 후기가 많아요.", href: "https://maps.google.com/?cid=11021868283948331459&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
 
-        { region: "cabo-roca", category: "cafe", name: "Moinho Dom Quixote", address: "Rua dos Moinhos 5, 2705-001 Azoia, Portugal", googleRating: "4.5", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 5분", description: "호카곶 근처 절벽 뷰 카페/레스토랑. 날씨 좋을 때 쉬어가기 좋아요.", signature: "커피, 케이크, 타파스, 샐러드", review: "대서양 전망이 훌륭하다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Moinho%20Dom%20Quixote%2C%20Azoia" },
-        { region: "cabo-roca", category: "restaurant", name: "Refúgio da Roca", address: "Estrada do Cabo da Roca 27, 2705-001 Colares, Portugal", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Cabo da Roca에서 차량 약 4분", description: "호카곶과 가까운 해산물/포르투갈 레스토랑. 점심 후보로 안정적이에요.", signature: "해산물, 생선, 문어", review: "호카곶 근처에서 음식과 접근성이 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Ref%C3%BAgio%20da%20Roca%2C%20Colares" },
-        { region: "cabo-roca", category: "restaurant", name: "Restaurante da Adraga", address: "Praia da Adraga, 2705-060 Colares, Portugal", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 12분", description: "Adraga 해변 앞 해산물 식당. 바다 풍경과 식사를 같이 잡는 선택지.", signature: "그릴 생선, 조개, 해산물밥", review: "해변 위치와 신선한 생선이 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Restaurante%20da%20Adraga%2C%20Colares" },
-        { region: "cabo-roca", category: "bar", name: "Bar do Fundo", address: "Av. Alfredo Coelho 15, 2705-329 Colares, Portugal", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 18분", description: "Praia Grande 쪽 바/레스토랑. 호카곶 후 해변 방향으로 빠질 때 후보.", signature: "칵테일, 해산물, 샐러드", review: "해변 앞 분위기와 일몰 시간이 좋다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=Bar%20do%20Fundo%2C%20Colares" },
+        { region: "cabo-roca", category: "cafe", name: "Moinho Dom Quixote", address: "Rua dos Moinhos 5, 2705-001 Azoia, Portugal", placeId: "ChIJebj_TH7DHg0RbtYblOEzLiI", googleRating: "4.5", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 5분", description: "호카곶 근처 절벽 뷰 카페/레스토랑. 날씨 좋을 때 쉬어가기 좋아요.", signature: "커피, 케이크, 타파스, 샐러드", review: "대서양 전망이 훌륭하다는 후기가 많아요.", href: "https://maps.google.com/?cid=2462963090163750510&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cabo-roca", category: "restaurant", name: "Refúgio da Roca", address: "Estrada do Cabo da Roca 27, 2705-001 Colares, Portugal", placeId: "ChIJjQM0BsncHg0RN0iQn4WF0aA", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Cabo da Roca에서 차량 약 4분", description: "호카곶과 가까운 해산물/포르투갈 레스토랑. 점심 후보로 안정적이에요.", signature: "해산물, 생선, 문어", review: "호카곶 근처에서 음식과 접근성이 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=11588190125155174455&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cabo-roca", category: "restaurant", name: "Restaurante da Adraga", address: "Praia da Adraga, 2705-060 Colares, Portugal", placeId: "ChIJ7Z3mBO3cHg0Rs8y73S6n21w", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 12분", description: "Adraga 해변 앞 해산물 식당. 바다 풍경과 식사를 같이 잡는 선택지.", signature: "그릴 생선, 조개, 해산물밥", review: "해변 위치와 신선한 생선이 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=6691125491119410355&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cabo-roca", category: "bar", name: "Bar do Fundo", address: "Av. Alfredo Coelho 15, 2705-329 Colares, Portugal", placeId: "ChIJV9p48F_cHg0RmG9r7A9ZIII", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Cabo da Roca에서 차량 약 18분", description: "Praia Grande 쪽 바/레스토랑. 호카곶 후 해변 방향으로 빠질 때 후보.", signature: "칵테일, 해산물, 샐러드", review: "해변 앞 분위기와 일몰 시간이 좋다는 후기가 있어요.", href: "https://maps.google.com/?cid=9376592349111218072&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
 
-        { region: "mallorca-home", category: "cafe", name: "Café & Sal", address: "Avinguda Primavera 19, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "Colònia de Sant Jordi에서 가볍게 커피와 브런치 먹기 좋은 카페.", signature: "커피, 토스트, 샐러드", review: "편안한 분위기와 신선한 메뉴가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20%26%20Sal%20Col%C3%B2nia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "cafe", name: "Flor de Sal d'Es Trenc Shop & Café", address: "Ctra. Campos a Colònia de Sant Jordi, km 10, 07630 Campos, Illes Balears, Spain", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 5분", description: "소금 브랜드 매장 겸 카페. 기념품과 짧은 휴식에 좋아요.", signature: "커피, 소금 기념품, 로컬 제품", review: "작지만 선물 고르기 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Flor%20de%20Sal%20d%27Es%20Trenc%20Shop%20Cafe" },
-        { region: "mallorca-home", category: "restaurant", name: "Salicornia Restaurant", address: "Carrer Gabriel Roca, s/n, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "Colònia 항구 쪽 모던 지중해 레스토랑. 호텔 밖 제대로 된 저녁 후보.", signature: "쌀요리, 생선, 지중해식 해산물", review: "프레젠테이션과 서비스가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Salicornia%20Restaurant%20Col%C3%B2nia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "restaurant", name: "Cassai Beach House", address: "Carrer Major 21, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "비치하우스 분위기의 캐주얼 식당. 점심이나 가벼운 저녁으로 편해요.", signature: "파스타, 샐러드, 해산물, 칵테일", review: "인테리어와 분위기가 좋고 서비스는 여유 있게 봐야 한다는 평이 있어요.", href: "https://www.google.com/maps/search/?api=1&query=Cassai%20Beach%20House%20Colonia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "restaurant", name: "S'Arroseria", address: "Carrer de la Marina 22, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "쌀요리와 빠에야 계열을 먹기 좋은 로컬 후보.", signature: "빠에야, 아로스, 해산물밥", review: "쌀요리와 해산물 조합이 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=S%27Arroseria%20Col%C3%B2nia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "bar", name: "Molas Bar & Restaurante", address: "Carrer Estanys 33, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "가볍게 술과 식사를 같이 해결하기 좋은 동네 바/레스토랑.", signature: "타파스, 버거, 칵테일", review: "편안하고 캐주얼한 분위기가 좋다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=Molas%20Bar%20Restaurante%20Col%C3%B2nia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "bar", name: "Bar Tambucho", address: "Plaça de l'Església 8, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "항구 마을에서 가볍게 맥주 한 잔 하기 좋은 로컬 바.", signature: "맥주, 타파스, 간단 안주", review: "로컬 분위기와 부담 없는 가격이 좋다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=Bar%20Tambucho%20Col%C3%B2nia%20de%20Sant%20Jordi" },
-        { region: "mallorca-home", category: "rooftop", name: "NENI Mallorca", address: "Carrer de sa Síquia 10, 07638 Colònia de Sant Jordi, Illes Balears, Spain", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "Bikini Island & Mountain Hotel Es Trenc 안의 분위기 좋은 레스토랑/바 후보.", signature: "메제, 지중해식 플레이트, 칵테일", review: "호텔 분위기와 중동풍 메뉴가 색다르다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=NENI%20Mallorca%20Col%C3%B2nia%20de%20Sant%20Jordi" },
+        { region: "mallorca-home", category: "cafe", name: "Café & Sal", address: "Avinguda Primavera 19, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJv4P746eplxIRbjtPZZw8ONU", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "Colònia de Sant Jordi에서 가볍게 커피와 브런치 먹기 좋은 카페.", signature: "커피, 토스트, 샐러드", review: "편안한 분위기와 신선한 메뉴가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=15364096771186703214&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "cafe", name: "Flor de Sal d'Es Trenc Shop & Café", address: "Ctra. Campos a Colònia de Sant Jordi, km 10, 07630 Campos, Illes Balears, Spain", placeId: "ChIJLxsncqSrlxIR4AmWXED5ls4", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 5분", description: "소금 브랜드 매장 겸 카페. 기념품과 짧은 휴식에 좋아요.", signature: "커피, 소금 기념품, 로컬 제품", review: "작지만 선물 고르기 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=14886359673146313184&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "restaurant", name: "Salicornia Restaurant", address: "Carrer Gabriel Roca, s/n, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJuS4uGOeplxIRG5vUCwBH7UA", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "Colònia 항구 쪽 모던 지중해 레스토랑. 호텔 밖 제대로 된 저녁 후보.", signature: "쌀요리, 생선, 지중해식 해산물", review: "프레젠테이션과 서비스가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=4678473653431868187&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "restaurant", name: "Cassai Beach House", address: "Carrer Major 21, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJBUROGKOplxIRi0kZM5E0HLw", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "비치하우스 분위기의 캐주얼 식당. 점심이나 가벼운 저녁으로 편해요.", signature: "파스타, 샐러드, 해산물, 칵테일", review: "인테리어와 분위기가 좋고 서비스는 여유 있게 봐야 한다는 평이 있어요.", href: "https://maps.google.com/?cid=13554766776710547851&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "restaurant", name: "S'Arroseria", address: "Carrer de la Marina 22, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJ0YvDDKKplxIRA92WNj9Rr9Y", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "쌀요리와 빠에야 계열을 먹기 좋은 로컬 후보.", signature: "빠에야, 아로스, 해산물밥", review: "쌀요리와 해산물 조합이 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=15469672576981589251&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "bar", name: "Molas Bar & Restaurante", address: "Carrer Estanys 33, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJhzcsFdGplxIRdYwa7YLxFyQ", googleRating: "4.4", tripadvisorRating: "4.5", distance: "Fontsanta에서 차량 약 10분", description: "가볍게 술과 식사를 같이 해결하기 좋은 동네 바/레스토랑.", signature: "타파스, 버거, 칵테일", review: "편안하고 캐주얼한 분위기가 좋다는 후기가 있어요.", href: "https://maps.google.com/?cid=2600812854455733365&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "bar", name: "Bar Tambucho", address: "Plaça de l'Església 8, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJXc8NdaKplxIRnCcMDnW9828", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "항구 마을에서 가볍게 맥주 한 잔 하기 좋은 로컬 바.", signature: "맥주, 타파스, 간단 안주", review: "로컬 분위기와 부담 없는 가격이 좋다는 후기가 있어요.", href: "https://maps.google.com/?cid=8066999667995191196&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "rooftop", name: "NENI Mallorca", address: "Carrer de sa Síquia 10, 07638 Colònia de Sant Jordi, Illes Balears, Spain", placeId: "ChIJ7wbKljnllxIRzq7u2Cyet1g", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 10분", description: "Bikini Island & Mountain Hotel Es Trenc 안의 분위기 좋은 레스토랑/바 후보.", signature: "메제, 지중해식 플레이트, 칵테일", review: "호텔 분위기와 중동풍 메뉴가 색다르다는 후기가 있어요.", href: "https://maps.google.com/?cid=6392752111530979022&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
 
-        { region: "mallorca-beach", category: "cafe", name: "La Molienda Bisbe", address: "Carrer del Bisbe Campins 11, 07012 Palma, Illes Balears, Spain", googleRating: "4.6", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "팔마 스페셜티 커피 대표 후보. 카타마란 전후 카페인 충전용.", signature: "플랫화이트, 브런치, 토스트", review: "커피 퀄리티와 브런치가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=La%20Molienda%20Bisbe%20Palma" },
-        { region: "mallorca-beach", category: "cafe", name: "Surry Hills Coffee", address: "Carrer del Carme 4, 07003 Palma, Illes Balears, Spain", googleRating: "4.7", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 18분", description: "호주식 스페셜티 커피 느낌의 작은 카페. 쇼핑/산책 사이 쉬기 좋아요.", signature: "롱블랙, 라떼, 바나나브레드", review: "커피 맛과 친절한 분위기가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Surry%20Hills%20Coffee%20Palma" },
-        { region: "mallorca-beach", category: "restaurant", name: "FERVOR Palma", address: "Carrer dels Hostals 4, 07002 Palma, Illes Balears, Spain", googleRating: "4.6", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "팔마 구시가지에서 고기와 해산물을 깔끔하게 먹기 좋은 레스토랑.", signature: "그릴 고기, 생선, 타파스", review: "음식 완성도와 서비스가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=FERVOR%20Palma" },
-        { region: "mallorca-beach", category: "restaurant", name: "Ombu", address: "Passeig del Born 7, 07012 Palma, Illes Balears, Spain", googleRating: "4.5", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 8분", description: "팔마 중심의 모던 타파스. 카타마란 후 점심 후보로 좋아요.", signature: "크리에이티브 타파스, 세비체, 크로켓", review: "타파스가 창의적이고 위치가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Ombu%20Palma%20Passeig%20del%20Born" },
-        { region: "mallorca-beach", category: "restaurant", name: "Ca'n Eduardo", address: "Carrer Contramuelle Mollet 3, 07012 Palma, Illes Balears, Spain", googleRating: "4.2", tripadvisorRating: "4.0", distance: "La Lonja Marina에서 도보 약 5분", description: "항구 바로 옆 해산물 레스토랑. 마리나 동선과 잘 붙어요.", signature: "빠에야, 해산물, 생선구이", review: "항구 위치와 해산물 메뉴가 장점이라는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Ca%27n%20Eduardo%20Palma" },
-        { region: "mallorca-beach", category: "restaurant", name: "Cocco Portixol", address: "Carrer del Vicari Joaquim Fuster 53, 07006 Palma, Illes Balears, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Portixol 산책로에서 도보 약 3분", description: "Portixol 해안가에서 캐주얼하게 먹기 좋은 이탈리안/지중해식 식당.", signature: "피자, 파스타, 와인", review: "바다 분위기와 캐주얼한 식사가 좋다는 후기가 있어요.", href: "https://www.google.com/maps/search/?api=1&query=Cocco%20Portixol%20Palma" },
-        { region: "mallorca-beach", category: "bar", name: "Bar Abaco", address: "Carrer de Sant Joan 1, 07012 Palma, Illes Balears, Spain", googleRating: "4.2", tripadvisorRating: "4.0", distance: "La Lonja Marina에서 도보 약 5분", description: "과일 장식과 극적인 인테리어로 유명한 클래식 바.", signature: "칵테일, 상그리아", review: "공간이 화려하고 사진 찍기 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Bar%20Abaco%20Palma" },
-        { region: "mallorca-beach", category: "bar", name: "Brassclub", address: "Passeig de Mallorca 34, 07012 Palma, Illes Balears, Spain", googleRating: "4.5", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "칵테일 완성도가 좋은 팔마 바. 저녁에 한 잔 후보로 좋아요.", signature: "시그니처 칵테일, 클래식 칵테일", review: "칵테일과 바텐더 실력이 좋다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Brassclub%20Palma" },
-        { region: "mallorca-beach", category: "rooftop", name: "Almaq Rooftop Bar", address: "Carrer Bala Roja 1, 07001 Palma, Illes Balears, Spain", googleRating: "4.4", tripadvisorRating: "4.0", distance: "La Seu에서 도보 약 8분", description: "Es Princep 호텔 루프탑. 팔마 해안과 구시가지 전망을 같이 보기 좋아요.", signature: "칵테일, 와인, 스몰 플레이트", review: "루프탑 전망과 분위기가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Almaq%20Rooftop%20Bar%20Palma" },
+        { region: "mallorca-beach", category: "cafe", name: "La Molienda Bisbe", address: "Carrer del Bisbe Campins 11, 07012 Palma, Illes Balears, Spain", placeId: "ChIJEbdEeFCSlxIRc2T-VbS9_Mo", googleRating: "4.6", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "팔마 스페셜티 커피 대표 후보. 카타마란 전후 카페인 충전용.", signature: "플랫화이트, 브런치, 토스트", review: "커피 퀄리티와 브런치가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=14626774272027026547&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "cafe", name: "Surry Hills Coffee", address: "Carrer del Carme 4, 07003 Palma, Illes Balears, Spain", placeId: "ChIJbShWvx2TlxIRhELvwp8KNwA", googleRating: "4.7", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 18분", description: "호주식 스페셜티 커피 느낌의 작은 카페. 쇼핑/산책 사이 쉬기 좋아요.", signature: "롱블랙, 라떼, 바나나브레드", review: "커피 맛과 친절한 분위기가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=15492805005623940&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "restaurant", name: "FERVOR Palma", address: "Carrer dels Hostals 4, 07002 Palma, Illes Balears, Spain", placeId: "ChIJ84-R51GSlxIR0dDH6VOAVkQ", googleRating: "4.6", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "팔마 구시가지에서 고기와 해산물을 깔끔하게 먹기 좋은 레스토랑.", signature: "그릴 고기, 생선, 타파스", review: "음식 완성도와 서비스가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=4924264340469043409&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "restaurant", name: "Ombu", address: "Passeig del Born 7, 07012 Palma, Illes Balears, Spain", placeId: "ChIJe_uk30SSlxIRFVD-FG6E8Ak", googleRating: "4.5", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 8분", description: "팔마 중심의 모던 타파스. 카타마란 후 점심 후보로 좋아요.", signature: "크리에이티브 타파스, 세비체, 크로켓", review: "타파스가 창의적이고 위치가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=716217949085388821&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "restaurant", name: "Ca'n Eduardo", address: "Carrer Contramuelle Mollet 3, 07012 Palma, Illes Balears, Spain", placeId: "ChIJJycPiEGSlxIRevHcURxdSM8", googleRating: "4.2", tripadvisorRating: "4.0", distance: "La Lonja Marina에서 도보 약 5분", description: "항구 바로 옆 해산물 레스토랑. 마리나 동선과 잘 붙어요.", signature: "빠에야, 해산물, 생선구이", review: "항구 위치와 해산물 메뉴가 장점이라는 후기가 많아요.", href: "https://maps.google.com/?cid=14936290540388151674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "restaurant", name: "Cocco Portixol", address: "Carrer del Vicari Joaquim Fuster 53, 07006 Palma, Illes Balears, Spain", placeId: "ChIJMfVHrriTlxIRzueV1PfYcRw", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Portixol 산책로에서 도보 약 3분", description: "Portixol 해안가에서 캐주얼하게 먹기 좋은 이탈리안/지중해식 식당.", signature: "피자, 파스타, 와인", review: "바다 분위기와 캐주얼한 식사가 좋다는 후기가 있어요.", href: "https://maps.google.com/?cid=2049657864365402062&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "bar", name: "Bar Abaco", address: "Carrer de Sant Joan 1, 07012 Palma, Illes Balears, Spain", placeId: "ChIJm-bKyUSSlxIRAc3vwHrCeb0", googleRating: "4.2", tripadvisorRating: "4.0", distance: "La Lonja Marina에서 도보 약 5분", description: "과일 장식과 극적인 인테리어로 유명한 클래식 바.", signature: "칵테일, 상그리아", review: "공간이 화려하고 사진 찍기 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=13653157577829108993&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "bar", name: "Brassclub", address: "Passeig de Mallorca 34, 07012 Palma, Illes Balears, Spain", placeId: "ChIJkX4K01qSlxIRWzstQRmE5o8", googleRating: "4.5", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 15분", description: "칵테일 완성도가 좋은 팔마 바. 저녁에 한 잔 후보로 좋아요.", signature: "시그니처 칵테일, 클래식 칵테일", review: "칵테일과 바텐더 실력이 좋다는 평가가 많아요.", href: "https://maps.google.com/?cid=10369120436069677915&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-beach", category: "rooftop", name: "Almaq Rooftop Bar", address: "Carrer Bala Roja 1, 07001 Palma, Illes Balears, Spain", placeId: "ChIJiQ1gA9WTlxIR0IW0i3mpMGE", googleRating: "4.4", tripadvisorRating: "4.0", distance: "La Seu에서 도보 약 8분", description: "Es Princep 호텔 루프탑. 팔마 해안과 구시가지 전망을 같이 보기 좋아요.", signature: "칵테일, 와인, 스몰 플레이트", review: "루프탑 전망과 분위기가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=7003283760061122000&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
 
-        { region: "madrid", category: "cafe", name: "La Mallorquina", address: "Puerta del Sol 8, 28013 Madrid, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 1분", description: "Sol 광장의 클래식 제과점. 짧은 레이오버 간식으로 좋아요.", signature: "Napolitana de crema, 커피, 페이스트리", review: "위치가 최고이고 전통 페이스트리가 좋다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=La%20Mallorquina%2C%20Puerta%20del%20Sol%208%2C%20Madrid" },
-        { region: "madrid", category: "cafe", name: "Federal Café Madrid", address: "Plaza de las Comendadoras 9, 28015 Madrid, Spain", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 15분 / 택시 약 6분", description: "브런치와 커피가 안정적인 카페. 시간이 조금 남을 때 후보.", signature: "브런치 플레이트, 커피, 토스트", review: "공간이 편하고 브런치가 무난하다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Federal%20Cafe%20Madrid%20Plaza%20de%20las%20Comendadoras" },
-        { region: "madrid", category: "restaurant", name: "Casa Labra", address: "Calle de Tetuán 12, 28013 Madrid, Spain", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 3분", description: "대구튀김과 크로켓으로 유명한 오래된 스탠딩 바/식당.", signature: "Tajada de bacalao, bacalao croqueta", review: "짧게 서서 먹기 좋고 대구튀김이 유명하다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Casa%20Labra%2C%20Madrid" },
-        { region: "madrid", category: "restaurant", name: "Lhardy", address: "Carrera de San Jerónimo 8, 28014 Madrid, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 5분", description: "마드리드 클래식 레스토랑/델리. 빠르게 고급스러운 분위기만 봐도 좋아요.", signature: "Consomé, croquetas, cocido madrileño", review: "전통적인 분위기와 클래식 메뉴가 인상적이라는 평이 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Lhardy%20Madrid" },
-        { region: "madrid", category: "restaurant", name: "StreetXO", address: "Calle de Serrano 52, 28001 Madrid, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 택시 약 10분", description: "강한 맛과 퍼포먼스가 있는 캐주얼 파인다이닝 후보. 시간 여유 있을 때만.", signature: "Dabiz Muñoz 스타일 아시안 퓨전 플레이트", review: "맛이 강렬하고 경험형 식사라는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=StreetXO%20Madrid%20Serrano%2052" },
-        { region: "madrid", category: "bar", name: "Salmon Guru", address: "Calle de Echegaray 21, 28014 Madrid, Spain", googleRating: "4.7", tripadvisorRating: "4.5", distance: "Puerta del Sol에서 도보 약 8분", description: "마드리드 대표 칵테일 바. 낮 일정 후 시간이 남으면 가장 추천.", signature: "시그니처 칵테일", review: "창의적인 칵테일과 서비스가 좋다는 평가가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Salmon%20Guru%20Madrid" },
-        { region: "madrid", category: "bar", name: "1862 Dry Bar", address: "Calle del Pez 27, 28004 Madrid, Spain", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Gran Vía에서 도보 약 10분", description: "클래식 칵테일을 잘 만드는 조용한 바. 쇼핑 후 한 잔 후보.", signature: "마티니, 네그로니, 클래식 칵테일", review: "차분하고 전문적인 칵테일 바라는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=1862%20Dry%20Bar%20Madrid" },
-        { region: "madrid", category: "rooftop", name: "Azotea del Círculo", address: "Calle de Alcalá 42, 28014 Madrid, Spain", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 7분", description: "마드리드 중심 전망을 보기 좋은 루프탑. 짧은 레이오버에도 접근 쉬워요.", signature: "칵테일, 와인, 가벼운 스낵", review: "전망이 좋고 위치가 편하다는 후기가 많아요.", href: "https://www.google.com/maps/search/?api=1&query=Azotea%20del%20C%C3%ADrculo%20Madrid" }
+        { region: "madrid", category: "cafe", name: "La Mallorquina", address: "Puerta del Sol 8, 28013 Madrid, Spain", placeId: "ChIJjVvRaX4oQg0R55xhfQ3uARU", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 1분", description: "Sol 광장의 클래식 제과점. 짧은 레이오버 간식으로 좋아요.", signature: "Napolitana de crema, 커피, 페이스트리", review: "위치가 최고이고 전통 페이스트리가 좋다는 후기가 많아요.", href: "https://maps.google.com/?cid=1513752691478732007&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "cafe", name: "Federal Café Madrid", address: "Plaza de las Comendadoras 9, 28015 Madrid, Spain", placeId: "ChIJYTkcFmQoQg0RoIYZwkjoTVc", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 15분 / 택시 약 6분", description: "브런치와 커피가 안정적인 카페. 시간이 조금 남을 때 후보.", signature: "브런치 플레이트, 커피, 토스트", review: "공간이 편하고 브런치가 무난하다는 평가가 많아요.", href: "https://maps.google.com/?cid=6290939653698193056&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "restaurant", name: "Casa Labra", address: "Calle de Tetuán 12, 28013 Madrid, Spain", placeId: "ChIJ3aNabn4oQg0RUZW-XLWz1e8", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 3분", description: "대구튀김과 크로켓으로 유명한 오래된 스탠딩 바/식당.", signature: "Tajada de bacalao, bacalao croqueta", review: "짧게 서서 먹기 좋고 대구튀김이 유명하다는 후기가 많아요.", href: "https://maps.google.com/?cid=17281916736630592849&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "restaurant", name: "Lhardy", address: "Carrera de San Jerónimo 8, 28014 Madrid, Spain", placeId: "ChIJwz4BFIEoQg0R28-rnZ5Z4RM", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 5분", description: "마드리드 클래식 레스토랑/델리. 빠르게 고급스러운 분위기만 봐도 좋아요.", signature: "Consomé, croquetas, cocido madrileño", review: "전통적인 분위기와 클래식 메뉴가 인상적이라는 평이 많아요.", href: "https://maps.google.com/?cid=1432524694265515995&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "restaurant", name: "StreetXO", address: "Calle de Serrano 52, 28001 Madrid, Spain", placeId: "ChIJX5LbtpYoQg0RcDq5AX9jOuw", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 택시 약 10분", description: "강한 맛과 퍼포먼스가 있는 캐주얼 파인다이닝 후보. 시간 여유 있을 때만.", signature: "Dabiz Muñoz 스타일 아시안 퓨전 플레이트", review: "맛이 강렬하고 경험형 식사라는 후기가 많아요.", href: "https://maps.google.com/?cid=17022027138741123696&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "bar", name: "Salmon Guru", address: "Calle de Echegaray 21, 28014 Madrid, Spain", placeId: "ChIJxaAzu4EoQg0RtvLumbkqOe4", googleRating: "4.7", tripadvisorRating: "4.5", distance: "Puerta del Sol에서 도보 약 8분", description: "마드리드 대표 칵테일 바. 낮 일정 후 시간이 남으면 가장 추천.", signature: "시그니처 칵테일", review: "창의적인 칵테일과 서비스가 좋다는 평가가 많아요.", href: "https://maps.google.com/?cid=17165798431339246262&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "bar", name: "1862 Dry Bar", address: "Calle del Pez 27, 28004 Madrid, Spain", placeId: "ChIJzcBIPmMoQg0RS14oUaREHZo", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Gran Vía에서 도보 약 10분", description: "클래식 칵테일을 잘 만드는 조용한 바. 쇼핑 후 한 잔 후보.", signature: "마티니, 네그로니, 클래식 칵테일", review: "차분하고 전문적인 칵테일 바라는 후기가 많아요.", href: "https://maps.google.com/?cid=11105107728692436555&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "rooftop", name: "Azotea del Círculo", address: "Calle de Alcalá 42, 28014 Madrid, Spain", placeId: "ChIJs-b4dIQoQg0RppCQ716gG_w", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 7분", description: "마드리드 중심 전망을 보기 좋은 루프탑. 짧은 레이오버에도 접근 쉬워요.", signature: "칵테일, 와인, 가벼운 스낵", review: "전망이 좋고 위치가 편하다는 후기가 많아요.", href: "https://maps.google.com/?cid=18166289851535626406&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" }
       ];
 
       let activeFoodRegion = foodRegions[0].id;
@@ -2421,6 +2490,7 @@
 
       const mainTabs = document.querySelectorAll(".main-tab");
       const panels = document.querySelectorAll(".panel");
+      const mainPanelTitleEl = document.getElementById("mainPanelTitle");
       const dateTabsEl = document.getElementById("dateTabs");
       const scheduleListEl = document.getElementById("scheduleList");
       const routeMapFrameEl = document.getElementById("routeMapFrame");
@@ -2442,6 +2512,13 @@
       let toastTimer = null;
       let checklistState = {};
       const placesLiveCache = new Map();
+      const panelTitles = {
+        overview: "개요",
+        schedule: "일정",
+        checklist: "예약",
+        food: "맛집",
+        language: "회화"
+      };
 
       function showToast(message) {
         toastEl.textContent = message;
@@ -3024,8 +3101,8 @@
           const count = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === item.id).length;
           const target = foodCategoryTargets[region.id]?.[item.id] ?? 0;
           return `
-            <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}">
-              ${item.label} ${count}/${target}
+            <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}" title="${item.label} ${count}/${target}">
+              ${item.label}
             </button>
           `;
         }).join("");
@@ -3123,6 +3200,9 @@
 
       function setMainPanel(name) {
         document.body.dataset.activePanel = name;
+        if (mainPanelTitleEl) {
+          mainPanelTitleEl.textContent = panelTitles[name] || "";
+        }
         mainTabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.panel === name));
         panels.forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === name));
         if (name === "schedule") {
@@ -3133,11 +3213,17 @@
       }
 
       function setActiveDateTab(id) {
+        const tabsContainer = dateTabsEl;
         document.querySelectorAll(".date-tab").forEach((tab) => {
           const active = tab.dataset.target === id;
           tab.classList.toggle("active", active);
-          if (active) {
-            tab.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+          if (active && tabsContainer) {
+            const tabRect = tab.getBoundingClientRect();
+            const containerRect = tabsContainer.getBoundingClientRect();
+            const outside = tabRect.left < containerRect.left || tabRect.right > containerRect.right;
+            if (outside) {
+              tab.scrollIntoView({ inline: "center", block: "nearest", behavior: "auto" });
+            }
           }
         });
       }

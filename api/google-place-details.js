@@ -10,8 +10,10 @@ const DEFAULT_FIELD_MASK = [
 
 const ALLOWED_ORIGINS = new Set([
   "https://wani3000.github.io",
+  "https://honeymoon-delta.vercel.app",
   "http://localhost",
-  "http://127.0.0.1"
+  "http://127.0.0.1",
+  "null"
 ]);
 
 function setCors(req, res) {
