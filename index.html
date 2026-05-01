@@ -24,9 +24,9 @@
         --orange: #9a4d00;
         --danger-bg: #f9dedc;
         --tip-bg: #dcedc8;
-        --tab-bg: #f3f1f7;
+        --tab-bg: #ffffff;
         --accent-soft: #ede7f6;
-        --nav-bg: rgba(255, 255, 255, 0.94);
+        --nav-bg: #ffffff;
         --indicator: #ede7f6;
         --font-main: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       }
@@ -48,9 +48,9 @@
           --orange: #ffb783;
           --danger-bg: rgba(242, 184, 181, 0.16);
           --tip-bg: rgba(181, 204, 155, 0.16);
-          --tab-bg: #211f26;
+          --tab-bg: #ffffff;
           --accent-soft: #4f378b;
-          --nav-bg: rgba(29, 27, 32, 0.92);
+          --nav-bg: #ffffff;
           --indicator: #4f378b;
         }
       }
@@ -79,7 +79,7 @@
       }
 
       .hero, .section, .bottom-tabs {
-        background: transparent;
+        background: #ffffff;
         border: 0;
         border-radius: 0;
         box-shadow: none;
@@ -163,7 +163,7 @@
         overflow-x: auto;
         scrollbar-width: none;
         padding: 10px;
-        background: var(--nav-bg);
+        background: #ffffff;
         backdrop-filter: blur(18px);
         z-index: 30;
         border: 1px solid var(--line);
@@ -187,7 +187,7 @@
       .main-tab {
         flex: 1 0 auto;
         padding: 0 18px;
-        background: transparent;
+        background: #ffffff;
         position: relative;
         overflow: hidden;
       }
@@ -215,6 +215,11 @@
 
       .panel { display: none; padding-bottom: 92px; }
       .panel.active { display: block; }
+      .panel.active[data-panel="overview"] {
+        display: flex;
+        flex-direction: column;
+      }
+      .overview-info-section { order: 1; }
 
       .panel.schedule-panel {
         padding-bottom: 92px;
@@ -299,7 +304,7 @@
       }
 
       .hm-progress-wrap {
-        padding: 2px 0 18px;
+        padding: 14px 0 18px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -339,11 +344,17 @@
       }
 
       .hm-category-tabs {
+        position: sticky;
+        top: 0;
+        z-index: 15;
         display: flex;
         gap: 8px;
         overflow-x: auto;
         margin: 0 -20px;
-        padding: 14px 20px 8px;
+        padding: 12px 20px 10px;
+        border-bottom: 1px solid var(--line);
+        background: #ffffff;
+        backdrop-filter: blur(16px);
         scrollbar-width: none;
       }
 
@@ -357,7 +368,7 @@
         padding: 0 13px;
         border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
         border-radius: 999px;
-        background: var(--panel);
+        background: #ffffff;
         color: var(--text);
         font: inherit;
         font-size: 13px;
@@ -366,9 +377,9 @@
       }
 
       .hm-category-tab.active {
-        background: var(--text);
+        background: #ffffff;
         border-color: var(--text);
-        color: #ffffff;
+        color: var(--text);
       }
 
       .hm-list {
@@ -432,7 +443,7 @@
         height: 22px;
         border-radius: 7px;
         border: 2px solid color-mix(in srgb, var(--muted) 30%, var(--line));
-        background: transparent;
+        background: #ffffff;
         position: relative;
         margin-top: 2px;
       }
@@ -565,6 +576,177 @@
         line-height: 1.2;
         letter-spacing: -0.02em;
       }
+      .overview-tab-bar {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        margin: 0 -20px 20px;
+        padding: 12px 20px 10px;
+        border-bottom: 1px solid var(--line);
+        background: #ffffff;
+        scrollbar-width: none;
+      }
+      .overview-tab-bar::-webkit-scrollbar { display: none; }
+      .overview-tab {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #ffffff;
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 850;
+      }
+      .overview-tab.active {
+        border-color: var(--text);
+        color: var(--text);
+      }
+      .overview-panel[hidden] {
+        display: none;
+      }
+      .overview-panel[data-overview-panel="summary"] .stats {
+        margin-top: 12px;
+      }
+      .overview-panel[data-overview-panel="summary"] .stat {
+        padding: 14px 16px;
+        min-height: 88px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .overview-note {
+        margin: 0 0 18px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: var(--panel-soft);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+      .baggage-summary {
+        margin: 2px 0 28px;
+      }
+      .baggage-summary-title {
+        margin-top: 0;
+        font-size: 24px;
+        line-height: 1.25;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      .baggage-summary-body {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+        color: var(--text);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+      .baggage-summary-body p {
+        margin: 0;
+      }
+      .baggage-table-wrap {
+        margin: 0 0 30px;
+        border-top: 2px solid var(--text);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .baggage-table-title {
+        margin: 26px 0 10px;
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .baggage-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+      .baggage-table th,
+      .baggage-table td {
+        padding: 12px 10px;
+        border-top: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .baggage-table thead th {
+        border-top: 0;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .baggage-table strong {
+        display: block;
+        color: var(--text);
+        font-size: 15px;
+      }
+      .baggage-table td[data-label="수량"] {
+        color: #1a73e8 !important;
+        font-weight: 950;
+      }
+      @media (max-width: 640px) {
+        .baggage-table-wrap {
+          border-top: 0;
+          border-bottom: 0;
+          overflow: visible;
+        }
+        .baggage-table,
+        .baggage-table thead,
+        .baggage-table tbody,
+        .baggage-table tr,
+        .baggage-table th,
+        .baggage-table td {
+          display: block;
+          width: 100%;
+        }
+        .baggage-table {
+          border-collapse: separate;
+        }
+        .baggage-table thead {
+          display: none;
+        }
+        .baggage-table tr {
+          margin: 0 0 12px;
+          padding: 12px 14px;
+          border: 1px solid var(--line);
+          border-radius: 16px;
+          background: #ffffff;
+        }
+        .baggage-table td {
+          display: grid;
+          grid-template-columns: 92px minmax(0, 1fr);
+          gap: 10px;
+          padding: 8px 0;
+          border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+          font-size: 14px;
+          word-break: keep-all;
+          overflow-wrap: anywhere;
+        }
+        .baggage-table td:first-child {
+          border-top: 0;
+        }
+        .baggage-table td::before {
+          content: attr(data-label);
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: 0.02em;
+        }
+        .baggage-table td[data-label="수량"] {
+          color: #1a73e8 !important;
+          font-size: 16px;
+          font-weight: 950;
+        }
+      }
       .overview-item-list {
         display: grid;
         gap: 36px;
@@ -602,6 +784,8 @@
         margin-top: 12px;
         border-collapse: collapse;
         table-layout: fixed;
+        border-top: 2px solid var(--text);
+        border-bottom: 1px solid var(--line);
       }
       .overview-meta-table tr {
         border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
@@ -623,6 +807,76 @@
       .overview-meta-table td {
         color: var(--text);
         font-weight: 500;
+      }
+      .ko-translation {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 0.9em;
+        line-height: 1.55;
+        font-weight: 500;
+      }
+      @media (max-width: 640px) {
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table {
+          display: block;
+          border: 1px solid var(--line);
+          border-radius: 16px;
+          border-collapse: separate;
+          background: #ffffff;
+          overflow: hidden;
+        }
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table tbody,
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table tr,
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table td,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table tbody,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table tr,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table td,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table tbody,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table tr,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table td {
+          display: block;
+          width: 100%;
+        }
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table tr,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table tr,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table tr {
+          display: grid;
+          grid-template-columns: 92px minmax(0, 1fr);
+          gap: 10px;
+          padding: 8px 14px;
+          border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        }
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table tr:first-child,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table tr:first-child,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table tr:first-child {
+          border-top: 0;
+        }
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table td,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table td,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table td {
+          padding: 0;
+          border-top: 0;
+          font-size: 14px;
+          line-height: 1.55;
+          word-break: keep-all;
+          overflow-wrap: anywhere;
+        }
+        .overview-panel[data-overview-panel="lodging"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="flight"] .overview-meta-table th,
+        .overview-panel[data-overview-panel="baggage"] .overview-meta-table th {
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: 0.02em;
+        }
       }
       .overview-hotel-map-slot {
         margin-top: 16px;
@@ -658,7 +912,7 @@
         scrollbar-width: none;
         padding: 8px 4px 10px;
         margin: -18px -2px 14px;
-        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        background: #ffffff;
         backdrop-filter: blur(16px);
       }
 
@@ -1008,12 +1262,12 @@
         top: 0;
         z-index: 15;
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 0;
         margin: -16px -14px 0;
         padding: 8px 14px 0;
         border-bottom: 1px solid var(--line);
-        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        background: #ffffff;
         backdrop-filter: blur(16px);
       }
 
@@ -1036,7 +1290,7 @@
         border: 0;
         border-bottom: 3px solid transparent;
         border-radius: 0;
-        background: transparent;
+        background: #ffffff;
         color: var(--muted);
         padding: 0 4px 8px;
         font: inherit;
@@ -1060,7 +1314,7 @@
       }
 
       .food-region-tab.active {
-        background: transparent;
+        background: #ffffff;
         border-bottom-color: var(--blue);
         color: var(--blue);
       }
@@ -1137,6 +1391,18 @@
         color: var(--text);
       }
 
+      .food-rating-pill:first-child {
+        background: #fff1f2;
+        color: #dc2626;
+        font-weight: 900;
+      }
+
+      .food-reserved-pill {
+        background: #eff6ff;
+        color: #2563eb;
+        font-weight: 900;
+      }
+
       .food-card-meta {
         margin-top: 8px;
         color: var(--muted);
@@ -1145,8 +1411,8 @@
       }
 
       .food-card-route-meta {
-        color: var(--blue);
-        font-weight: 800;
+        color: #2563eb !important;
+        font-weight: 900;
       }
 
       .food-card-copy {
@@ -1195,17 +1461,25 @@
         padding: 12px 14px;
         border-radius: 16px;
         background: var(--panel-soft);
-        color: var(--text);
+        color: #000000;
         font-size: 13px;
+        font-weight: 400;
         line-height: 1.6;
       }
 
       .food-review-label {
         display: block;
         margin-bottom: 2px;
-        color: var(--text);
+        color: #000000;
         font-size: 12px;
-        font-weight: 850;
+        font-weight: 900;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .food-card-review,
+        .food-review-label {
+          color: #000000;
+        }
       }
 
       .food-card-actions {
@@ -1327,9 +1601,9 @@
         --orange: #ff5a00;
         --danger-bg: #fff0ef;
         --tip-bg: #eef8f2;
-        --tab-bg: #f1f2f4;
+        --tab-bg: #ffffff;
         --accent-soft: #f1f2f4;
-        --nav-bg: rgba(255, 255, 255, 0.96);
+        --nav-bg: #ffffff;
         --indicator: #242a31;
       }
 
@@ -1349,9 +1623,9 @@
           --orange: #ff9b63;
           --danger-bg: rgba(255, 180, 171, 0.12);
           --tip-bg: rgba(128, 212, 170, 0.12);
-          --tab-bg: #202329;
+          --tab-bg: #ffffff;
           --accent-soft: #202329;
-          --nav-bg: rgba(16, 17, 19, 0.96);
+          --nav-bg: #ffffff;
           --indicator: #f1f3f5;
         }
       }
@@ -1373,11 +1647,8 @@
       }
 
       .hero {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        margin: -34px -20px 0;
-        padding: 34px 20px 18px;
+        margin: 0;
+        padding: 8px 0 22px;
         background: var(--bg);
         border-bottom: 0;
       }
@@ -1431,7 +1702,7 @@
       .chip, .priority-pill {
         border: 0;
         border-radius: 999px;
-        background: var(--panel-soft);
+        background: #ffffff;
         color: var(--text);
         font-weight: 850;
       }
@@ -1472,7 +1743,7 @@
         border-top: 1px solid var(--line);
         border-radius: 0;
         box-shadow: none;
-        background: var(--nav-bg);
+        background: #ffffff;
         align-items: stretch;
       }
 
@@ -1486,15 +1757,15 @@
         color: var(--muted);
         font-size: 13px;
         font-weight: 850;
-        background: transparent;
+        background: #ffffff;
         border: 1px solid transparent;
         border-radius: 999px;
         line-height: 1.1;
       }
 
       .main-tab.active {
-        color: #ffffff;
-        background: var(--text);
+        color: var(--text);
+        background: #ffffff;
         border: 1px solid var(--text);
       }
 
@@ -1539,6 +1810,10 @@
         border-radius: 18px;
         background: var(--panel-soft);
       }
+      .overview-panel[data-overview-panel="summary"] .stat {
+        padding: 18px 18px 20px;
+        min-height: 92px;
+      }
 
       .map-card,
       .item-map-preview,
@@ -1548,10 +1823,10 @@
       }
 
       .schedule-date-tabs {
-        top: 86px;
-        margin: -26px -20px 18px;
+        top: 0;
+        margin: 0 -20px 18px;
         padding: 12px 20px 10px;
-        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        background: #ffffff;
         border-bottom: 1px solid var(--line);
       }
 
@@ -1562,7 +1837,7 @@
         min-height: 42px;
         border: 1px solid transparent;
         border-radius: 999px;
-        background: var(--panel-soft);
+        background: #ffffff;
         color: var(--text);
         font-size: 14px;
         font-weight: 850;
@@ -1571,9 +1846,9 @@
       .date-tab.active,
       .food-category-tab.active,
       .hm-category-tab.active {
-        background: var(--text);
+        background: #ffffff;
         border-color: var(--text);
-        color: #ffffff;
+        color: var(--text);
       }
 
       .food-category-tab,
@@ -1585,25 +1860,44 @@
 
       .food-category-tab.active,
       .hm-category-tab.active {
-        background: var(--text);
+        background: #ffffff;
         border-color: var(--text);
-        color: #ffffff;
+        color: var(--text);
       }
 
       .food-region-tabs {
-        top: 86px;
-        margin: -26px -20px 0;
+        top: 0;
+        margin: 0 -20px;
         padding: 12px 20px 0;
-        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        background: #ffffff;
+      }
+
+      .overview-tab-bar {
+        margin: 0 -20px 20px;
+        padding: 12px 20px 10px;
+        background: #ffffff;
+      }
+
+      .overview-tab {
+        min-height: 42px;
+        background: #ffffff;
+        border-color: var(--line);
+        color: var(--text);
+      }
+
+      .overview-tab.active {
+        background: #ffffff;
+        border-color: var(--text);
+        color: var(--text);
       }
 
       .food-category-tabs {
         position: sticky;
-        top: 148px;
+        top: 62px;
         z-index: 14;
         margin: 0 -20px;
         padding: 10px 20px 12px;
-        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        background: #ffffff;
         backdrop-filter: blur(16px);
       }
 
@@ -1614,6 +1908,7 @@
       .food-region-tab {
         width: 100%;
         min-height: 50px;
+        background: #ffffff;
         color: var(--muted);
         font-size: 15px;
         font-weight: 900;
@@ -1645,7 +1940,6 @@
       }
 
       .food-card-meta,
-      .food-card-review,
       .timeline-summary,
       .overview-subtitle,
       .hm-category-count,
@@ -1695,39 +1989,101 @@
       <nav class="bottom-tabs" id="mainTabs">
         <button class="main-tab active" data-panel="overview" type="button">개요</button>
         <button class="main-tab" data-panel="schedule" type="button">일정</button>
-        <button class="main-tab" data-panel="checklist" type="button">예약</button>
-        <button class="main-tab" data-panel="food" type="button">맛집</button>
+        <button class="main-tab" data-panel="checklist" type="button">준비</button>
+        <button class="main-tab" data-panel="food" type="button">장소</button>
         <button class="main-tab" data-panel="language" type="button">회화</button>
       </nav>
 
       <section class="panel active" data-panel="overview">
-        <section class="section">
-          <p class="section-label">Trip Snapshot</p>
-          <div class="stats">
-            <article class="stat"><div class="stat-label">총 기간</div><div class="stat-value">10박 11일</div></article>
-            <article class="stat"><div class="stat-label">주요 도시</div><div class="stat-value">3곳</div></article>
-            <article class="stat"><div class="stat-label">항공 구간</div><div class="stat-value">4회</div></article>
-            <article class="stat"><div class="stat-label">렌터카</div><div class="stat-value">4일</div></article>
+        <section class="section overview-info-section">
+          <div class="overview-tab-bar" id="overviewInfoTabs" aria-label="개요 정보 선택">
+            <button class="overview-tab active" type="button" data-overview-tab="summary">개요</button>
+            <button class="overview-tab" type="button" data-overview-tab="lodging">숙소</button>
+            <button class="overview-tab" type="button" data-overview-tab="flight">항공</button>
+            <button class="overview-tab" type="button" data-overview-tab="baggage">수하물</button>
           </div>
-        </section>
-
-        <section class="section">
-          <p class="section-label">Route View</p>
-          <div class="map-frame" id="routeMapFrame"></div>
-          <div class="map-links">
-            <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Cabo+da+Roca/Cascais/Lisbon/" target="_blank" rel="noreferrer">호카곶 + 카스카이스</a>
-            <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Catedral+de+Mallorca/Portixol/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 팔마 해안</a>
-            <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
-          </div>
-          <div class="map-preview-help" id="mapPreviewHelp"></div>
-          <div class="map-preview-grid" id="mapPreviewGrid"></div>
-        </section>
-
-        <section class="section">
-          <p class="section-label">확정 정보</p>
           <div class="stack">
-            <article class="card">
-              <h3 class="overview-card-title">항공</h3>
+            <article class="card overview-panel" data-overview-panel="summary">
+              <h3 class="overview-card-title">여행 개요</h3>
+              <div class="overview-item-list">
+                <section class="overview-item">
+                  <div class="overview-title">Trip Snapshot</div>
+                  <div class="stats">
+                    <article class="stat"><div class="stat-label">총 기간</div><div class="stat-value">10박 11일</div></article>
+                    <article class="stat"><div class="stat-label">주요 도시</div><div class="stat-value">3곳</div></article>
+                    <article class="stat"><div class="stat-label">항공 구간</div><div class="stat-value">4회</div></article>
+                    <article class="stat"><div class="stat-label">렌터카</div><div class="stat-value">4일</div></article>
+                  </div>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-title">Route View</div>
+                  <div class="overview-subtitle">신혼여행 이동 경로 지도</div>
+                  <div class="map-frame" id="routeMapFrame"></div>
+                  <div class="map-links">
+                    <a class="action-link map" href="https://www.google.com/maps/dir/Rossio+Station+Lisbon/Cabo+da+Roca/Cascais/Lisbon/" target="_blank" rel="noreferrer">호카곶 + 카스카이스</a>
+                    <a class="action-link map" href="https://www.google.com/maps/dir/Fontsanta+Hotel+Thermal+Spa/La+Lonja+Marina+Palma/Catedral+de+Mallorca/Portixol/Fontsanta+Hotel+Thermal+Spa/" target="_blank" rel="noreferrer">마요르카 카타마란 + 팔마 해안</a>
+                    <a class="action-link map" href="https://www.google.com/maps/dir/Madrid+Airport+Atocha+Station/Retiro+Park/Puerta+del+Sol/Gran+V%C3%ADa/" target="_blank" rel="noreferrer">마드리드 레이오버</a>
+                  </div>
+                  <div class="map-preview-help" id="mapPreviewHelp"></div>
+                  <div class="map-preview-grid" id="mapPreviewGrid"></div>
+                </section>
+              </div>
+            </article>
+            <article class="card overview-panel" data-overview-panel="lodging" hidden>
+              <h3 class="overview-card-title">숙소 정보</h3>
+              <div class="overview-item-list">
+                <section class="overview-item">
+                  <div class="overview-kicker">Lisbon · 2026.05.03 - 05.08</div>
+                  <div class="overview-title">Convent Square Lisbon</div>
+                  <div class="overview-subtitle">예약 확정 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>이름</th><td>Convent Square Lisbon, Vignette Collection<span class="ko-translation">한글: 콘벤트 스퀘어 리스본, 비네트 컬렉션</span></td></tr>
+                      <tr><th>주소</th><td><div class="location-cell"><span>Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal<span class="ko-translation">한글: 포르투갈 리스본 1100-373, 도무 안탕 드 알마다 거리 4번지</span></span><button class="copy-button" type="button" data-copy="Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal">복사</button><a class="action-link map inline" href="https://maps.google.com/?cid=7850292069258072457" target="_blank" rel="noreferrer">구글맵 열기</a></div></td></tr>
+                      <tr><th>전화</th><td><div class="location-cell"><span>351218295200</span><button class="copy-button" type="button" data-copy="351218295200">복사</button></div></td></tr>
+                      <tr><th>이메일</th><td><div class="location-cell"><span>stay@conventsquarehotel.com</span><button class="copy-button" type="button" data-copy="stay@conventsquarehotel.com">복사</button></div></td></tr>
+                      <tr><th>예약번호</th><td>41605443</td></tr>
+                      <tr><th>객실</th><td>1 King Deluxe Cloister View<span class="ko-translation">한글: 킹베드 1개 디럭스룸, 클로이스터 전망</span></td></tr>
+                      <tr><th>투숙</th><td>1 room · 2 adults · 5 nights<span class="ko-translation">한글: 객실 1개 · 성인 2명 · 5박</span></td></tr>
+                      <tr><th>요금</th><td>1,642.21 EUR + 40.00 EUR = 1,682.21 EUR</td></tr>
+                      <tr><th>결제</th><td>호텔에서 결제 처리 · full prepayment required<span class="ko-translation">한글: 호텔에서 결제 처리 · 전액 선결제 필요</span></td></tr>
+                      <tr><th>정책</th><td>Non refundable · no-show 시 보증금 환불 불가 · pedestrian street access only<span class="ko-translation">한글: 환불 불가 · 노쇼 시 보증금 환불 불가 · 보행자 전용 거리라 차량 문앞 진입 불가</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="map-links" style="margin-top:10px">
+                    <a class="action-link map" href="https://maps.google.com/?cid=7850292069258072457" target="_blank" rel="noreferrer">Convent Square 구글맵</a>
+                  </div>
+                  <div class="overview-hotel-map-slot" id="overviewHotelMapLisbon"></div>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">Mallorca · 2026.05.08 - 05.12</div>
+                  <div class="overview-title">Fontsanta Hotel Thermal Spa & Wellness</div>
+                  <div class="overview-subtitle">잔여금 35.20 EUR 현장 결제 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>이름</th><td>Fontsanta Hotel Thermal Spa & Wellness<span class="ko-translation">한글: 폰트산타 호텔 서멀 스파 & 웰니스</span></td></tr>
+                      <tr><th>주소</th><td><div class="location-cell"><span>Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain<span class="ko-translation">한글: 스페인 발레아레스 제도 캄포스 07638, 캄포스-사 콜로니아 데 산트 조르디 도로 8km 지점</span></span><button class="copy-button" type="button" data-copy="Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain">복사</button><a class="action-link map inline" href="https://maps.google.com/?cid=2233528644058998346" target="_blank" rel="noreferrer">구글맵 열기</a></div></td></tr>
+                      <tr><th>전화</th><td><div class="location-cell"><span>T.971 655 016</span><button class="copy-button" type="button" data-copy="971 655 016">복사</button></div></td></tr>
+                      <tr><th>이메일</th><td><div class="location-cell"><span>info@fontsantahotel.com</span><button class="copy-button" type="button" data-copy="info@fontsantahotel.com">복사</button></div></td></tr>
+                      <tr><th>예약번호</th><td>P7128119</td></tr>
+                      <tr><th>Ref</th><td>M6569681</td></tr>
+                      <tr><th>객실</th><td>Deluxe room with terrace · 2 adults · breakfast included · non refundable<span class="ko-translation">한글: 테라스가 있는 디럭스룸 · 성인 2명 · 조식 포함 · 환불 불가</span></td></tr>
+                      <tr><th>투숙</th><td>08-05-2026 ~ 12-05-2026 · 4 nights<span class="ko-translation">한글: 2026년 5월 8일~5월 12일 · 4박</span></td></tr>
+                      <tr><th>요금</th><td>441 EUR x 4 nights = 1764 EUR</td></tr>
+                      <tr><th>선결제</th><td>1764 EUR prepaid · remaining 35.20 EUR<span class="ko-translation">한글: 1,764유로 선결제 완료 · 잔여 35.20유로</span></td></tr>
+                      <tr><th>운영</th><td>Adult only · animals not allowed · courtesy shower service 제공<span class="ko-translation">한글: 성인 전용 · 반려동물 불가 · 무료 샤워 서비스 제공</span></td></tr>
+                      <tr><th>메모</th><td>5/12 05:40 얼리 체크아웃 예정 · Early check-in / Late check-out은 가능 시 제공<span class="ko-translation">한글: 5월 12일 05:40 조기 체크아웃 예정 · 이른 체크인/늦은 체크아웃은 가능할 때 제공</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="map-links" style="margin-top:10px">
+                    <a class="action-link map" href="https://maps.google.com/?cid=2233528644058998346" target="_blank" rel="noreferrer">Fontsanta 구글맵</a>
+                  </div>
+                  <div class="overview-hotel-map-slot" id="overviewHotelMapMallorca"></div>
+                </section>
+              </div>
+            </article>
+            <article class="card overview-panel" data-overview-panel="flight" hidden>
+              <h3 class="overview-card-title">항공 정보</h3>
               <div class="overview-item-list">
                 <section class="overview-item">
                   <div class="overview-kicker">2026.05.03</div>
@@ -1739,23 +2095,24 @@
                       <tr><th>좌석</th><td>철완 36H / 나라 36J</td></tr>
                       <tr><th>티켓번호</th><td>철완 1802353367488 / 나라 1802353263946</td></tr>
                       <tr><th>클래스</th><td>철완 E / 나라 E</td></tr>
-                      <tr><th>수하물</th><td>1 Piece x2</td></tr>
-                      <tr><th>기종</th><td>Boeing 787-9 · 15H 35M</td></tr>
+                      <tr><th>수하물</th><td>1 Piece x2<span class="ko-translation">한글: 위탁 수하물 1개씩, 총 2개</span></td></tr>
+                      <tr><th>기종</th><td>Boeing 787-9 · 15H 35M<span class="ko-translation">한글: 보잉 787-9 · 비행시간 15시간 35분</span></td></tr>
                     </tbody>
                   </table>
                 </section>
                 <section class="overview-item">
                   <div class="overview-kicker">2026.05.08</div>
                   <div class="overview-title">VY3437 Vueling</div>
-                  <div class="overview-subtitle">리스본 T1 → 마요르카 · 08:50 → 11:45</div>
+                  <div class="overview-subtitle">리스본 T2 → 마요르카 · 08:50 → 11:45</div>
                   <table class="overview-meta-table">
                     <tbody>
                       <tr><th>예약번호</th><td>KFZL6V</td></tr>
                       <tr><th>좌석</th><td>철완 1B / 나라 1A</td></tr>
-                      <tr><th>수하물</th><td>25kg x2</td></tr>
-                      <tr><th>요금 번들</th><td>Fly Grande</td></tr>
-                      <tr><th>포함</th><td>Fast Track · Priority Boarding · overhead/underseat bag · 25kg hold bag</td></tr>
-                      <tr><th>결제</th><td>235.70 EUR · Mastercard ****1777 · Confirmed</td></tr>
+                      <tr><th>수하물</th><td>25kg x2 + 20kg x1<span class="ko-translation">한글: 25kg 위탁 수하물 2개 + 20kg 추가 위탁 수하물 1개</span></td></tr>
+                      <tr><th>요금 번들</th><td>Fly Grande<span class="ko-translation">한글: 플라이 그란데 번들</span></td></tr>
+                      <tr><th>포함</th><td>Fast Track · Priority Boarding · underseat cabin bag · overhead cabin bag · 25kg checked bag · extra 20kg checked bag<span class="ko-translation">한글: 패스트트랙 · 우선 탑승 · 좌석 밑 가방 · 머리 위 선반 캐리어 · 25kg 위탁 수하물 · 20kg 추가 위탁 수하물 포함</span></td></tr>
+                      <tr><th>출처</th><td>Vueling PDF 원문</td></tr>
+                      <tr><th>결제</th><td>235.70 EUR · Mastercard ****1777 · Confirmed<span class="ko-translation">한글: 235.70유로 · 마스터카드 ****1777 · 확정</span></td></tr>
                     </tbody>
                   </table>
                 </section>
@@ -1767,10 +2124,12 @@
                     <tbody>
                       <tr><th>예약번호</th><td>LSLWY</td></tr>
                       <tr><th>좌석</th><td>철완 10E / 나라 10F</td></tr>
-                      <tr><th>수하물</th><td>23kg x2</td></tr>
-                      <tr><th>운임</th><td>Classic</td></tr>
+                      <tr><th>수하물</th><td>23kg x3<span class="ko-translation">한글: 23kg 위탁 수하물 총 3개, 추가 수하물 결제 완료</span></td></tr>
+                      <tr><th>운임</th><td>Classic<span class="ko-translation">한글: 클래식 운임</span></td></tr>
+                      <tr><th>기내</th><td>hand baggage 포함 · 개인소지품 + 기내용 캐리어<span class="ko-translation">한글: 기내 수하물 포함 · 개인 소지품과 기내용 캐리어</span></td></tr>
                       <tr><th>티켓번호</th><td>철완 0602310091592 / 나라 0602310091593</td></tr>
-                      <tr><th>보딩</th><td>Group 3</td></tr>
+                      <tr><th>보딩</th><td>Group 3<span class="ko-translation">한글: 탑승 그룹 3</span></td></tr>
+                      <tr><th>출처</th><td>Iberia Express PDF 원문</td></tr>
                       <tr><th>결제</th><td>130.20 EUR</td></tr>
                     </tbody>
                   </table>
@@ -1785,8 +2144,8 @@
                       <tr><th>좌석</th><td>철완 52H / 나라 52J</td></tr>
                       <tr><th>티켓번호</th><td>철완 1802353365545 / 나라 1802353263946</td></tr>
                       <tr><th>클래스</th><td>철완 X / 나라 E</td></tr>
-                      <tr><th>수하물</th><td>1 Piece x2</td></tr>
-                      <tr><th>기종</th><td>Boeing 787-9 · 13H 00M</td></tr>
+                      <tr><th>수하물</th><td>1 Piece x2<span class="ko-translation">한글: 위탁 수하물 1개씩, 총 2개</span></td></tr>
+                      <tr><th>기종</th><td>Boeing 787-9 · 13H 00M<span class="ko-translation">한글: 보잉 787-9 · 비행시간 13시간</span></td></tr>
                     </tbody>
                   </table>
                 </section>
@@ -1798,56 +2157,159 @@
                 <a class="action-link map" href="https://maps.google.com/?q=Madrid+Barajas+Airport+Terminal+1" target="_blank" rel="noreferrer">마드리드 T1</a>
               </div>
             </article>
-            <article class="card">
-              <h3 class="overview-card-title">숙소</h3>
+            <article class="card overview-panel" data-overview-panel="baggage" hidden>
+              <h3 class="overview-card-title">수하물 정보</h3>
+              <div class="baggage-summary">
+                <div class="baggage-summary-title">항공편별로 이렇게 가져가세요</div>
+                <div class="baggage-summary-body">
+                  <p><strong>출발편 대한항공:</strong> 24인치 캐리어 2개는 위탁하고, 20인치 캐리어는 24인치 안에 넣거나 기내용으로 가져가세요.</p>
+                  <p><strong>부엘링(Vueling):</strong> 25kg 2개 + 20kg 1개가 준비되어 있으니, 리스본→마요르카 구간은 24인치 2개 + 20인치 1개를 모두 위탁하세요.</p>
+                  <p><strong>이베리아 익스프레스(Iberia Express):</strong> 23kg 3개로 맞췄으니, 마요르카→마드리드 구간도 24인치 2개 + 20인치 1개를 모두 위탁하세요.</p>
+                  <p><strong>귀국편 대한항공:</strong> 위탁은 24인치 2개로 맞추고, 20인치 캐리어 1개는 기내용으로 가져가세요.</p>
+                  <p><strong>보스턴백:</strong> 접이식 비상 가방으로 24인치 안에 넣어가고, 귀국 전 쇼핑짐/빨래 분산용으로만 쓰세요. 별도 위탁 3번째 가방으로 쓰면 대한항공 추가요금 대상이 될 수 있습니다.</p>
+                </div>
+              </div>
+              <h4 class="baggage-table-title">캐리어 인치별 운용표</h4>
+              <div class="baggage-table-wrap">
+                <table class="baggage-table">
+                  <thead>
+                    <tr>
+                      <th>짐</th>
+                      <th>수량</th>
+                      <th>갈 때</th>
+                      <th>유럽 내 이동</th>
+                      <th>귀국</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="짐"><strong>24인치 캐리어</strong>큰 위탁 캐리어</td>
+                      <td data-label="수량">2개</td>
+                      <td data-label="갈 때">대한항공 위탁</td>
+                      <td data-label="유럽 내 이동">Vueling/Iberia Express 위탁</td>
+                      <td data-label="귀국">대한항공 위탁</td>
+                    </tr>
+                    <tr>
+                      <td data-label="짐"><strong>20인치 캐리어</strong>보조 캐리어</td>
+                      <td data-label="수량">1개</td>
+                      <td data-label="갈 때">24인치 안에 넣거나 기내용</td>
+                      <td data-label="유럽 내 이동">Vueling 20kg 추가 / Iberia Express 23kg 추가 결제로 모두 위탁</td>
+                      <td data-label="귀국">대한항공 기내용</td>
+                    </tr>
+                    <tr>
+                      <td data-label="짐"><strong>백팩</strong>개인 소지품</td>
+                      <td data-label="수량">1개</td>
+                      <td data-label="갈 때">기내 개인가방</td>
+                      <td data-label="유럽 내 이동">기내 개인가방</td>
+                      <td data-label="귀국">기내 개인가방</td>
+                    </tr>
+                    <tr>
+                      <td data-label="짐"><strong>보스턴백</strong>접이식 비상 가방</td>
+                      <td data-label="수량">1개</td>
+                      <td data-label="갈 때">접어서 24인치 안에 보관</td>
+                      <td data-label="유럽 내 이동">캐리어 안에 보관. 필요 시 가벼운 옷/빨래 분산</td>
+                      <td data-label="귀국">기내용 보조 또는 캐리어 내부 보관. 별도 위탁은 추가요금 주의</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h4 class="baggage-table-title">항공편별 수하물 kg 정리</h4>
+              <div class="baggage-table-wrap">
+                <table class="baggage-table">
+                  <thead>
+                    <tr>
+                      <th>항공편</th>
+                      <th>위탁 수하물</th>
+                      <th>기내 수하물</th>
+                      <th>우리 운용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="항공편"><strong>KE921</strong>인천 → 리스본</td>
+                      <td data-label="위탁 수하물">1 Piece x2<br>각 23kg 이하 권장</td>
+                      <td data-label="기내 수하물">일반석 휴대수하물 1개 x2<br>1인당 10kg 이하</td>
+                      <td data-label="우리 운용">24인치 2개 위탁. 20인치는 안에 넣거나 기내용.</td>
+                    </tr>
+                    <tr>
+                      <td data-label="항공편"><strong>VY3437</strong>리스본 → 마요르카</td>
+                      <td data-label="위탁 수하물">25kg x2 + 20kg x1<br>20kg 추가 수하물 결제 완료</td>
+                      <td data-label="기내 수하물">overhead cabin bag x2<br>underseat cabin bag x2</td>
+                      <td data-label="우리 운용">24인치 2개 + 20인치 1개 모두 위탁.</td>
+                    </tr>
+                    <tr>
+                      <td data-label="항공편"><strong>I21652</strong>마요르카 → 마드리드</td>
+                      <td data-label="위탁 수하물">23kg x3<br>추가 수하물 결제 완료</td>
+                      <td data-label="기내 수하물">hand baggage x2</td>
+                      <td data-label="우리 운용">24인치 2개 + 20인치 1개 모두 위탁.</td>
+                    </tr>
+                    <tr>
+                      <td data-label="항공편"><strong>KE914</strong>마드리드 → 인천</td>
+                      <td data-label="위탁 수하물">1 Piece x2<br>각 23kg 이하 권장</td>
+                      <td data-label="기내 수하물">일반석 휴대수하물 1개 x2<br>1인당 10kg 이하</td>
+                      <td data-label="우리 운용">24인치 2개 위탁. 20인치 1개 기내용.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="overview-item-list">
                 <section class="overview-item">
-                  <div class="overview-kicker">Lisbon · 2026.05.03 - 05.08</div>
-                  <div class="overview-title">Convent Square Lisbon</div>
-                  <div class="overview-subtitle">예약 확정 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <div class="overview-kicker">짐 운용 기준</div>
+                  <div class="overview-title">24인치 2개 + 20인치 1개 + 백팩 + 보스턴백 기준</div>
+                  <div class="overview-subtitle">보스턴백은 추가 수하물이 아니라 접이식 비상 가방으로 가져가고, 내부 이동은 캐리어 3개 위탁으로 통일합니다.</div>
                   <table class="overview-meta-table">
                     <tbody>
-                      <tr><th>이름</th><td>Convent Square Lisbon, Vignette Collection</td></tr>
-                      <tr><th>주소</th><td><div class="location-cell"><span>Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal</span><button class="copy-button" type="button" data-copy="Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal">복사</button><a class="action-link map inline" href="https://maps.google.com/?cid=7850292069258072457" target="_blank" rel="noreferrer">구글맵 열기</a></div></td></tr>
-                      <tr><th>전화</th><td><div class="location-cell"><span>351218295200</span><button class="copy-button" type="button" data-copy="351218295200">복사</button></div></td></tr>
-                      <tr><th>이메일</th><td><div class="location-cell"><span>stay@conventsquarehotel.com</span><button class="copy-button" type="button" data-copy="stay@conventsquarehotel.com">복사</button></div></td></tr>
-                      <tr><th>예약번호</th><td>41605443</td></tr>
-                      <tr><th>객실</th><td>1 King Deluxe Cloister View</td></tr>
-                      <tr><th>투숙</th><td>1 room · 2 adults · 5 nights</td></tr>
-                      <tr><th>요금</th><td>1,642.21 EUR + 40.00 EUR = 1,682.21 EUR</td></tr>
-                      <tr><th>결제</th><td>호텔에서 결제 처리 · full prepayment required</td></tr>
-                      <tr><th>정책</th><td>Non refundable · no-show 시 보증금 환불 불가 · pedestrian street access only</td></tr>
+                      <tr><th>위탁</th><td>Vueling은 25kg x2 + 20kg x1, Iberia Express는 23kg x3. 유럽 내부 이동은 3개 모두 위탁 가능.</td></tr>
+                      <tr><th>기내</th><td>백팩에는 여권, 카드, 현금, 보조배터리, 카메라, 노트북, 약을 보관. 대한항공 귀국편은 20인치 1개를 기내용으로 운용.</td></tr>
+                      <tr><th>보스턴백</th><td>접어서 24인치 안에 넣어가고, 귀국 전 쇼핑짐/빨래 분산용으로 사용. 별도 위탁 3번째 가방으로 쓰면 대한항공 추가요금 주의.</td></tr>
+                      <tr><th>쇼핑</th><td>모든 위탁 캐리어는 1개당 23kg 이하 유지. 20인치도 위탁할 때는 23kg 이하로 맞추기.</td></tr>
                     </tbody>
                   </table>
-                  <div class="map-links" style="margin-top:10px">
-                    <a class="action-link map" href="https://maps.google.com/?cid=7850292069258072457" target="_blank" rel="noreferrer">Convent Square 구글맵</a>
-                  </div>
-                  <div class="overview-hotel-map-slot" id="overviewHotelMapLisbon"></div>
                 </section>
                 <section class="overview-item">
-                  <div class="overview-kicker">Mallorca · 2026.05.08 - 05.12</div>
-                  <div class="overview-title">Fontsanta Hotel Thermal Spa & Wellness</div>
-                  <div class="overview-subtitle">잔여금 35.20 EUR 현장 결제 · 체크인 15:00 · 체크아웃 12:00</div>
+                  <div class="overview-kicker">2026.05.03 · KE921</div>
+                  <div class="overview-title">대한항공 인천 → 리스본</div>
                   <table class="overview-meta-table">
                     <tbody>
-                      <tr><th>이름</th><td>Fontsanta Hotel Thermal Spa & Wellness</td></tr>
-                      <tr><th>주소</th><td><div class="location-cell"><span>Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain</span><button class="copy-button" type="button" data-copy="Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain">복사</button><a class="action-link map inline" href="https://maps.google.com/?cid=2233528644058998346" target="_blank" rel="noreferrer">구글맵 열기</a></div></td></tr>
-                      <tr><th>전화</th><td><div class="location-cell"><span>T.971 655 016</span><button class="copy-button" type="button" data-copy="971 655 016">복사</button></div></td></tr>
-                      <tr><th>이메일</th><td><div class="location-cell"><span>info@fontsantahotel.com</span><button class="copy-button" type="button" data-copy="info@fontsantahotel.com">복사</button></div></td></tr>
-                      <tr><th>예약번호</th><td>P7128119</td></tr>
-                      <tr><th>Ref</th><td>M6569681</td></tr>
-                      <tr><th>객실</th><td>Deluxe room with terrace · 2 adults · breakfast included · non refundable</td></tr>
-                      <tr><th>투숙</th><td>08-05-2026 ~ 12-05-2026 · 4 nights</td></tr>
-                      <tr><th>요금</th><td>441 EUR x 4 nights = 1764 EUR</td></tr>
-                      <tr><th>선결제</th><td>1764 EUR prepaid · remaining 35.20 EUR</td></tr>
-                      <tr><th>운영</th><td>Adult only · animals not allowed · courtesy shower service 제공</td></tr>
-                      <tr><th>메모</th><td>5/12 05:40 얼리 체크아웃 예정 · Early check-in / Late check-out은 가능 시 제공</td></tr>
+                      <tr><th>위탁</th><td>1인 1개씩, 총 2개.</td></tr>
+                      <tr><th>기내</th><td>일반석 휴대수하물 1개 x2 · 1인당 10kg 이하 · 55x40x20cm 또는 세 변 합 115cm 이내<span class="ko-translation">한글: 대한항공 일반석 기준, 1인당 기내용 가방 1개씩 가능</span></td></tr>
+                      <tr><th>추천</th><td>장거리 구간이라 귀중품, 전자기기, 보조배터리, 하루치 세면/속옷은 기내 작은 가방에 분산.</td></tr>
                     </tbody>
                   </table>
-                  <div class="map-links" style="margin-top:10px">
-                    <a class="action-link map" href="https://maps.google.com/?cid=2233528644058998346" target="_blank" rel="noreferrer">Fontsanta 구글맵</a>
-                  </div>
-                  <div class="overview-hotel-map-slot" id="overviewHotelMapMallorca"></div>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.08 · VY3437</div>
+                  <div class="overview-title">Vueling 리스본 → 마요르카</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>위탁</th><td>25kg 위탁 수하물 2개 + 20kg 추가 위탁 수하물 1개. 24인치 2개 + 20인치 1개 모두 위탁 가능.</td></tr>
+                      <tr><th>기내</th><td>underseat cabin bag x2 / overhead cabin bag x2<span class="ko-translation">한글: 좌석 밑 가방 2개 / 머리 위 선반 캐리어 2개</span></td></tr>
+                      <tr><th>크기</th><td>overhead cabin bag 55x40x20cm 10kg 이하 / underseat cabin bag 40x20x30cm 이하<span class="ko-translation">한글: 오버헤드 캐리어는 55x40x20cm 10kg 이하 / 언더시트 가방은 40x20x30cm 이하</span></td></tr>
+                      <tr><th>추천</th><td>20인치 캐리어는 Vueling에서도 위탁 처리. 20인치는 20kg 이하, 24인치는 각각 25kg 이하로 맞추기.</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.12 · I21652</div>
+                  <div class="overview-title">Iberia Express 마요르카 → 마드리드</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>위탁</th><td>23kg 위탁 수하물 총 3개. 24인치 2개 + 20인치 1개 위탁 가능.</td></tr>
+                      <tr><th>기내</th><td>hand baggage x2 · 개인소지품 30x40x15cm 이하 + 기내용 캐리어 56x40x25cm 10kg 이하<span class="ko-translation">한글: 기내 수하물 2개 기준 · 개인소지품과 기내용 캐리어 조합</span></td></tr>
+                      <tr><th>권장</th><td>추가 수하물 결제 완료 기준. 20인치는 기내로 들고 타지 말고 위탁 처리하면 동선이 편합니다.</td></tr>
+                    </tbody>
+                  </table>
+                </section>
+                <section class="overview-item">
+                  <div class="overview-kicker">2026.05.12 · KE914</div>
+                  <div class="overview-title">대한항공 마드리드 → 인천</div>
+                  <table class="overview-meta-table">
+                    <tbody>
+                      <tr><th>위탁</th><td>1인 1개씩, 총 2개.</td></tr>
+                      <tr><th>기내</th><td>일반석 휴대수하물 1개 x2 · 1인당 10kg 이하 · 55x40x20cm 또는 세 변 합 115cm 이내<span class="ko-translation">한글: 대한항공 일반석 기준, 1인당 기내용 가방 1개씩 가능</span></td></tr>
+                      <tr><th>주의</th><td>귀국 전 쇼핑 짐까지 포함해 캐리어당 23kg 이하로 맞추고, 파손/고가품은 기내 보관.</td></tr>
+                    </tbody>
+                  </table>
                 </section>
               </div>
             </article>
@@ -1865,7 +2327,7 @@
 
       <section class="panel" data-panel="checklist">
         <section class="section">
-          <p class="section-label">Checklist</p>
+          <div class="hm-category-tabs" id="hmCategoryTabs" aria-label="예약 체크 카테고리 선택"></div>
           <div class="hm-progress-wrap">
             <div class="hm-progress-top">
               <div class="hm-progress-count" id="hmProgressCount">완료 0 / 전체 0</div>
@@ -1875,7 +2337,6 @@
               <div class="hm-progress-fill" id="hmProgressFill"></div>
             </div>
           </div>
-          <div class="hm-category-tabs" id="hmCategoryTabs" aria-label="예약 체크 카테고리 선택"></div>
           <div class="hm-list" id="hmChecklist"></div>
           <div style="padding-top: 20px;">
             <button class="hm-reset" id="hmResetButton" type="button">전체 초기화</button>
@@ -1885,8 +2346,8 @@
 
       <section class="panel" data-panel="food">
         <section class="section">
-          <div class="food-region-tabs" id="foodRegionTabs" aria-label="맛집 지역 선택"></div>
-          <div class="food-category-tabs" id="foodCategoryTabs" aria-label="맛집 카테고리 선택"></div>
+          <div class="food-region-tabs" id="foodRegionTabs" aria-label="장소 지역 선택"></div>
+          <div class="food-category-tabs" id="foodCategoryTabs" aria-label="장소 카테고리 선택"></div>
           <div class="food-guide-summary">
             <h3 id="foodGuideTitle">리스본 숙소 근처</h3>
             <div class="food-guide-count" id="foodGuideCount">0곳</div>
@@ -2301,8 +2762,8 @@
           items: [
             { time: "04:30", type: "tip", title: "기상", summary: "이동일 시작.", move: "객실 준비", duration: "도보 0분", location: "Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal", details: [], map: "https://maps.google.com/?cid=7850292069258072457" },
             { time: "05:00", type: "critical", title: "⚠ 호텔 출발 — 우버/택시", summary: "공항까지 보통 25~35분 정도 보지만, 오늘은 체크인 카운터 마감과 보행자 구역 변수까지 같이 생각해서 일찍 출발하는 게 맞아요.", move: "우버/택시 탑승", duration: "택시 약 25~35분", location: "Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal", details: [["예산", "20~25€"], ["포인트", "새벽이라 도로는 비교적 괜찮지만 차량 호출과 보행자 구역 이동 시간을 같이 봐야 해요"]], warning: "보행자 구역이라 하차 위치 확인 필수. 기사 도착 지연까지 생각하면 05:00 출발이 안전해요.", map: "https://maps.google.com/?cid=7850292069258072457" },
-            { time: "05:40", type: "critical", title: "⚠ 리스본 공항 도착", summary: "공항 도착 직후에는 다른 일정 없이 체크인, 수하물 위탁, 보안 검색만 생각하면 돼요. 오늘은 공항 안에서 여유를 남기는 쪽이 맞아요.", move: "터미널 내부 도보 이동", duration: "도보 약 5~10분", location: "Aeroporto Humberto Delgado Terminal 1 Lisbon", details: [["체크인 마감", "08:10"], ["Vueling 규정", "Schengen 구간 체크인 카운터는 출발 40분 전 마감"], ["공항 팁", "Fast Track이 있어도 체크인과 보안 검색 시간은 따로 필요해요"]], warning: "체크인 마감은 기다려주지 않으니 공항 안에서는 다른 일정 없이 수속에만 집중하세요.", map: "https://www.google.com/maps/search/?api=1&query=Lisbon%20Humberto%20Delgado%20Airport%20Terminal%201" },
-            { time: "08:50", type: "flight", title: "VY3437 출발 (리스본 → 마요르카)", summary: "Vueling 탑승 구간이에요. Fly Grande 번들이라 수하물과 우선 탑승, Fast Track이 포함돼 있습니다.", move: "항공 이동", duration: "항공 1시간 55분", location: "Lisbon Airport Terminal 1", details: [["예약번호", "KFZL6V"], ["항공편", "VY3437"], ["시간", "08:50 → 11:45"], ["좌석", "철완 1B / 나라 1A"], ["수하물", "25kg x2"], ["기내", "underseat bag x2 / large cabin bag x2"], ["포함", "Fast Track / 2 Priority Boarding / 1 flight change per journey"], ["결제", "235.70 EUR / Mastercard ****1777 / Confirmed"]], warning: "Schengen 구간 체크인 카운터는 출발 40분 전에 닫혀요.", tip: "보딩은 출발 40분 전 시작, 20분 전 종료예요.", map: "https://maps.google.com/?q=Lisbon+Airport+Terminal+1" },
+            { time: "05:40", type: "critical", title: "⚠ 리스본 공항 T2 도착", summary: "Vueling PDF 기준 출발 터미널은 LIS T2예요. 공항 도착 직후에는 다른 일정 없이 체크인, 수하물 위탁, 보안 검색만 생각하면 됩니다.", move: "터미널 내부 도보 이동", duration: "도보 약 5~10분", location: "Aeroporto Humberto Delgado Terminal 2 Lisbon", details: [["출발 터미널", "LIS T2 (Vueling PDF 원문 확인)"], ["체크인 마감", "08:10"], ["Vueling 규정", "Schengen 구간 체크인 카운터는 출발 40분 전 마감"], ["공항 팁", "Fast Track이 있어도 체크인과 보안 검색 시간은 따로 필요해요"]], warning: "체크인 마감은 기다려주지 않으니 공항 안에서는 다른 일정 없이 수속에만 집중하세요.", map: "https://www.google.com/maps/search/?api=1&query=Lisbon%20Humberto%20Delgado%20Airport%20Terminal%202" },
+            { time: "08:50", type: "flight", title: "VY3437 출발 (리스본 T2 → 마요르카)", summary: "Vueling PDF 기준 LIS T2 출발이에요. Fly Grande 기본 25kg x2에 20kg 추가 위탁 수하물 1개까지 반영되어, 24인치 2개와 20인치 1개를 모두 위탁하면 됩니다.", move: "항공 이동", duration: "항공 1시간 55분", location: "Lisbon Airport Terminal 2", details: [["예약번호", "KFZL6V"], ["항공편", "VY3437"], ["시간", "08:50 → 11:45"], ["좌석", "철완 1B / 나라 1A"], ["수하물", "25kg x2 + 20kg x1"], ["기내", "underseat cabin bag x2 / overhead cabin bag x2"], ["크기", "overhead 55x40x20cm 10kg 이하 / underseat 40x20x30cm 이하"], ["추가 수하물", "20kg 1개 추가 결제 완료"], ["포함", "Fast Track / 2 Priority Boarding / 1 flight change per journey"], ["결제", "235.70 EUR / Mastercard ****1777 / Confirmed"]], warning: "Schengen 구간 체크인 카운터는 출발 40분 전에 닫혀요.", tip: "20인치는 기내용으로 들고 타지 말고 위탁하면 동선이 편합니다.", map: "https://maps.google.com/?q=Lisbon+Airport+Terminal+2" },
             { time: "11:45", type: "flight", title: "마요르카 공항 도착", summary: "도착 후 바로 다음 일정을 넣지 않고, 수하물 수취와 렌터카 구역 이동만 생각하는 게 맞아요. 여기서는 여유를 새로 만들 수 없고, 주어진 1시간 15분 버퍼를 온전히 보존하는 게 핵심이에요.", move: "공항 내부 도보 이동", duration: "도보 약 5~10분", location: "Palma de Mallorca Airport", details: [["도착지", "PMI Majorca (Spain)"], ["포인트", "도착 후 다른 일정 없이 짐 찾기와 렌터카 픽업만 집중"], ["버퍼", "11:45 도착 → 13:00 렌터카 픽업"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
             { time: "12:00", type: "transit", title: "수하물 수취 + 렌터카 구역 이동", summary: "도착 직후에는 다른 일정 없이 짐 찾기, 화장실, 물 구매, 렌터카 구역 이동만 하면 돼요. 이 구간은 비어 있는 시간처럼 보여도 사실상 전부 공항 처리 시간이라고 보면 맞아요.", move: "공항 내부 이동", duration: "도보 약 15~25분", location: "Palma de Mallorca Airport", details: [["포인트", "짐 찾기 / 화장실 / 물 구매 / 렌터카 구역 이동"], ["원칙", "카페, 식사, 쇼핑 같은 추가 일정 넣지 않기"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
             { time: "13:00", type: "critical", title: "⚠ Record Go 렌터카 픽업", summary: "예약번호 75/2026-25992 기준으로 이 시간이 고정이에요. 도착 후부터 여기까지는 완충 시간을 따로 만들 수 없으니, 오직 렌터카 픽업만 생각하고 움직이는 편이 맞아요.", move: "렌터카 카운터 이동 후 차량 수령", duration: "도보 약 5~10분", location: "Record Go Palma de Mallorca Airport", details: [["예약번호", "75/2026-25992"], ["차종", "TOYOTA C-HR 또는 동급"], ["등급", "CDAH / 5인승 / 5도어 / 수하물 2개 / 자동"], ["요금제", "Just go"], ["보험", "Total Comfort Coverage"], ["주행거리", "Unlimited"], ["연료정책", "Full-Full"], ["온라인 결제", "143.79€ 결제 완료 (VAT 포함)"], ["현장 별도", "연료탱크 금액은 현장 산정 / 연료 보증금 변동"], ["필수 서류", "국제면허 + 한국면허 + 여권 + 본인명의 실물카드"]], warning: "서류가 하나라도 없으면 차량 인수가 거절될 수 있어요.", tip: "차량 받을 때 풀탱크 비용이 먼저 청구될 수 있고, 반납 후 연료량 기준으로 환급돼요. 인수 직후 외관 사진을 전방위로 남겨두세요.", map: "https://www.google.com/maps/search/?api=1&query=Record%20Go%20Palma%20de%20Mallorca%20Airport" },
@@ -2363,8 +2824,8 @@
             { time: "05:40", type: "critical", title: "⚠ Fontsanta 체크아웃", summary: "잔여금 정산 확인.", move: "프런트 이동", duration: "도보 약 3~5분", location: "Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain", details: [["숙소명", "Fontsanta Hotel Thermal Spa & Wellness"]], warning: "잔여금 35.20 EUR 현장 결제.", map: "https://maps.google.com/?q=Km%208%2C%20Ctra.%20Campos%20a%20sa%20Col%C3%B2nia%20de%20Sant%20Jordi%2C%2007638%20Campos%2C%20Balearic%20Islands%2C%20Spain" },
             { time: "06:00", type: "critical", title: "⚠ 렌터카 반납 전 주유", summary: "반납 전 영수증 확보.", move: "공항 근처 주유소 이동", duration: "렌터카 약 25~35분", location: "Repsol Palma de Mallorca Airport", details: ["Repsol 또는 Cepsa"], warning: "공항 10km 이내 풀주유 + 영수증 필수.", map: "https://www.google.com/maps/search/?api=1&query=Repsol%20Palma%20de%20Mallorca%20Airport" },
             { time: "06:30", type: "critical", title: "⚠ Record Go 렌터카 반납", summary: "반납 전 주유 영수증까지 준비해서 차량을 넘겨야 해요. 직원과 외관 상태를 함께 확인하고 연료 환급 기준도 바로 체크하는 편이 좋아요.", move: "렌터카 반납 후 공항으로 도보 이동", duration: "도보 약 5~10분", location: "Record Go Palma de Mallorca Airport", details: [["반납 시각", "2026-05-12 06:30"], ["연료정책", "Full-Full"], ["환급 기준", "풀탱크로 반납하면 주유분 환급"], ["영수증 조건", "공항 10km 이내 주유소 영수증 필수"], ["미충족 시", "풀탱크 아니면 주유 서비스 수수료 30€ 청구"], ["주유비", "탱크 금액은 온라인 결제 금액에 미포함"]], warning: "공항 반경 10km 이내 주유소 영수증이 없으면 풀탱크 반납으로 인정되지 않을 수 있어요.", tip: "주유 영수증은 바로 꺼낼 수 있게 보관하고, 반납 직원과 외관 상태를 함께 확인하세요.", map: "https://www.google.com/maps/search/?api=1&query=Record%20Go%20Palma%20de%20Mallorca%20Airport" },
-            { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express 수속이에요. Classic 운임이라 23kg 수하물과 좌석이 이미 포함된 상태예요.", move: "공항 내부 이동", duration: "도보 약 10~15분", location: "Palma de Mallorca Airport", details: [["예약번호", "LSLWY"], ["항공편", "I21652"], ["체크인 마감", "08:10"], ["좌석", "철완 10E / 나라 10F"], ["티켓번호", "철완 0602310091592 / 나라 0602310091593"], ["수하물", "23kg x2"], ["운임", "Classic / Boarding Group 3"], ["총 결제", "130.20 EUR"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
-            { time: "09:10", type: "flight", title: "I21652 출발 (마요르카 → 마드리드)", summary: "마드리드 환승 구간.", move: "항공 이동", duration: "항공 1시간 25분", location: "Palma de Mallorca Airport", details: [["구간", "PMI → MAD"], ["시간", "09:10 → 10:35"], ["소요", "1시간 25분"], ["수하물", "23kg x2"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
+            { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express는 추가 수하물 결제까지 완료되어 23kg 위탁 수하물 총 3개가 가능합니다. 24인치 2개와 20인치 1개를 모두 위탁하면 돼요.", move: "공항 내부 이동", duration: "도보 약 10~15분", location: "Palma de Mallorca Airport", details: [["예약번호", "LSLWY"], ["항공편", "I21652"], ["체크인 마감", "08:10"], ["좌석", "철완 10E / 나라 10F"], ["티켓번호", "철완 0602310091592 / 나라 0602310091593"], ["수하물", "23kg x3"], ["기내", "개인소지품 30x40x15cm 이하 + 기내용 캐리어 56x40x25cm 10kg 이하"], ["운임", "Classic / Boarding Group 3"], ["추가 수하물", "23kg 1개 추가 결제 완료"]], tip: "이 구간은 20인치 캐리어까지 위탁 처리하고, 기내에는 백팩/개인소지품만 들고 타면 가장 편합니다.", map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
+            { time: "09:10", type: "flight", title: "I21652 출발 (마요르카 → 마드리드)", summary: "마드리드 환승 구간.", move: "항공 이동", duration: "항공 1시간 25분", location: "Palma de Mallorca Airport", details: [["구간", "PMI → MAD"], ["시간", "09:10 → 10:35"], ["소요", "1시간 25분"], ["수하물", "23kg x3"], ["기내", "hand baggage x2"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
             { time: "10:35", type: "flight", title: "마드리드 T1 도착", summary: "수하물 수취 후 바로 시내로 나가기보다, 먼저 캐리어를 공항에 맡기고 가볍게 움직이는 게 맞아요. 오늘은 T1 안에서 짐 보관을 먼저 처리하면 동선이 가장 깔끔해요.", move: "공항 내부 이동", duration: "도보 약 10~15분", location: "Madrid Barajas Airport Terminal 1", details: [["도착 터미널", "T1"], ["포인트", "Cercanías 역은 T4에 있어요"], ["권장", "짐 보관 후 택시/카비파이로 시내 진입"]], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+T1" },
             { time: "11:00", type: "critical", title: "⚠ T1 도착층에 캐리어 맡기기", summary: "레이오버 동안 캐리어를 끌고 다니는 건 비효율적이라, 공항 공식 보관소에 먼저 맡기고 시내로 나가는 게 제일 편해요. 도착 터미널과 출발 터미널이 모두 T1이라 찾을 때도 수월합니다.", move: "T1 Arrivals 보관소 이동", duration: "도보 약 5~10분", location: "Madrid Barajas Airport Terminal 1 Arrivals", details: [["보관소", "Consigna / Excess Baggage Company"], ["위치", "Terminal 1 (Arrivals), Main Concourse"], ["운영시간", "05:00 - 23:00"], ["전화", "+34 913 93 69 38"], ["이유", "T1 도착 / T1 출발이라 가장 편리함"]], warning: "귀중품과 여권, 항공권, 지갑은 캐리어에 넣지 말고 반드시 직접 들고 다니세요.", map: "https://maps.google.com/?cid=17877274999412672499&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
             { time: "11:20", type: "transit", title: "공항 → Sol / Gran Vía 쇼핑 구역 이동", summary: "짐을 맡긴 뒤에는 택시나 카비파이로 Sol/Gran Vía 쪽으로 바로 들어가는 편이 가장 단순하고 시간도 덜 써요. 오늘은 쇼핑 중심이라 환승이 적은 이동이 훨씬 낫습니다.", move: "택시 또는 Cabify 이동", duration: "택시 약 25~35분", location: "Puerta del Sol, 28013 Madrid, Spain", places: [{ name: "Puerta del Sol", location: "Puerta del Sol, 28013 Madrid, Spain", href: "https://maps.google.com/?q=Puerta+del+Sol+Madrid" }, { name: "Gran Vía", location: "Gran Vía, 28013 Madrid, Spain", href: "https://maps.google.com/?q=Gran+Vía+Madrid" }], details: [["권장 이동", "Taxi / Cabify"], ["이유", "T1에서 T4 이동과 열차 환승 과정을 줄이기"], ["도착 구역", "Sol / Gran Vía / Preciados 도보권"]], tip: "대중교통을 꼭 쓰고 싶다면 공항 셔틀로 T4 이동 후 Cercanías C-1/C-10을 타고 Atocha로 들어온 뒤 다시 Sol 쪽으로 이동해야 해요.", map: "https://maps.google.com/?q=Puerta+del+Sol+Madrid" },
@@ -2428,12 +2889,13 @@
           id: "baggage",
           title: "짐 & 수하물",
           items: [
-            { id: "baggage_1", title: "수하물 무게 사전 확인", note: "리스본→마요르카 25kg / 마요르카→마드리드 23kg. 마요르카 쇼핑 후 초과 주의", urgency: "출발 전" },
-            { id: "baggage_2", title: "기내 반입 오버헤드 가방", note: "Vueling 55x40x20cm 10kg 이하", urgency: "출발 전" },
-            { id: "baggage_3", title: "발밑 언더시트 가방", note: "Vueling 40x30x20cm 이하", urgency: "출발 전" },
+            { id: "baggage_1", title: "수하물 무게 사전 확인", note: "Vueling 25kg x2 + 20kg x1 추가 결제 완료 / Iberia Express 23kg x3 추가 결제 완료 / 대한항공 귀국은 위탁 2개 + 20인치 기내용", urgency: "출발 전" },
+            { id: "baggage_2", title: "기내 반입 오버헤드 가방", note: "대한항공 55x40x20cm 또는 세 변 합 115cm, 10kg 이하 / Vueling 55x40x20cm 10kg 이하 / Iberia Express 56x40x25cm 10kg 이하", urgency: "출발 전" },
+            { id: "baggage_3", title: "발밑 언더시트 가방", note: "Vueling 40x20x30cm 이하 / Iberia Express 개인소지품 30x40x15cm 이하", urgency: "출발 전" },
             { id: "baggage_4", title: "귀중품 기내 분산 보관", note: "여권, 카드, 현금은 기내 가방에. 위탁 수하물에 넣지 말 것", urgency: "지금 바로" },
             { id: "baggage_5", title: "수하물 잠금장치 TSA", note: "유럽도 TSA 자물쇠 권장", urgency: "출발 전" },
-            { id: "baggage_6", title: "수하물 택 및 네임태그 부착", note: "이름, 연락처, 이메일 기재", urgency: "출발 전" }
+            { id: "baggage_6", title: "수하물 택 및 네임태그 부착", note: "이름, 연락처, 이메일 기재", urgency: "출발 전" },
+            { id: "baggage_7", title: "접이식 보스턴백 준비", note: "빈 보스턴백은 24인치 안에 넣어가고, 귀국 전 쇼핑짐/빨래 분산용으로 사용. 별도 위탁 3번째 가방으로 쓰면 대한항공 추가요금 주의", urgency: "출발 전" }
           ]
         },
         {
@@ -2550,24 +3012,29 @@
       ];
 
       const foodRegions = [
-        { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 13, placeRegions: ["lisbon-home"] },
-        { id: "cascais", tabLabel: "카스카이스", label: "카스카이스 근처", base: "Cascais 시내", dates: "5/6", planned: 8, placeRegions: ["cascais"] },
-        { id: "cabo-roca", tabLabel: "호곶", label: "호카곶 근처", base: "Cabo da Roca 주변", dates: "5/6", planned: 4, placeRegions: ["cabo-roca"] },
-        { id: "mallorca", tabLabel: "마요르카", label: "마요르카 전체", base: "Fontsanta / Caló des Moro / Es Trenc / Palma Marina", dates: "5/8~5/12", planned: 17, placeRegions: ["mallorca-home", "mallorca-beach"] }
+        { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 27, placeRegions: ["lisbon-home"] },
+        { id: "cascais", tabLabel: "카스카이스", label: "카스카이스 근처", base: "Cascais 시내", dates: "5/6", planned: 18, placeRegions: ["cascais"] },
+        { id: "cabo-roca", tabLabel: "호곶", label: "호카곶 근처", base: "Cabo da Roca 주변", dates: "5/6", planned: 18, placeRegions: ["cabo-roca"] },
+        { id: "mallorca", tabLabel: "마요르카", label: "마요르카 전체", base: "Fontsanta / Caló des Moro / Es Trenc / Palma Marina", dates: "5/8~5/12", planned: 26, placeRegions: ["mallorca-home", "mallorca-beach"] },
+        { id: "madrid", tabLabel: "마드리드", label: "마드리드 시내", base: "T1 / Sol / Gran Vía / Serrano", dates: "5/12", planned: 18, placeRegions: ["madrid"] }
       ];
 
       const foodCategories = [
         { id: "cafe", label: "☕ 카페" },
         { id: "restaurant", label: "🍽️ 맛집" },
         { id: "bar", label: "🍷 바" },
-        { id: "rooftop", label: "🌇 루프탑" }
+        { id: "rooftop", label: "🌇 루프탑" },
+        { id: "shopping", label: "🛍️ 쇼핑" },
+        { id: "lodging", label: "🏨 숙소" },
+        { id: "sightseeing", label: "📍 관광" }
       ];
 
       const foodCategoryTargets = {
-        lisbon: { cafe: 3, restaurant: 5, bar: 3, rooftop: 2 },
-        cascais: { cafe: 2, restaurant: 3, bar: 2, rooftop: 1 },
-        "cabo-roca": { cafe: 1, restaurant: 2, bar: 1, rooftop: 0 },
-        mallorca: { cafe: 4, restaurant: 7, bar: 4, rooftop: 2 }
+        lisbon: { cafe: 4, restaurant: 6, bar: 3, rooftop: 4 },
+        cascais: { cafe: 3, restaurant: 3, bar: 3, rooftop: 3 },
+        "cabo-roca": { cafe: 3, restaurant: 3, bar: 3, rooftop: 3 },
+        mallorca: { cafe: 4, restaurant: 7, bar: 4, rooftop: 3 },
+        madrid: { cafe: 3, restaurant: 3, bar: 3, rooftop: 3 }
       };
 
       const foodPlaces = [
@@ -2625,7 +3092,67 @@
         { region: "madrid", category: "restaurant", name: "StreetXO", address: "Calle de Serrano 52, 28001 Madrid, Spain", placeId: "ChIJX5LbtpYoQg0RcDq5AX9jOuw", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 택시 약 10분", description: "강한 맛과 퍼포먼스가 있는 캐주얼 파인다이닝 후보. 시간 여유 있을 때만.", signature: "Dabiz Muñoz 스타일 아시안 퓨전 플레이트", review: "맛이 강렬하고 경험형 식사라는 후기가 많아요.", href: "https://maps.google.com/?cid=17022027138741123696&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
         { region: "madrid", category: "bar", name: "Salmon Guru", address: "Calle de Echegaray 21, 28014 Madrid, Spain", placeId: "ChIJxaAzu4EoQg0RtvLumbkqOe4", googleRating: "4.7", tripadvisorRating: "4.5", distance: "Puerta del Sol에서 도보 약 8분", description: "마드리드 대표 칵테일 바. 낮 일정 후 시간이 남으면 가장 추천.", signature: "시그니처 칵테일", review: "창의적인 칵테일과 서비스가 좋다는 평가가 많아요.", href: "https://maps.google.com/?cid=17165798431339246262&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
         { region: "madrid", category: "bar", name: "1862 Dry Bar", address: "Calle del Pez 27, 28004 Madrid, Spain", placeId: "ChIJzcBIPmMoQg0RS14oUaREHZo", googleRating: "4.6", tripadvisorRating: "4.5", distance: "Gran Vía에서 도보 약 10분", description: "클래식 칵테일을 잘 만드는 조용한 바. 쇼핑 후 한 잔 후보.", signature: "마티니, 네그로니, 클래식 칵테일", review: "차분하고 전문적인 칵테일 바라는 후기가 많아요.", href: "https://maps.google.com/?cid=11105107728692436555&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
-        { region: "madrid", category: "rooftop", name: "Azotea del Círculo", address: "Calle de Alcalá 42, 28014 Madrid, Spain", placeId: "ChIJs-b4dIQoQg0RppCQ716gG_w", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 7분", description: "마드리드 중심 전망을 보기 좋은 루프탑. 짧은 레이오버에도 접근 쉬워요.", signature: "칵테일, 와인, 가벼운 스낵", review: "전망이 좋고 위치가 편하다는 후기가 많아요.", href: "https://maps.google.com/?cid=18166289851535626406&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" }
+        { region: "madrid", category: "rooftop", name: "Azotea del Círculo", address: "Calle de Alcalá 42, 28014 Madrid, Spain", placeId: "ChIJs-b4dIQoQg0RppCQ716gG_w", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Gran Vía에서 도보 약 7분", description: "마드리드 중심 전망을 보기 좋은 루프탑. 짧은 레이오버에도 접근 쉬워요.", signature: "칵테일, 와인, 가벼운 스낵", review: "전망이 좋고 위치가 편하다는 후기가 많아요.", href: "https://maps.google.com/?cid=18166289851535626406&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "cafe", name: "Manteigaria", address: "Rua do Loreto no. 2, 1200-108 Lisboa, Portugal", placeId: "ChIJcxYntH80GQ0RX2Him1Z7r-g", googleRating: "4.8", distance: "Chiado에서 도보 약 3분", description: "Google Places API 기준 별점 4.8, 리뷰 10,000개 이상인 에그타르트 강자예요. 5/5 또는 5/7 Chiado 동선에 아주 자연스럽게 붙습니다.", signature: "Pastel de nata, espresso", review: "Pastéis de Belém과 비교해서 먹어보기 좋은 도심권 에그타르트 후보예요.", href: "https://maps.google.com/?cid=16766755549636354399&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "lisbon-home", category: "shopping", name: "Livraria Bertrand - Chiado", address: "R. Garrett 73 75, 1200-203 Lisboa, Portugal", placeId: "ChIJl-2tIH80GQ0R8n_4uOyrVzc", googleRating: "4.6", distance: "A Brasileira에서 도보 약 1분", description: "Chiado 쇼핑 루트 안에 있는 오래된 서점이에요. 일정에 고정하지 않아도 카페와 쇼핑 사이에 짧게 들르기 좋습니다.", signature: "서점, 문구, 포르투갈 책/기념품", review: "동선 추가 부담이 거의 없고, 리스본 감성 기념품을 보기 좋아요.", href: "https://maps.google.com/?cid=3987845028263788530&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "sightseeing", name: "Boca do Inferno - Devil’s Mouth", address: "Av. Rei Humberto II de Itália 642, 2750-800 Cascais, Portugal", placeId: "ChIJQaGBiCDEHg0RO2cxBXOEkRo", googleRating: "4.6", distance: "Cascais 역에서 도보 약 20분 / 택시 약 6분", description: "Cascais 해안 산책을 넣을 경우 가장 대표적인 자연 포인트예요. 호카곶 이동 전 시간이 남을 때만 선택하면 됩니다.", signature: "절벽, 파도, 해안 산책", review: "리뷰 수가 많고 평점도 높아 카스카이스 즉흥 관광 후보로 안정적이에요.", href: "https://maps.google.com/?cid=1914456946152400699&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "mallorca-beach", category: "shopping", name: "Mercado del Olivar", address: "Plaça de l'Olivar, s/n, Centre, 07002 Palma, Illes Balears, Spain", placeId: "ChIJmVAzalGSlxIR1Wd_NlfrjiE", googleRating: "4.5", distance: "Palma 구시가지에서 도보 약 10분", description: "팔마 시내에 들어갔을 때 기념품, 과일, 간식, 로컬 식재료를 한 번에 보기 좋은 시장이에요.", signature: "로컬 시장, 간식, 식재료, 기념품", review: "팔마 대성당/구시가지 동선에서 시간이 남으면 들르기 좋은 실용형 후보예요.", href: "https://maps.google.com/?cid=2418128809753536469&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "sightseeing", name: "Plaza Mayor", address: "Pl. Mayor, Centro, 28012 Madrid, Spain", placeId: "ChIJZX56134oQg0RHBgRAVQ8pkk", googleRating: "4.6", distance: "Puerta del Sol에서 도보 약 5분", description: "Sol과 매우 가까운 마드리드 대표 광장이에요. 레이어오버 시간이 남을 때 짧게 찍고 쇼핑으로 돌아오기 좋습니다.", signature: "광장, 사진, Sol 도보 연결", review: "리뷰 수가 압도적으로 많고 위치가 좋아 짧은 마드리드 체류에 넣기 쉬워요.", href: "https://maps.google.com/?cid=5306995542395525148&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "lisbon-home", category: "rooftop", name: "Noobai - Rooftop Bar e Restaurante", address: "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal", placeId: "ChIJA5Ph5IA0GQ0RF485GjsFk7I", googleRating: "4.2", reserved: true, distance: "Convent Square에서 도보 약 12~15분", description: "5/4 19:30~21:30 예약 완료된 석양 뷰 루프탑이에요. No-show 방지를 위해 19:45 전까지 도착해야 해요.", signature: "Noobai Café 예약 / Chulwan Park / 2명 / 야외 전망석 요청", review: "음식보다 석양과 도시뷰 경험 중심으로 잡은 예약 장소예요.", href: "https://maps.google.com/?cid=12867634311728828183&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "lisbon-home", category: "restaurant", name: "BAHR & Terrace", address: "Praça Luís de Camões 2 5º Piso, 1200-243 Lisboa, Portugal", placeId: "ChIJa267yck1GQ0RnSh-xkfa7Ko", googleRating: "4.5", reserved: true, distance: "Chiado에서 도보 약 5분", description: "5/7 19:30 예약 완료된 저녁 식사 장소예요. 쇼핑 루트 마지막에 호텔 복귀 없이 바로 이동하면 동선이 가장 좋아요.", signature: "예약번호 5S9TP63HYP8R / 2명 / SevenRooms", review: "노쇼 또는 늦은 취소 시 1인당 35€ 수수료가 있어 시간 엄수해야 해요.", href: "https://maps.google.com/?cid=12316459082759153821&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "mallorca-home", category: "sightseeing", name: "Record go Mobility - Palma de Mallorca", address: "Disseminat Aeropuerto son Sant Joan, Platja de Palma i Pla de Sant Jordi, 07611 Base Aerea Son Sant Joan, Illes Balears, Spain", placeId: "ChIJ4QLDedb_Xw0RdFI_nfZCuMo", googleRating: "3.6", reserved: true, distance: "마요르카 공항 도착 후 도보/셔틀 이동", description: "5/8 13:00 픽업, 5/12 06:30 반납으로 예약된 렌터카 지점이에요. 국제면허, 한국면허, 여권, 본인명의 실물카드가 필요해요.", signature: "예약번호 75/2026-25992 / Toyota C-HR 또는 동급 / Full-Full", review: "평점보다 예약 실무가 중요한 장소라 서류와 연료 영수증 체크가 핵심이에요.", href: "https://maps.google.com/?cid=14607499018343764596&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "rooftop", name: "Lumi Rooftop", address: "R. de São Pedro de Alcântara 35, 1250-237 Lisboa, Portugal", placeId: "ChIJFfhDbIAzGQ0RCJA_u_e4sdM", googleRating: "4.4", distance: "Chiado에서 도보 약 12분", description: "São Pedro de Alcântara 전망대와 가까운 루프탑이에요. Chiado나 BAHR 전후에 부담 없이 붙이기 좋습니다.", signature: "칵테일, 와인, 루프탑 뷰", review: "Google Places API 기준 리뷰 1,400개 이상으로 전망과 분위기 평가가 안정적이에요.", href: "https://maps.google.com/?cid=15254176787018518536&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "lisbon-home", category: "sightseeing", name: "Carmo Archaeological Museum", address: "Largo do Carmo, 1200-092 Lisboa, Portugal", placeId: "ChIJP8YuN380GQ0R7yzgkmX11zI", googleRating: "4.5", distance: "Chiado에서 도보 약 5분", description: "Chiado 쇼핑/카페 루트 안에 있는 유적지예요. 오래 머무르지 않고도 리스본 분위기를 강하게 느낄 수 있습니다.", signature: "고딕 유적, 사진, Chiado 도보 연결", review: "리뷰 20,000개 이상에 평점도 높아 도심권 관광 후보로 안정적이에요.", href: "https://maps.google.com/?cid=3663666638493854959&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "cafe", name: "Sacolinha Guia", address: "Av. Manuel Júlio Carvalho e Costa 116 A B, 2750-423 Cascais, Portugal", placeId: "ChIJwUaueRnEHg0R66j2fhrSggU", googleRating: "4.2", distance: "Cascais 해안 산책로에서 도보권 / 중심부에서 택시 약 6분", description: "카스카이스 해안 쪽에서 커피와 빵을 가볍게 먹기 좋은 카페예요. 중심부가 너무 붐비면 대안으로 좋습니다.", signature: "커피, 빵, 페이스트리", review: "리뷰 1,000개 이상으로 카스카이스에서 무난한 베이커리 카페 후보예요.", href: "https://maps.google.com/?cid=397110728403101931&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "bar", name: "Crow Bar", address: "Tv. da Misericórdia 1, 2750-435 Cascais, Portugal", placeId: "ChIJRfaf9y7EHg0RmJqejnn8vpM", googleRating: "4.5", distance: "Cascais 역에서 도보 약 8분", description: "카스카이스 구시가지 안쪽의 칵테일 바예요. 식사 후 짧게 한 잔 하기 좋은 동선입니다.", signature: "칵테일, 와인, 저녁 바", review: "평점 4.5로 분위기와 칵테일 평가가 좋은 후보예요.", href: "https://maps.google.com/?cid=10646224168164432536&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "rooftop", name: "Hotel Cascais Miragem Health & Spa", address: "Av. Marginal 8554, 2754-536 Cascais, Portugal", placeId: "ChIJs_kzU8TFHg0RwEt-Z3lsM4c", googleRating: "4.7", distance: "Cascais 역에서 도보 약 15분", description: "루프탑 전용 바보다는 호텔 전망/라운지 후보로 보는 곳이에요. 해안 전망을 편하게 잡고 싶을 때 좋습니다.", signature: "호텔 라운지, 바다 전망, 휴식", review: "Google 평점 4.7, 리뷰 2,800개 이상으로 전망과 시설 평가가 좋아요.", href: "https://maps.google.com/?cid=9742249687615687616&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "rooftop", name: "The Mix", address: "Av. Rei Humberto II de Itália 7, 2750-800 Cascais, Portugal", placeId: "ChIJzRkNr4LGHg0R5pXXT-7QWJs", googleRating: "4.2", distance: "Cascais 역에서 택시 약 6분", description: "Farol Hotel 쪽 바다 전망 레스토랑이에요. Boca do Inferno 방향으로 움직일 때 전망 식사 후보로 붙이기 좋습니다.", signature: "해안 전망, 모던 다이닝, 와인", review: "후기 수는 많지 않지만 해안선 동선과 전망성이 좋아 보조 후보로 넣었습니다.", href: "https://maps.google.com/?cid=11193926595789690342&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "shopping", name: "Mercado da Vila", address: "R. Padre Moisés da Silva 1, 2754-529 Cascais, Portugal", placeId: "ChIJZV_KFzDEHg0RwzRkxFYaK4g", googleRating: "4.4", distance: "Cascais 역에서 도보 약 8분", description: "카스카이스 시내에서 로컬 시장 분위기와 간식을 같이 볼 수 있는 곳이에요.", signature: "시장, 간식, 로컬 식재료", review: "리뷰 11,000개 이상이라 카스카이스 즉흥 쇼핑 후보로 안정적이에요.", href: "https://maps.google.com/?cid=9811965173121168579&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "shopping", name: "Mundo Fantástico Da Sardinha Portuguesa - Cascais", address: "R. Frederico Arouca 55, 2750-355 Cascais, Portugal", placeId: "ChIJfzXzsNDFHg0R5ufMjq0Phtc", googleRating: "4.6", distance: "Cascais 역에서 도보 약 7분", description: "정어리 통조림 패키지 기념품을 보기 좋은 매장이에요. 리스본에서 못 샀다면 카스카이스에서 짧게 보충하기 좋습니다.", signature: "통조림 기념품, 선물", review: "리뷰 수는 많지 않지만 평점이 높고 역/중심부 동선 안에 있어요.", href: "https://maps.google.com/?cid=15530117603133286374&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "shopping", name: "CascaisVilla Shopping Center", address: "Av. Dom Pedro I, 2750-786 Cascais, Portugal", placeId: "ChIJFcRUMjDEHg0RDSsPabD8Qwo", googleRating: "3.7", distance: "Cascais 역에서 도보 약 3분", description: "평점은 높지 않지만 역 바로 옆이라 비나 더위가 있을 때 가장 실용적인 쇼핑몰 후보예요.", signature: "쇼핑몰, 화장실, 간단 쇼핑", review: "후기 수가 많고 위치가 압도적으로 가까워 실용 후보로만 보면 됩니다.", href: "https://maps.google.com/?cid=739712598425938701&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cascais", category: "sightseeing", name: "Praia da Rainha", address: "Praia da Rainha, 2750-427, Portugal", placeId: "ChIJJdPxYi7EHg0RuNFEpcOEzcI", googleRating: "4.5", distance: "Cascais 역에서 도보 약 5분", description: "역에서 가까운 작은 해변이에요. 카스카이스에서 바다 사진만 짧게 챙기고 싶을 때 좋습니다.", signature: "작은 해변, 사진, 짧은 산책", review: "평점 4.5에 리뷰 3,000개 이상으로 접근성과 분위기가 좋은 후보예요.", href: "https://maps.google.com/?cid=14037021589409943992&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "cafe", name: "SINTRA. Café Saudade", address: "Av. Dr. Miguel Bombarda 6, 2710-590 Sintra, Portugal", placeId: "ChIJQYaSc5XaHg0RMO25geJBkBU", googleRating: "4.6", distance: "Cabo da Roca에서 차량 약 25분", description: "호카곶 전후에 신트라로 빠지는 경우 쓰기 좋은 카페예요. 비가 오거나 바람이 강할 때 실내 휴식 후보로 좋아요.", signature: "커피, 케이크, 브런치", review: "리뷰 4,000개 이상, 평점 4.6으로 신트라권 카페 후보 중 안정적이에요.", href: "https://maps.google.com/?cid=1553814312537681200&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "cafe", name: "A CASA DO LUIS RESTAURANTE TIPICO", address: "R. das Corredouras 2, 2705-080 Azóia, Portugal", placeId: "ChIJP2VvFcncHg0R_nLIglVR-10", googleRating: "4.3", distance: "Cabo da Roca에서 차량 약 5분", description: "Azoia 마을 쪽 가까운 로컬 식당 겸 카페 후보예요. 호카곶 바로 근처에서 쉬어야 할 때 동선이 짧습니다.", signature: "커피, 로컬 음식, 간단 휴식", review: "후기 수는 크지 않지만 위치가 매우 가까워 비상 후보로 넣었습니다.", href: "https://maps.google.com/?cid=6772095892389917438&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "restaurant", name: "Nortada", address: "Av. Alfredo Coelho 8, 2705-329 Colares, Portugal", placeId: "ChIJ0_b2e2bcHg0R-1h1hLhlu50", googleRating: "4.6", distance: "Cabo da Roca에서 차량 약 18분", description: "Praia Grande 쪽 해안 레스토랑이에요. 호카곶 이후 바다 방향으로 빠질 때 식사 후보로 좋습니다.", signature: "해산물, 생선, 해변 전망", review: "평점 4.6, 리뷰 1,600개 이상으로 음식과 바다 전망 평가가 좋아요.", href: "https://maps.google.com/?cid=11365789927770249467&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "bar", name: "Restaurante Azenhas do Mar", address: "Restaurante Piscinas Lugar das Piscinas, 2705-098 Colares, Portugal", placeId: "ChIJ8_2WGg_cHg0Rv24b32xlKFE", googleRating: "4.4", distance: "Cabo da Roca에서 차량 약 25분", description: "절벽 마을 Azenhas do Mar의 전망 식당이에요. 바/전망 식사 후보로 보면 좋습니다.", signature: "와인, 해산물, 절벽 전망", review: "리뷰 4,900개 이상으로 전망과 분위기 평가가 좋은 후보예요.", href: "https://maps.google.com/?cid=5848035634414579391&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "bar", name: "Bar do Guincho", address: "Estrada do Abano, Praia do Guincho, 547, 2755-144 Cascais, Portugal", placeId: "ChIJ01c3D3HDHg0RRe4wkvol_u0", googleRating: "4.3", distance: "Cabo da Roca에서 차량 약 20분", description: "Guincho 해변 쪽 바예요. 호카곶에서 카스카이스 방향으로 내려올 때 바다 앞에서 쉬기 좋습니다.", signature: "맥주, 칵테일, 해변 뷰", review: "리뷰 3,000개 이상으로 접근성과 해변 분위기가 검증된 후보예요.", href: "https://maps.google.com/?cid=17149186189198159429&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "rooftop", name: "Moinho Dom Quixote Terrace", address: "R. dos Moinhos 5, 2705-001 Azóia, Portugal", placeId: "ChIJebj_TH7DHg0RbtYblOEzLiI", googleRating: "4.5", distance: "Cabo da Roca에서 차량 약 5분", description: "루프탑이라기보다 절벽 전망 테라스 카페예요. 호카곶 바로 근처에서 전망과 휴식을 같이 잡기 가장 좋아요.", signature: "테라스, 대서양 전망, 커피/와인", review: "리뷰 4,800개 이상에 평점 4.5라 호카곶 근처 전망 후보로 안정적이에요.", href: "https://maps.google.com/?cid=2462963090163750510&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cabo-roca", category: "rooftop", name: "Arribas Sintra Hotel Terrace", address: "Av. Alfredo Coelho 28, 2705-329 Sintra, Portugal", placeId: "ChIJZyhe3mbcHg0RjnKj-1mwsCo", googleRating: "4.4", distance: "Cabo da Roca에서 차량 약 18분", description: "Praia Grande 앞 호텔 전망 테라스 후보예요. 해안도로 쪽으로 움직일 때 바다 전망을 보기 좋습니다.", signature: "호텔 테라스, 바다 전망, 휴식", review: "평점 4.4, 리뷰 3,000개 이상으로 전망성과 시설 평가가 안정적이에요.", href: "https://maps.google.com/?cid=3076152446014419598&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "rooftop", name: "Azenhas do Mar View Terrace", address: "Restaurante Piscinas Lugar das Piscinas, 2705-098 Colares, Portugal", placeId: "ChIJ8_2WGg_cHg0Rv24b32xlKFE", googleRating: "4.4", distance: "Cabo da Roca에서 차량 약 25분", description: "전망 테라스 성격으로 쓰기 좋은 Azenhas do Mar 후보예요. 루프탑 대신 절벽 뷰 포지션으로 보면 됩니다.", signature: "절벽 전망, 해산물, 와인", review: "전망형 후보 중 후기 수가 많아 날씨가 좋을 때 선택하기 좋아요.", href: "https://maps.google.com/?cid=5848035634414579391&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "shopping", name: "Mercearia D'Aldeia", address: "R. Noel Cunha 1, Janas, 2710-267 Sintra, Portugal", placeId: "ChIJr8n4BZfbHg0R-Y9qry2NHQ8", googleRating: "4.8", distance: "Cabo da Roca에서 차량 약 20분", description: "호카곶 주변에서 쇼핑 선택지는 제한적이라, 신트라/Colares 방향 로컬 식료품 후보로 넣었어요.", signature: "로컬 식료품, 간식, 와인", review: "평점 4.8로 높고 로컬 감성이 있어 지나가는 동선이면 들르기 좋아요.", href: "https://maps.google.com/?cid=1089181912249569273&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "shopping", name: "Casa Vidi", address: "Largo Dr. Gregório de Almeida 4, 2710-616 Sintra, Portugal", placeId: "ChIJOZ4gA8DaHg0RMlfdYsir-5A", googleRating: "4.7", distance: "Cabo da Roca에서 차량 약 25분", description: "신트라 쪽 기념품 상점 후보예요. 호카곶 전후에 신트라 마을을 들를 때만 붙이면 됩니다.", signature: "기념품, 작은 선물", review: "후기 수는 적지만 평점이 높아 보조 후보로만 넣었어요.", href: "https://maps.google.com/?cid=10447132637756479282&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "shopping", name: "Praia Grande Surf Shop", address: "Av. Alfredo Coelho, 2705-329 Colares, Portugal", placeId: "ChIJCcM36GDcHg0RMN0epQd-45o", googleRating: "4.3", distance: "Cabo da Roca에서 차량 약 18분", description: "Praia Grande 방향으로 빠질 때 들를 수 있는 서핑용품/비치 상점 후보예요.", signature: "비치용품, 서핑용품", review: "후기 수는 적어서 필수는 아니고, 해변 방향 동선일 때만 쓰면 됩니다.", href: "https://maps.google.com/?cid=11160902872854355248&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "sightseeing", name: "Ursa Beach", address: "Parque Natural de Sintra-Cascais, 2705 Colares, Portugal", placeId: "ChIJBbh8U5PdHg0R7k_GVgjM5Ik", googleRating: "4.9", distance: "Cabo da Roca에서 도보/차량 접근", description: "평점은 매우 높지만 접근이 험한 해변이에요. 신혼여행 일정에서는 사진 후보로만 보고 무리해서 내려가지는 않는 게 좋아요.", signature: "절경, 야생 해변, 사진", review: "평점 4.9로 강하지만 접근 난도가 있어 체력과 날씨를 보고 판단해야 해요.", href: "https://maps.google.com/?cid=9936291014073798638&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "cabo-roca", category: "sightseeing", name: "Praia da Adraga", address: "Praia da Adraga, Portugal", placeId: "ChIJk1opavHcHg0RfoX0sBrz70w", googleRating: "4.8", distance: "Cabo da Roca에서 차량 약 12분", description: "호카곶 근처에서 차로 접근 가능한 아름다운 해변이에요. 바람이 너무 강하면 호카곶 대신 해변 산책 후보로 좋습니다.", signature: "해변, 바위 풍경, 산책", review: "평점 4.8, 리뷰 2,800개 이상으로 자연 풍경 평가가 매우 좋아요.", href: "https://maps.google.com/?cid=5543916962279884158&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "mallorca-beach", category: "rooftop", name: "Nakar Hotel Rooftop", address: "Av. de Jaume III, 21, Centre, 07012 Palma, Illes Balears, Spain", placeId: "ChIJsSk11CKTlxIR6lfe--xUBho", googleRating: "4.6", distance: "Palma 구시가지에서 도보 약 10분", description: "Palma 중심부에서 접근 쉬운 루프탑 후보예요. 대성당/구시가지 후 시간이 남을 때 붙이기 좋습니다.", signature: "루프탑, 수영장 뷰, 칵테일", review: "평점 4.6, 리뷰 1,000개 이상으로 중심부 루프탑 후보 중 안정적이에요.", href: "https://maps.google.com/?cid=1875279671661058026&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "mallorca-beach", category: "shopping", name: "Rialto Living", address: "Carrer de Sant Feliu, 3, Centre, 07012 Palma, Illes Balears, Spain", placeId: "ChIJu-PNLFuSlxIRl4Gg9F7hBSs", googleRating: "4.5", distance: "Palma 구시가지에서 도보 약 5분", description: "팔마 구시가지 안에서 인테리어, 패션, 라이프스타일 선물을 보기 좋은 매장이에요.", signature: "라이프스타일 편집숍, 선물, 의류", review: "평점 4.5, 리뷰 1,100개 이상으로 팔마 쇼핑 후보로 좋아요.", href: "https://maps.google.com/?cid=3100131716461789591&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "cafe", name: "Café de Oriente Palacio Real", address: "Pl. de Ote., 2, Centro, 28013 Madrid, Spain", placeId: "ChIJMczvIHooQg0RGwDsexuLD8Y", googleRating: "4.2", distance: "Plaza Mayor에서 도보 약 8분", description: "Plaza Mayor와 왕궁 사이로 움직일 때 쓰기 좋은 클래식 카페예요. 쇼핑 루트가 빠르게 끝났을 때만 붙이면 됩니다.", signature: "커피, 디저트, 테라스", review: "리뷰 5,800개 이상으로 위치와 분위기가 검증된 카페 후보예요.", href: "https://maps.google.com/?cid=14271778694319833115&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "bar", name: "Baton Rouge Cocktail Bar", address: "C. de la Victoria, 8, Centro, 28012 Madrid, Spain", placeId: "ChIJD03zjIAoQg0RAAHGUU1V8bU", googleRating: "4.6", distance: "Gran Vía에서 도보 약 10분", description: "Sol과 Gran Vía 사이에서 접근 쉬운 칵테일 바예요. 공항 복귀 시간이 넉넉할 때만 짧게 들르면 됩니다.", signature: "칵테일, 클래식 바", review: "평점 4.6, 리뷰 1,300개 이상으로 칵테일 평가가 좋은 후보예요.", href: "https://maps.google.com/?cid=13110353780824998144&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "rooftop", name: "Ginkgo Restaurante & Sky Bar", address: "Plaza de España, 3, Centro, 28008 Madrid, Spain", placeId: "ChIJmWugNGUoQg0RlN6GSacY2UQ", googleRating: "4.2", distance: "Gran Vía에서 도보 약 12분", description: "Plaza de España 쪽 루프탑이에요. 쇼핑이 빨리 끝나고 전망을 보고 싶을 때 후보로 넣으면 됩니다.", signature: "루프탑, 칵테일, 도시 전망", review: "리뷰 4,100개 이상으로 마드리드 루프탑 후보 중 후기 기반이 탄탄해요.", href: "https://maps.google.com/?cid=4961023571297492628&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "rooftop", name: "360º Rooftop Bar", address: "C/ del Maestro Guerrero, s/n, Centro, 28013 Madrid, Spain", placeId: "ChIJUxgNVHQpQg0RiQnAhV-ojBw", googleRating: "3.8", distance: "Gran Vía에서 도보 약 10분", description: "평점은 높지 않지만 360도 전망이 강점인 루프탑이에요. 사진 목적이면 후보로만 보면 됩니다.", signature: "360도 전망, 사진, 칵테일", review: "후기 수가 많아 장단점이 뚜렷한 곳입니다. 전망 우선일 때만 선택하세요.", href: "https://maps.google.com/?cid=2057204258020788617&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+
+        { region: "lisbon-home", category: "shopping", name: "ZARA Rossio", address: "Praça Dom Pedro IV 96-122, 1100-200 Lisboa, Portugal", distance: "Convent Square에서 도보 약 5분", description: "5/7 쇼핑 루트의 첫 기준점. 가격과 핏을 먼저 확인하기 좋아요.", signature: "의류, 기본템, 여행 중 바로 입을 옷", review: "Rossio → Rua Augusta → Chiado 직선 루트 시작점으로 가장 효율적이에요.", href: "https://maps.google.com/?cid=11075094260748313865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", name: "Bershka Rua Augusta", address: "R. Augusta 157 171, 1100-050 Lisboa, Portugal", placeId: "ChIJzVX-Cnk0GQ0RX1XDyrEToQg", distance: "ZARA Rossio에서 도보 약 5분", description: "Rua Augusta 쇼핑 구간 안에 있어 이동 부담이 거의 없어요.", signature: "캐주얼 의류, 트렌드 아이템", review: "ZARA 다음에 바로 붙여 보면 동선 낭비가 없어요.", href: "https://maps.google.com/?cid=621799877885777247&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", name: "Pull&Bear Rua Augusta", address: "R. Augusta 61 69, 1100-048 Lisboa, Portugal", placeId: "ChIJ6XPICnk0GQ0RkSMdIpJuDG0", distance: "Bershka에서 도보 약 3분", description: "Rua Augusta 안에서 이어 보는 캐주얼 쇼핑 후보예요.", signature: "캐주얼 기본템, 가벼운 여행복", review: "Bershka와 묶어서 30~40분 안에 빠르게 보기 좋아요.", href: "https://maps.google.com/?cid=7857777023771288465&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", name: "A Vida Portuguesa", address: "R. Nova do Almada 72, 1200-289 Lisboa, Portugal", placeId: "ChIJjV9a2340GQ0RksyzcqklJxA", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Chiado에서 도보 약 5분", description: "포르투갈 감성 기념품과 패키지를 보기 좋은 매장.", signature: "타일, 비누, 문구, 감성 기념품", review: "일정에 직접 넣은 Chiado 감성 쇼핑 핵심 후보예요.", href: "https://maps.google.com/?cid=1163940438402649234&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", name: "Conserveira de Lisboa", address: "R. dos Bacalhoeiros 34, 1100-071 Lisboa, Portugal", placeId: "ChIJK9of43k0GQ0Re83_E56rp28", googleRating: "4.6", tripadvisorRating: "4.5", distance: "A Vida Portuguesa에서 도보 약 10~12분", description: "전통 통조림 패키지가 예뻐 작은 선물로 보기 좋아요.", signature: "정어리·참치 통조림, 포르투갈 패키지 기념품", review: "짧게 들러도 리스본다운 느낌이 강한 상점이에요.", href: "https://maps.google.com/?cid=8045587954749394299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "shopping", name: "CASA LOEWE Madrid", address: "C. de Serrano, 34, 28001 Madrid, Spain", placeId: "ChIJe6rNNJcoQg0RPPUKFs4u2U0", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Sol에서 택시 약 10~15분", description: "마드리드 레이어오버 쇼핑 핵심. 스카프나 가죽 소품을 보기 좋아요.", signature: "스카프, 가죽 소품, 선물", review: "시간이 밀리면 다른 쇼핑보다 LOEWE를 우선하는 구조가 안전해요.", href: "https://maps.google.com/?cid=5609566273534620988&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "madrid", category: "shopping", name: "El Corte Inglés Preciados", address: "C. de Preciados, 3, Centro, 28013 Madrid, Spain", placeId: "ChIJwaZ4XJgpQg0Rc2zf8sJEfTE", googleRating: "4.2", tripadvisorRating: "4.0", distance: "Puerta del Sol에서 도보 약 3분", description: "마드리드 시내에서 선물과 쇼핑을 한 번에 정리하기 좋은 백화점.", signature: "스카프, 선물, 식품관, 기념품", review: "Sol/Gran Vía 동선 안에 있어 공항 복귀 전 마무리 쇼핑으로 좋아요.", href: "https://maps.google.com/?cid=3566082084036373619&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "madrid", category: "shopping", name: "Gran Vía", address: "Gran Vía, Centro, Madrid, Spain", distance: "Puerta del Sol에서 도보 약 5~8분", description: "시간이 남을 때 가볍게 걷는 쇼핑 거리. 브랜드 매장과 백화점 접근이 좋아요.", signature: "거리 산책, 쇼핑, 사진", review: "공항 복귀 전에는 오래 머물지 말고 15:30 출발 기준을 지키는 게 좋아요.", href: "https://maps.google.com/?cid=16220066372150648097&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "shopping", name: "Flor de Sal d'Es Trenc Shop & Café", address: "Ctra. Campos a Colònia de Sant Jordi, km 10, 07630 Campos, Illes Balears, Spain", placeId: "ChIJLxsncqSrlxIR4AmWXED5ls4", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Fontsanta에서 차량 약 5분", description: "마요르카 소금 브랜드 매장 겸 카페. 호텔 근처 기념품 후보예요.", signature: "소금 기념품, 로컬 제품, 커피", review: "멀리 가지 않고 마요르카다운 선물을 보기 좋아요.", href: "https://maps.google.com/?cid=14886359673146313184&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+
+        { region: "lisbon-home", category: "lodging", name: "Convent Square Lisbon, Vignette Collection", address: "Rua Dom Antão de Almada, 4, Lisbon, 1100 373 Portugal", placeId: "ChIJ7bPgbOIzGQ0RiZExWwvX8Ww", googleRating: "4.7", reserved: true, distance: "리스본 5박 숙소", description: "5/3~5/8 리스본 베이스로 예약 확정된 숙소예요. 보행자 전용 구역이라 차량 하차 후 도보 진입해야 해요.", signature: "예약번호 41605443 · 1 King Deluxe Cloister View · 2 adults", review: "공항 이동과 도심 도보 산책의 기준점이에요.", href: "https://maps.google.com/?cid=7850292069258072457&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "mallorca-home", category: "lodging", name: "Fontsanta Hotel Thermal Spa & Wellness", address: "Km 8, Ctra. Campos a sa Colònia de Sant Jordi, 07638 Campos, Balearic Islands, Spain", placeId: "ChIJr_-OK1iplxIRSubL0HcW_x4", googleRating: "4.5", reserved: true, distance: "마요르카 4박 숙소", description: "5/8~5/12 마요르카 베이스로 예약 확정된 숙소예요. 발레아레스 유일 천연 온천 스파가 핵심이에요.", signature: "예약번호 P7128119 · Deluxe room with terrace · remaining 35.20 EUR", review: "렌터카 여행, 온천, Es Trenc, 팔마 이동의 기준점이에요.", href: "https://maps.google.com/?cid=2233528644058998346&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+
+        { region: "lisbon-home", category: "sightseeing", name: "Castelo de São Jorge", address: "R. de Santa Cruz do Castelo, 1100-129 Lisboa, Portugal", placeId: "ChIJx8mL8Ro0GQ0R2Qe5Kgd2Xbg", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Convent Square에서 도보 약 20~25분", description: "5/4 오전 전망 일정. 리스본 시내와 알파마 분위기를 같이 보기 좋아요.", signature: "전망, 성벽, 알파마 도보 루트", review: "리스본 첫 시내 산책의 대표 포인트예요.", href: "https://maps.google.com/?cid=13024533549412529111" },
+        { region: "lisbon-home", category: "sightseeing", name: "Miradouro de Santa Catarina", address: "Miradouro de Santa Catarina, 1200-262 Lisboa, Portugal", distance: "Chiado에서 도보 약 8~10분", description: "5/5 석양 포인트. Senhora do Monte보다 동선이 가볍고 자연스러워요.", signature: "석양, 도시 전망, Chiado 도보 연결", review: "벨렘과 Chiado를 다녀온 날 부담 없이 마무리하기 좋아요.", href: "https://maps.google.com/?cid=10874279179845094952&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cascais", category: "sightseeing", name: "Cascais Train Station", address: "Largo da Estação, 2750-340 Cascais, Portugal", distance: "리스본 Cais do Sodré에서 기차 약 43분", description: "5/6 카스카이스 도착 기준점. 해변과 구시가지 산책으로 바로 이어져요.", signature: "카스카이스 도착점, 해변 산책 시작", review: "호카곶 전 여유 있는 해안 도시 산책 베이스예요.", href: "https://maps.google.com/?cid=6032221586365894834&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "cabo-roca", category: "sightseeing", name: "Cabo da Roca", address: "Estrada do Cabo da Roca s/n, 2705-001 Colares, Portugal", placeId: "ChIJz0vD6pbiHg0RLqUhr8nSh5U", googleRating: "4.7", tripadvisorRating: "4.5", distance: "카스카이스에서 버스/차량 약 35~45분", description: "5/6 유럽 최서단 포인트. 바람이 강해서 안전선 안에서만 사진을 찍으면 돼요.", signature: "유럽 최서단, 절벽, 인증샷", review: "카스카이스 일정과 묶으면 하루 동선이 가장 자연스러워요.", href: "https://maps.google.com/?cid=10753145278933283759" },
+        { region: "mallorca-beach", category: "sightseeing", name: "La Lonja Marina Charter", address: "Muelle de la lonja, s/n, Centre, 07012 Palma, Illes Balears, Spain", placeId: "ChIJ_Wb8nkOSlxIR9da4oI_3b_A", googleRating: "4.4", tripadvisorRating: "4.5", reserved: true, distance: "5/10 카타마란 집결지", description: "예약한 Luxury Catamaran 투어 집결지. 09:15까지 도착해야 해요.", signature: "SYS-T129013463 · 09:30~13:30 · 2 adults", review: "주차 후 도보로 집결하는 흐름을 미리 확인해두면 좋아요.", href: "https://maps.google.com/?cid=17325338487766439669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
+        { region: "mallorca-beach", category: "sightseeing", name: "Caló des Moro", address: "Caló des Moro, Mallorca, Spain", placeId: "ChIJY9jw9-GplxIRpy55UtkFdr0", googleRating: "4.5", tripadvisorRating: "4.5", distance: "Fontsanta에서 렌터카 약 25~30분", description: "5/9 에메랄드 해변 핵심 후보. 08:30 전 주차가 중요해요.", signature: "절벽 해변, 에메랄드 물색, 이른 출발", review: "늦으면 주차가 어려워 아침 일정으로 고정하는 게 좋아요.", href: "https://maps.google.com/?cid=13650283880968476839" },
+        { region: "mallorca-beach", category: "sightseeing", name: "Catedral de Mallorca (La Seu)", address: "Plaça de la Seu, s/n, 07001 Palma, Illes Balears, Spain", placeId: "ChIJc-BGy0WSlxIRys6QBSWyJ1Q", googleRating: "4.7", tripadvisorRating: "4.5", distance: "La Lonja Marina에서 도보 약 10분", description: "팔마 시내에서 가장 상징적인 관광 포인트. 카타마란 후 가볍게 보기 좋아요.", signature: "대성당 외관, Parc de la Mar, 구시가지", review: "팔마 일정의 시각적 기준점으로 잡기 좋아요.", href: "https://maps.google.com/?cid=6056387022241497514" },
+        { region: "madrid", category: "sightseeing", name: "Puerta del Sol", address: "Puerta del Sol, Centro, Madrid, Spain", placeId: "ChIJWzTqPZgpQg0R-SQb6gO4N4E", googleRating: "4.4", tripadvisorRating: "4.0", distance: "공항 T1에서 택시 약 25~35분", description: "마드리드 레이어오버 시내 동선의 중심점. 점심과 쇼핑 시작 기준으로 좋아요.", signature: "Sol, Preciados, Gran Vía 연결", review: "짧은 시내 체류에서 가장 찾기 쉬운 기준점이에요.", href: "https://maps.google.com/?cid=7587138583347971705" },
+        { region: "madrid", category: "sightseeing", name: "Excess Baggage Company T1", address: "Terminal 1, Aeropuerto de Madrid-Barajas, 28042 Madrid, Spain", placeId: "ChIJYfhW088xQg0R88f24-TWGPg", googleRating: "3.6", tripadvisorRating: "3.5", distance: "마드리드 T1 도착층", description: "5/12 레이어오버 때 캐리어를 맡기는 공식 보관소 후보.", signature: "05:00~23:00 · 여권/귀중품은 직접 소지", review: "T1 도착/T1 출발이라 동선상 가장 편한 짐 보관 지점이에요.", href: "https://maps.google.com/?cid=17877274999412672499&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" }
       ];
 
       let activeFoodRegion = foodRegions[0].id;
@@ -2637,6 +3164,9 @@
       const mainTabs = document.querySelectorAll(".main-tab");
       const panels = document.querySelectorAll(".panel");
       const mainPanelTitleEl = document.getElementById("mainPanelTitle");
+      const overviewInfoTabsEl = document.getElementById("overviewInfoTabs");
+      const overviewInfoTabs = document.querySelectorAll("[data-overview-tab]");
+      const overviewInfoPanels = document.querySelectorAll("[data-overview-panel]");
       const dateTabsEl = document.getElementById("dateTabs");
       const scheduleListEl = document.getElementById("scheduleList");
       const routeMapFrameEl = document.getElementById("routeMapFrame");
@@ -2662,8 +3192,8 @@
       const panelTitles = {
         overview: "개요",
         schedule: "일정",
-        checklist: "예약",
-        food: "맛집",
+        checklist: "준비",
+        food: "장소",
         language: "회화"
       };
 
@@ -3326,7 +3856,9 @@
         const category = foodCategories.find((item) => item.id === activeFoodCategory) || foodCategories[0];
         const targetCount = foodCategoryTargets[region.id]?.[category.id] ?? 0;
         const regionKeys = region.placeRegions || [region.id];
-        const places = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === category.id);
+        const places = foodPlaces
+          .filter((place) => regionKeys.includes(place.region) && place.category === category.id)
+          .sort((a, b) => Number(Boolean(b.reserved)) - Number(Boolean(a.reserved)) || Number(b.googleRating || 0) - Number(a.googleRating || 0));
         const foodMapApiKey = (window.TRIP_MAPS_API_KEY || "").trim();
 
         foodRegionTabsEl.innerHTML = foodRegions.map((item) => {
@@ -3343,21 +3875,21 @@
           const count = foodPlaces.filter((place) => regionKeys.includes(place.region) && place.category === item.id).length;
           const target = foodCategoryTargets[region.id]?.[item.id] ?? 0;
           return `
-            <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}" title="${item.label} ${count}/${target}">
+            <button class="food-category-tab${item.id === activeFoodCategory ? " active" : ""}" type="button" data-food-category="${item.id}" title="${item.label} ${target ? `${count}/${target}` : `${count}곳`}">
               ${item.label}
             </button>
           `;
         }).join("");
 
         foodGuideTitleEl.textContent = `${region.label} · ${category.label.replace(/^[^가-힣A-Za-z0-9]+\\s*/, "")}`;
-        foodGuideCountEl.textContent = `${places.length}/${targetCount}곳 · ${region.dates}`;
+        foodGuideCountEl.textContent = `${targetCount ? `${places.length}/${targetCount}` : places.length}곳 · ${region.dates}`;
 
         if (!places.length) {
           foodGuideListEl.innerHTML = `
             <div class="food-empty">
               아직 이 구역의 ${category.label} 데이터가 비어 있어요.
-              기준 위치는 ${escapeHtml(region.base)}이고, 목표 수량은 ${targetCount}곳입니다.
-              나중에 장소 데이터를 받으면 상호명, 주소, 별점, 대표 메뉴, 후기, 구글맵 링크, 도보 거리가 카드로 표시됩니다.
+              기준 위치는 ${escapeHtml(region.base)}입니다.
+              장소 데이터를 추가하면 상호명, 주소, 별점, 핵심 정보, 메모, 구글맵 링크, 이동 거리가 카드로 표시됩니다.
             </div>
           `;
           return;
@@ -3401,14 +3933,15 @@
               </div>
               <div class="food-card-meta food-card-route-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(category.label)}</div>
               <p class="food-card-copy">${escapeHtml(place.description || "")}</p>
-              <p class="food-card-copy"><strong>대표 메뉴</strong> ${escapeHtml(place.signature || "")}</p>
+              <p class="food-card-copy"><strong>${["shopping", "lodging", "sightseeing"].includes(place.category) ? "핵심 정보" : "대표 메뉴"}</strong> ${escapeHtml(place.signature || "")}</p>
               <div class="food-rating">
                 <span class="food-rating-pill">${escapeHtml(displayRating)}</span>
+                ${place.reserved ? `<span class="food-rating-pill food-reserved-pill">예약했어요</span>` : ""}
                 <span class="food-rating-pill">${escapeHtml(displayReviewCount)}</span>
                 ${liveLabels.map((label) => `<span class="food-rating-pill food-live">${escapeHtml(label)}</span>`).join("")}
               </div>
               ${mediaHtml}
-              <p class="food-card-review"><span class="food-review-label">대표리뷰요약:</span>${escapeHtml(place.review || "")}</p>
+              <p class="food-card-review"><span class="food-review-label">${["shopping", "lodging", "sightseeing"].includes(place.category) ? "메모:" : "대표리뷰요약:"}</span>${escapeHtml(place.review || "")}</p>
               <div class="food-card-actions">
                 <button class="copy-button" type="button" data-copy="${escapeHtml(displayName)}">상호명 복사</button>
                 ${displayAddress ? `<button class="copy-button" type="button" data-copy="${escapeHtml(displayAddress)}">주소 복사</button>` : ""}
@@ -3438,7 +3971,7 @@
 
       function formatGoogleRating(live, place) {
         const rating = Number(live?.rating || place.googleRating || 0);
-        return rating ? `별점 5/${rating.toFixed(1)}` : "별점 -";
+        return rating ? `별점 ${rating.toFixed(1)}` : "별점 -";
       }
 
       function formatGoogleReviewCount(live) {
@@ -3539,6 +4072,16 @@
           scrollViewportToTop();
           setMainPanel(panelName, { resetScheduleDate: panelName === "schedule" });
           requestAnimationFrame(scrollViewportToTop);
+        });
+      });
+
+      overviewInfoTabsEl?.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-overview-tab]");
+        if (!button) return;
+        const target = button.dataset.overviewTab;
+        overviewInfoTabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.overviewTab === target));
+        overviewInfoPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.overviewPanel !== target;
         });
       });
 
