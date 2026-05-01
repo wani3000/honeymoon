@@ -10,6 +10,7 @@
   "routes": [
     { "src": "/api/google-place-search", "dest": "/api/google-place-search.js" },
     { "src": "/api/google-place-details", "dest": "/api/google-place-details.js" },
+    { "src": "/api/google-place-photo", "dest": "/api/google-place-photo.js" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/config.public.js", "dest": "/config.public.js" },
     { "src": "/config.example.js", "dest": "/config.example.js" },
