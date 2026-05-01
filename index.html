@@ -338,6 +338,39 @@
         transition: width 0.2s ease;
       }
 
+      .hm-category-tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        margin: 0 -20px;
+        padding: 14px 20px 8px;
+        scrollbar-width: none;
+      }
+
+      .hm-category-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hm-category-tab {
+        flex: 0 0 auto;
+        min-height: 38px;
+        padding: 0 13px;
+        border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        border-radius: 999px;
+        background: var(--panel);
+        color: var(--text);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .hm-category-tab.active {
+        background: var(--text);
+        border-color: var(--text);
+        color: #ffffff;
+      }
+
       .hm-list {
         display: grid;
         gap: 0;
@@ -1111,6 +1144,11 @@
         line-height: 1.55;
       }
 
+      .food-card-route-meta {
+        color: var(--blue);
+        font-weight: 800;
+      }
+
       .food-card-copy {
         margin-top: 10px;
         font-size: 14px;
@@ -1518,7 +1556,8 @@
       }
 
       .date-tab,
-      .food-category-tab {
+      .food-category-tab,
+      .hm-category-tab {
         flex: 0 0 auto;
         min-height: 42px;
         border: 1px solid transparent;
@@ -1530,19 +1569,22 @@
       }
 
       .date-tab.active,
-      .food-category-tab.active {
+      .food-category-tab.active,
+      .hm-category-tab.active {
         background: var(--text);
         border-color: var(--text);
         color: #ffffff;
       }
 
-      .food-category-tab {
+      .food-category-tab,
+      .hm-category-tab {
         background: #ffffff;
         border-color: var(--line);
         color: var(--text);
       }
 
-      .food-category-tab.active {
+      .food-category-tab.active,
+      .hm-category-tab.active {
         background: var(--text);
         border-color: var(--text);
         color: #ffffff;
@@ -1833,6 +1875,7 @@
               <div class="hm-progress-fill" id="hmProgressFill"></div>
             </div>
           </div>
+          <div class="hm-category-tabs" id="hmCategoryTabs" aria-label="예약 체크 카테고리 선택"></div>
           <div class="hm-list" id="hmChecklist"></div>
           <div style="padding-top: 20px;">
             <button class="hm-reset" id="hmResetButton" type="button">전체 초기화</button>
@@ -2199,8 +2242,8 @@
             { time: "10:00", type: "sight", title: "상 조르즈 성", summary: "리스본 시내에서는 최대한 걸어서 움직이는 흐름으로 잡아도 좋아요. 호텔에서 바이샤를 지나 천천히 올라가면 리스본 골목 분위기를 충분히 느낄 수 있어요.", move: "호텔 → 바이샤 → 알파마 도보 이동", duration: "도보 약 20~25분", location: "Castelo de São Jorge Lisbon", details: [["입장", "약 15€"], ["운영", "09:00~21:00"]], map: "https://maps.google.com/?cid=13024533549412529111" },
             { time: "13:00", type: "sight", title: "선택 일정: 28번 트램 또는 알파마 계속 도보", summary: "오전부터 많이 걸었다면 28번 트램을 짧게 활용하고, 줄이 길거나 피곤하면 그냥 알파마를 계속 도보로 이어가면 돼요. 리스본 시내 구간은 걷는 편이 동네 결을 느끼기에 더 좋아요.", move: "마르팅 모니스 종점에서 트램 28E 탑승 또는 알파마 도보", duration: "트램 약 10분 + 도보 약 10~15분", location: "Praça Martim Moniz, 1100-341 Lisboa, Portugal", details: [["탑승", "28E Tram stop at Praça Martim Moniz"], ["요금", "약 3€"], ["대안", "줄 길면 트램 생략 후 알파마 도보 산책"]], warning: "가방은 앞으로 메고 휴대폰은 지퍼 안쪽 보관.", map: "https://www.google.com/maps/search/?api=1&query=Pra%C3%A7a%20Martim%20Moniz%2C%201100-341%20Lisboa%2C%20Portugal" },
             { time: "15:30", type: "sight", title: "코메르시우 광장 → 타구스 강변 산책", summary: "오후는 계속 도보로 이어가면 돼요. 알파마에서 내려와 강변까지 걷는 흐름이 자연스럽고, 리스본 중심부는 걸을수록 만족도가 높아요.", move: "알파마에서 코메르시우 광장까지 도보 이동", duration: "도보 약 20~25분", location: "Praça do Comércio, 1100-148 Lisboa, Portugal", places: [{ name: "코메르시우 광장", location: "Praça do Comércio, 1100-148 Lisboa, Portugal", href: "https://www.google.com/maps/search/?api=1&query=Pra%C3%A7a%20do%20Com%C3%A9rcio%2C%201100-148%20Lisboa%2C%20Portugal" }, { name: "타구스 강변", location: "Cais das Colunas, Terreiro do Paço, 1100-148 Lisboa, Portugal", href: "https://www.google.com/maps/search/?api=1&query=Cais%20das%20Colunas%2C%20Terreiro%20do%20Pa%C3%A7o%2C%201100-148%20Lisboa%2C%20Portugal" }], details: [], map: "https://www.google.com/maps/search/?api=1&query=Pra%C3%A7a%20do%20Com%C3%A9rcio%2C%201100-148%20Lisboa%2C%20Portugal" },
-            { time: "19:00", type: "transit", title: "산타 카타리나 방향 도보 이동", summary: "강변 산책을 마무리하고 Noobai가 있는 미라도우로 산타 카타리나 방향으로 천천히 걸어 올라가요.", move: "바이샤 → 시아두 방향 언덕 도보 이동", duration: "도보 약 12~15분", location: "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal", details: [["출발 기준", "Convent Square Lisbon"], ["도보", "약 12~15분"], ["포인트", "Noobai는 산타 카타리나 뷰포인트 바로 옆"]], tip: "숙소 기준으로도 도보 이동 가능한 거리라 택시 없이 가볍게 올라가면 좋아요.", map: "https://www.google.com/maps/search/?api=1&query=38.70958301476143%2C-9.147937875251364" },
-            { time: "19:30", type: "food", title: "Noobai Café 예약 저녁", summary: "석양과 도시 뷰 중심으로 가볍게 타파스와 와인을 즐기는 예약 저녁이에요. 19:30 착석이면 5월 리스본 일몰 시간대와 잘 맞아요.", placeName: "Noobai Café", move: "산타 카타리나 뷰포인트 옆 도보 이동", duration: "도보 약 1~2분", location: "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal", details: [["레스토랑", "Noobai Café"], ["주소", "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal"], ["시간", "Mon, 4 May 2026 / 19:30 - 21:30"], ["인원", "2명"], ["예약자", "Chulwan Park"], ["전화", "821065586450"], ["이메일", "oxaz1234@gmail.com"], ["예약 메일", "concierge@letsumai.com"], ["요청사항", "Outdoor table with a view if possible. It's our honeymoon."], ["수정/취소", "예약 확인 이메일의 Edit or cancel your booking 버튼으로만 처리"], ["노쇼", "예약 시간 후 15분 경과 시 no-show 자동 취소"], ["예약 정책", "반려동물 테라스 가능 / 알레르기·식이제한은 사전 고지"], ["추가 정책", "외부 반입 bottle 10€ / cake 2€ per person / 12인 이상 그룹 메뉴 운영"]], warning: "취소는 예약 시간 24시간 전까지 무료예요. 반드시 예약 확인 이메일에 있는 옵션으로만 취소해야 하고, 전화·현장·일반 이메일 취소는 인정되지 않아요.", mustVisitNote: "사전예약한 석양 뷰 레스토랑이에요! 꼭 방문해야 해요.", tip: "예약은 15분 grace period가 있어서 19:45 전에는 두 사람 모두 도착해야 해요. 만석이어도 현장 대기 시 가능한 자리를 배정해주려고 한다고 안내돼 있어요.", map: "https://www.google.com/maps/search/?api=1&query=Noobai%20Caf%C3%A9%2C%20Miradouro%20de%20Santa%20Catarina%20S%2FN%20%28Adamastor%29%2C%201200-401%20Lisboa%2C%20Portugal" }
+            { time: "19:00", type: "transit", title: "산타 카타리나 방향 도보 이동", summary: "강변 산책을 마무리하고 Noobai가 있는 미라도우로 산타 카타리나 방향으로 천천히 걸어 올라가요.", move: "바이샤 → 시아두 방향 언덕 도보 이동", duration: "도보 약 12~15분", location: "Miradouro de Santa Catarina, 1200-262 Lisboa, Portugal", details: [["출발 기준", "Convent Square Lisbon"], ["도보", "약 12~15분"], ["포인트", "Noobai는 산타 카타리나 뷰포인트 바로 옆"]], tip: "숙소 기준으로도 도보 이동 가능한 거리라 택시 없이 가볍게 올라가면 좋아요.", map: "https://maps.google.com/?cid=10874279179845094952&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+            { time: "19:30", type: "food", title: "Noobai Café 예약 저녁", summary: "석양과 도시 뷰 중심으로 가볍게 타파스와 와인을 즐기는 예약 저녁이에요. 19:30 착석이면 5월 리스본 일몰 시간대와 잘 맞아요.", placeName: "Noobai Café", move: "산타 카타리나 뷰포인트 옆 도보 이동", duration: "도보 약 1~2분", location: "Noobai - Rooftop Bar e Restaurante, Miradouro de Santa Catarina, Lisboa, Portugal", details: [["레스토랑", "Noobai Café"], ["주소", "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal"], ["시간", "Mon, 4 May 2026 / 19:30 - 21:30"], ["인원", "2명"], ["예약자", "Chulwan Park"], ["전화", "821065586450"], ["이메일", "oxaz1234@gmail.com"], ["예약 메일", "concierge@letsumai.com"], ["요청사항", "Outdoor table with a view if possible. It's our honeymoon."], ["수정/취소", "예약 확인 이메일의 Edit or cancel your booking 버튼으로만 처리"], ["노쇼", "예약 시간 후 15분 경과 시 no-show 자동 취소"], ["예약 정책", "반려동물 테라스 가능 / 알레르기·식이제한은 사전 고지"], ["추가 정책", "외부 반입 bottle 10€ / cake 2€ per person / 12인 이상 그룹 메뉴 운영"]], warning: "취소는 예약 시간 24시간 전까지 무료예요. 반드시 예약 확인 이메일에 있는 옵션으로만 취소해야 하고, 전화·현장·일반 이메일 취소는 인정되지 않아요.", mustVisitNote: "사전예약한 석양 뷰 레스토랑이에요! 꼭 방문해야 해요.", tip: "예약은 15분 grace period가 있어서 19:45 전에는 두 사람 모두 도착해야 해요. 만석이어도 현장 대기 시 가능한 자리를 배정해주려고 한다고 안내돼 있어요.", map: "https://maps.google.com/?cid=12867634311728828183&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" }
           ]
         },
         {
@@ -2208,7 +2251,7 @@
           label: "5/5 (화)",
           title: "오전 벨렘 → 오후 Chiado 감성 루트",
           items: [
-            { time: "10:00", type: "transit", title: "오전 시작: 호텔에서 바로 벨렘 이동", summary: "오늘은 오전에 벨렘을 먼저 처리하고, 오후에는 Chiado 도보 루트로 넘어가는 구조예요. 리스본 시내는 최대한 걸어도 좋지만, 벨렘은 중심부에서 꽤 떨어져 있어서 이 구간만 대중교통을 쓰는 편이 현실적이에요.", placeName: "Mosteiro dos Jerónimos", move: "호텔에서 바이샤까지 도보 후 15E 트램 또는 택시 이동", duration: "도보 약 8~10분 + 트램/택시 약 20~25분", location: "Praça do Império, 1400-206 Lisboa, Portugal", details: [["루트", "Convent Square → Belém → Chiado"], ["구간", "오전 벨렘"], ["이유", "벨렘은 도심 서쪽이라 예외 이동 구간"], ["핵심", "벨렘만 이동 수단 사용하고 도심 복귀 후 다시 도보 중심"]], map: "https://www.google.com/maps/search/?api=1&query=Mosteiro%20dos%20Jer%C3%B3nimos%2C%20Pra%C3%A7a%20do%20Imp%C3%A9rio%2C%201400-206%20Lisboa%2C%20Portugal" },
+            { time: "10:00", type: "transit", title: "오전 시작: 호텔에서 바로 벨렘 이동", summary: "오늘은 오전에 벨렘을 먼저 처리하고, 오후에는 Chiado 도보 루트로 넘어가는 구조예요. 리스본 시내는 최대한 걸어도 좋지만, 벨렘은 중심부에서 꽤 떨어져 있어서 이 구간만 대중교통을 쓰는 편이 현실적이에요.", placeName: "Mosteiro dos Jerónimos", move: "호텔에서 바이샤까지 도보 후 15E 트램 또는 택시 이동", duration: "도보 약 8~10분 + 트램/택시 약 20~25분", location: "Praça do Império, 1400-206 Lisboa, Portugal", details: [["루트", "Convent Square → Belém → Chiado"], ["구간", "오전 벨렘"], ["이유", "Mosteiro dos Jerónimos는 벨렘 지구를 대표하는 랜드마크예요. Pastéis de Belém 바로 옆이라 벨렘 도착 기준점으로 찍으면 동선이 가장 이해하기 쉽고, 수도원 내부 입장을 하지 않아도 외관과 광장만 보고 바로 에그타르트·강변 산책으로 이어가기 좋아요."], ["이동 판단", "벨렘은 도심 서쪽이라 예외 이동 구간"], ["핵심", "벨렘만 이동 수단 사용하고 도심 복귀 후 다시 도보 중심"]], map: "https://www.google.com/maps/search/?api=1&query=Mosteiro%20dos%20Jer%C3%B3nimos%2C%20Pra%C3%A7a%20do%20Imp%C3%A9rio%2C%201400-206%20Lisboa%2C%20Portugal" },
             { time: "10:30", type: "food", title: "Pastéis de Belém", summary: "벨렘에 오면 이 원조집은 자연스럽게 묶는 게 좋아요. 줄이 있더라도 오래 머무는 식당이라기보다 빠르게 먹고 다음 동선으로 이어가는 곳이라고 생각하면 딱 맞아요.", move: "벨렘 도보 이동", duration: "도보 약 0~3분", location: "Rua de Belém 84-92, 1300-085 Lisboa, Portugal", details: [["매장", "Pastéis de Belém"], ["운영", "매일 08:00~21:00"], ["가격", "약 1.5€/개"], ["추천", "2~3개 + 커피"], ["선택", "줄 짧으면 매장 이용 / 길면 포장"]], tip: "포장했다면 강변으로 바로 이동해서 먹는 흐름이 가장 자연스러워요.", map: "https://maps.google.com/?cid=18442230332396508773" },
             { time: "11:00", type: "sight", title: "타구스 강변 산책", summary: "에그타르트를 먹고 바로 강변을 걷는 흐름이 가장 좋아요. 수도원 대기 없이도 벨렘 분위기를 충분히 느낄 수 있습니다.", move: "강변 도보 이동", duration: "도보 약 10~15분", location: "Padrão dos Descobrimentos, Av. Brasília, 1400-038 Lisboa, Portugal", details: [["포인트", "강변 바람 / 산책 / 사진"], ["메모", "오전은 벨렘 감성만 가볍게 즐기기"]], map: "https://www.google.com/maps/search/?api=1&query=Padr%C3%A3o%20dos%20Descobrimentos%2C%20Av.%20Bras%C3%ADlia%2C%201400-038%20Lisboa%2C%20Portugal" },
             { time: "11:30", type: "sight", title: "선택 산책: 발견기념비 방향", summary: "벨렘 구간은 강변을 가볍게 걷는 정도면 충분해요. 오늘 핵심은 명소를 많이 찍는 것보다 흐름을 부드럽게 유지하는 데 있으니, 피곤하면 이 구간은 짧게 보고 바로 Chiado로 넘어가도 됩니다.", move: "강변 도보 이동", duration: "도보 약 5~10분", location: "Padrão dos Descobrimentos, Av. Brasília, 1400-038 Lisboa, Portugal", details: [["포인트", "강변 산책 / 사진"], ["메모", "일정 밀도 낮게 유지"], ["대안", "피곤하면 짧게만 보고 복귀"]], map: "https://www.google.com/maps/search/?api=1&query=Padr%C3%A3o%20dos%20Descobrimentos%2C%20Av.%20Bras%C3%ADlia%2C%201400-038%20Lisboa%2C%20Portugal" },
@@ -2217,7 +2260,7 @@
             { time: "13:45", type: "sight", title: "Conserveira de Lisboa 들르기", summary: "리스본다운 통조림 패키지를 보는 재미가 있는 곳이에요. 짧게 들르기 좋아서 오후 도심 루트에 자연스럽게 붙습니다.", move: "Chiado / Baixa 방향 도보 이동", duration: "도보 약 10~12분", location: "Rua dos Bacalhoeiros 34-34A, 1100-071 Lisboa, Portugal", details: [["매장", "Conserveira de Lisboa"], ["포인트", "포르투갈 통조림 / 작은 선물"], ["메모", "전통 상점 분위기"]], map: "https://maps.google.com/?q=Rua+dos+Bacalhoeiros+34,+1100-071+Lisboa,+Portugal" },
             { time: "14:30", type: "food", title: "Chiado 카페 휴식", summary: "구경을 마친 뒤에는 Chiado 카페에 앉아 쉬는 흐름이 좋아요. 오늘은 많이 움직이기보다 여유 있게 시간을 쓰는 쪽이 일정 만족도가 높습니다.", move: "Chiado 도보 이동", duration: "도보 약 10~12분", location: "Rua Garrett 120-122, 1200-205 Lisboa, Portugal", details: [["카페", "A Brasileira"], ["주소", "Rua Garrett 120-122, 1200-205 Lisboa"], ["메모", "Chiado 대표 카페 / 쉬었다가 저녁 전 여유 시간 보내기"]], map: "https://maps.google.com/?q=Rua+Garrett+120-122,+1200-205+Lisboa,+Portugal" },
             { time: "16:00", type: "tip", title: "Chiado 근처에서 여유 시간", summary: "카페 이후에는 주변 골목을 천천히 걷거나 잠깐 더 쉬면 돼요. 리스본 도심은 차보다 걸을 때 훨씬 매력이 잘 느껴져서, 오후는 도보권 안에서 보내는 쪽이 잘 맞아요.", move: "Chiado 도보권 머물기", duration: "도보 0~5분", location: "Rua Garrett 120-122, 1200-205 Lisboa, Portugal", details: [["권장", "카페 / 산책 / 가벼운 추가 쇼핑"], ["의도", "저녁 전 체력 회복"]], map: "https://www.google.com/maps/search/?api=1&query=Rua%20Garrett%20120-122%2C%201200-205%20Lisboa%2C%20Portugal" },
-            { time: "19:00", type: "sight", title: "Miradouro de Santa Catarina 석양", summary: "Chiado에서 이어서 가기 좋은 석양 포인트예요. 이동 부담이 적고, 도심 동선 안에서 전망과 분위기를 같이 챙기기 좋아서 오늘 일정에는 이쪽이 더 잘 맞아요.", move: "Chiado에서 도보 이동", duration: "도보 약 8~10분", location: "Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal", details: [["대안", "Miradouro da Senhora do Monte"], ["포인트", "도시 전경 + 석양"], ["장점", "Chiado와 가까워 도보 연결이 쉬움"]], tip: "오늘처럼 Belém과 Chiado를 이미 다녀온 날에는 Santa Catarina가 훨씬 가볍고 자연스러워요.", alternative: { label: "Senhora do Monte 대안 지도", href: "https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Senhora%20do%20Monte%20Lisbon" }, map: "https://www.google.com/maps/search/?api=1&query=38.70958301476143%2C-9.147937875251364" },
+            { time: "19:00", type: "sight", title: "Miradouro de Santa Catarina 석양", summary: "Chiado에서 이어서 가기 좋은 석양 포인트예요. 이동 부담이 적고, 도심 동선 안에서 전망과 분위기를 같이 챙기기 좋아서 오늘 일정에는 이쪽이 더 잘 맞아요.", placeName: "Miradouro de Santa Catarina", move: "Chiado에서 도보 이동", duration: "도보 약 8~10분", location: "Miradouro de Santa Catarina, 1200-262 Lisboa, Portugal", details: [["대안", "Miradouro da Senhora do Monte"], ["포인트", "도시 전경 + 석양"], ["장점", "Chiado와 가까워 도보 연결이 쉬움"]], tip: "오늘처럼 Belém과 Chiado를 이미 다녀온 날에는 Santa Catarina가 훨씬 가볍고 자연스러워요.", alternative: { label: "Senhora do Monte 대안 지도", href: "https://www.google.com/maps/search/?api=1&query=Miradouro%20da%20Senhora%20do%20Monte%20Lisbon" }, map: "https://maps.google.com/?cid=10874279179845094952&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
             { time: "20:30", type: "food", title: "Santa Catarina / Bica 근처 가벼운 저녁", summary: "파인 다이닝 대신 산책 흐름을 유지하는 가벼운 저녁이에요. 오늘은 Graça까지 넘어가지 말고 Santa Catarina, Bica, Chiado 권역 안에서 마무리하는 쪽이 훨씬 편합니다.", move: "전망대에서 도보 이동", duration: "도보 약 5~10분", location: "Bica, 1200-109 Lisboa, Portugal", details: ["당일 컨디션 따라 Santa Catarina / Bica / Chiado 안에서 자유 선택"], map: "https://www.google.com/maps/search/?api=1&query=Bica%2C%201200-109%20Lisboa%2C%20Portugal" }
           ]
         },
@@ -2323,7 +2366,7 @@
             { time: "07:00", type: "flight", title: "마요르카 공항 수속", summary: "Iberia Express 수속이에요. Classic 운임이라 23kg 수하물과 좌석이 이미 포함된 상태예요.", move: "공항 내부 이동", duration: "도보 약 10~15분", location: "Palma de Mallorca Airport", details: [["예약번호", "LSLWY"], ["항공편", "I21652"], ["체크인 마감", "08:10"], ["좌석", "철완 10E / 나라 10F"], ["티켓번호", "철완 0602310091592 / 나라 0602310091593"], ["수하물", "23kg x2"], ["운임", "Classic / Boarding Group 3"], ["총 결제", "130.20 EUR"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
             { time: "09:10", type: "flight", title: "I21652 출발 (마요르카 → 마드리드)", summary: "마드리드 환승 구간.", move: "항공 이동", duration: "항공 1시간 25분", location: "Palma de Mallorca Airport", details: [["구간", "PMI → MAD"], ["시간", "09:10 → 10:35"], ["소요", "1시간 25분"], ["수하물", "23kg x2"]], map: "https://maps.google.com/?q=Palma+de+Mallorca+Airport" },
             { time: "10:35", type: "flight", title: "마드리드 T1 도착", summary: "수하물 수취 후 바로 시내로 나가기보다, 먼저 캐리어를 공항에 맡기고 가볍게 움직이는 게 맞아요. 오늘은 T1 안에서 짐 보관을 먼저 처리하면 동선이 가장 깔끔해요.", move: "공항 내부 이동", duration: "도보 약 10~15분", location: "Madrid Barajas Airport Terminal 1", details: [["도착 터미널", "T1"], ["포인트", "Cercanías 역은 T4에 있어요"], ["권장", "짐 보관 후 택시/카비파이로 시내 진입"]], map: "https://maps.google.com/?q=Madrid+Barajas+Airport+T1" },
-            { time: "11:00", type: "critical", title: "⚠ T1 도착층에 캐리어 맡기기", summary: "레이오버 동안 캐리어를 끌고 다니는 건 비효율적이라, 공항 공식 보관소에 먼저 맡기고 시내로 나가는 게 제일 편해요. 도착 터미널과 출발 터미널이 모두 T1이라 찾을 때도 수월합니다.", move: "T1 Arrivals 보관소 이동", duration: "도보 약 5~10분", location: "Madrid Barajas Airport Terminal 1 Arrivals", details: [["보관소", "Consigna / Excess Baggage Company"], ["위치", "Terminal 1 (Arrivals), Main Concourse"], ["운영시간", "05:00 - 23:00"], ["전화", "+34 913 93 69 38"], ["이유", "T1 도착 / T1 출발이라 가장 편리함"]], warning: "귀중품과 여권, 항공권, 지갑은 캐리어에 넣지 말고 반드시 직접 들고 다니세요.", map: "https://www.google.com/maps/search/?api=1&query=Madrid%20Barajas%20Airport%20Terminal%201%20Arrivals" },
+            { time: "11:00", type: "critical", title: "⚠ T1 도착층에 캐리어 맡기기", summary: "레이오버 동안 캐리어를 끌고 다니는 건 비효율적이라, 공항 공식 보관소에 먼저 맡기고 시내로 나가는 게 제일 편해요. 도착 터미널과 출발 터미널이 모두 T1이라 찾을 때도 수월합니다.", move: "T1 Arrivals 보관소 이동", duration: "도보 약 5~10분", location: "Madrid Barajas Airport Terminal 1 Arrivals", details: [["보관소", "Consigna / Excess Baggage Company"], ["위치", "Terminal 1 (Arrivals), Main Concourse"], ["운영시간", "05:00 - 23:00"], ["전화", "+34 913 93 69 38"], ["이유", "T1 도착 / T1 출발이라 가장 편리함"]], warning: "귀중품과 여권, 항공권, 지갑은 캐리어에 넣지 말고 반드시 직접 들고 다니세요.", map: "https://maps.google.com/?cid=17877274999412672499&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
             { time: "11:20", type: "transit", title: "공항 → Sol / Gran Vía 쇼핑 구역 이동", summary: "짐을 맡긴 뒤에는 택시나 카비파이로 Sol/Gran Vía 쪽으로 바로 들어가는 편이 가장 단순하고 시간도 덜 써요. 오늘은 쇼핑 중심이라 환승이 적은 이동이 훨씬 낫습니다.", move: "택시 또는 Cabify 이동", duration: "택시 약 25~35분", location: "Puerta del Sol, 28013 Madrid, Spain", places: [{ name: "Puerta del Sol", location: "Puerta del Sol, 28013 Madrid, Spain", href: "https://maps.google.com/?q=Puerta+del+Sol+Madrid" }, { name: "Gran Vía", location: "Gran Vía, 28013 Madrid, Spain", href: "https://maps.google.com/?q=Gran+Vía+Madrid" }], details: [["권장 이동", "Taxi / Cabify"], ["이유", "T1에서 T4 이동과 열차 환승 과정을 줄이기"], ["도착 구역", "Sol / Gran Vía / Preciados 도보권"]], tip: "대중교통을 꼭 쓰고 싶다면 공항 셔틀로 T4 이동 후 Cercanías C-1/C-10을 타고 Atocha로 들어온 뒤 다시 Sol 쪽으로 이동해야 해요.", map: "https://maps.google.com/?q=Puerta+del+Sol+Madrid" },
             { time: "12:00", type: "food", title: "Sol 근처 가벼운 점심", summary: "쇼핑 전에 점심이나 간단한 식사를 먼저 해결하면 좋아요. 무거운 식사보다 빨리 먹고 바로 움직일 수 있는 쪽이 오늘 일정에는 더 잘 맞고, 오래 머물지는 않는 편이 안전합니다.", move: "Sol 도보 이동", duration: "도보 약 3~5분", location: "Puerta del Sol, 28013 Madrid, Spain", details: [["권장", "가벼운 점심 또는 간단한 식사"], ["메모", "쇼핑 전 에너지 보충용으로 짧게"], ["원칙", "길게 앉아 먹지 않기"]], map: "https://maps.google.com/?cid=7587138583347971705" },
             { time: "12:45", type: "sight", title: "CASA LOEWE Madrid", summary: "Gran Vía 대신 공식 최신 스토어 정보에서 확인되는 Serrano 34 매장을 기준으로 보는 편이 안전해요. LOEWE가 최우선이면 택시로 바로 들어가서 목표 품목 위주로 빠르게 보는 구성이 현실적입니다.", move: "Sol에서 택시 또는 Cabify 이동", duration: "차량 약 10~15분", location: "Serrano, 34, 28001 Madrid, Spain", details: [["매장", "CASA LOEWE Madrid"], ["주소", "Serrano, 34, 28001 Madrid, Spain"], ["핵심", "스카프 / 가죽 소품 우선 보기"], ["메모", "공식 최신 스토어 정보 기준 매장"], ["원칙", "시간 밀리면 El Corte Inglés와 둘 다 보지 말고 하나만 확실히"]], map: "https://www.google.com/maps/search/?api=1&query=CASA%20LOEWE%20Madrid%2C%20Serrano%2C%2034%2C%2028001%20Madrid%2C%20Spain" },
@@ -2363,7 +2406,7 @@
           id: "booking",
           title: "예약 필수",
           items: [
-            { id: "booking_1", title: "Noobai Café 5/4 19:30", note: "Miradouro de Santa Catarina (Adamastor), Lisboa / 예약 확정 메일 수신 완료", urgency: "완료", href: "https://www.google.com/maps/search/?api=1&query=Noobai%20Caf%C3%A9%2C%20Miradouro%20de%20Santa%20Catarina%20S%2FN%20%28Adamastor%29%2C%201200-401%20Lisboa%2C%20Portugal" },
+            { id: "booking_1", title: "Noobai Café 5/4 19:30", note: "Miradouro de Santa Catarina (Adamastor), Lisboa / 예약 확정 메일 수신 완료", urgency: "완료", href: "https://maps.google.com/?cid=12867634311728828183&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
             { id: "booking_4", title: "Fontsanta 스파 트리트먼트", note: "커플 패키지 문의", urgency: "이번 주", href: "mailto:info@fontsantahotel.com" },
             { id: "booking_5", title: "Fontsanta 레스토랑 5/11", note: "체크인 후 프런트 직접 요청", urgency: "현지에서" },
             { id: "booking_6", title: "카타마란 투어 5/10 09:30", note: "La Lonja Marina Charter / 티켓 SYS-T129013463 / 예약확인 SYS-90344486 / 전액결제 완료", urgency: "완료" },
@@ -2494,6 +2537,18 @@
         }
       ];
 
+      const checklistGroups = [
+        { id: "docs", label: "서류&증명", categoryIds: ["docs"] },
+        { id: "booking", label: "예약", categoryIds: ["booking"] },
+        { id: "money", label: "금융", categoryIds: ["money"] },
+        { id: "packing", label: "짐&의류", categoryIds: ["baggage", "clothes"] },
+        { id: "beauty", label: "화장품", categoryIds: ["beauty"] },
+        { id: "medicine", label: "상비약", categoryIds: ["medicine"] },
+        { id: "device", label: "전자기기", categoryIds: ["device"] },
+        { id: "car", label: "렌터카", categoryIds: ["car"] },
+        { id: "etc", label: "기타", categoryIds: ["onsite", "souvenir", "daycheck"] }
+      ];
+
       const foodRegions = [
         { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 13, placeRegions: ["lisbon-home"] },
         { id: "cascais", tabLabel: "카스카이스", label: "카스카이스 근처", base: "Cascais 시내", dates: "5/6", planned: 8, placeRegions: ["cascais"] },
@@ -2575,6 +2630,7 @@
 
       let activeFoodRegion = foodRegions[0].id;
       let activeFoodCategory = foodCategories[0].id;
+      let activeChecklistGroup = checklistGroups[0].id;
 
       document.body.dataset.activePanel = "overview";
 
@@ -2589,6 +2645,7 @@
       const overviewHotelMapLisbonEl = document.getElementById("overviewHotelMapLisbon");
       const overviewHotelMapMallorcaEl = document.getElementById("overviewHotelMapMallorca");
       const hmChecklistEl = document.getElementById("hmChecklist");
+      const hmCategoryTabsEl = document.getElementById("hmCategoryTabs");
       const hmProgressCountEl = document.getElementById("hmProgressCount");
       const hmProgressPercentEl = document.getElementById("hmProgressPercent");
       const hmProgressFillEl = document.getElementById("hmProgressFill");
@@ -2688,6 +2745,46 @@
         return (value || "").trim();
       }
 
+      const exactGoogleMapsHrefByQuery = new Map(
+        [
+          ["Incheon International Airport Terminal 2", "https://maps.google.com/?cid=16565876810557571281&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Lisbon Humberto Delgado Airport Terminal 1", "https://maps.google.com/?cid=17134169497045758960&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Lisbon Airport Terminal 1", "https://maps.google.com/?cid=17134169497045758960&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Praça Martim Moniz, 1100-341 Lisboa, Portugal", "https://maps.google.com/?q=Pra%C3%A7a+Martim+Moniz,+1100-341+Lisboa,+Portugal&ftid=0xd193387b26831f9:0x1857550492f2156e&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Praça do Comércio, 1100-148 Lisboa, Portugal", "https://maps.google.com/?cid=3482179023753764932&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Mosteiro dos Jerónimos, Praça do Império, 1400-206 Lisboa, Portugal", "https://maps.google.com/?cid=9760810247707356141&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Padrão dos Descobrimentos, Av. Brasília, 1400-038 Lisboa, Portugal", "https://maps.google.com/?cid=8193544515906802267&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Conserveira de Lisboa Rua dos Bacalhoeiros", "https://maps.google.com/?cid=8045587954749394299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Rua dos Bacalhoeiros 34, 1100-071 Lisboa, Portugal", "https://maps.google.com/?cid=8045587954749394299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Rua Garrett 120-122, 1200-205 Lisboa, Portugal", "https://maps.google.com/?cid=17622184140982228307&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Miradouro da Senhora do Monte Lisbon", "https://maps.google.com/?cid=6998468387917687540&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Bica, 1200-109 Lisboa, Portugal", "https://maps.google.com/?cid=15423846672591047821&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Cais do Sodré Station, Praça Duque da Terceira, 1200-161 Lisboa, Portugal", "https://maps.google.com/?cid=17428115868854554750&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Cascais Train Station, Largo da Estação, 2750-340 Cascais, Portugal", "https://maps.google.com/?cid=6032221586365894834&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Cabo da Roca, 2700-642 Colares, Portugal", "https://maps.google.com/?cid=10753145278933283759&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Largo do Chiado, 1200-108 Lisboa, Portugal", "https://maps.google.com/?cid=7680141311413036549&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Zara Rossio Lisbon", "https://maps.google.com/?cid=11075094260748313865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Rua Augusta Lisbon", "https://maps.google.com/?cid=4552483913638432147&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Praça Luís de Camões, Lisboa, 1200-243, Portugal", "https://maps.google.com/?cid=12316459082759153821&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Record Go Palma de Mallorca Airport", "https://maps.google.com/?cid=14607499018343764596&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["La Lonja Marina Charter Muelle de la lonja 07012 Palma", "https://maps.google.com/?cid=17325338487766439669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["La Lonja Marina Charter, Muelle de la Lonja, s/n, 07012 Palma, Balearic Islands, Spain", "https://maps.google.com/?cid=17325338487766439669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Muelle de la lonja, s/n, 07012 Palma, Balearic Islands, Spain", "https://maps.google.com/?cid=17325338487766439669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Carrer dels Hostals, 4, Centre, 07002 Palma, Illes Balears, Spain", "https://maps.google.com/?cid=4924264340469043409&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["Parc de la Mar, 07001 Palma, Balearic Islands, Spain", "https://maps.google.com/?cid=13263400196504400925&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Carrer Major, 21, Colònia de Sant Jordi, Mallorca", "https://maps.google.com/?cid=13554766776710547851&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Repsol Palma de Mallorca Airport", "https://maps.google.com/?cid=16473151240739673972&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Madrid Barajas Airport T1", "https://maps.google.com/?cid=10599295142950209945&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Madrid Barajas Airport Terminal 1", "https://maps.google.com/?cid=10599295142950209945&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Madrid Barajas Airport Terminal 1 Arrivals", "https://maps.google.com/?cid=10599295142950209945&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Puerta del Sol Madrid", "https://maps.google.com/?cid=7587138583347971705&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Gran Vía Madrid", "https://maps.google.com/?cid=16220066372150648097&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["CASA LOEWE Madrid, Serrano, 34, 28001 Madrid, Spain", "https://maps.google.com/?cid=5609566273534620988&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"],
+          ["El Corte Ingles Preciados Madrid", "https://maps.google.com/?cid=3566082084036373619&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"],
+          ["Excess Baggage Company Terminal 1 Madrid Barajas", "https://maps.google.com/?cid=17877274999412672499&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"]
+        ].map(([query, href]) => [query.toLowerCase(), href])
+      );
+
       const placeNameByLocation = new Map([
         ["Incheon International Airport Terminal 2", "Incheon International Airport Terminal 2"],
         ["Aeroporto Humberto Delgado Terminal 1 Lisbon", "Lisbon Airport Terminal 1"],
@@ -2698,6 +2795,8 @@
         ["Praça do Comércio, 1100-148 Lisboa, Portugal", "Praça do Comércio"],
         ["Miradouro de Santa Catarina (Adamastor), Lisboa", "Miradouro de Santa Catarina (Adamastor)"],
         ["Miradouro de Santa Catarina S/N (Adamastor), 1200-401 Lisboa, Portugal", "Miradouro de Santa Catarina (Adamastor)"],
+        ["Miradouro de Santa Catarina, 1200-262 Lisboa, Portugal", "Miradouro de Santa Catarina"],
+        ["Noobai - Rooftop Bar e Restaurante, Miradouro de Santa Catarina, Lisboa, Portugal", "Noobai Café"],
         ["Praça do Império, 1400-206 Lisboa, Portugal", "Mosteiro dos Jerónimos"],
         ["Rua de Belém 84-92, 1300-085 Lisboa, Portugal", "Pastéis de Belém"],
         ["Padrão dos Descobrimentos, Av. Brasília, 1400-038 Lisboa, Portugal", "Padrão dos Descobrimentos"],
@@ -2750,6 +2849,8 @@
       function buildGoogleMapsQueryUrl(query) {
         const text = normalizeLocationText(query);
         if (!text) return "";
+        const exactHref = exactGoogleMapsHrefByQuery.get(text.toLowerCase());
+        if (exactHref) return exactHref;
         return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(text)}`;
       }
 
@@ -3029,7 +3130,7 @@
           <tr>
             <th>이름</th>
             <td>
-              ${renderValueCell(placeName, placeName, "")}
+              ${renderValueCell(placeName, placeName, buildScheduleItemMapHref(item))}
             </td>
           </tr>
         `;
@@ -3169,12 +3270,26 @@
         const completed = flatItems.filter((item) => checklistState[item.id]).length;
         const total = flatItems.length;
         const percent = total ? Math.round((completed / total) * 100) : 0;
+        const activeGroup = checklistGroups.find((group) => group.id === activeChecklistGroup) || checklistGroups[0];
+        const visibleCategories = checklistCategories.filter((category) => activeGroup.categoryIds.includes(category.id));
 
         hmProgressCountEl.textContent = `완료 ${completed} / 전체 ${total}`;
         hmProgressPercentEl.textContent = `${percent}%`;
         hmProgressFillEl.style.width = `${percent}%`;
 
-        hmChecklistEl.innerHTML = checklistCategories.map((category) => {
+        hmCategoryTabsEl.innerHTML = checklistGroups.map((group) => {
+          const groupItems = checklistCategories
+            .filter((category) => group.categoryIds.includes(category.id))
+            .flatMap((category) => category.items);
+          const groupDone = groupItems.filter((item) => checklistState[item.id]).length;
+          return `
+            <button class="hm-category-tab${group.id === activeChecklistGroup ? " active" : ""}" type="button" data-checklist-group="${group.id}" title="${group.label} ${groupDone}/${groupItems.length}">
+              ${group.label}
+            </button>
+          `;
+        }).join("");
+
+        hmChecklistEl.innerHTML = visibleCategories.map((category) => {
           const categoryDone = category.items.filter((item) => checklistState[item.id]).length;
           return `
             <section class="hm-category">
@@ -3284,7 +3399,7 @@
                   <div class="food-card-meta">${escapeHtml(displayAddress)}</div>
                 </div>
               </div>
-              <div class="food-card-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(category.label)}</div>
+              <div class="food-card-meta food-card-route-meta">${escapeHtml(place.distance || "")} · ${escapeHtml(category.label)}</div>
               <p class="food-card-copy">${escapeHtml(place.description || "")}</p>
               <p class="food-card-copy"><strong>대표 메뉴</strong> ${escapeHtml(place.signature || "")}</p>
               <div class="food-rating">
@@ -3356,7 +3471,13 @@
         });
       }
 
-      function setMainPanel(name) {
+      function scrollViewportToTop() {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
+
+      function setMainPanel(name, options = {}) {
         document.body.dataset.activePanel = name;
         if (mainPanelTitleEl) {
           mainPanelTitleEl.textContent = panelTitles[name] || "";
@@ -3365,6 +3486,10 @@
         panels.forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === name));
         if (name === "schedule") {
           requestAnimationFrame(() => {
+            if (options.resetScheduleDate) {
+              setActiveDateTab(days[0]?.id);
+              return;
+            }
             updateActiveDateFromScroll();
           });
         }
@@ -3410,8 +3535,10 @@
 
       mainTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
-          setMainPanel(tab.dataset.panel);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          const panelName = tab.dataset.panel;
+          scrollViewportToTop();
+          setMainPanel(panelName, { resetScheduleDate: panelName === "schedule" });
+          requestAnimationFrame(scrollViewportToTop);
         });
       });
 
@@ -3469,6 +3596,13 @@
         const id = item.dataset.checkId;
         checklistState[id] = !checklistState[id];
         saveChecklistState();
+        renderChecklist();
+      });
+
+      hmCategoryTabsEl.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-checklist-group]");
+        if (!button) return;
+        activeChecklistGroup = button.dataset.checklistGroup;
         renderChecklist();
       });
 
