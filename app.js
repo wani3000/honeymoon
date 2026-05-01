@@ -378,6 +378,8 @@ const PLACE_NAME_ALIASES = {
   chiado: "lisbon-chiado",
   "pasteis de belem": "lisbon-pasteis-de-belem",
   "pastéis de belém": "lisbon-pasteis-de-belem",
+  "sud lisboa": "lisbon-sud-lisboa",
+  "sud lisboa terrazza": "lisbon-sud-lisboa",
   "time out market lisboa": "lisbon-time-out-market",
   noobai: "lisbon-noobai",
   "bahr & terrace": "lisbon-bahr",
@@ -421,19 +423,35 @@ const PLACE_NAME_ALIASES = {
   "primark gran vía": "madrid-primark-gran-via"
 };
 const ROUTE_ALIASES = {
-  "리스본 숙소": ["lisbon-convent-square"],
-  "신트라 + 호카곶 지도": ["lisbon-rossio", "outskirts-pena-palace", "outskirts-cabo-da-roca"],
-  "마요르카 드라이브": [
-    "mallorca-fontsanta",
-    "mallorca-calo-des-moro",
-    "mallorca-valldemossa",
-    "mallorca-deia",
-    "mallorca-palma-cathedral"
-  ],
-  "리스본 첫 일정": ["lisbon-convent-square", "lisbon-castelo-sao-jorge", "lisbon-time-out-market"],
-  "벨렘 데이": ["lisbon-jeronimos", "lisbon-pasteis-de-belem"],
-  "신트라 + 호카곶": ["outskirts-pena-palace", "outskirts-cabo-da-roca"],
-  "마요르카 남동부": ["mallorca-fontsanta", "mallorca-calo-des-moro", "mallorca-cala-figuera"]
+  "리스본 숙소": { slugs: ["lisbon-convent-square"] },
+  "신트라 + 호카곶 지도": {
+    slugs: ["lisbon-rossio", "outskirts-pena-palace", "outskirts-cabo-da-roca"]
+  },
+  "마요르카 드라이브": {
+    slugs: [
+      "mallorca-fontsanta",
+      "mallorca-calo-des-moro",
+      "mallorca-valldemossa",
+      "mallorca-deia",
+      "mallorca-palma-cathedral"
+    ],
+    travelmode: "driving"
+  },
+  "리스본 첫 일정": {
+    slugs: ["lisbon-convent-square", "lisbon-castelo-sao-jorge", "lisbon-time-out-market"],
+    travelmode: "walking"
+  },
+  "벨렘 데이": {
+    slugs: ["lisbon-jeronimos", "lisbon-pasteis-de-belem", "lisbon-sud-lisboa"],
+    travelmode: "walking"
+  },
+  "신트라 + 호카곶": {
+    slugs: ["outskirts-pena-palace", "outskirts-cabo-da-roca"]
+  },
+  "마요르카 남동부": {
+    slugs: ["mallorca-fontsanta", "mallorca-calo-des-moro", "mallorca-cala-figuera"],
+    travelmode: "driving"
+  }
 };
 const appState = {
   placesIndex: null
@@ -485,7 +503,14 @@ const findPlaceRecord = (identifier, placesIndex = appState.placesIndex) => {
   return placesIndex.byName.get(key) || null;
 };
 
-const buildGoogleDirectionsUrl = (places = [], fallbackHref = "#") => {
+const normalizeRouteAlias = (routeAlias) => {
+  if (!routeAlias) {
+    return null;
+  }
+  return Array.isArray(routeAlias) ? { slugs: routeAlias } : routeAlias;
+};
+
+const buildGoogleDirectionsUrl = (places = [], fallbackHref = "#", travelmode = "") => {
   if (!places.length) {
     return fallbackHref;
   }
@@ -502,9 +527,12 @@ const buildGoogleDirectionsUrl = (places = [], fallbackHref = "#") => {
     origin: origin.googleName || origin.name,
     origin_place_id: origin.placeId,
     destination: destination.googleName || destination.name,
-    destination_place_id: destination.placeId,
-    travelmode: "driving"
+    destination_place_id: destination.placeId
   });
+
+  if (["driving", "walking", "bicycling", "transit"].includes(travelmode)) {
+    params.set("travelmode", travelmode);
+  }
 
   if (waypoints.length) {
     params.set(
@@ -521,23 +549,25 @@ const buildGoogleDirectionsUrl = (places = [], fallbackHref = "#") => {
 };
 
 const resolveMapLinkHref = (item) => {
-  const routeSlugs = ROUTE_ALIASES[item.label];
-  if (!routeSlugs) {
+  const routeAlias = normalizeRouteAlias(ROUTE_ALIASES[item.label]);
+  if (!routeAlias) {
     return item.href;
   }
 
+  const routeSlugs = routeAlias.slugs || [];
   const places = routeSlugs.map((slug) => findPlaceRecord(slug)).filter(Boolean);
-  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, item.href) : item.href;
+  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, item.href, routeAlias.travelmode) : item.href;
 };
 
 const resolveMapCardHref = (card) => {
-  const routeSlugs = ROUTE_ALIASES[card.title];
-  if (!routeSlugs) {
+  const routeAlias = normalizeRouteAlias(ROUTE_ALIASES[card.title]);
+  if (!routeAlias) {
     return card.href;
   }
 
+  const routeSlugs = routeAlias.slugs || [];
   const places = routeSlugs.map((slug) => findPlaceRecord(slug)).filter(Boolean);
-  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, card.href) : card.href;
+  return places.length === routeSlugs.length ? buildGoogleDirectionsUrl(places, card.href, routeAlias.travelmode) : card.href;
 };
 
 const resolvePlaceItem = (item) => {
@@ -754,6 +784,11 @@ const renderApp = () => {
 };
 
 const loadPlacesData = async () => {
+  if (window.location.protocol === "file:") {
+    console.warn("Places data is not fetched on file://. Use a local static server to enable places.resolved.json.");
+    return;
+  }
+
   try {
     const response = await fetch(PLACES_DATA_URL);
     if (!response.ok) {

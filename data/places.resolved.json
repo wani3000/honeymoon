@@ -218,6 +218,26 @@
       "resolvedAt": "2026-05-01T02:55:42.177Z"
     },
     {
+      "slug": "lisbon-sud-lisboa",
+      "city": "lisbon",
+      "name": "SUD Lisboa Terrazza",
+      "query": "SUD Lisboa Terrazza Lisbon",
+      "note": "벨렘 강변 루프탑 식당 후보",
+      "tags": [
+        "식당",
+        "루프탑"
+      ],
+      "reservation": false,
+      "placeId": "ChIJ3Qt2HU3LHg0RErFZs07tcZ0",
+      "googleMapsUri": "https://maps.google.com/?cid=11345109858595221778&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+      "formattedAddress": "Pavilhão Poente (ao lado do MAAT, Av. Brasília, 1300-598 Lisboa, Portugal",
+      "googleName": "SUD Lisboa Terrazza",
+      "rating": 4.5,
+      "userRatingCount": 10550,
+      "resolutionStatus": "resolved",
+      "resolvedAt": "2026-05-01T03:15:00.000Z"
+    },
+    {
       "slug": "lisbon-noobai",
       "city": "lisbon",
       "name": "Noobai Cafe",

@@ -65,6 +65,7 @@ Vercel/API 배포: [https://honeymoon-delta.vercel.app/](https://honeymoon-delta
 다른 에이전트가 이어서 작업할 때 기준으로 삼을 현재 상태입니다.
 
 - 주요 일정/체크리스트/예약 데이터는 모두 `index.html`에 있습니다.
+- `app.js`는 Places DB 연동 실험/이전 분리 구조입니다. 현재 배포 화면은 `index.html`이 직접 렌더링하므로, 일정표를 수정할 때는 `index.html`을 우선 수정하세요.
 - 최근 작업은 `Record Go` 픽업/반납 칸에 예약번호, 보험, 결제금액, 연료정책, 영수증 규칙까지 일정표에 상세 반영한 것입니다.
 - `2026-05-10` 카타마란 예약 정보도 이메일/PDF 기준으로 반영된 상태입니다.
 - `2026-05-06` 일정은 현재 `신트라 중심`이 아니라 `카스카이스 → 호카곶` 흐름으로 조정되어 있습니다.
@@ -101,6 +102,8 @@ Vercel/API 배포: [https://honeymoon-delta.vercel.app/](https://honeymoon-delta
 - `PLACES_DATA_WORKFLOW.md`: 장소 원본 데이터 관리 방식과 실행 절차
 - `vercel.json`: Vercel 정적 파일 + API 함수 배포 설정
 - `styles.css`, `app.js`: 보조/이전 분리 파일
+
+참고: `app.js`의 `places.resolved.json` 로더는 `file://`에서 동작하지 않을 수 있습니다. 이 구조를 검증할 때는 `python3 -m http.server 4173` 같은 정적 서버로 열어야 합니다.
 
 ## 다음 에이전트 시작 순서
 

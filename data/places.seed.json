@@ -93,6 +93,15 @@
       "reservation": false
     },
     {
+      "slug": "lisbon-sud-lisboa",
+      "city": "lisbon",
+      "name": "SUD Lisboa Terrazza",
+      "query": "SUD Lisboa Terrazza Lisbon",
+      "note": "벨렘 강변 루프탑 식당 후보",
+      "tags": ["식당", "루프탑"],
+      "reservation": false
+    },
+    {
       "slug": "lisbon-time-out-market",
       "city": "lisbon",
       "name": "Time Out Market Lisboa",

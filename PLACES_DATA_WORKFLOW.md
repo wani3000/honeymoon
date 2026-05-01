@@ -9,6 +9,7 @@
 - `places.resolved.json`은 Google Places 기준으로 보강된 캐시
 - 메모, 태그, 예약 여부는 우리 프로젝트 데이터에 저장
 - `placeId`와 `googleMapsUri`는 Google Places에서 보강
+- 현재 실제 배포 화면은 `index.html` 단일 파일 중심입니다. `app.js`는 참고/이전 분리 구조이며, 현재 `index.html`에 직접 로드되지 않습니다.
 
 ## 파일 구조
 
@@ -22,6 +23,14 @@
   - seed 파일을 Places API 기준으로 보강하는 스크립트
 
 ## 실행 방법
+
+주의: `app.js`에서 `places.resolved.json`을 읽는 구조는 `file://`에서 브라우저 보안 정책 때문에 막힐 수 있습니다. 이 경우 아래처럼 정적 서버로 열어야 합니다.
+
+```bash
+python3 -m http.server 4173
+```
+
+그다음 `http://127.0.0.1:4173/`로 확인합니다.
 
 ### 1. Vercel 프록시를 사용할 때
 
@@ -47,7 +56,8 @@ GOOGLE_PLACES_API_KEY=YOUR_KEY node scripts/build-places-db.mjs data/places.seed
 2. `note`, `tags`, `reservation` 같은 사용자 메타데이터 입력
 3. `build-places-db.mjs` 실행
 4. 생성된 `places.resolved.json`에서 `placeId`, `googleMapsUri` 확인
-5. 프론트에서는 resolved 파일을 읽어서 버튼/카드/지도 링크 생성
+5. 현재 화면에 바로 반영하려면 `index.html`의 해당 데이터도 함께 수정
+6. 추후 앱 분리 구조로 전환하면 프론트에서 resolved 파일을 읽어서 버튼/카드/지도 링크 생성
 
 ## 예시 항목
 
