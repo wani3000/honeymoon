@@ -3067,7 +3067,7 @@
       ];
 
       const foodRegions = [
-        { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 27, placeRegions: ["lisbon-home"] },
+        { id: "lisbon", tabLabel: "리스본", label: "리스본 숙소 근처", base: "Convent Square Lisbon", dates: "5/3~5/8", planned: 34, placeRegions: ["lisbon-home"] },
         { id: "cascais", tabLabel: "카스카이스", label: "카스카이스 근처", base: "Cascais 시내", dates: "5/6", planned: 18, placeRegions: ["cascais"] },
         { id: "cabo-roca", tabLabel: "호곶", label: "호카곶 근처", base: "Cabo da Roca 주변", dates: "5/6", planned: 18, placeRegions: ["cabo-roca"] },
         { id: "mallorca", tabLabel: "마요르카", label: "마요르카 전체", base: "Fontsanta / Caló des Moro / Es Trenc / Palma Marina", dates: "5/8~5/12", planned: 26, placeRegions: ["mallorca-home", "mallorca-beach"] },
@@ -3188,9 +3188,16 @@
         { region: "madrid", category: "rooftop", name: "Ginkgo Restaurante & Sky Bar", address: "Plaza de España, 3, Centro, 28008 Madrid, Spain", placeId: "ChIJmWugNGUoQg0RlN6GSacY2UQ", googleRating: "4.2", distance: "Gran Vía에서 도보 약 12분", description: "Plaza de España 쪽 루프탑이에요. 쇼핑이 빨리 끝나고 전망을 보고 싶을 때 후보로 넣으면 됩니다.", signature: "루프탑, 칵테일, 도시 전망", review: "리뷰 4,100개 이상으로 마드리드 루프탑 후보 중 후기 기반이 탄탄해요.", href: "https://maps.google.com/?cid=4961023571297492628&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
         { region: "madrid", category: "rooftop", name: "360º Rooftop Bar", address: "C/ del Maestro Guerrero, s/n, Centro, 28013 Madrid, Spain", placeId: "ChIJUxgNVHQpQg0RiQnAhV-ojBw", googleRating: "3.8", distance: "Gran Vía에서 도보 약 10분", description: "평점은 높지 않지만 360도 전망이 강점인 루프탑이에요. 사진 목적이면 후보로만 보면 됩니다.", signature: "360도 전망, 사진, 칵테일", review: "후기 수가 많아 장단점이 뚜렷한 곳입니다. 전망 우선일 때만 선택하세요.", href: "https://maps.google.com/?cid=2057204258020788617&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
 
-        { region: "lisbon-home", category: "shopping", name: "ZARA Rossio", address: "Praça Dom Pedro IV 96-122, 1100-200 Lisboa, Portugal", distance: "Convent Square에서 도보 약 5분", description: "5/7 쇼핑 루트의 첫 기준점. 가격과 핏을 먼저 확인하기 좋아요.", signature: "의류, 기본템, 여행 중 바로 입을 옷", review: "Rossio → Rua Augusta → Chiado 직선 루트 시작점으로 가장 효율적이에요.", href: "https://maps.google.com/?cid=11075094260748313865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
-        { region: "lisbon-home", category: "shopping", name: "Bershka Rua Augusta", address: "R. Augusta 157 171, 1100-050 Lisboa, Portugal", placeId: "ChIJzVX-Cnk0GQ0RX1XDyrEToQg", distance: "ZARA Rossio에서 도보 약 5분", description: "Rua Augusta 쇼핑 구간 안에 있어 이동 부담이 거의 없어요.", signature: "캐주얼 의류, 트렌드 아이템", review: "ZARA 다음에 바로 붙여 보면 동선 낭비가 없어요.", href: "https://maps.google.com/?cid=621799877885777247&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
-        { region: "lisbon-home", category: "shopping", name: "Pull&Bear Rua Augusta", address: "R. Augusta 61 69, 1100-048 Lisboa, Portugal", placeId: "ChIJ6XPICnk0GQ0RkSMdIpJuDG0", distance: "Bershka에서 도보 약 3분", description: "Rua Augusta 안에서 이어 보는 캐주얼 쇼핑 후보예요.", signature: "캐주얼 기본템, 가벼운 여행복", review: "Bershka와 묶어서 30~40분 안에 빠르게 보기 좋아요.", href: "https://maps.google.com/?cid=7857777023771288465&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", priority: 1, name: "ZARA Rossio", address: "Praça Dom Pedro IV 96-122, 1100-200 Lisboa, Portugal", distance: "Convent Square에서 도보 약 3~5분", description: "리스본 쇼핑 1순위예요. 숙소에서 가장 가깝고 대형 플래그십이라 가격, 핏, 기본템 기준점을 잡기 좋습니다.", signature: "우선순위 1 / 스페인 브랜드 / Rossio / 기본템 기준점", review: "시간이 부족하면 여기서 먼저 보고, 마음에 드는 기본템은 바로 결정해도 좋아요.", href: "https://maps.google.com/?cid=11075094260748313865&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", priority: 2, name: "Massimo Dutti Chiado", address: "Rua Garrett 15, 1200-096 Lisboa, Portugal", distance: "Convent Square에서 도보 약 7~9분", description: "리스본 쇼핑 2순위예요. Zara보다 차분한 프리미엄 라인이라 셔츠, 니트, 외출복을 보기 좋습니다.", signature: "우선순위 2 / 스페인 브랜드 / Chiado / 프리미엄 라인", review: "한국보다 체감이 좋은 편이라 BAHR 전 저녁 외출복 후보까지 같이 보면 좋아요.", href: "https://www.google.com/maps/search/?api=1&query=Massimo%20Dutti%2C%20Rua%20Garrett%2015%2C%201200-096%20Lisboa%2C%20Portugal" },
+        { region: "lisbon-home", category: "shopping", priority: 3, name: "Parfois Rua Augusta", address: "R. Augusta 146, 1100-054 Lisboa, Portugal", distance: "Convent Square에서 도보 약 5~8분", description: "리스본 쇼핑 3순위예요. 가방, 스카프, 액세서리, 선물용으로 가장 효율적인 포르투갈 브랜드입니다.", signature: "우선순위 3 / 포르투갈 브랜드 / Rua Augusta / 가방·스카프·선물", review: "여행 중 바로 쓰기 좋은 소품과 가벼운 선물은 Parfois가 제일 실용적이에요.", href: "https://www.google.com/maps/search/?api=1&query=Parfois%2C%20R.%20Augusta%20146%2C%201100-054%20Lisboa%2C%20Portugal" },
+        { region: "lisbon-home", category: "shopping", priority: 4, name: "Bershka Rua Augusta", address: "R. Augusta 157 171, 1100-050 Lisboa, Portugal", placeId: "ChIJzVX-Cnk0GQ0RX1XDyrEToQg", distance: "Convent Square에서 도보 약 5~7분", description: "Rua Augusta 쇼핑 구간 안에 있어 이동 부담이 거의 없어요. Zara 다음에 트렌디한 저가 아이템을 빠르게 보면 됩니다.", signature: "우선순위 4 / 스페인 브랜드 / Rua Augusta / 가성비 트렌디", review: "Zara 다음에 바로 붙여 보면 동선 낭비가 없고, 가볍게 입을 여행복을 찾기 좋아요.", href: "https://maps.google.com/?cid=621799877885777247&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", priority: 5, name: "Pull&Bear Rua Augusta", address: "R. Augusta 61 69, 1100-048 Lisboa, Portugal", placeId: "ChIJ6XPICnk0GQ0RkSMdIpJuDG0", distance: "Convent Square에서 도보 약 5~7분", description: "Rua Augusta 안에서 이어 보는 캐주얼 쇼핑 후보예요. Bershka와 묶어서 보면 가장 효율적입니다.", signature: "우선순위 5 / 스페인 브랜드 / Rua Augusta / 캐주얼 기본템", review: "Bershka와 묶어서 30~40분 안에 빠르게 보기 좋아요.", href: "https://maps.google.com/?cid=7857777023771288465&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
+        { region: "lisbon-home", category: "shopping", priority: 6, name: "Mango Chiado", address: "R. do Carmo 2, 1200-094 Lisboa, Portugal", distance: "Convent Square에서 도보 약 7~10분", description: "Chiado 쪽 무난한 스타일 보강 후보예요. Zara, Massimo Dutti를 보고도 부족하면 이어서 보면 됩니다.", signature: "우선순위 6 / 스페인 브랜드 / Chiado / 무난한 스타일", review: "동선상 Chiado 안이라 부담은 적지만, 1군 쇼핑을 본 뒤 시간이 남을 때가 좋아요.", href: "https://www.google.com/maps/search/?api=1&query=Mango%2C%20R.%20do%20Carmo%202%2C%201200-094%20Lisboa%2C%20Portugal" },
+        { region: "lisbon-home", category: "shopping", priority: 7, name: "Stradivarius Chiado", address: "Rua do Carmo 4, 1200-094 Lisboa, Portugal", distance: "Convent Square에서 도보 약 7~10분", description: "여성 캐주얼 위주로 보기 좋은 스페인 브랜드예요. Mango와 같은 Chiado 축에서 짧게 비교하면 됩니다.", signature: "우선순위 7 / 스페인 브랜드 / Chiado / 여성 캐주얼", review: "Mango와 가까워서 한 번에 비교하기 좋고, 오래 머물 필요는 없습니다.", href: "https://www.google.com/maps/search/?api=1&query=Stradivarius%2C%20Rua%20do%20Carmo%204%2C%201200-094%20Lisboa%2C%20Portugal" },
+        { region: "lisbon-home", category: "shopping", priority: 8, name: "Sacoor Brothers Avenida da Liberdade", address: "Avenida da Liberdade, Lisboa, Portugal", distance: "Convent Square에서 도보 약 12~15분", description: "포르투갈 프리미엄 브랜드 후보예요. Rossio/Rua Augusta/Chiado 직선 루트에서는 살짝 벗어나므로 시간이 남을 때만 보면 됩니다.", signature: "우선순위 8 / 포르투갈 브랜드 / Avenida da Liberdade / 프리미엄", review: "좋은 브랜드지만 오늘 최적 동선에서는 선택지입니다. 핵심 3개를 먼저 본 뒤 여유가 있으면 가세요.", href: "https://www.google.com/maps/search/?api=1&query=Sacoor%20Brothers%20Avenida%20da%20Liberdade%20Lisboa" },
+        { region: "lisbon-home", category: "shopping", priority: 9, name: "+351 Chiado", address: "Rua da Anchieta 7, 1200-023 Lisboa, Portugal", distance: "Convent Square에서 도보 약 7~9분", description: "리스본 로컬 감성 브랜드예요. 포르투갈에서만 느껴지는 캐주얼·비치 무드 옷을 보고 싶을 때 좋습니다.", signature: "우선순위 9 / 포르투갈 브랜드 / Chiado / 로컬 감성", review: "대형 브랜드보다 기념성 있는 옷을 사고 싶다면 +351이 더 기억에 남을 수 있어요.", href: "https://www.google.com/maps/search/?api=1&query=%2B351%2C%20Rua%20da%20Anchieta%207%2C%201200-023%20Lisboa%2C%20Portugal" },
+        { region: "lisbon-home", category: "shopping", priority: 10, name: "Salsa Jeans Studio Rua Augusta", address: "Rua Augusta 147, 1100-049 Lisboa, Portugal", distance: "Convent Square에서 도보 약 7~10분", description: "포르투갈 데님 전문 브랜드예요. 청바지나 데님 핏을 집중해서 볼 때만 넣으면 됩니다.", signature: "우선순위 10 / 포르투갈 브랜드 / Rua Augusta / 데님 전문", review: "필수는 아니지만 포르투갈 브랜드 데님을 보고 싶다면 Rua Augusta 동선에서 짧게 들르기 좋아요.", href: "https://www.google.com/maps/search/?api=1&query=Salsa%20Jeans%20Studio%2C%20Rua%20Augusta%20147%2C%201100-049%20Lisboa%2C%20Portugal" },
         { region: "lisbon-home", category: "shopping", name: "A Vida Portuguesa", address: "R. Nova do Almada 72, 1200-289 Lisboa, Portugal", placeId: "ChIJjV9a2340GQ0RksyzcqklJxA", googleRating: "4.4", tripadvisorRating: "4.0", distance: "Chiado에서 도보 약 5분", description: "포르투갈 감성 기념품과 패키지를 보기 좋은 매장.", signature: "타일, 비누, 문구, 감성 기념품", review: "일정에 직접 넣은 Chiado 감성 쇼핑 핵심 후보예요.", href: "https://maps.google.com/?cid=1163940438402649234&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" },
         { region: "lisbon-home", category: "shopping", name: "Conserveira de Lisboa", address: "R. dos Bacalhoeiros 34, 1100-071 Lisboa, Portugal", placeId: "ChIJK9of43k0GQ0Re83_E56rp28", googleRating: "4.6", tripadvisorRating: "4.5", distance: "A Vida Portuguesa에서 도보 약 10~12분", description: "전통 통조림 패키지가 예뻐 작은 선물로 보기 좋아요.", signature: "정어리·참치 통조림, 포르투갈 패키지 기념품", review: "짧게 들러도 리스본다운 느낌이 강한 상점이에요.", href: "https://maps.google.com/?cid=8045587954749394299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
         { region: "madrid", category: "shopping", name: "CASA LOEWE Madrid", address: "C. de Serrano, 34, 28001 Madrid, Spain", placeId: "ChIJe6rNNJcoQg0RPPUKFs4u2U0", googleRating: "4.3", tripadvisorRating: "4.0", distance: "Sol에서 택시 약 10~15분", description: "마드리드 레이어오버 쇼핑 핵심. 스카프나 가죽 소품을 보기 좋아요.", signature: "스카프, 가죽 소품, 선물", review: "시간이 밀리면 다른 쇼핑보다 LOEWE를 우선하는 구조가 안전해요.", href: "https://maps.google.com/?cid=5609566273534620988&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" },
@@ -3925,6 +3932,10 @@
         return foodCategories.filter((item) => item.id !== "reserved" || supportsReservedFoodTab(regionId));
       }
 
+      function getDefaultFoodCategory(regionId) {
+        return supportsReservedFoodTab(regionId) ? "reserved" : "all";
+      }
+
       function renderFoodGuide() {
         const region = foodRegions.find((item) => item.id === activeFoodRegion) || foodRegions[0];
         const visibleFoodCategories = getVisibleFoodCategories(region.id);
@@ -3940,7 +3951,12 @@
             if (category.id === "all") return true;
             return place.category === category.id;
           })
-          .sort((a, b) => Number(Boolean(b.reserved)) - Number(Boolean(a.reserved)) || Number(b.googleRating || 0) - Number(a.googleRating || 0));
+          .sort((a, b) => {
+            if (category.id === "shopping") {
+              return Number(a.priority || 999) - Number(b.priority || 999) || Number(b.googleRating || 0) - Number(a.googleRating || 0);
+            }
+            return Number(Boolean(b.reserved)) - Number(Boolean(a.reserved)) || Number(b.googleRating || 0) - Number(a.googleRating || 0);
+          });
         const targetCount = ["reserved", "all"].includes(category.id) ? 0 : foodCategoryTargets[region.id]?.[category.id] ?? 0;
         const foodMapApiKey = (window.TRIP_MAPS_API_KEY || "").trim();
 
@@ -4263,9 +4279,7 @@
         const button = event.target.closest("[data-food-region]");
         if (!button) return;
         activeFoodRegion = button.dataset.foodRegion;
-        if (activeFoodCategory === "reserved" && !supportsReservedFoodTab(activeFoodRegion)) {
-          activeFoodCategory = "all";
-        }
+        activeFoodCategory = getDefaultFoodCategory(activeFoodRegion);
         renderFoodGuide();
       });
 
