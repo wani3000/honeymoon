@@ -3917,9 +3917,21 @@
         return foodCategories.find((item) => item.id === categoryId)?.label || "";
       }
 
+      function supportsReservedFoodTab(regionId) {
+        return ["lisbon", "mallorca"].includes(regionId);
+      }
+
+      function getVisibleFoodCategories(regionId) {
+        return foodCategories.filter((item) => item.id !== "reserved" || supportsReservedFoodTab(regionId));
+      }
+
       function renderFoodGuide() {
         const region = foodRegions.find((item) => item.id === activeFoodRegion) || foodRegions[0];
-        const category = foodCategories.find((item) => item.id === activeFoodCategory) || foodCategories[0];
+        const visibleFoodCategories = getVisibleFoodCategories(region.id);
+        if (!visibleFoodCategories.some((item) => item.id === activeFoodCategory)) {
+          activeFoodCategory = visibleFoodCategories[0]?.id || "all";
+        }
+        const category = visibleFoodCategories.find((item) => item.id === activeFoodCategory) || visibleFoodCategories[0];
         const regionKeys = region.placeRegions || [region.id];
         const allRegionPlaces = foodPlaces.filter((place) => regionKeys.includes(place.region));
         const places = allRegionPlaces
@@ -3942,7 +3954,7 @@
           `;
         }).join("");
 
-        foodCategoryTabsEl.innerHTML = foodCategories.map((item) => {
+        foodCategoryTabsEl.innerHTML = visibleFoodCategories.map((item) => {
           const count = item.id === "reserved"
             ? allRegionPlaces.filter((place) => place.reserved).length
             : item.id === "all"
@@ -4251,6 +4263,9 @@
         const button = event.target.closest("[data-food-region]");
         if (!button) return;
         activeFoodRegion = button.dataset.foodRegion;
+        if (activeFoodCategory === "reserved" && !supportsReservedFoodTab(activeFoodRegion)) {
+          activeFoodCategory = "all";
+        }
         renderFoodGuide();
       });
 
